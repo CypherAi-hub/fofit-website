@@ -1,4 +1,5 @@
 import { CTASection } from "../components/marketing/CTASection";
+import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Card } from "../components/ui/Card";
@@ -39,7 +40,7 @@ export function AboutPage() {
       />
       <PageHero
         actions={[
-          { label: "Read the product story", to: "/product" },
+          { label: "Join early access", intent: "waitlist" },
           { label: "Explore updates", to: "/updates", variant: "secondary" },
         ]}
         compact
@@ -83,6 +84,42 @@ export function AboutPage() {
       </section>
 
       <StatBand items={platformStats} />
+
+      <section className="page-section page-section--tight">
+        <div className="container">
+          <PlatformShowcase
+            description="About pages feel more like real company pages when they connect mission to product surfaces and future company shape."
+            eyebrow="Company in motion"
+            panels={[
+              {
+                caption: "Product conviction",
+                title: "A belief that training products should do more than log activity",
+                stats: [
+                  { label: "Philosophy", value: "System-first" },
+                  { label: "Tone", value: "Focused" },
+                ],
+              },
+              {
+                caption: "Company direction",
+                title: "A clearer path into coaching, content, and premium ecosystem layers",
+                stats: [
+                  { label: "Roadmap", value: "Visible" },
+                  { label: "Expansion", value: "Intentional" },
+                ],
+              },
+              {
+                caption: "Audience fit",
+                title: "Built for people who want more than a generic workout app",
+                stats: [
+                  { label: "Beginners", value: "Supported" },
+                  { label: "Athletes", value: "Respected" },
+                ],
+              },
+            ]}
+            title="The company story should feel as grounded as the product story."
+          />
+        </div>
+      </section>
 
       <section className="page-section">
         <div className="container">

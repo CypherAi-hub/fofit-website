@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { primaryNav, ecosystemLinks } from "../../data/nav";
+import { EarlyAccessButton } from "../marketing/EarlyAccessButton";
 
 type MobileNavProps = {
   open: boolean;
@@ -30,6 +31,9 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               {link.label}
             </NavLink>
           ))}
+          <EarlyAccessButton className="mobile-nav__cta" size="lg">
+            Get Early Access
+          </EarlyAccessButton>
         </nav>
         <p className="mobile-nav__footnote">
           A premium training platform built around planning, guidance, progress,

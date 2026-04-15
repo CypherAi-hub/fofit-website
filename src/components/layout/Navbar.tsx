@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { primaryNav } from "../../data/nav";
 import { Button } from "../ui/Button";
+import { EarlyAccessButton } from "../marketing/EarlyAccessButton";
 import { MobileNav } from "./MobileNav";
 
 export function Navbar() {
@@ -32,9 +33,9 @@ export function Navbar() {
             <Button to="/pricing" variant="ghost">
               Pricing
             </Button>
-            <Button href="mailto:hello@fofit.app?subject=FoFit%20Early%20Access">
+            <EarlyAccessButton>
               Get Early Access
-            </Button>
+            </EarlyAccessButton>
             <button
               aria-label="Open menu"
               className="nav-toggle"

@@ -1,10 +1,13 @@
 import { AppRoutes } from "./routes";
+import { WaitlistProvider } from "./waitlist-context";
 import { SiteShell } from "../components/layout/SiteShell";
 
 export default function App() {
   return (
-    <SiteShell>
-      <AppRoutes />
-    </SiteShell>
+    <WaitlistProvider>
+      <SiteShell>
+        <AppRoutes />
+      </SiteShell>
+    </WaitlistProvider>
   );
 }

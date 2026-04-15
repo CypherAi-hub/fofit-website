@@ -1181,6 +1181,368 @@ main {
   font-size: 0.92rem;
 }
 
+.mobile-nav__cta {
+  width: 100%;
+  margin-top: 0.75rem;
+}
+
+.detail-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.platform-showcase {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.platform-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.platform-showcase__panel {
+  display: grid;
+  gap: 1rem;
+  min-height: 100%;
+}
+
+.platform-showcase__visual {
+  position: relative;
+  border-radius: 1.35rem;
+  min-height: 11rem;
+  padding: 1rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(42, 102, 255, 0.28), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.platform-showcase__window {
+  width: 72%;
+  height: 3.4rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.platform-showcase__window--accent {
+  width: 54%;
+  margin-top: 0.75rem;
+  background: rgba(42, 102, 255, 0.14);
+  border-color: rgba(42, 102, 255, 0.24);
+}
+
+.platform-showcase__bars {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: end;
+  gap: 0.35rem;
+  min-height: 4rem;
+}
+
+.platform-showcase__bars span {
+  width: 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--cyan), rgba(42, 102, 255, 0.3));
+}
+
+.platform-showcase__bars span:nth-child(1) {
+  height: 2rem;
+}
+
+.platform-showcase__bars span:nth-child(2) {
+  height: 3rem;
+}
+
+.platform-showcase__bars span:nth-child(3) {
+  height: 4rem;
+}
+
+.platform-showcase__content h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+}
+
+.platform-showcase__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.platform-showcase__stats div {
+  padding: 0.85rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.platform-showcase__stats strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.platform-showcase__stats span {
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
+.waitlist-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.waitlist-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 5, 9, 0.72);
+  backdrop-filter: blur(16px);
+}
+
+.waitlist-modal__shell {
+  position: relative;
+  z-index: 1;
+  width: min(68rem, calc(100vw - 2rem));
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+  border: 1px solid rgba(42, 102, 255, 0.2);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 42px 120px rgba(0, 0, 0, 0.55);
+  background:
+    radial-gradient(circle at top right, rgba(42, 102, 255, 0.16), transparent 28%),
+    rgba(9, 12, 19, 0.95);
+}
+
+.waitlist-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-size: 1.35rem;
+  cursor: pointer;
+}
+
+.waitlist-modal__aside {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: 2.2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(circle at top left, rgba(0, 212, 255, 0.12), transparent 26%),
+    rgba(255, 255, 255, 0.02);
+}
+
+.waitlist-modal__aside h3,
+.waitlist-modal__panel h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.waitlist-modal__aside p,
+.waitlist-modal__panel p,
+.waitlist-inline-note,
+.waitlist-success__list div {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.waitlist-aside__card {
+  display: grid;
+  gap: 0.55rem;
+  padding: 1rem 1.05rem;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.waitlist-aside__card span {
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.waitlist-modal__panel {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: 2.2rem;
+}
+
+.waitlist-modal__panel--success {
+  background:
+    radial-gradient(circle at top left, rgba(42, 102, 255, 0.18), transparent 24%),
+    rgba(255, 255, 255, 0.015);
+}
+
+.waitlist-progress {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.waitlist-progress span {
+  flex: 1;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.waitlist-progress span.is-active,
+.waitlist-progress span.is-complete {
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+}
+
+.waitlist-fields {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.waitlist-fields label {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.waitlist-fields label span {
+  color: var(--text-soft);
+  font-size: 0.85rem;
+}
+
+.waitlist-fields input {
+  width: 100%;
+  min-height: 3.2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 0 1rem;
+}
+
+.waitlist-fields input:focus {
+  outline: 1px solid rgba(42, 102, 255, 0.6);
+  border-color: rgba(42, 102, 255, 0.28);
+}
+
+.waitlist-modal__benefits,
+.waitlist-success__list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.waitlist-benefit,
+.waitlist-success__list div,
+.waitlist-inline-note,
+.waitlist-error {
+  padding: 0.85rem 0.95rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.waitlist-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.waitlist-choice-grid--secondary {
+  margin-top: -0.2rem;
+}
+
+.waitlist-choice {
+  min-height: 3.4rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease,
+    color 180ms ease;
+}
+
+.waitlist-choice:hover,
+.waitlist-choice.is-selected {
+  transform: translateY(-1px);
+  border-color: rgba(42, 102, 255, 0.32);
+  background: rgba(42, 102, 255, 0.12);
+  color: var(--text-strong);
+}
+
+.waitlist-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+}
+
+.waitlist-error {
+  color: #ffd8d8;
+  border-color: rgba(255, 95, 95, 0.18);
+  background: rgba(175, 41, 41, 0.12);
+}
+
+.waitlist-success__badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(68, 209, 146, 0.12);
+  border: 1px solid rgba(68, 209, 146, 0.2);
+  color: #9fe5c0;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.waitlist-success__meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.waitlist-success__meta div {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.waitlist-success__meta span {
+  color: var(--text-soft);
+  font-size: 0.82rem;
+}
+
+.waitlist-success__meta strong {
+  word-break: break-word;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--text-strong);
+}
+
 @media (max-width: 1080px) {
   .page-hero__inner,
   .support-panel,
@@ -1194,7 +1556,8 @@ main {
   .ecosystem-grid,
   .workflow-grid,
   .assurance-list,
-  .stat-band__grid {
+  .stat-band__grid,
+  .platform-showcase__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1233,11 +1596,16 @@ main {
   .comparison-table__head,
   .comparison-table__row,
   .support-panel,
-  .footer-bottom {
+  .footer-bottom,
+  .waitlist-modal__shell {
     grid-template-columns: 1fr;
   }
 
   .comparison-table__head {
+    display: none;
+  }
+
+  .waitlist-modal__aside {
     display: none;
   }
 
@@ -1267,6 +1635,7 @@ main {
   .feature-grid,
   .article-grid,
   .detail-grid,
+  .detail-grid--two,
   .pillars-grid,
   .testimonial-grid,
   .ecosystem-grid,
@@ -1275,7 +1644,10 @@ main {
   .stat-band__grid,
   .footer-grid,
   .community-preview,
-  .community-preview__grid {
+  .community-preview__grid,
+  .platform-showcase__grid,
+  .waitlist-choice-grid,
+  .waitlist-success__meta {
     grid-template-columns: 1fr;
   }
 
@@ -1296,5 +1668,9 @@ main {
 
   .button-row .button {
     width: 100%;
+  }
+
+  .waitlist-actions {
+    flex-direction: column;
   }
 }

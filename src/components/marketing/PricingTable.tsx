@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { pricingAssurances, pricingComparison, pricingPlans } from "../../data/pricing";
+import { EarlyAccessButton } from "./EarlyAccessButton";
 import { Button } from "../ui/Button";
 import { Card } from "../ui/Card";
 
@@ -42,12 +43,11 @@ export function PricingTable() {
                 <li key={feature}>{feature}</li>
               ))}
             </ul>
-            <Button
-              href="mailto:hello@fofit.app?subject=FoFit%20Early%20Access"
+            <EarlyAccessButton
               variant={plan.featured ? "primary" : "secondary"}
             >
               {plan.cta}
-            </Button>
+            </EarlyAccessButton>
           </Card>
         ))}
       </div>

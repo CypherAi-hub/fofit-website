@@ -1,5 +1,6 @@
 import { CTASection } from "../components/marketing/CTASection";
 import { FeatureGrid } from "../components/marketing/FeatureGrid";
+import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Card } from "../components/ui/Card";
@@ -15,7 +16,7 @@ export function FeaturesPage() {
       />
       <PageHero
         actions={[
-          { label: "See pricing", to: "/pricing" },
+          { label: "Get early access", intent: "waitlist" },
           { label: "Read the product story", to: "/product", variant: "secondary" },
         ]}
         compact
@@ -29,6 +30,42 @@ export function FeaturesPage() {
           </>
         }
       />
+
+      <section className="page-section">
+        <div className="container">
+          <PlatformShowcase
+            description="Feature pages feel more credible when capabilities are supported by product-looking panels instead of only descriptive text."
+            eyebrow="Feature storytelling"
+            panels={[
+              {
+                caption: "Planning module",
+                title: "Workout structure that respects the real week",
+                stats: [
+                  { label: "Equipment logic", value: "Dynamic" },
+                  { label: "Training split", value: "Personalized" },
+                ],
+              },
+              {
+                caption: "Guidance module",
+                title: "Cypher responds like an operating layer, not a chatbot garnish",
+                stats: [
+                  { label: "Adjustments", value: "Instant" },
+                  { label: "Direction", value: "Actionable" },
+                ],
+              },
+              {
+                caption: "Tracking module",
+                title: "Progress becomes easier to trust when the signal is richer",
+                stats: [
+                  { label: "Volume", value: "Tracked" },
+                  { label: "Coverage", value: "Visible" },
+                ],
+              },
+            ]}
+            title="The features should feel expensive in a good way."
+          />
+        </div>
+      </section>
 
       <section className="page-section">
         <div className="container">
@@ -84,6 +121,26 @@ export function FeaturesPage() {
               pitch.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="page-section page-section--tight">
+        <div className="container detail-grid detail-grid--two">
+          <Card className="detail-card reveal">
+            <h3>Why the feature stack matters</h3>
+            <p>
+              FoFit feels more serious when its modules read like parts of an
+              operating system instead of a collection of isolated app features.
+            </p>
+          </Card>
+          <Card className="detail-card reveal">
+            <h3>Why premium members care</h3>
+            <p>
+              Richer guidance, better progress interpretation, and ecosystem
+              access should make Premium feel like the natural home for serious
+              users.
+            </p>
+          </Card>
         </div>
       </section>
 

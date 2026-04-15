@@ -30,7 +30,7 @@ export function TeamsPage() {
       />
       <PageHero
         actions={[
-          { label: "Contact FoFit", href: "mailto:hello@fofit.app?subject=FoFit%20Teams" },
+          { label: "Join early access", intent: "waitlist" },
           { label: "See community", to: "/community", variant: "secondary" },
         ]}
         compact

@@ -13,7 +13,7 @@ export function UpdatesPage() {
       />
       <PageHero
         actions={[
-          { label: "See product", to: "/product" },
+          { label: "Join early access", intent: "waitlist" },
           { label: "See community", to: "/community", variant: "secondary" },
         ]}
         compact

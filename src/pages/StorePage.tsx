@@ -35,7 +35,7 @@ export function StorePage() {
       />
       <PageHero
         actions={[
-          { label: "See updates", to: "/updates" },
+          { label: "Join early access", intent: "waitlist" },
           { label: "See coaches", to: "/coaches", variant: "secondary" },
         ]}
         compact

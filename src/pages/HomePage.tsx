@@ -5,6 +5,7 @@ import { EcosystemTeaser } from "../components/marketing/EcosystemTeaser";
 import { FeatureGrid } from "../components/marketing/FeatureGrid";
 import { HeroDeviceMockups } from "../components/marketing/HeroDeviceMockups";
 import { PricingPreview } from "../components/marketing/PricingPreview";
+import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
 import { SystemPillars } from "../components/marketing/SystemPillars";
 import { TestimonialGrid } from "../components/marketing/TestimonialGrid";
 import { TrustBand } from "../components/marketing/TrustBand";
@@ -24,7 +25,7 @@ export function HomePage() {
       />
       <PageHero
         actions={[
-          { label: "Get Early Access", href: "mailto:hello@fofit.app?subject=FoFit%20Early%20Access" },
+          { label: "Get Early Access", intent: "waitlist" },
           { label: "See the platform", to: "/product", variant: "secondary" },
         ]}
         description="FoFit combines structured training, adaptive AI guidance, progress tracking, nutrition direction, and future coaching surfaces into one focused system."
@@ -84,6 +85,42 @@ export function HomePage() {
 
       <section className="page-section">
         <div className="container">
+          <PlatformShowcase
+            description="The homepage should prove that FoFit is more than a promise. These product surfaces give the brand more weight and help the conversion story feel grounded."
+            eyebrow="Product showcase"
+            panels={[
+              {
+                caption: "Adaptive planning",
+                title: "Training blocks that reshape around the member",
+                stats: [
+                  { label: "Programs", value: "Custom" },
+                  { label: "Adjustments", value: "Session-aware" },
+                ],
+              },
+              {
+                caption: "Guidance layer",
+                title: "Cypher keeps support close to the training moment",
+                stats: [
+                  { label: "Coach logic", value: "24/7" },
+                  { label: "Recovery cues", value: "Live" },
+                ],
+              },
+              {
+                caption: "Performance visibility",
+                title: "Progress gets interpreted, not only recorded",
+                stats: [
+                  { label: "Tracking", value: "Multi-layer" },
+                  { label: "Momentum", value: "Visible" },
+                ],
+              },
+            ]}
+            title="A platform brand needs product gravity."
+          />
+        </div>
+      </section>
+
+      <section className="page-section">
+        <div className="container">
           <SectionHeader
             description="Home should preview the platform, not try to explain every module at once. These are the most important layers to understand first."
             eyebrow="Platform depth"
@@ -102,6 +139,30 @@ export function HomePage() {
             title="A more serious front door for the brand"
           />
           <TestimonialGrid />
+        </div>
+      </section>
+
+      <section className="page-section page-section--tight">
+        <div className="container split-layout">
+          <div className="content-stack reveal">
+            <span className="eyebrow">Membership value</span>
+            <h2 className="section-title">Premium should feel worth joining before the first checkout screen.</h2>
+            <p className="section-description">
+              Stronger conversion comes from showing why the platform matters:
+              structured training, better decision support, richer progress
+              visibility, and access to the ecosystem as it expands.
+            </p>
+          </div>
+          <div className="detail-grid detail-grid--two">
+            <article className="surface-card detail-card reveal">
+              <h3>Founding-member pricing</h3>
+              <p>Early access turns into a cleaner value story when the member understands what they are getting first.</p>
+            </article>
+            <article className="surface-card detail-card reveal">
+              <h3>Platform-first roadmap</h3>
+              <p>Coaching, teams, community, and premium insight layers feel more believable when previewed from the front door.</p>
+            </article>
+          </div>
         </div>
       </section>
 

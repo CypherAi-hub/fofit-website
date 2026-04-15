@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { EarlyAccessButton } from "./EarlyAccessButton";
 import { Button } from "../ui/Button";
 import { Pill } from "../ui/Pill";
 
@@ -24,9 +25,9 @@ export function CTASection({ title, description, pills = [] }: CTASectionProps) 
           ) : null}
         </div>
         <div className="button-row">
-          <Button href="mailto:hello@fofit.app?subject=FoFit%20Early%20Access" size="lg">
+          <EarlyAccessButton size="lg">
             Join Early Access
-          </Button>
+          </EarlyAccessButton>
           <Button to="/product" size="lg" variant="secondary">
             Explore the platform
           </Button>

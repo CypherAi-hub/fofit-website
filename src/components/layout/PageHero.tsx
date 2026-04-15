@@ -1,11 +1,13 @@
 import type { ReactNode } from "react";
 import { Button } from "../ui/Button";
+import { EarlyAccessButton } from "../marketing/EarlyAccessButton";
 import { Eyebrow } from "../ui/Eyebrow";
 
 type HeroAction = {
   label: string;
   to?: string;
   href?: string;
+  intent?: "waitlist";
   variant?: "primary" | "secondary" | "ghost";
 };
 
@@ -39,15 +41,25 @@ export function PageHero({
           {actions.length ? (
             <div className="button-row">
               {actions.map((action) => (
-                <Button
-                  key={action.label}
-                  href={action.href}
-                  to={action.to}
-                  variant={action.variant ?? "primary"}
-                  size="lg"
-                >
-                  {action.label}
-                </Button>
+                action.intent === "waitlist" ? (
+                  <EarlyAccessButton
+                    key={action.label}
+                    size="lg"
+                    variant={action.variant ?? "primary"}
+                  >
+                    {action.label}
+                  </EarlyAccessButton>
+                ) : (
+                  <Button
+                    key={action.label}
+                    href={action.href}
+                    to={action.to}
+                    variant={action.variant ?? "primary"}
+                    size="lg"
+                  >
+                    {action.label}
+                  </Button>
+                )
               ))}
             </div>
           ) : null}

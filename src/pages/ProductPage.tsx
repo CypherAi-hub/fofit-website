@@ -1,6 +1,7 @@
 import { CTASection } from "../components/marketing/CTASection";
 import { ComparisonBlock } from "../components/marketing/ComparisonBlock";
 import { HeroDeviceMockups } from "../components/marketing/HeroDeviceMockups";
+import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
 import { SystemPillars } from "../components/marketing/SystemPillars";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
@@ -51,7 +52,7 @@ export function ProductPage() {
       />
       <PageHero
         actions={[
-          { label: "See features", to: "/features" },
+          { label: "Join early access", intent: "waitlist" },
           { label: "Explore pricing", to: "/pricing", variant: "secondary" },
         ]}
         description="This page carries the depth that should never have been trapped inside a single landing-page scroll. FoFit works because the layers reinforce one another."
@@ -76,6 +77,42 @@ export function ProductPage() {
             title="Three layers, one product logic"
           />
           <SystemPillars items={systemPillars} />
+        </div>
+      </section>
+
+      <section className="page-section page-section--tight">
+        <div className="container">
+          <PlatformShowcase
+            description="The product page should feel like the system has real operating depth. These panels make the planning, coaching, and analytics layers feel more substantial."
+            eyebrow="System in action"
+            panels={[
+              {
+                caption: "Plan logic",
+                title: "Constraints become structure instead of friction",
+                stats: [
+                  { label: "Schedule fit", value: "High" },
+                  { label: "Equipment-aware", value: "Yes" },
+                ],
+              },
+              {
+                caption: "Session support",
+                title: "Guidance stays useful during the workout",
+                stats: [
+                  { label: "Adjustments", value: "Live" },
+                  { label: "Swaps", value: "Contextual" },
+                ],
+              },
+              {
+                caption: "Progress loop",
+                title: "Every completed session improves the next call",
+                stats: [
+                  { label: "Signal quality", value: "Compounding" },
+                  { label: "Next-step clarity", value: "Higher" },
+                ],
+              },
+            ]}
+            title="The platform feels deeper when the layers are visible."
+          />
         </div>
       </section>
 

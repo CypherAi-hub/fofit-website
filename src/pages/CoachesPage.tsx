@@ -30,7 +30,7 @@ export function CoachesPage() {
       />
       <PageHero
         actions={[
-          { label: "See community", to: "/community" },
+          { label: "Join early access", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact

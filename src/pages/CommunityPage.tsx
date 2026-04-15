@@ -1,5 +1,6 @@
 import { CTASection } from "../components/marketing/CTASection";
 import { CommunityPreview } from "../components/marketing/CommunityPreview";
+import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Card } from "../components/ui/Card";
@@ -32,7 +33,7 @@ export function CommunityPage() {
       />
       <PageHero
         actions={[
-          { label: "See coaches", to: "/coaches" },
+          { label: "Get early access", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
@@ -46,6 +47,42 @@ export function CommunityPage() {
           </>
         }
       />
+
+      <section className="page-section">
+        <div className="container">
+          <PlatformShowcase
+            description="Community needs more than a promise. These showcase panels help the route communicate accountability, momentum, and group structure more concretely."
+            eyebrow="Momentum systems"
+            panels={[
+              {
+                caption: "Challenges",
+                title: "Goal-based challenges that fit real training blocks",
+                stats: [
+                  { label: "Consistency", value: "Visible" },
+                  { label: "Progress", value: "Shared" },
+                ],
+              },
+              {
+                caption: "Groups",
+                title: "Private circles for teams, crews, and accountability pods",
+                stats: [
+                  { label: "Groups", value: "Flexible" },
+                  { label: "Check-ins", value: "Lightweight" },
+                ],
+              },
+              {
+                caption: "Coach-ready",
+                title: "A community layer that can support higher-accountability guidance",
+                stats: [
+                  { label: "Reviews", value: "Expandable" },
+                  { label: "Momentum", value: "Stronger" },
+                ],
+              },
+            ]}
+            title="Community should feel like an engine for consistency."
+          />
+        </div>
+      </section>
 
       <section className="page-section">
         <div className="container">

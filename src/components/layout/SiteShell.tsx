@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { WaitlistModal } from "../marketing/WaitlistModal";
 import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 
@@ -18,6 +19,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <Navbar />
       <main>{children}</main>
       <Footer />
+      <WaitlistModal />
     </div>
   );
 }

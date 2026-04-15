@@ -15,7 +15,7 @@ export function FAQPage() {
       />
       <PageHero
         actions={[
-          { label: "Read pricing", to: "/pricing" },
+          { label: "Join early access", intent: "waitlist" },
           { label: "Read insights", to: "/insights", variant: "secondary" },
         ]}
         compact

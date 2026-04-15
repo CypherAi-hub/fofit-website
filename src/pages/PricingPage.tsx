@@ -1,5 +1,6 @@
 import { FAQAccordion } from "../components/marketing/FAQAccordion";
 import { CTASection } from "../components/marketing/CTASection";
+import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
 import { PricingTable } from "../components/marketing/PricingTable";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
@@ -20,7 +21,7 @@ export function PricingPage() {
       />
       <PageHero
         actions={[
-          { label: "Contact FoFit", href: "mailto:hello@fofit.app?subject=FoFit%20Pricing" },
+          { label: "Join early access", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
@@ -34,6 +35,42 @@ export function PricingPage() {
           </>
         }
       />
+
+      <section className="page-section">
+        <div className="container">
+          <PlatformShowcase
+            description="Pricing converts better when the user sees why the platform feels premium. These panels make the membership value more tangible."
+            eyebrow="Premium membership"
+            panels={[
+              {
+                caption: "Guidance",
+                title: "Cypher as an always-available premium layer",
+                stats: [
+                  { label: "Support", value: "Daily" },
+                  { label: "Context", value: "Training-aware" },
+                ],
+              },
+              {
+                caption: "Analytics",
+                title: "Progress intelligence that feels worth paying for",
+                stats: [
+                  { label: "Trends", value: "Advanced" },
+                  { label: "Insights", value: "Useful" },
+                ],
+              },
+              {
+                caption: "Ecosystem access",
+                title: "Membership that grows with the platform roadmap",
+                stats: [
+                  { label: "Coaches", value: "Future-ready" },
+                  { label: "Community", value: "Priority" },
+                ],
+              },
+            ]}
+            title="Premium value should look concrete."
+          />
+        </div>
+      </section>
 
       <section className="page-section">
         <div className="container">
@@ -62,6 +99,10 @@ export function PricingPage() {
               The page now communicates what each plan unlocks, why Premium
               exists, and how the product can extend into broader account types
               without forcing those decisions too early.
+            </p>
+            <p className="section-description">
+              Stronger conversion comes from showing premium membership as the
+              operating layer for the full platform, not as a generic paywall.
             </p>
           </div>
         </div>
