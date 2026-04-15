@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#06070A"/>
+  <circle cx="945" cy="155" r="230" fill="url(#a)" fill-opacity=".5"/>
+  <circle cx="264" cy="520" r="180" fill="url(#b)" fill-opacity=".35"/>
+  <path d="M0 0H1200V630H0z" fill="url(#c)"/>
+  <g opacity=".14" stroke="#fff">
+    <path d="M0 120.5H1200"/>
+    <path d="M0 240.5H1200"/>
+    <path d="M0 360.5H1200"/>
+    <path d="M0 480.5H1200"/>
+    <path d="M150 .5v629"/>
+    <path d="M300 .5v629"/>
+    <path d="M450 .5v629"/>
+    <path d="M600 .5v629"/>
+    <path d="M750 .5v629"/>
+    <path d="M900 .5v629"/>
+    <path d="M1050 .5v629"/>
+  </g>
+  <text x="96" y="180" fill="#F8FAFC" font-size="42" font-family="Arial, sans-serif" letter-spacing="8">FOFIT</text>
+  <text x="96" y="315" fill="#F8FAFC" font-size="96" font-weight="700" font-family="Arial, sans-serif">Train Smarter.</text>
+  <text x="96" y="408" fill="#2A66FF" font-size="96" font-weight="700" font-family="Arial, sans-serif">Progress Faster.</text>
+  <text x="96" y="485" fill="#C4CFDD" font-size="30" font-family="Arial, sans-serif">A personalized fitness platform for structured training, adaptive guidance,</text>
+  <text x="96" y="525" fill="#C4CFDD" font-size="30" font-family="Arial, sans-serif">nutrition direction, progress tracking, and future coaching layers.</text>
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="translate(945 155) rotate(90) scale(230)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A66FF"/>
+      <stop offset="1" stop-color="#2A66FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b" cx="0" cy="0" r="1" gradientTransform="translate(264 520) rotate(90) scale(180)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00D4FF"/>
+      <stop offset="1" stop-color="#00D4FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="c" x1="600" y1="0" x2="600" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1119" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0B1119"/>
+    </linearGradient>
+  </defs>
+</svg>
