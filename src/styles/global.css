@@ -2681,32 +2681,26 @@ code {
 
 .product-video {
   display: grid;
-  gap: 1.4rem;
+  gap: 1.6rem;
 }
 
 .product-video__frame {
-  overflow: hidden;
-  border-radius: 1.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.012)),
-    rgba(7, 8, 12, 0.94);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6rem 0;
+  background: #05060a;
 }
 
 .product-video__media {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
 }
 
 .product-video__media--poster {
-  object-fit: contain;
-  padding: clamp(1rem, 4vw, 2.5rem) clamp(1rem, 6vw, 5rem);
-  background:
-    radial-gradient(circle at center, rgba(42, 102, 255, 0.08), transparent 55%),
-    rgba(5, 6, 10, 0.96);
+  width: min(100%, 22rem);
+  margin: 0 auto;
 }
 
 .product-video__label {
@@ -3169,6 +3163,11 @@ code {
   justify-self: center;
 }
 
+.about-hero-figure.device-figure--right {
+  transform: scale(0.86) rotate(7deg);
+  transform-origin: center top;
+}
+
 .editorial-card {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.014)),
@@ -3198,6 +3197,10 @@ code {
   .page-hero__media--single,
   .split-layout__figure {
     justify-items: start;
+  }
+
+  .about-hero-figure.device-figure--right {
+    transform: none;
   }
 
   .roadmap-row {

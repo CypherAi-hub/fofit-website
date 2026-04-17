@@ -185,14 +185,16 @@ export function PlatformShowcase({
                 <span className="feature-card__kicker">{panel.caption}</span>
                 <h3>{panel.title}</h3>
                 {panel.description ? <p>{panel.description}</p> : null}
-                <div className="platform-showcase__stats">
-                  {panel.stats.map((stat) => (
-                    <div key={stat.label}>
-                      <strong>{stat.value}</strong>
-                      <span>{stat.label}</span>
-                    </div>
-                  ))}
-                </div>
+                {panel.stats.length ? (
+                  <div className="platform-showcase__stats">
+                    {panel.stats.map((stat) => (
+                      <div key={stat.label}>
+                        <strong>{stat.value}</strong>
+                        <span>{stat.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             </Card>
           );

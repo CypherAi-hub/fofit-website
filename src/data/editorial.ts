@@ -1,5 +1,5 @@
 import cypherNutritionThread from "../assets/editorial/cypher-nutrition-thread.png";
-import nutritionDashboard from "../assets/editorial/nutrition-dashboard.png";
+import nutritionDashboard from "../assets/editorial/nutrition-dashboard.jpg";
 import { appScreens } from "../assets/brand/manifest";
 
 export type FigureAsset = {
@@ -88,9 +88,9 @@ export const progressFigureAsset: FigureAsset = {
 export const dailyLoopFigures = [
   {
     time: "06:40",
-    title: "The readiness read",
+    title: "The morning match",
     description:
-      "Cypher checks the shape of the day first. Sleep, recovery drift, and session intent get turned into one clear recommendation.",
+      "The first thing FoFit does is line up the day's plan against today's energy, equipment, and calendar. One clear next move before the coffee's cold.",
     asset: planFigure,
   },
   {

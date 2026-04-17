@@ -57,26 +57,17 @@ export function CommunityPage() {
               {
                 caption: "Challenges",
                 title: "Goal-based challenges that fit real training blocks",
-                stats: [
-                  { label: "Consistency", value: "Visible" },
-                  { label: "Progress", value: "Shared" },
-                ],
+                stats: [],
               },
               {
                 caption: "Groups",
                 title: "Private circles for teams, crews, and accountability pods",
-                stats: [
-                  { label: "Groups", value: "Flexible" },
-                  { label: "Check-ins", value: "Lightweight" },
-                ],
+                stats: [],
               },
               {
                 caption: "Coach-ready",
                 title: "A community layer that can support higher-accountability guidance",
-                stats: [
-                  { label: "Reviews", value: "Expandable" },
-                  { label: "Momentum", value: "Stronger" },
-                ],
+                stats: [],
               },
             ]}
             title="Community is the engine for consistency."

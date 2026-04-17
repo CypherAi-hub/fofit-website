@@ -67,7 +67,7 @@ export function AboutPage() {
               The product is for beginners who need structure, lifters who want cleaner progression, and athletes who want a system that compounds.
             </p>
           </div>
-          <DeviceFigure asset={heroFigure} className="split-layout__figure" />
+          <DeviceFigure asset={heroFigure} className="split-layout__figure about-hero-figure" />
         </div>
       </section>
 
