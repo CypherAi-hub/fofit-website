@@ -117,7 +117,7 @@ export const cypherTranscript: TranscriptTurn[] = [
   {
     speaker: "cypher",
     text:
-      "You slept 5h47, HRV down 11% off baseline. I'd rather keep the session and pull intensity. New plan: back squat top set at 205, drop back-offs from 4x8 to 3x6. No accessory supersets. 40 minutes instead of 65.",
+      "Given how you're feeling, let's pull intensity but keep the session. New plan: back squat top set at 205, drop back-offs from 4x8 to 3x6. No accessory supersets. 40 minutes instead of 65.",
   },
   {
     speaker: "user",
