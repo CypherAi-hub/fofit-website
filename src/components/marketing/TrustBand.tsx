@@ -1,7 +1,7 @@
 const trustItems = [
-  "Structured training architecture",
-  "Adaptive guidance from session to session",
-  "Progress, nutrition, and future coaching under one roof",
+  "Real product screens, not invented dashboards",
+  "Cypher working inside the training flow",
+  "Planning, progress, nutrition, and future coaching under one roof",
 ];
 
 export function TrustBand() {

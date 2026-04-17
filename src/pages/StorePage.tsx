@@ -39,7 +39,7 @@ export function StorePage() {
           { label: "See coaches", to: "/coaches", variant: "secondary" },
         ]}
         compact
-        description="Programs, guides, gear, and bundles — all aligned with how FoFit trains you."
+        description="Programs, guides, gear, and bundles — aligned with how FoFit trains you. Not open yet."
         eyebrow="Store"
         title={
           <>
@@ -68,14 +68,14 @@ export function StorePage() {
             <h3>Buy tools that match how you train.</h3>
             <p>
               Programs, guides, and bundles should support the same training
-              system you already use instead of feeling like random add-ons.
+              system you already use instead of reading like random add-ons.
             </p>
           </Card>
         </div>
       </section>
 
       <CTASection
-        description="Everything in the store is built around how FoFit members actually train."
+        description="The store opens with the platform. No generic merch — every item should earn its place in the training loop."
         pills={["Programs", "Guides", "Bundles"]}
         title={
           <>

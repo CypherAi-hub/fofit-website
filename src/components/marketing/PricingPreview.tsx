@@ -15,7 +15,7 @@ export function PricingPreview({ className = "" }: PricingPreviewProps) {
           key={plan.name}
         >
           <div className="pricing-card__top">
-            {plan.featured ? <span className="pricing-card__badge">Founding member</span> : null}
+            <span className="pricing-card__badge">{plan.featured ? "Founding member" : "Starter"}</span>
             <span className="pricing-card__name">{plan.name}</span>
             <strong>{plan.monthly}</strong>
             <span className="pricing-card__billing">{plan.featured ? "/mo for life" : "to start"}</span>
@@ -29,7 +29,7 @@ export function PricingPreview({ className = "" }: PricingPreviewProps) {
           </ul>
           <div className="pricing-card__meta">
             <span>{plan.annualNote}</span>
-            {plan.featured ? <span>Price rises at launch</span> : <span>Upgrade when you&apos;re ready</span>}
+            {plan.featured ? <span>Rate stays locked if you join early</span> : <span>Upgrade when you want the full system</span>}
           </div>
           <Button to="/pricing" variant={plan.featured ? "primary" : "secondary"}>
             {plan.cta}

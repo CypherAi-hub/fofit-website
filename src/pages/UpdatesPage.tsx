@@ -63,7 +63,7 @@ export function UpdatesPage() {
           <>
             Follow the product
             <br />
-            as it gets sharper.
+            as it ships.
           </>
         }
       />

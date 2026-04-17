@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { foundingClaimed, foundingLimit } from "../../data/founding-pricing";
 import { pricingAssurances, pricingComparison, pricingPlans } from "../../data/pricing";
 import { EarlyAccessButton } from "./EarlyAccessButton";
-import { Button } from "../ui/Button";
 import { Card } from "../ui/Card";
 
 export function PricingTable() {
   const [annual, setAnnual] = useState(false);
+  const [starterPlan, premiumPlan] = pricingPlans;
+  const foundingPrice = annual ? "$119" : "$14";
+  const foundingPercent = `${(foundingClaimed / foundingLimit) * 100}%`;
 
   return (
     <div className="pricing-table">
@@ -29,7 +32,7 @@ export function PricingTable() {
       </div>
 
       <div className="pricing-preview">
-        {pricingPlans.map((plan) => (
+        {[starterPlan, premiumPlan].map((plan) => (
           <Card
             className={`pricing-card reveal ${plan.featured ? "pricing-card--featured" : ""}`}
             key={plan.name}
@@ -52,7 +55,46 @@ export function PricingTable() {
             </EarlyAccessButton>
           </Card>
         ))}
+        <Card className="pricing-card pricing-card--editorial reveal">
+          <div className="pricing-card__top">
+            <span className="pricing-card__badge">Founding class</span>
+            <span className="pricing-card__name">Founding</span>
+            <strong>{foundingPrice}</strong>
+            <p>The full Premium product, with the early rate locked for life.</p>
+          </div>
+          <p className="pricing-card__description">
+            Join before launch and the rate does not move as FoFit adds more coaching, team, and recovery depth.
+          </p>
+          <ul className="pricing-card__list">
+            <li>Everything in Premium</li>
+            <li>Price locked at the founding rate</li>
+            <li>Priority access as new layers open</li>
+            <li>Named as an early supporter inside the app</li>
+          </ul>
+          <div className="founding-tier-counter">
+            <div className="founding-tier-counter__text">
+              {foundingClaimed} / {foundingLimit} claimed
+            </div>
+            <div className="founding-tier-counter__track" aria-hidden="true">
+              <div
+                className="founding-tier-counter__fill"
+                style={{ width: foundingPercent }}
+              />
+            </div>
+          </div>
+          <div className="pricing-card__meta">
+            <span>{annual ? "$9.92/mo billed annually" : "Month to month"}</span>
+            <span>Rate holds for founding members</span>
+          </div>
+          <EarlyAccessButton>
+            Join the waitlist
+          </EarlyAccessButton>
+        </Card>
       </div>
+
+      <p className="pricing-table__footer">
+        HSA/FSA eligible · cancel anytime · export your data in one tap
+      </p>
 
       <div className="comparison-table">
         <div className="comparison-table__head">

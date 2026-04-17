@@ -1,17 +1,18 @@
 import { CTASection } from "../components/marketing/CTASection";
-import { FeatureGrid } from "../components/marketing/FeatureGrid";
-import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
+import { ChapterIntro } from "../components/marketing/ChapterIntro";
+import { DeviceFigure } from "../components/marketing/DeviceFigure";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
+import { EditorialHeading } from "../components/ui/EditorialHeading";
 import { Card } from "../components/ui/Card";
-import { SectionHeader } from "../components/ui/SectionHeader";
+import { nutritionFigure, progressFigureAsset, transcriptFigure } from "../data/editorial";
 import { coreFeatures } from "../data/platform";
 
 export function FeaturesPage() {
   return (
     <>
       <PageMeta
-        description="Explore FoFit's modular feature set across planning, guidance, tracking, exercise support, recovery concepts, and future nutrition layers."
+        description="Explore planning, guidance, progress, exercise support, recovery logic, and nutrition as connected FoFit modules instead of disconnected features."
         title="FoFit Features | Platform Depth Across Training and Guidance"
       />
       <PageHero
@@ -20,78 +21,60 @@ export function FeaturesPage() {
           { label: "Read the product story", to: "/product", variant: "secondary" },
         ]}
         compact
-        description="Six focused modules — planning, guidance, tracking, exercise support, recovery, and nutrition — built to work as one system."
+        description="Every module earns its place by making another one sharper."
         eyebrow="Features"
         title={
-          <>
-            Modular depth,
-            <br />
-            not feature clutter.
-          </>
+          <EditorialHeading accent="clutter" as="span" className="editorial-heading--compact">
+            {"Modular depth.\nNo feature {italic}."}
+          </EditorialHeading>
         }
       />
 
-      <section className="page-section">
+      <section className="page-section editorial-section">
         <div className="container">
-          <PlatformShowcase
-            description="Each module earns its place by making the next decision easier."
-            eyebrow="Feature storytelling"
-            panels={[
-              {
-                caption: "Planning module",
-                title: "Workout structure that respects the real week",
-                stats: [
-                  { label: "Equipment logic", value: "Dynamic" },
-                  { label: "Training split", value: "Personalized" },
-                ],
-              },
-              {
-                caption: "Guidance module",
-                title: "Cypher responds like an operating layer, not a chatbot garnish",
-                stats: [
-                  { label: "Adjustments", value: "Instant" },
-                  { label: "Direction", value: "Actionable" },
-                ],
-              },
-              {
-                caption: "Tracking module",
-                title: "Progress becomes easier to trust when the signal is richer",
-                stats: [
-                  { label: "Volume", value: "Tracked" },
-                  { label: "Coverage", value: "Visible" },
-                ],
-              },
-            ]}
-            title="Built to feel like a platform, not a feature list."
+          <ChapterIntro
+            description="Planning, guidance, progress, execution, recovery, nutrition. Six responsibilities, each with a specific job."
+            index="01"
+            label="Modules"
+            title={
+              <>
+                Every module sharpens the <em>next</em> decision.
+              </>
+            }
           />
+          <div className="feature-ledger">
+            {coreFeatures.map((feature, index) => (
+              <article className="feature-ledger__item reveal" key={feature.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <p>{feature.kicker}</p>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            description="Every feature connects to the whole. Nothing is filler."
-            eyebrow="Core modules"
-            title="The key product surfaces"
-          />
-          <FeatureGrid items={coreFeatures} />
-        </div>
-      </section>
-
-      <section className="page-section page-section--tight">
-        <div className="container split-layout">
+      <section className="page-section editorial-section editorial-section--tight">
+        <div className="container split-layout split-layout--editorial">
           <div className="content-stack reveal">
             <span className="eyebrow">Recovery and readiness</span>
-            <h2 className="section-title">Training quality depends on more than the plan.</h2>
+            <h2 className="section-title">Recovery logic should change the next call, not just decorate a dashboard.</h2>
             <p className="section-description">
-              FoFit is positioned to become stronger when readiness, training
-              stress, and recovery quality are treated as part of the same
-              operating logic. The point is not just to track fatigue. The point
-              is to make better decisions while it matters.
+              Readiness, training stress, and recovery quality belong in the same conversation. Cypher reads all three before the next session is set.
             </p>
           </div>
-          <Card className="spotlight-card reveal">
-            <h3>What recovery intelligence does</h3>
+          <DeviceFigure asset={progressFigureAsset} className="split-layout__figure" />
+        </div>
+      </section>
+
+      <section className="page-section editorial-section editorial-section--tight">
+        <div className="container split-layout split-layout--editorial">
+          <DeviceFigure asset={transcriptFigure} className="split-layout__figure" />
+          <Card className="spotlight-card reveal editorial-card">
+            <h3>What recovery logic actually does</h3>
             <ul className="check-list">
               <li>Translate recovery context into practical training decisions</li>
               <li>Protect session quality when fatigue is higher than expected</li>
@@ -101,55 +84,47 @@ export function FeaturesPage() {
         </div>
       </section>
 
-      <section className="page-section page-section--tight">
-        <div className="container split-layout">
-          <Card className="spotlight-card reveal">
+      <section className="page-section editorial-section editorial-section--tight">
+        <div className="container split-layout split-layout--editorial">
+          <Card className="spotlight-card reveal editorial-card">
             <h3>Nutrition as part of the system</h3>
             <ul className="check-list">
               <li>Direction tied to training demand, not generic macro rules</li>
-              <li>Enough structure to support goals without overwhelming the user</li>
-              <li>A clean bridge between daily behavior and long-term progress</li>
+              <li>Enough structure to support goals without making the app heavier</li>
+              <li>A clear bridge between daily behavior and long-term progress</li>
             </ul>
           </Card>
           <div className="content-stack reveal">
-            <span className="eyebrow">Future nutrition support</span>
-            <h2 className="section-title">Nutrition should deepen the platform, not distract from it.</h2>
+            <span className="eyebrow">Nutrition</span>
+            <h2 className="section-title">Nutrition belongs inside the training loop.</h2>
             <p className="section-description">
-              Nutrition connected to your actual training demand — not generic
-              macro rules layered on top of a separate app.
+              Cypher reads training demand and points at the macro adjustments that keep the block moving.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="page-section page-section--tight">
-        <div className="container detail-grid detail-grid--two">
-          <Card className="detail-card reveal">
-            <h3>Why the feature stack matters</h3>
-            <p>
-              Six connected modules built to improve every training decision you
-              make — from the plan to the session to the week's recap.
+      <section className="page-section editorial-section editorial-section--tight">
+        <div className="container split-layout split-layout--editorial">
+          <div className="content-stack reveal">
+            <span className="eyebrow">Guidance</span>
+            <h2 className="section-title">The conversation should stay inside the product.</h2>
+            <p className="section-description">
+              Cypher is not a separate chatbot garnish. It is part of the workout, the plan, and the review loop.
             </p>
-          </Card>
-          <Card className="detail-card reveal">
-            <h3>Why premium members care</h3>
-            <p>
-              Richer guidance, better progress interpretation, and ecosystem
-              access should make Premium feel like the natural home for serious
-              users.
-            </p>
-          </Card>
+          </div>
+          <DeviceFigure asset={nutritionFigure} className="split-layout__figure" />
         </div>
       </section>
 
       <CTASection
-        description="Join early. Every module ships from day one."
+        description="Join the waitlist. Every module points back to the same training system."
         pills={["Planning", "Tracking", "Recovery", "Nutrition"]}
         title={
           <>
             A platform built for
             <br />
-            the full picture of your training.
+            the full picture of training.
           </>
         }
       />

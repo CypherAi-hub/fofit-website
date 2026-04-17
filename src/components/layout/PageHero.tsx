@@ -17,6 +17,7 @@ type PageHeroProps = {
   description: ReactNode;
   actions?: HeroAction[];
   media?: ReactNode;
+  mediaCaption?: ReactNode;
   compact?: boolean;
   className?: string;
   mediaClassName?: string;
@@ -28,6 +29,7 @@ export function PageHero({
   description,
   actions = [],
   media,
+  mediaCaption,
   compact = false,
   className = "",
   mediaClassName = "",
@@ -71,6 +73,7 @@ export function PageHero({
         {media ? (
           <div className={`page-hero__media reveal reveal--delay-2 ${mediaClassName}`.trim()}>
             {media}
+            {mediaCaption ? <div className="page-hero__media-caption">{mediaCaption}</div> : null}
           </div>
         ) : null}
       </div>

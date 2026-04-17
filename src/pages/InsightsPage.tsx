@@ -87,7 +87,7 @@ export function InsightsPage() {
       </section>
 
       <CTASection
-        description="Join the waitlist for structured training, adaptive guidance, and insight you can put to work."
+        description="Join the waitlist for structured training, adaptive guidance, and insight you can use right away."
         pills={["Training", "Nutrition", "Recovery", "Mindset"]}
         title={
           <>

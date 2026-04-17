@@ -1,20 +1,52 @@
 import { ArticleGrid } from "../components/marketing/ArticleGrid";
-import { CTASection } from "../components/marketing/CTASection";
-import { EcosystemTeaser } from "../components/marketing/EcosystemTeaser";
+import { ChapterIntro } from "../components/marketing/ChapterIntro";
+import { CypherTranscript } from "../components/marketing/CypherTranscript";
+import { DeviceFigure } from "../components/marketing/DeviceFigure";
 import { HeroDeviceMockups } from "../components/marketing/HeroDeviceMockups";
-import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
+import { PersonalizationDossier } from "../components/marketing/PersonalizationDossier";
 import { PricingPreview } from "../components/marketing/PricingPreview";
+import { ProgressMetricGrid } from "../components/marketing/ProgressMetricGrid";
+import { QuietFinalCTA } from "../components/marketing/QuietFinalCTA";
 import { TrustBand } from "../components/marketing/TrustBand";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { SectionHeader } from "../components/ui/SectionHeader";
+import { EditorialHeading } from "../components/ui/EditorialHeading";
+import { Link } from "react-router-dom";
+import {
+  cypherTranscript,
+  dailyLoopFigures,
+  personalizationFacts,
+  progressFigureAsset,
+  progressMetrics,
+} from "../data/editorial";
 import { insightArticles } from "../data/insights";
+
+const roadmapRows = [
+  {
+    label: "Coach layer",
+    timeline: "Summer 2026",
+    description: "Human coaches on top of Cypher for members who want both software and direct accountability.",
+    to: "/coaches",
+  },
+  {
+    label: "Teams",
+    timeline: "Fall 2026",
+    description: "Shared programming, completion visibility, and leaderboards for schools, clubs, and squads.",
+    to: "/teams",
+  },
+  {
+    label: "Field Notes",
+    timeline: "Open now",
+    description: "A training publication shaped around the same system thinking as the product.",
+    to: "/insights",
+  },
+] as const;
 
 export function HomePage() {
   return (
     <>
       <PageMeta
-        description="FoFit is a premium fitness platform that connects personalized planning, adaptive guidance, progress intelligence, and future coaching layers."
+        description="FoFit is the training platform with Cypher — an AI that remembers the athlete, adapts the next session, and keeps progress tied to real life."
         title="FoFit | Premium Fitness Platform"
       />
       <PageHero
@@ -22,180 +54,140 @@ export function HomePage() {
           { label: "Join the waitlist", intent: "waitlist" },
           { label: "See how it works", to: "/product", variant: "secondary" },
         ]}
-        className="page-hero--home"
-        description="FoFit plans your week, guides you mid-workout, and shows you what moved."
-        eyebrow="Premium fitness platform"
-        mediaClassName="page-hero__media--home"
+        className="page-hero--editorial"
+        description="FoFit is the training platform with Cypher — an AI that remembers the athlete, adapts the next session, and keeps progress attached to the real week."
+        eyebrow="001 / FoFit"
         media={<HeroDeviceMockups />}
+        mediaClassName="page-hero__media--editorial"
         title={
-          <span className="home-hero__title-group">
-            <span>Train smarter.</span>
-            <span className="home-hero__title-accent">Progress faster.</span>
-            <span className="home-hero__support-line">Built to train you — not just track you.</span>
-          </span>
+          <EditorialHeading as="span" className="editorial-heading--hero">
+            <span>Train <em>honestly</em>.</span>
+            <span>Measure <em>everything</em>.</span>
+          </EditorialHeading>
         }
       />
 
       <TrustBand />
 
-      <section className="page-section home-section home-section--modules">
-        <div className="container">
-          <PlatformShowcase
-            className="platform-showcase--home"
-            description="Planning, adaptive coaching, progress intelligence, nutrition, discover, and community working like one training system instead of five disconnected tools."
-            eyebrow="Six modules. One system."
-            panels={[
-              {
-                caption: "Cypher AI",
-                description:
-                  "Adaptive guidance that adjusts loads, suggests swaps, and explains the call while you train.",
-                size: "feature",
-                stats: [
-                  { label: "Coaching", value: "Adaptive" },
-                  { label: "Timing", value: "Mid-session" },
-                ],
-                title: "Meet Cypher. Coaching that stays useful when the workout gets real.",
-                tone: "blue",
-                variant: "chat",
-              },
-              {
-                caption: "Progress intelligence",
-                description:
-                  "Strength trends, consistency, and coverage brought together so every completed block sharpens the next one.",
-                size: "tall",
-                stats: [
-                  { label: "Momentum", value: "Visible" },
-                  { label: "Tracking", value: "Compounding" },
-                ],
-                title: "Progress that tells you what changed — not just what you logged.",
-                tone: "green",
-                variant: "chart",
-              },
-              {
-                caption: "Planning",
-                description:
-                  "Programs shaped around schedule, equipment, and real training constraints before the week even starts.",
-                size: "wide",
-                stats: [
-                  { label: "Schedule fit", value: "Personalized" },
-                  { label: "Flexibility", value: "Built-in" },
-                ],
-                title: "A weekly structure you can actually follow when life is not perfectly clean.",
-                tone: "default",
-                variant: "calendar",
-              },
-              {
-                caption: "Nutrition",
-                description:
-                  "Food guidance stays close to training demand so nutrition supports the block instead of living in a separate app.",
-                stats: [
-                  { label: "Direction", value: "Training-linked" },
-                  { label: "Logging", value: "Simplified" },
-                ],
-                title: "Macros without making the system feel heavier.",
-                tone: "orange",
-                variant: "nutrition",
-              },
-              {
-                caption: "Discover",
-                description:
-                  "Find the right session, recovery flow, or goal-focused path when the original plan needs to flex.",
-                stats: [
-                  { label: "Matching", value: "Goal-based" },
-                  { label: "Recovery", value: "Included" },
-                ],
-                title: "The right next session when the week changes.",
-                tone: "violet",
-                variant: "discover",
-              },
-              {
-                caption: "Community",
-                description:
-                  "Accountability, challenges, and shared momentum that reinforce the plan instead of distracting from it.",
-                stats: [
-                  { label: "Challenges", value: "Planned" },
-                  { label: "Support", value: "Shared" },
-                ],
-                title: "Community designed to make consistency easier to keep.",
-                tone: "default",
-                variant: "community",
-              },
-            ]}
-            title="Everything your training needs. In one place."
-          />
-        </div>
-      </section>
+      <CypherTranscript turns={cypherTranscript} />
 
-      <section className="page-section home-section home-section--membership">
+      <section className="page-section editorial-section">
         <div className="container">
-          <div className="home-pricing-shell">
-            <div className="home-membership">
-              <div className="content-stack reveal home-membership__intro">
-                <span className="eyebrow">Membership value</span>
-                <h2 className="section-title">A premium system that earns its place in your training every week.</h2>
-                <p className="section-description">
-                  Planning, adaptive guidance, progress interpretation, and future
-                  ecosystem layers under one membership instead of a stack of
-                  narrow tools.
-                </p>
-                <div className="home-membership__points">
-                  <span>Structured programming</span>
-                  <span>Cypher coaching</span>
-                  <span>Progress intelligence</span>
+          <ChapterIntro
+            centered
+            description="Morning read, training session, evening close. The point is not more surfaces. The point is a day that makes sense."
+            index="04"
+            label="A day with FoFit"
+            title={
+              <>
+                The daily loop, kept <em>tight</em>.
+              </>
+            }
+          />
+          <div className="daily-loop">
+            {dailyLoopFigures.map((entry) => (
+              <article className="daily-loop__row reveal" key={entry.time}>
+                <div className="daily-loop__content">
+                  <span className="daily-loop__time">{entry.time}</span>
+                  <h3>{entry.title}</h3>
+                  <p>{entry.description}</p>
                 </div>
-              </div>
-              <div className="surface-card reveal home-membership__callout">
-                <span className="feature-card__kicker">Premium membership</span>
-                <h3>Founding members lock in $14/mo for life.</h3>
-                <p>Join now and keep the founding rate when launch pricing goes up.</p>
-                <div className="home-membership__callout-meta">
-                  <strong>One membership</strong>
-                  <span>Planning, guidance, progress, and future ecosystem layers.</span>
-                </div>
-              </div>
-            </div>
-            <PricingPreview className="pricing-preview--home" />
+                <DeviceFigure asset={entry.asset} className="daily-loop__figure" />
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="page-section home-section home-section--insights">
+      <PersonalizationDossier facts={personalizationFacts} />
+
+      <section className="page-section editorial-section">
         <div className="container">
-          <SectionHeader
-            description="Practical reads on training, nutrition, recovery, and performance that deepen the system without taking over the page."
-            eyebrow="Insights preview"
-            title="Training, nutrition, recovery, performance"
+          <ChapterIntro
+            description="The app does not just hold data. It tells you what changed, what is holding, and where the next push makes sense."
+            index="06"
+            label="Progress"
+            title={
+              <>
+                Twelve weeks, <em>measured</em>.
+              </>
+            }
+          />
+          <div className="progress-editorial">
+            <ProgressMetricGrid metrics={progressMetrics} />
+            <DeviceFigure asset={progressFigureAsset} className="progress-editorial__figure" />
+          </div>
+        </div>
+      </section>
+
+      <section className="page-section editorial-section editorial-section--pricing">
+        <div className="container">
+          <div className="editorial-pricing-intro">
+            <ChapterIntro
+              description="Start free. Move to Premium when you want the full FoFit system. Join early and the founding rate stays locked."
+              index="07"
+              label="Membership"
+              title={
+                <>
+                  Fourteen dollars. <em>Forever</em>, if you&apos;re early.
+                </>
+              }
+            />
+            <div className="editorial-pricing-intro__note reveal">
+              <span>FoFit Premium is $14/month or $119/year.</span>
+              <p>The first members keep that rate even as Cypher, recovery, teams, and coaching get deeper.</p>
+            </div>
+          </div>
+          <PricingPreview className="pricing-preview--editorial" />
+        </div>
+      </section>
+
+      <section className="page-section editorial-section editorial-section--quiet">
+        <div className="container">
+          <ChapterIntro
+            description="Three extensions, shown in the order they are most likely to ship. No vaporware, no vague ecosystem theater."
+            index="08"
+            label="On the horizon"
+            title={
+              <>
+                What comes <em>next</em>.
+              </>
+            }
+          />
+          <div className="roadmap-rows">
+            {roadmapRows.map((row) => (
+              <Link className="roadmap-row reveal" key={row.label} to={row.to}>
+                <div>
+                  <span className="roadmap-row__label">{row.label}</span>
+                  <h3>{row.timeline}</h3>
+                </div>
+                <p>{row.description}</p>
+                <span className="roadmap-row__arrow" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="page-section editorial-section editorial-section--notes">
+        <div className="container">
+          <ChapterIntro
+            description="Short reads on training, recovery, nutrition, and the decisions that keep a block moving."
+            index="09"
+            label="Field notes"
+            title={
+              <>
+                The publication side of the <em>system</em>.
+              </>
+            }
           />
           <ArticleGrid articles={insightArticles.slice(0, 3)} />
         </div>
       </section>
 
-      <section className="page-section home-section home-section--ecosystem">
-        <div className="container home-ecosystem">
-          <div className="content-stack reveal">
-            <span className="eyebrow">Ecosystem</span>
-            <h2 className="section-title">One training home now. More useful layers as FoFit grows.</h2>
-            <p className="section-description">
-              Coaching, teams, store, and community should feel like natural
-              extensions of the product — not distractions bolted on for the
-              sake of feature count.
-            </p>
-          </div>
-          <EcosystemTeaser />
-        </div>
-      </section>
-
-      <CTASection
-        description="Join the waitlist. Founding-member pricing closes at launch."
-        pills={["Structured training", "Adaptive guidance", "Future coaching"]}
-        title={
-          <>
-            Training should compound.
-            <br />
-            So should your tools.
-          </>
-        }
-      />
+      <QuietFinalCTA />
     </>
   );
 }

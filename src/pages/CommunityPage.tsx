@@ -114,18 +114,16 @@ export function CommunityPage() {
             <span className="eyebrow">Shared progress</span>
             <h3>Community should amplify momentum.</h3>
             <p>
-              Shared progress is most useful when it connects people around a
-              training goal, challenge block, or team context. That is the kind
-              of community FoFit is positioning itself to support.
+              Shared progress works when it connects people around a training
+              goal, challenge block, or team context.
             </p>
           </Card>
           <Card className="spotlight-card reveal">
             <span className="eyebrow">Built with purpose</span>
             <h3>Keep the signal, skip the noise.</h3>
             <p>
-              FoFit&apos;s community layer is meant to support consistency, shared
-              progress, and accountability without turning training into a
-              distraction.
+              FoFit&apos;s community layer supports consistency, shared progress,
+              and accountability without turning training into a distraction.
             </p>
           </Card>
         </div>

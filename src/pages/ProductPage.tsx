@@ -1,53 +1,53 @@
 import { CTASection } from "../components/marketing/CTASection";
-import { ComparisonBlock } from "../components/marketing/ComparisonBlock";
-import { HeroDeviceMockups } from "../components/marketing/HeroDeviceMockups";
-import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
-import { SystemPillars } from "../components/marketing/SystemPillars";
+import { ChapterIntro } from "../components/marketing/ChapterIntro";
+import { DeviceFigure } from "../components/marketing/DeviceFigure";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { Card } from "../components/ui/Card";
-import { SectionHeader } from "../components/ui/SectionHeader";
-import { StatBand } from "../components/ui/StatBand";
-import { platformStats, systemPillars, workflowSteps } from "../data/platform";
+import { EditorialHeading } from "../components/ui/EditorialHeading";
+import { heroFigure, planFigure, progressFigureAsset, transcriptFigure } from "../data/editorial";
+import { workflowSteps } from "../data/platform";
 
-const detailCards = [
+const operatingLayers = [
   {
-    title: "Planning engine",
-    description:
-      "FoFit starts with constraints that actually matter: goal, available time, equipment, experience, and the kind of training life can support consistently.",
+    title: "Read the week",
+    description: "Schedule, equipment, training age, and constraints become the plan instead of excuses around it.",
   },
   {
-    title: "In-session flow",
-    description:
-      "The workout surface stays useful while someone is training, so the product is not limited to a plan before the session and a graph after it.",
+    title: "Hold the session",
+    description: "Cypher keeps the workout useful when fatigue, pain, or time pressure would normally break the plan.",
   },
   {
-    title: "Progress intelligence",
-    description:
-      "Progress tracking is framed as decision support. The point is not only to record data but to make the next move clearer.",
+    title: "Interpret the signal",
+    description: "Volume, strength, adherence, and recovery stay connected so the next decision has context.",
+  },
+] as const;
+
+const productFigures = [
+  {
+    asset: planFigure,
+    eyebrow: "FIG 02.1",
+    title: "The plan starts with reality.",
+    description: "Seven days, forty-one exercises, one structure built from the week you actually have.",
   },
   {
-    title: "Exercise guidance",
-    description:
-      "When swaps, modifications, or execution questions show up, the system should stay practical enough to help without derailing the session.",
+    asset: transcriptFigure,
+    eyebrow: "FIG 02.2",
+    title: "Cypher stays inside the product.",
+    description: "The AI does not live as a floating promise. It sits in the workflow and answers the next real question.",
   },
   {
-    title: "Recovery logic",
-    description:
-      "Training quality depends on knowing when to push and when to preserve. FoFit treats recovery as part of the operating system.",
+    asset: progressFigureAsset,
+    eyebrow: "FIG 02.3",
+    title: "Progress is an operating surface.",
+    description: "The product explains what changed and what should move next instead of handing you a graph and leaving.",
   },
-  {
-    title: "Nutrition direction",
-    description:
-      "Nutrition belongs in the same conversation as training stress, recovery, and physique goals rather than being split off into a disconnected app.",
-  },
-];
+] as const;
 
 export function ProductPage() {
   return (
     <>
       <PageMeta
-        description="See how FoFit connects planning, workout flow, adaptive guidance, progress intelligence, and future ecosystem modules into one product system."
+        description="Planning, guidance, and progress live in one connected training system. FoFit keeps the plan, the session, and the signal tied together."
         title="FoFit Product | The System Behind the Platform"
       />
       <PageHero
@@ -55,132 +55,103 @@ export function ProductPage() {
           { label: "Join the waitlist", intent: "waitlist" },
           { label: "Explore pricing", to: "/pricing", variant: "secondary" },
         ]}
-        description="Planning, guidance, and progress tracking work together — not as separate apps you have to manage yourself."
-        eyebrow="Product"
-        media={<HeroDeviceMockups />}
+        description="Planning, guidance, and progress reinforce each other instead of living in separate apps."
+        eyebrow="002 / Product"
+        media={<DeviceFigure asset={heroFigure} className="page-hero__single-figure" />}
+        mediaClassName="page-hero__media--single"
         title={
-          <>
-            A connected training system
-            <br />
-            built around real use.
-          </>
+          <EditorialHeading accent="surface" as="span" className="editorial-heading--compact">
+            {"A system, not a\nsingle {italic}."}
+          </EditorialHeading>
         }
       />
 
-      <StatBand items={platformStats} />
-
-      <section className="page-section">
+      <section className="page-section editorial-section">
         <div className="container">
-          <SectionHeader
-            description="Three layers. One system. No stitching tools together."
-            eyebrow="System architecture"
-            title="Three layers, one product logic"
+          <ChapterIntro
+            description="Three responsibilities shape the product. Read the week. Hold the session. Interpret the signal."
+            index="01"
+            label="Operating logic"
+            title={
+              <>
+                The product works like a <em>training desk</em>, not a feature stack.
+              </>
+            }
           />
-          <SystemPillars items={systemPillars} />
+          <div className="editorial-ledger">
+            {operatingLayers.map((item, index) => (
+              <article className="editorial-ledger__item reveal" key={item.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="page-section page-section--tight">
+      <section className="page-section editorial-section">
         <div className="container">
-          <PlatformShowcase
-            description="Plan, train, and track — with each layer informing the next."
-            eyebrow="System in action"
-            panels={[
-              {
-                caption: "Plan logic",
-                title: "Constraints become structure instead of friction",
-                stats: [
-                  { label: "Schedule fit", value: "High" },
-                  { label: "Equipment-aware", value: "Yes" },
-                ],
-              },
-              {
-                caption: "Session support",
-                title: "Guidance stays useful during the workout",
-                stats: [
-                  { label: "Adjustments", value: "Live" },
-                  { label: "Swaps", value: "Contextual" },
-                ],
-              },
-              {
-                caption: "Progress loop",
-                title: "Every completed session improves the next call",
-                stats: [
-                  { label: "Signal quality", value: "Compounding" },
-                  { label: "Next-step clarity", value: "Higher" },
-                ],
-              },
-            ]}
-            title="See how each layer works."
+          <ChapterIntro
+            centered
+            description="Plan logic, session support, and progress interpretation. The same three layers, just closer and with more consequence."
+            index="02"
+            label="Figures"
+            title={
+              <>
+                See the system in <em>motion</em>.
+              </>
+            }
           />
+          <div className="editorial-figure-grid editorial-figure-grid--three">
+            {productFigures.map((figure) => (
+              <article className="editorial-figure-story reveal" key={figure.eyebrow}>
+                <DeviceFigure asset={figure.asset} />
+                <div className="editorial-figure-story__copy">
+                  <span>{figure.eyebrow}</span>
+                  <h3>{figure.title}</h3>
+                  <p>{figure.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="page-section">
+      <section className="page-section editorial-section editorial-section--tight">
         <div className="container">
-          <SectionHeader
-            description="A member should be able to understand how FoFit thinks, not just what the feature names are."
-            eyebrow="Workflow"
-            title="How the product works together"
+          <ChapterIntro
+            description="Intake, plan, session, review, recalibrate. A week should be easy to picture before you ever log the first set."
+            index="03"
+            label="Workflow"
+            title={
+              <>
+                How the product moves <em>through</em> a week.
+              </>
+            }
           />
-          <div className="workflow-grid">
+          <div className="workflow-ledger">
             {workflowSteps.map((step, index) => (
-              <Card className="workflow-step reveal" key={step.title}>
-                <span className="workflow-step__index">{String(index + 1).padStart(2, "0")}</span>
+              <article className="workflow-ledger__item reveal" key={step.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
-              </Card>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="page-section page-section--tight">
-        <div className="container">
-          <SectionHeader
-            description="Six modules. Each one doing its part to make your next training decision clearer."
-            eyebrow="Deeper product views"
-            title="The product layers in detail"
-          />
-          <div className="detail-grid">
-            {detailCards.map((card) => (
-              <Card className="detail-card reveal" key={card.title}>
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="page-section">
-        <div className="container">
-          <ComparisonBlock
-            afterItems={[
-              "Planning, tracking, guidance, and nutrition are designed to reinforce each other",
-              "Members get a clearer sense of what to do next instead of more disconnected data",
-              "The architecture already supports future coaching, community, and team layers",
-            ]}
-            afterTitle="A platform mindset"
-            beforeItems={[
-              "Most fitness products solve one narrow problem and leave the rest fragmented",
-              "Tracking without interpretation still leaves the hard decisions to the user",
-              "Static plans create drift as soon as schedule, recovery, or progress changes",
-            ]}
-            beforeTitle="A narrow app mindset"
-            title="Why the system matters"
-          />
         </div>
       </section>
 
       <CTASection
-        description="Join early and train with a system built to grow alongside you."
+        description="Join the waitlist. Founding-member pricing closes at launch."
         pills={["Planning", "Guidance", "Progress", "Recovery"]}
         title={
           <>
-            One platform.
+            A system,
             <br />
-            Every layer of your training.
+            not a single app.
           </>
         }
       />

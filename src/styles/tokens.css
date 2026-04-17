@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap");
 
 :root {
   --bg: #06070a;
@@ -24,4 +24,6 @@
   --container: 1180px;
   --font-body: "Inter", sans-serif;
   --font-display: "Space Grotesk", sans-serif;
+  --font-display-serif: "Instrument Serif", serif;
+  --font-label-mono: "IBM Plex Mono", monospace;
 }

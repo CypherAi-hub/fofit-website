@@ -10,7 +10,7 @@ export function FAQPage() {
   return (
     <>
       <PageMeta
-        description="Browse FoFit's product, pricing, access, AI guidance, and support FAQs in a dedicated route instead of a small footer section."
+        description="Browse FoFit's product, pricing, access, AI guidance, and support FAQs in one clear place."
         title="FoFit FAQ | Product, Pricing, Support, and Access Questions"
       />
       <PageHero
@@ -19,13 +19,13 @@ export function FAQPage() {
           { label: "Read insights", to: "/insights", variant: "secondary" },
         ]}
         compact
-        description="Get clear answers on pricing, access, guidance, and what FoFit includes."
+        description="Everything about pricing, access, Cypher, data, and support — in one place."
         eyebrow="FAQ"
         title={
           <>
-            Answers first.
+            Questions,
             <br />
-            Guesswork later.
+            answered.
           </>
         }
       />
@@ -43,8 +43,8 @@ export function FAQPage() {
               <span className="eyebrow">Need more context?</span>
               <h3>See the full picture.</h3>
               <p>
-                Explore Product, Pricing, Insights, Community, and About for a
-                fuller look at how FoFit works and what it is built to support.
+                The deeper answers live where they belong — Product, Pricing,
+                Insights, Community, About.
               </p>
             </div>
             <div className="button-row">
@@ -58,13 +58,11 @@ export function FAQPage() {
       </section>
 
       <CTASection
-        description="Start with the answers that matter most, then join the waitlist when you are ready."
+        description="We read every email. Reach out and we&apos;ll respond within a business day."
         pills={["Product", "Pricing", "Support"]}
         title={
           <>
-            Clear information makes
-            <br />
-            better decisions.
+            Still have a question?
           </>
         }
       />

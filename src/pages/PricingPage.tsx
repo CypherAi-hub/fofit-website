@@ -1,12 +1,18 @@
 import { FAQAccordion } from "../components/marketing/FAQAccordion";
 import { CTASection } from "../components/marketing/CTASection";
-import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
+import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { PricingTable } from "../components/marketing/PricingTable";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { Button } from "../components/ui/Button";
+import { EditorialHeading } from "../components/ui/EditorialHeading";
 import { Card } from "../components/ui/Card";
 import { faqGroups } from "../data/faqs";
+
+const pricingNotes = [
+  "Starter is workout logging and structure.",
+  "Premium is the full FoFit system — Cypher, adaptive plans, nutrition direction, and deeper analytics.",
+  "Founding members keep the early rate as the platform grows.",
+] as const;
 
 export function PricingPage() {
   const pricingFaqs = faqGroups.filter(
@@ -16,7 +22,7 @@ export function PricingPage() {
   return (
     <>
       <PageMeta
-        description="See FoFit's free and premium plan structure, comparison table, and how the platform is being positioned to scale into team and coaching models."
+        description="Start free. Premium at $14/month. Founding members lock in $14/mo for life and keep the full FoFit system as it grows."
         title="FoFit Pricing | Clear Plans for a Growing Platform"
       />
       <PageHero
@@ -25,84 +31,56 @@ export function PricingPage() {
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
-        description="Simple pricing today, with enough depth to support more ways to train over time."
-        eyebrow="Pricing"
+        description="Start free. Premium at $14/month. Founding members lock in $14/mo for life — the rate never moves."
+        eyebrow="007 / Membership"
         title={
-          <>
-            Clear today.
-            <br />
-            Built to scale tomorrow.
-          </>
+          <EditorialHeading accent="early" as="span" className="editorial-heading--compact">
+            {"Clear today.\nLocked if you're {italic}."}
+          </EditorialHeading>
         }
       />
 
-      <section className="page-section">
+      <section className="page-section editorial-section">
         <div className="container">
-          <PlatformShowcase
-            description="See what makes Premium feel worth paying for before you compare plans."
-            eyebrow="Premium membership"
-            panels={[
-              {
-                caption: "Guidance",
-                title: "Cypher as an always-available premium layer",
-                stats: [
-                  { label: "Support", value: "Daily" },
-                  { label: "Context", value: "Training-aware" },
-                ],
-              },
-              {
-                caption: "Analytics",
-                title: "Progress intelligence that feels worth paying for",
-                stats: [
-                  { label: "Trends", value: "Advanced" },
-                  { label: "Insights", value: "Useful" },
-                ],
-              },
-              {
-                caption: "Ecosystem access",
-                title: "Membership that grows with the platform roadmap",
-                stats: [
-                  { label: "Coaches", value: "Future-ready" },
-                  { label: "Community", value: "Priority" },
-                ],
-              },
-            ]}
-            title="What makes Premium feel different."
-          />
-        </div>
-      </section>
-
-      <section className="page-section">
-        <div className="container">
+          <div className="pricing-page__intro">
+            <ChapterIntro
+              description="FoFit is priced like a membership, not a generic feature gate. The product stays simple. The value gets easier to see."
+              index="01"
+              label="Plans"
+              title={
+                <>
+                  What Premium actually <em>unlocks</em>.
+                </>
+              }
+            />
+            <div className="pricing-page__points reveal">
+              {pricingNotes.map((note) => (
+                <span key={note}>{note}</span>
+              ))}
+            </div>
+          </div>
           <PricingTable />
         </div>
       </section>
 
-      <section className="page-section page-section--tight">
+      <section className="page-section editorial-section editorial-section--tight">
         <div className="container split-layout">
-          <Card className="spotlight-card reveal">
-            <span className="eyebrow">Teams teaser</span>
-            <h3>FoFit can support more than solo training.</h3>
-            <p>
-              Starter and Premium cover the core experience now. Team and
-              coach-supported setups can layer on when the product is ready for
-              them.
-            </p>
-            <Button to="/teams" variant="secondary">
-              Explore teams
-            </Button>
-          </Card>
-          <div className="content-stack reveal">
+          <Card className="spotlight-card reveal editorial-card">
             <span className="eyebrow">Billing confidence</span>
-            <h2 className="section-title">Pricing should reinforce trust, not friction.</h2>
-            <p className="section-description">
-              Know what each plan unlocks, what Premium adds, and where FoFit
-              can grow without muddying the offer today.
+            <h3>Clear first. Premium second.</h3>
+            <p>
+              Cancel anytime. Export your data. Start free, then move up when
+              you want the full FoFit system.
             </p>
-            <p className="section-description">
-              The goal is simple: clear value now, room to expand later.
+          </Card>
+          <Card className="spotlight-card reveal editorial-card">
+            <span className="eyebrow">Teams and coaches</span>
+            <h3>Those tiers get their own launch when they are ready.</h3>
+            <p>
+              Consumer pricing stays focused on the individual athlete. Teams,
+              schools, and coaches get a dedicated offer later.
             </p>
-          </div>
+          </Card>
         </div>
       </section>
 
@@ -113,13 +91,13 @@ export function PricingPage() {
       </section>
 
       <CTASection
-        description="Choose the plan that fits how you train today, then join the waitlist to lock in early access."
-        pills={["Starter", "Premium", "Team-ready"]}
+        description="Join the founding 500. The rate never moves."
+        pills={["Starter", "Premium", "Founding"]}
         title={
           <>
-            Pick your plan.
+            Clear today.
             <br />
-            Keep your momentum.
+            Locked for early members.
           </>
         }
       />

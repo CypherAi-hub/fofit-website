@@ -1,41 +1,38 @@
 import { CTASection } from "../components/marketing/CTASection";
-import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
+import { ChapterIntro } from "../components/marketing/ChapterIntro";
+import { DeviceFigure } from "../components/marketing/DeviceFigure";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Card } from "../components/ui/Card";
+import { EditorialHeading } from "../components/ui/EditorialHeading";
 import { SectionHeader } from "../components/ui/SectionHeader";
-import { StatBand } from "../components/ui/StatBand";
+import { heroFigure } from "../data/editorial";
 import { roadmapThemes } from "../data/updates";
-import { platformStats } from "../data/platform";
 
 const principles = [
   {
     title: "Build around real training behavior",
-    description:
-      "FoFit is grounded in how people actually train, recover, and stay consistent, not in abstract wellness language.",
+    description: "Structure should fit how people actually train, recover, travel, and stay consistent.",
   },
   {
-    title: "Make guidance practical",
-    description:
-      "Product quality shows up when advice is actionable in the moment, not only impressive in a pitch deck.",
+    title: "Keep guidance practical",
+    description: "Advice matters only if it helps during the session and holds up after the workout ends.",
   },
   {
-    title: "Treat depth as a trust signal",
-    description:
-      "Serious products feel more credible when information architecture and content are both built with care.",
+    title: "Treat depth as trust",
+    description: "The product should show its logic clearly enough that a serious athlete can believe it quickly.",
   },
   {
-    title: "Design for expansion",
-    description:
-      "FoFit is being shaped to grow into coaching, community, teams, and ecosystem layers without losing focus.",
+    title: "Expand without losing focus",
+    description: "Coaches, teams, and community should extend the training system instead of splintering it.",
   },
-];
+] as const;
 
 export function AboutPage() {
   return (
     <>
       <PageMeta
-        description="Learn why FoFit exists, who it is for, what makes it different, and where the platform is designed to go next."
+        description="FoFit started from a simple frustration: too many disconnected tools, not enough clarity. The company exists to build a more useful training system."
         title="About FoFit | Mission, Product Vision, and Platform Direction"
       />
       <PageHero
@@ -44,93 +41,46 @@ export function AboutPage() {
           { label: "Explore updates", to: "/updates", variant: "secondary" },
         ]}
         compact
-        description="We started from a real frustration: too many fitness tools, not enough clarity. FoFit connects planning, guidance, and progress into one system built to last."
+        description="FoFit started from a simple frustration: too many fitness tools, not enough clarity. Planning, guidance, and progress belong together."
         eyebrow="About"
         title={
-          <>
-            FoFit exists to make
-            <br />
-            better training feel reachable.
-          </>
+          <EditorialHeading accent="concept" as="span" className="editorial-heading--compact">
+            {"A training company.\nNot a launch {italic}."}
+          </EditorialHeading>
         }
       />
 
-      <section className="page-section page-section--tight">
-        <div className="container split-layout">
+      <section className="page-section editorial-section editorial-section--tight">
+        <div className="container split-layout split-layout--editorial">
           <div className="content-stack reveal">
-            <span className="eyebrow">Why FoFit exists</span>
-            <h2 className="section-title">Because fragmented fitness tools still leave too much guesswork.</h2>
+          <ChapterIntro
+            description="FoFit exists because most people still train across too many disconnected tools and too much guesswork."
+            index="01"
+            label="Why FoFit exists"
+            title={
+              <>
+                Better training should stay <em>reachable</em>.
+              </>
+            }
+          />
             <p className="section-description">
-              FoFit was created around a simple idea: training gets better when
-              structure, guidance, tracking, and direction work together. Most
-              products solve one piece of that problem. FoFit is designed to
-              connect the system.
-            </p>
-            <p className="section-description">
-              It is for beginners who need clarity, lifters who want better
-              structure, and athletes who care about quality, consistency, and
-              progress that compounds over time.
+              The product is for beginners who need structure, lifters who want cleaner progression, and athletes who want a system that compounds.
             </p>
           </div>
-          <Card className="spotlight-card reveal">
-            <h3>What makes it different</h3>
-            <ul className="check-list">
-              <li>More platform depth than a generic AI workout generator</li>
-              <li>More structure than a simple tracker</li>
-              <li>Clearer future ecosystem potential than a one-dimensional app</li>
-            </ul>
-          </Card>
+          <DeviceFigure asset={heroFigure} className="split-layout__figure" />
         </div>
       </section>
 
-      <StatBand items={platformStats} />
-
-      <section className="page-section page-section--tight">
-        <div className="container">
-          <PlatformShowcase
-            description="FoFit is building around how people actually train — not how fitness apps traditionally categorize features."
-            eyebrow="Company in motion"
-            panels={[
-              {
-                caption: "Product conviction",
-                title: "A belief that training products should do more than log activity",
-                stats: [
-                  { label: "Philosophy", value: "System-first" },
-                  { label: "Tone", value: "Focused" },
-                ],
-              },
-              {
-                caption: "Company direction",
-                title: "A clearer path into coaching, content, and premium ecosystem layers",
-                stats: [
-                  { label: "Roadmap", value: "Visible" },
-                  { label: "Expansion", value: "Intentional" },
-                ],
-              },
-              {
-                caption: "Audience fit",
-                title: "Built for people who want more than a generic workout app",
-                stats: [
-                  { label: "Beginners", value: "Supported" },
-                  { label: "Athletes", value: "Respected" },
-                ],
-              },
-            ]}
-            title="Product conviction, company direction, and the people it's built for."
-          />
-        </div>
-      </section>
-
-      <section className="page-section">
+      <section className="page-section editorial-section">
         <div className="container">
           <SectionHeader
-            description="Every decision at FoFit comes back to these four commitments."
+            description="Four commitments that shape every decision about the product."
             eyebrow="Principles"
-            title="What the company is building toward"
+            title="What guides the company"
           />
           <div className="detail-grid">
             {principles.map((principle) => (
-              <Card className="detail-card reveal" key={principle.title}>
+              <Card className="detail-card reveal editorial-card" key={principle.title}>
                 <h3>{principle.title}</h3>
                 <p>{principle.description}</p>
               </Card>
@@ -139,22 +89,21 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="page-section page-section--tight">
+      <section className="page-section editorial-section editorial-section--tight">
         <div className="container split-layout">
-          <Card className="founder-note reveal">
+          <Card className="founder-note reveal editorial-card">
             <span className="eyebrow">Founder perspective</span>
             <h3>Built from the problem, not just the market category.</h3>
             <p>
               FoFit started from a simple frustration: too much fitness progress
               still depends on juggling disconnected tools and making hard calls
-              without enough context. The long-term ambition is to build a
-              system that feels more useful, more focused, and more durable than
-              that.
+              without enough context. The goal is a training system that feels
+              clear, durable, and worth returning to.
             </p>
           </Card>
           <div className="content-stack reveal">
             <span className="eyebrow">Vision</span>
-            <h2 className="section-title">The platform should grow without losing its focus.</h2>
+            <h2 className="section-title">Cypher first. Coaches and teams after that.</h2>
             <ul className="roadmap-list">
               {roadmapThemes.map((theme) => (
                 <li key={theme}>{theme}</li>
@@ -165,13 +114,13 @@ export function AboutPage() {
       </section>
 
       <CTASection
-        description="Join early and help shape the platform from the start."
-        pills={["Mission", "Product clarity", "Future ecosystem"]}
+        description="FoFit is building a focused training platform. Cypher today. Coaches and teams next."
+        pills={["Mission", "Product clarity", "Long game"]}
         title={
           <>
-            A focused product.
+            A company,
             <br />
-            A clear roadmap. A long game.
+            not a launch concept.
           </>
         }
       />

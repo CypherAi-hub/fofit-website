@@ -80,7 +80,7 @@ export function CoachesPage() {
       </section>
 
       <CTASection
-        description="Join the waitlist if you want structured training now and coach-supported guidance as FoFit expands."
+        description="Join the waitlist if you want structured training now and coach-supported guidance when it opens."
         pills={["Reviews", "Accountability", "Expert support"]}
         title={
           <>
