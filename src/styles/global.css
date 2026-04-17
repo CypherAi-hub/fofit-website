@@ -40,6 +40,19 @@ a {
   text-decoration: none;
 }
 
+:focus-visible {
+  outline: 2px solid var(--blue, #2A66FF);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--blue, #2A66FF);
+  outline-offset: 3px;
+}
+
 button,
 input,
 textarea,
@@ -50,6 +63,22 @@ select {
 img {
   max-width: 100%;
   display: block;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 8px;
+  background: var(--blue);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  z-index: 9999;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 8px;
 }
 
 main {
@@ -1734,5 +1763,19 @@ code {
 
   .waitlist-actions {
     flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

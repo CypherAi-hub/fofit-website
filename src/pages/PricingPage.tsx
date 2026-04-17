@@ -21,11 +21,11 @@ export function PricingPage() {
       />
       <PageHero
         actions={[
-          { label: "Join early access", intent: "waitlist" },
+          { label: "Join the waitlist", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
-        description="Pricing should feel clean, premium, and believable. The structure is simple now, but the page leaves room for teams, coaches, and broader ecosystem layers."
+        description="Simple pricing today, with enough depth to support more ways to train over time."
         eyebrow="Pricing"
         title={
           <>
@@ -39,7 +39,7 @@ export function PricingPage() {
       <section className="page-section">
         <div className="container">
           <PlatformShowcase
-            description="Pricing converts better when the user sees why the platform feels premium. These panels make the membership value more tangible."
+            description="See what makes Premium feel worth paying for before you compare plans."
             eyebrow="Premium membership"
             panels={[
               {
@@ -67,7 +67,7 @@ export function PricingPage() {
                 ],
               },
             ]}
-            title="Premium value should look concrete."
+            title="What makes Premium feel different."
           />
         </div>
       </section>
@@ -82,11 +82,11 @@ export function PricingPage() {
         <div className="container split-layout">
           <Card className="spotlight-card reveal">
             <span className="eyebrow">Teams teaser</span>
-            <h3>FoFit is not stopping at individual memberships.</h3>
+            <h3>FoFit can support more than solo training.</h3>
             <p>
-              The pricing architecture is intentionally simple at the consumer
-              layer while leaving space for team, school, and coaching models as
-              the platform matures.
+              Starter and Premium cover the core experience now. Team and
+              coach-supported setups can layer on when the product is ready for
+              them.
             </p>
             <Button to="/teams" variant="secondary">
               Explore teams
@@ -96,13 +96,11 @@ export function PricingPage() {
             <span className="eyebrow">Billing confidence</span>
             <h2 className="section-title">Pricing should reinforce trust, not friction.</h2>
             <p className="section-description">
-              The page now communicates what each plan unlocks, why Premium
-              exists, and how the product can extend into broader account types
-              without forcing those decisions too early.
+              Know what each plan unlocks, what Premium adds, and where FoFit
+              can grow without muddying the offer today.
             </p>
             <p className="section-description">
-              Stronger conversion comes from showing premium membership as the
-              operating layer for the full platform, not as a generic paywall.
+              The goal is simple: clear value now, room to expand later.
             </p>
           </div>
         </div>
@@ -115,13 +113,13 @@ export function PricingPage() {
       </section>
 
       <CTASection
-        description="A clearer pricing page helps FoFit feel like a mature consumer product now while leaving room for teams, coaches, and future account structures later."
+        description="Choose the plan that fits how you train today, then join the waitlist to lock in early access."
         pills={["Starter", "Premium", "Team-ready"]}
         title={
           <>
-            Pricing now supports the platform story
+            Pick your plan.
             <br />
-            instead of acting like a landing-page add-on.
+            Keep your momentum.
           </>
         }
       />

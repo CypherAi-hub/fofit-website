@@ -26,7 +26,7 @@ export function CTASection({ title, description, pills = [] }: CTASectionProps) 
         </div>
         <div className="button-row">
           <EarlyAccessButton size="lg">
-            Join Early Access
+            Join the waitlist
           </EarlyAccessButton>
           <Button to="/product" size="lg" variant="secondary">
             Explore the platform

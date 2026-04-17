@@ -11,6 +11,7 @@ export function PricingTable() {
     <div className="pricing-table">
       <div className="pricing-toggle">
         <button
+          aria-pressed={!annual}
           className={!annual ? "is-active" : ""}
           onClick={() => setAnnual(false)}
           type="button"
@@ -18,6 +19,7 @@ export function PricingTable() {
           Monthly
         </button>
         <button
+          aria-pressed={annual}
           className={annual ? "is-active" : ""}
           onClick={() => setAnnual(true)}
           type="button"

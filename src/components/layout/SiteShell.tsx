@@ -9,7 +9,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [location.pathname]);
 
   return (
@@ -17,7 +17,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <div className="ambient ambient--one" />
       <div className="ambient ambient--two" />
       <Navbar />
-      <main>{children}</main>
+      <main id="main">{children}</main>
       <Footer />
       <WaitlistModal />
     </div>

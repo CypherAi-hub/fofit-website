@@ -35,7 +35,7 @@ export function StorePage() {
       />
       <PageHero
         actions={[
-          { label: "Join early access", intent: "waitlist" },
+          { label: "Join the waitlist", intent: "waitlist" },
           { label: "See coaches", to: "/coaches", variant: "secondary" },
         ]}
         compact
@@ -64,11 +64,11 @@ export function StorePage() {
       <section className="page-section page-section--tight">
         <div className="container">
           <Card className="spotlight-card reveal">
-            <span className="eyebrow">Why scaffold this now</span>
-            <h3>FoFit is building an ecosystem, not a single screen flow.</h3>
+            <span className="eyebrow">Why it fits</span>
+            <h3>Buy tools that match how you train.</h3>
             <p>
-              Store, coaches, teams, and community — each layer reinforces the
-              next and makes the whole platform more valuable over time.
+              Programs, guides, and bundles should support the same training
+              system you already use instead of feeling like random add-ons.
             </p>
           </Card>
         </div>

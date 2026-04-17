@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { primaryNav, ecosystemLinks } from "../../data/nav";
 import { EarlyAccessButton } from "../marketing/EarlyAccessButton";
 
+export const MOBILE_NAV_ID = "mobile-navigation";
+
 type MobileNavProps = {
   open: boolean;
   onClose: () => void;
@@ -9,16 +11,25 @@ type MobileNavProps = {
 
 export function MobileNav({ open, onClose }: MobileNavProps) {
   return (
-    <div className={`mobile-nav ${open ? "mobile-nav--open" : ""}`}>
-      <div className="mobile-nav__panel">
+    <div
+      className={`mobile-nav ${open ? "mobile-nav--open" : ""}`}
+      hidden={!open}
+      id={MOBILE_NAV_ID}
+    >
+      <aside aria-label="Mobile menu" className="mobile-nav__panel">
         <div className="mobile-nav__header">
           <div className="brand-mark">FoFit</div>
-          <button aria-label="Close menu" className="nav-toggle" onClick={onClose}>
+          <button
+            aria-label="Close menu"
+            className="nav-toggle"
+            onClick={onClose}
+            type="button"
+          >
             <span />
             <span />
           </button>
         </div>
-        <nav className="mobile-nav__links">
+        <nav aria-label="Mobile" className="mobile-nav__links">
           {[...primaryNav, ...ecosystemLinks].map((link) => (
             <NavLink
               className={({ isActive }) =>
@@ -39,7 +50,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           A premium training platform built around planning, guidance, progress,
           and future coaching layers.
         </p>
-      </div>
+      </aside>
     </div>
   );
 }

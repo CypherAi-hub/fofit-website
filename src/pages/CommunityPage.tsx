@@ -33,7 +33,7 @@ export function CommunityPage() {
       />
       <PageHero
         actions={[
-          { label: "Get early access", intent: "waitlist" },
+          { label: "Join the waitlist", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
@@ -120,12 +120,12 @@ export function CommunityPage() {
             </p>
           </Card>
           <Card className="spotlight-card reveal">
-            <span className="eyebrow">Rollout note</span>
-            <h3>Intentional before fully social.</h3>
+            <span className="eyebrow">Built with purpose</span>
+            <h3>Keep the signal, skip the noise.</h3>
             <p>
-              This route is a teaser on purpose. It signals where the platform
-              is going without pretending the entire community stack is already
-              mature.
+              FoFit&apos;s community layer is meant to support consistency, shared
+              progress, and accountability without turning training into a
+              distraction.
             </p>
           </Card>
         </div>

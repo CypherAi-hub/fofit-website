@@ -6,16 +6,21 @@ export function FAQAccordion({ groups }: { groups: FAQGroup[] }) {
 
   return (
     <div className="faq-groups">
-      {groups.map((group) => (
+      {groups.map((group, groupIndex) => (
         <section className="faq-group" key={group.title}>
           <h3>{group.title}</h3>
           <div className="faq-list">
-            {group.items.map((item) => {
+            {group.items.map((item, itemIndex) => {
               const isOpen = openKey === item.question;
+              const questionId = `faq-question-${groupIndex}-${itemIndex}`;
+              const answerId = `faq-answer-${groupIndex}-${itemIndex}`;
               return (
                 <article className={`faq-item ${isOpen ? "is-open" : ""}`} key={item.question}>
                   <button
+                    aria-controls={answerId}
+                    aria-expanded={isOpen}
                     className="faq-item__question"
+                    id={questionId}
                     onClick={() =>
                       setOpenKey(isOpen ? null : item.question)
                     }
@@ -24,7 +29,12 @@ export function FAQAccordion({ groups }: { groups: FAQGroup[] }) {
                     <span>{item.question}</span>
                     <span>{isOpen ? "−" : "+"}</span>
                   </button>
-                  <div className="faq-item__answer">
+                  <div
+                    aria-labelledby={questionId}
+                    className="faq-item__answer"
+                    id={answerId}
+                    role="region"
+                  >
                     <p>{item.answer}</p>
                   </div>
                 </article>

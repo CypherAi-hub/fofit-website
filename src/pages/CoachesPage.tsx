@@ -30,17 +30,17 @@ export function CoachesPage() {
       />
       <PageHero
         actions={[
-          { label: "Join early access", intent: "waitlist" },
+          { label: "Join the waitlist", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
-        description="This route is a teaser for the human side of the ecosystem. It shows how FoFit can expand from adaptive software into deeper coach-supported systems."
+        description="See how coaching, accountability, and expert review can fit around structured training when you want a deeper layer of support."
         eyebrow="Coaches"
         title={
           <>
             Expert guidance
             <br />
-            layered onto the platform.
+            when you want more support.
           </>
         }
       />
@@ -68,25 +68,25 @@ export function CoachesPage() {
             </ul>
           </Card>
           <Card className="spotlight-card reveal">
-            <span className="eyebrow">Why this matters</span>
-            <h3>It makes the platform feel expandable.</h3>
+            <span className="eyebrow">Why it matters</span>
+            <h3>Accountability works better with context.</h3>
             <p>
-              Even if coaching is not fully live yet, scaffolding the route helps
-              FoFit feel like a broader fitness company with room for high-touch
-              offerings.
+              Training history, recovery patterns, and plan context give coaches
+              more to work with from day one. That makes feedback sharper and
+              check-ins more useful.
             </p>
           </Card>
         </div>
       </section>
 
       <CTASection
-        description="The coaches route gives FoFit a cleaner story around accountability, higher-touch support, and where the platform can go beyond software-only guidance."
+        description="Join the waitlist if you want structured training now and coach-supported guidance as FoFit expands."
         pills={["Reviews", "Accountability", "Expert support"]}
         title={
           <>
-            Coaching is not a side idea.
+            Start with the system.
             <br />
-            It is part of the ecosystem story.
+            Add coaching when you want more support.
           </>
         }
       />

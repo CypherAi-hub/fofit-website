@@ -30,17 +30,17 @@ export function TeamsPage() {
       />
       <PageHero
         actions={[
-          { label: "Join early access", intent: "waitlist" },
+          { label: "Join the waitlist", intent: "waitlist" },
           { label: "See community", to: "/community", variant: "secondary" },
         ]}
         compact
-        description="This route positions FoFit for schools, clubs, and group contexts without pretending the full enterprise stack is already complete."
+        description="See how FoFit can support schools, clubs, and training groups that need structure, visibility, and consistency."
         eyebrow="Teams"
         title={
           <>
-            The platform can grow into
+            Bring structure to
             <br />
-            schools, teams, and groups.
+            the people you train with.
           </>
         }
       />
@@ -68,25 +68,25 @@ export function TeamsPage() {
             </ul>
           </Card>
           <div className="content-stack reveal">
-            <span className="eyebrow">Why it belongs on the site</span>
-            <h2 className="section-title">Teams make the long-term platform vision more credible.</h2>
+            <span className="eyebrow">Why teams need this</span>
+            <h2 className="section-title">Training groups need more than a shared spreadsheet.</h2>
             <p className="section-description">
-              A serious company site should show where the product can expand.
-              Teams and schools are one of the clearest signals that FoFit is
-              building toward something bigger than a solo workout tool.
+              Coaches, captains, and group leaders need visibility into
+              completion, progress, and readiness without losing the individual
+              training experience.
             </p>
           </div>
         </div>
       </section>
 
       <CTASection
-        description="The Teams route helps FoFit communicate maturity, broader market potential, and product architecture that can extend beyond individual users."
+        description="Join the waitlist if you want FoFit for a school, club, or accountability-driven training group."
         pills={["Schools", "Clubs", "Coach-ready groups"]}
         title={
           <>
-            Group use cases push the site
+            Train together
             <br />
-            closer to real startup maturity.
+            without losing structure.
           </>
         }
       />

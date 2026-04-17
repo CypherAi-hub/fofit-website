@@ -8,9 +8,8 @@ export function Footer() {
         <div className="footer-brand">
           <div className="brand-mark">FoFit</div>
           <p>
-            FoFit is building a more connected fitness platform around structure,
-            adaptive guidance, progress intelligence, and long-term ecosystem
-            depth.
+            FoFit brings structure, adaptive guidance, and progress tracking
+            into one connected fitness system.
           </p>
           <div className="footer-pills">
             {ecosystemLinks.map((link) => (

@@ -15,17 +15,17 @@ export function FAQPage() {
       />
       <PageHero
         actions={[
-          { label: "Join early access", intent: "waitlist" },
+          { label: "Join the waitlist", intent: "waitlist" },
           { label: "Read insights", to: "/insights", variant: "secondary" },
         ]}
         compact
-        description="The FAQ now lives on its own route so it can function like real product support instead of a small accordion block at the bottom of a landing page."
+        description="Get clear answers on pricing, access, guidance, and what FoFit includes."
         eyebrow="FAQ"
         title={
           <>
-            Product support,
+            Answers first.
             <br />
-            organized for scanning.
+            Guesswork later.
           </>
         }
       />
@@ -41,11 +41,10 @@ export function FAQPage() {
           <Card className="support-panel reveal">
             <div>
               <span className="eyebrow">Need more context?</span>
-              <h3>Use the deeper routes.</h3>
+              <h3>See the full picture.</h3>
               <p>
-                The new site structure makes support easier because questions now
-                map cleanly to dedicated pages for Product, Pricing, Insights,
-                Community, and About.
+                Explore Product, Pricing, Insights, Community, and About for a
+                fuller look at how FoFit works and what it is built to support.
               </p>
             </div>
             <div className="button-row">
@@ -59,13 +58,13 @@ export function FAQPage() {
       </section>
 
       <CTASection
-        description="Separating support into its own route makes FoFit feel easier to trust, easier to understand, and much less like a one-page launch site."
+        description="Start with the answers that matter most, then join the waitlist when you are ready."
         pills={["Product", "Pricing", "Support"]}
         title={
           <>
-            Better support starts with
+            Clear information makes
             <br />
-            better information architecture.
+            better decisions.
           </>
         }
       />

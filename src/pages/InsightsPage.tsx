@@ -31,13 +31,13 @@ export function InsightsPage() {
           { label: "See FAQ", to: "/faq", variant: "secondary" },
         ]}
         compact
-        description="This route turns the old article preview into a true editorial hub. That matters because content gives FoFit seriousness, trust, and a broader company feel."
+        description="Read practical training, nutrition, recovery, and performance content built for people who want better decisions."
         eyebrow="Insights"
         title={
           <>
-            Editorial depth
+            Training insight
             <br />
-            that reinforces the platform.
+            you can actually use.
           </>
         }
       />
@@ -87,13 +87,13 @@ export function InsightsPage() {
       </section>
 
       <CTASection
-        description="The insights hub should signal that FoFit is building real product intelligence around training, recovery, performance, and long-term behavior."
+        description="Join the waitlist for structured training, adaptive guidance, and insight you can put to work."
         pills={["Training", "Nutrition", "Recovery", "Mindset"]}
         title={
           <>
-            Content adds more than polish.
+            Learn the why.
             <br />
-            It adds product trust.
+            Train the plan.
           </>
         }
       />

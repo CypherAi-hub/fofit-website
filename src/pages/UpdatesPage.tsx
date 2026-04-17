@@ -13,11 +13,11 @@ export function UpdatesPage() {
       />
       <PageHero
         actions={[
-          { label: "Join early access", intent: "waitlist" },
+          { label: "Join the waitlist", intent: "waitlist" },
           { label: "See community", to: "/community", variant: "secondary" },
         ]}
         compact
-        description="Shipping visibility matters. Even as a teaser route, Updates makes FoFit feel like a company that iterates with intent instead of a landing page frozen in time."
+        description="See what FoFit is building, what has shipped, and what the team is sharpening next."
         eyebrow="Updates"
         title={
           <>
@@ -46,7 +46,7 @@ export function UpdatesPage() {
         <div className="container">
           <Card className="spotlight-card reveal">
             <span className="eyebrow">Roadmap themes</span>
-            <h3>The platform direction is bigger than one release cycle.</h3>
+            <h3>What we are building next.</h3>
             <ul className="roadmap-list">
               {roadmapThemes.map((theme) => (
                 <li key={theme}>{theme}</li>
@@ -57,13 +57,13 @@ export function UpdatesPage() {
       </section>
 
       <CTASection
-        description="The updates page reinforces maturity by showing FoFit as a product that ships, learns, and expands with a visible sense of direction."
+        description="Join the waitlist to get product updates and early access as new features roll out."
         pills={["Shipping", "Roadmap", "Platform direction"]}
         title={
           <>
-            Visibility into progress
+            Follow the product
             <br />
-            makes the company feel real.
+            as it gets sharper.
           </>
         }
       />

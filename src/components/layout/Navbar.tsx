@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { primaryNav } from "../../data/nav";
 import { Button } from "../ui/Button";
 import { EarlyAccessButton } from "../marketing/EarlyAccessButton";
-import { MobileNav } from "./MobileNav";
+import { MobileNav, MOBILE_NAV_ID } from "./MobileNav";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -12,10 +12,10 @@ export function Navbar() {
     <>
       <header className="site-header">
         <div className="container site-header__inner">
-          <NavLink className="brand" to="/">
+          <NavLink aria-label="FoFit home" className="brand" to="/">
             <span className="brand-mark">FoFit</span>
           </NavLink>
-          <nav className="site-nav">
+          <nav aria-label="Main" className="site-nav">
             {primaryNav.map((link) => (
               <NavLink
                 className={({ isActive }) =>
@@ -37,8 +37,11 @@ export function Navbar() {
             </EarlyAccessButton>
             <button
               aria-label="Open menu"
+              aria-controls={MOBILE_NAV_ID}
+              aria-expanded={mobileOpen}
               className="nav-toggle"
               onClick={() => setMobileOpen(true)}
+              type="button"
             >
               <span />
               <span />
