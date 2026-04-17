@@ -1,18 +1,16 @@
-import heroActiveWorkout from "../assets/editorial/hero-active-workout.png";
-import dailyPlan from "../assets/editorial/daily-plan.png";
 import cypherNutritionThread from "../assets/editorial/cypher-nutrition-thread.png";
 import nutritionDashboard from "../assets/editorial/nutrition-dashboard.png";
-import progressFigure from "../assets/editorial/progress-figure.png";
+import { appScreens } from "../assets/brand/manifest";
 
 export type FigureAsset = {
   alt: string;
   label: string;
   caption: string;
-  src?: string;
-  frame?: "phone" | "window";
+  src: string;
+  frame?: "phone" | "window" | "bare";
   tilt?: "left" | "right" | "flat";
   objectPosition?: string;
-  render?: "readiness";
+  treatment?: "flat" | "device";
 };
 
 export type TranscriptTurn = {
@@ -38,31 +36,33 @@ export type ProofOutcome = {
 };
 
 export const heroFigure: FigureAsset = {
-  src: heroActiveWorkout,
-  alt: "FoFit active workout screen showing live set tracking inside the product interface.",
+  src: appScreens.workout.device.src,
+  alt: appScreens.workout.device.alt,
   label: "FIG 00.1",
-  caption: "Active workout logging, captured from the real product.",
-  frame: "window",
+  caption: "Active workout logging — Incline Dumbbell Press, set 2 of 4.",
+  frame: "bare",
   tilt: "right",
-  objectPosition: "62% 50%",
+  treatment: appScreens.workout.device.treatment,
 };
 
 export const planFigure: FigureAsset = {
-  src: dailyPlan,
-  alt: "FoFit training plan screen showing a generated weekly plan and exercise blocks.",
+  src: appScreens.discover.device.src,
+  alt: appScreens.discover.device.alt,
   label: "FIG 02.1",
-  caption: "The weekly plan, built around time, equipment, and the week ahead.",
-  frame: "phone",
+  caption: "Workout discovery tailored to today's plan.",
+  frame: "bare",
   tilt: "left",
+  treatment: appScreens.discover.device.treatment,
 };
 
 export const transcriptFigure: FigureAsset = {
-  src: cypherNutritionThread,
-  alt: "FoFit Cypher chat interface over the nutrition surface inside the app.",
+  src: appScreens.cypher.device.src,
+  alt: appScreens.cypher.device.alt,
   label: "FIG 03.1",
-  caption: "Cypher in context, speaking inside the product instead of outside it.",
-  frame: "phone",
+  caption: "Cypher responding to a tired-morning training question.",
+  frame: "bare",
   tilt: "flat",
+  treatment: appScreens.cypher.device.treatment,
 };
 
 export const nutritionFigure: FigureAsset = {
@@ -75,22 +75,14 @@ export const nutritionFigure: FigureAsset = {
 };
 
 export const progressFigureAsset: FigureAsset = {
-  src: progressFigure,
-  alt: "FoFit progress analytics view showing strength changes and training history in the app.",
+  src: appScreens.journey.device.src,
+  alt: appScreens.journey.device.alt,
   label: "FIG 05.1",
-  caption: "Progress intelligence at the app level, not just a chart pasted into marketing.",
-  frame: "window",
+  caption: "47 sessions strong — Alex Chen's training journey.",
+  frame: "bare",
   tilt: "flat",
-  objectPosition: "53% 48%",
-};
-
-export const readinessFigure: FigureAsset = {
-  alt: "FoFit morning readiness view showing a readiness ring, sleep, HRV, planned load, and Cypher's morning nudge.",
-  label: "FIG 04.1",
-  caption: "The morning readiness read, rendered as a living score and a usable nudge instead of a generic plan card.",
-  frame: "phone",
-  tilt: "left",
-  render: "readiness",
+  objectPosition: "50% 42%",
+  treatment: appScreens.journey.device.treatment,
 };
 
 export const dailyLoopFigures = [
@@ -99,7 +91,7 @@ export const dailyLoopFigures = [
     title: "The readiness read",
     description:
       "Cypher checks the shape of the day first. Sleep, recovery drift, and session intent get turned into one clear recommendation.",
-    asset: readinessFigure,
+    asset: planFigure,
   },
   {
     time: "17:15",

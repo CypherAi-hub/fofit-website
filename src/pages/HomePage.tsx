@@ -6,6 +6,7 @@ import { HeroDeviceMockups } from "../components/marketing/HeroDeviceMockups";
 import { PersonalizationDossier } from "../components/marketing/PersonalizationDossier";
 import { PricingPreview } from "../components/marketing/PricingPreview";
 import { ProgressMetricGrid } from "../components/marketing/ProgressMetricGrid";
+import { ProductVideo } from "../components/marketing/ProductVideo";
 import { QuietFinalCTA } from "../components/marketing/QuietFinalCTA";
 import { TrustBand } from "../components/marketing/TrustBand";
 import { PageHero } from "../components/layout/PageHero";
@@ -69,6 +70,8 @@ export function HomePage() {
 
       <TrustBand />
 
+      <ProductVideo />
+
       <CypherTranscript turns={cypherTranscript} />
 
       <section className="page-section editorial-section">
@@ -76,7 +79,7 @@ export function HomePage() {
           <ChapterIntro
             centered
             description="Morning read, training session, evening close. The point is not more surfaces. The point is a day that makes sense."
-            index="04"
+            index="03"
             label="A day with FoFit"
             title={
               <>
@@ -105,7 +108,7 @@ export function HomePage() {
         <div className="container">
           <ChapterIntro
             description="The app does not just hold data. It tells you what changed, what is holding, and where the next push makes sense."
-            index="06"
+            index="05"
             label="Progress"
             title={
               <>
@@ -125,7 +128,7 @@ export function HomePage() {
           <div className="editorial-pricing-intro">
             <ChapterIntro
               description="Start free. Move to Premium when you want the full FoFit system. Join early and the founding rate stays locked."
-              index="07"
+              index="06"
               label="Membership"
               title={
                 <>
@@ -146,7 +149,7 @@ export function HomePage() {
         <div className="container">
           <ChapterIntro
             description="Three extensions, shown in the order they are most likely to ship. No vaporware, no vague ecosystem theater."
-            index="08"
+            index="07"
             label="On the horizon"
             title={
               <>
@@ -175,7 +178,7 @@ export function HomePage() {
         <div className="container">
           <ChapterIntro
             description="Short reads on training, recovery, nutrition, and the decisions that keep a block moving."
-            index="09"
+            index="08"
             label="Field notes"
             title={
               <>

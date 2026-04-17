@@ -12,7 +12,7 @@ export function CypherTranscript({ turns }: CypherTranscriptProps) {
       <div className="container">
         <div className="transcript-card reveal">
           <ChapterIntro
-            index="03"
+            index="02"
             label="Cypher"
             title={
               <>
@@ -41,7 +41,7 @@ export function CypherTranscript({ turns }: CypherTranscriptProps) {
           <FigureLabel
             caption="A real Cypher thread. The decisions above are specific because the product remembers context."
             className="transcript-card__label"
-            label="FIG 03.1"
+            label="FIG 02.1"
           />
         </div>
       </div>

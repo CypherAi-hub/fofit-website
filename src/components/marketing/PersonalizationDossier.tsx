@@ -11,7 +11,7 @@ export function PersonalizationDossier({ facts }: PersonalizationDossierProps) {
       <div className="container">
         <div className="dossier-section">
           <ChapterIntro
-            index="05"
+            index="04"
             label="Memory"
             title={
               <>
