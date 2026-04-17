@@ -3025,36 +3025,9 @@ code {
   border-top: 1px solid rgba(42, 102, 255, 0.38);
 }
 
-/* === Founding Tier Counter ====================================== */
-
-.founding-tier-counter {
-  display: grid;
-  gap: 0.55rem;
-}
-
-.founding-tier-counter__text,
 .pricing-table__footer {
   font-family: var(--font-label-mono);
   letter-spacing: 0.16em;
-}
-
-.founding-tier-counter__text {
-  color: rgba(245, 247, 251, 0.48);
-  font-size: 0.68rem;
-  text-transform: uppercase;
-}
-
-.founding-tier-counter__track {
-  height: 3px;
-  border-radius: 999px;
-  background: rgba(245, 247, 251, 0.06);
-  overflow: hidden;
-}
-
-.founding-tier-counter__fill {
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(to right, #2A66FF, #00D4FF);
 }
 
 .pricing-table__footer {

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { foundingClaimed, foundingLimit } from "../../data/founding-pricing";
 import { pricingAssurances, pricingComparison, pricingPlans } from "../../data/pricing";
 import { EarlyAccessButton } from "./EarlyAccessButton";
 import { Card } from "../ui/Card";
@@ -8,7 +7,6 @@ export function PricingTable() {
   const [annual, setAnnual] = useState(false);
   const [starterPlan, premiumPlan] = pricingPlans;
   const foundingPrice = annual ? "$119" : "$14";
-  const foundingPercent = `${(foundingClaimed / foundingLimit) * 100}%`;
 
   return (
     <div className="pricing-table">
@@ -60,7 +58,7 @@ export function PricingTable() {
             <span className="pricing-card__badge">Founding class</span>
             <span className="pricing-card__name">Founding</span>
             <strong>{foundingPrice}</strong>
-            <p>The full Premium product, with the early rate locked for life.</p>
+            <p>The first 500 members lock the full Premium product at this rate for life.</p>
           </div>
           <p className="pricing-card__description">
             Join before launch and the rate does not move as FoFit adds more coaching, team, and recovery depth.
@@ -71,17 +69,6 @@ export function PricingTable() {
             <li>Priority access as new layers open</li>
             <li>Named as an early supporter inside the app</li>
           </ul>
-          <div className="founding-tier-counter">
-            <div className="founding-tier-counter__text">
-              {foundingClaimed} / {foundingLimit} claimed
-            </div>
-            <div className="founding-tier-counter__track" aria-hidden="true">
-              <div
-                className="founding-tier-counter__fill"
-                style={{ width: foundingPercent }}
-              />
-            </div>
-          </div>
           <div className="pricing-card__meta">
             <span>{annual ? "$9.92/mo billed annually" : "Month to month"}</span>
             <span>Rate holds for founding members</span>
