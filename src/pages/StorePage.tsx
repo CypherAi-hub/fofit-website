@@ -39,7 +39,7 @@ export function StorePage() {
           { label: "See coaches", to: "/coaches", variant: "secondary" },
         ]}
         compact
-        description="The store route is not about pretending commerce is finished. It is about showing that FoFit can extend into a broader ecosystem without feeling scattered."
+        description="Programs, guides, gear, and bundles — all aligned with how FoFit trains you."
         eyebrow="Store"
         title={
           <>
@@ -65,24 +65,23 @@ export function StorePage() {
         <div className="container">
           <Card className="spotlight-card reveal">
             <span className="eyebrow">Why scaffold this now</span>
-            <h3>It reinforces the idea that FoFit is building an ecosystem, not a single screen flow.</h3>
+            <h3>FoFit is building an ecosystem, not a single screen flow.</h3>
             <p>
-              When store, coaches, teams, community, and updates all exist as
-              intentional routes, the entire company story becomes more mature
-              and much less one-dimensional.
+              Store, coaches, teams, and community — each layer reinforces the
+              next and makes the whole platform more valuable over time.
             </p>
           </Card>
         </div>
       </section>
 
       <CTASection
-        description="The store route helps FoFit hint at future commerce and partner opportunities without turning the current website into a generic merch play."
+        description="Everything in the store is built around how FoFit members actually train."
         pills={["Programs", "Guides", "Bundles"]}
         title={
           <>
-            Marketplace potential feels stronger
+            Curated programs. Proven guides.
             <br />
-            when it fits the product narrative.
+            Partner-level gear.
           </>
         }
       />

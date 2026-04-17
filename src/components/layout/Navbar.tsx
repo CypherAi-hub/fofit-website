@@ -14,7 +14,6 @@ export function Navbar() {
         <div className="container site-header__inner">
           <NavLink className="brand" to="/">
             <span className="brand-mark">FoFit</span>
-            <span className="brand-tag">Personalized fitness platform</span>
           </NavLink>
           <nav className="site-nav">
             {primaryNav.map((link) => (
@@ -34,7 +33,7 @@ export function Navbar() {
               Pricing
             </Button>
             <EarlyAccessButton>
-              Get Early Access
+              Join the waitlist
             </EarlyAccessButton>
             <button
               aria-label="Open menu"

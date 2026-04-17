@@ -20,7 +20,7 @@ export function FeaturesPage() {
           { label: "Read the product story", to: "/product", variant: "secondary" },
         ]}
         compact
-        description="This page translates the original landing page's feature fragments into a cleaner modular breakdown of what the platform actually does."
+        description="Six focused modules — planning, guidance, tracking, exercise support, recovery, and nutrition — built to work as one system."
         eyebrow="Features"
         title={
           <>
@@ -34,7 +34,7 @@ export function FeaturesPage() {
       <section className="page-section">
         <div className="container">
           <PlatformShowcase
-            description="Feature pages feel more credible when capabilities are supported by product-looking panels instead of only descriptive text."
+            description="Each module earns its place by making the next decision easier."
             eyebrow="Feature storytelling"
             panels={[
               {
@@ -62,7 +62,7 @@ export function FeaturesPage() {
                 ],
               },
             ]}
-            title="The features should feel expensive in a good way."
+            title="Built to feel like a platform, not a feature list."
           />
         </div>
       </section>
@@ -70,7 +70,7 @@ export function FeaturesPage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            description="The feature system stays tight on purpose. Each module should strengthen the overall platform rather than exist as a random add-on."
+            description="Every feature connects to the whole. Nothing is filler."
             eyebrow="Core modules"
             title="The key product surfaces"
           />
@@ -91,7 +91,7 @@ export function FeaturesPage() {
             </p>
           </div>
           <Card className="spotlight-card reveal">
-            <h3>What this module should do</h3>
+            <h3>What recovery intelligence does</h3>
             <ul className="check-list">
               <li>Translate recovery context into practical training decisions</li>
               <li>Protect session quality when fatigue is higher than expected</li>
@@ -115,10 +115,8 @@ export function FeaturesPage() {
             <span className="eyebrow">Future nutrition support</span>
             <h2 className="section-title">Nutrition should deepen the platform, not distract from it.</h2>
             <p className="section-description">
-              The original landing page already hinted at this well. In the
-              expanded site, nutrition becomes a credible future product layer
-              rather than a single supporting card living inside a one-page
-              pitch.
+              Nutrition connected to your actual training demand — not generic
+              macro rules layered on top of a separate app.
             </p>
           </div>
         </div>
@@ -129,8 +127,8 @@ export function FeaturesPage() {
           <Card className="detail-card reveal">
             <h3>Why the feature stack matters</h3>
             <p>
-              FoFit feels more serious when its modules read like parts of an
-              operating system instead of a collection of isolated app features.
+              Six connected modules built to improve every training decision you
+              make — from the plan to the session to the week's recap.
             </p>
           </Card>
           <Card className="detail-card reveal">
@@ -145,13 +143,13 @@ export function FeaturesPage() {
       </section>
 
       <CTASection
-        description="The feature page should make platform depth feel organized and intentional. Every module exists to improve clarity, consistency, and long-term trust."
+        description="Join early. Every module ships from day one."
         pills={["Planning", "Tracking", "Recovery", "Nutrition"]}
         title={
           <>
-            FoFit now reads like a product
+            A platform built for
             <br />
-            with real surface area.
+            the full picture of your training.
           </>
         }
       />

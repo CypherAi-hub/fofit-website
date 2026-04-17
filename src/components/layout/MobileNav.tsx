@@ -32,7 +32,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             </NavLink>
           ))}
           <EarlyAccessButton className="mobile-nav__cta" size="lg">
-            Get Early Access
+            Join the waitlist
           </EarlyAccessButton>
         </nav>
         <p className="mobile-nav__footnote">

@@ -15,7 +15,7 @@ const communityBlocks = [
   {
     title: "Challenges",
     description:
-      "Challenges should feel training-aware and worth joining, not like empty engagement mechanics bolted onto a serious product.",
+      "Training-aware challenges worth joining — not empty engagement mechanics.",
   },
   {
     title: "Groups",
@@ -37,7 +37,7 @@ export function CommunityPage() {
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
-        description="Community does not need to be fully live to communicate depth. This route shows how FoFit can become more than a solo training tool while staying intentional."
+        description="Consistency gets easier when your progress is shared with people working toward the same things."
         eyebrow="Community"
         title={
           <>
@@ -51,7 +51,7 @@ export function CommunityPage() {
       <section className="page-section">
         <div className="container">
           <PlatformShowcase
-            description="Community needs more than a promise. These showcase panels help the route communicate accountability, momentum, and group structure more concretely."
+            description="Accountability, challenges, and group structure — built into the platform, not bolted on."
             eyebrow="Momentum systems"
             panels={[
               {
@@ -79,7 +79,7 @@ export function CommunityPage() {
                 ],
               },
             ]}
-            title="Community should feel like an engine for consistency."
+            title="Community is the engine for consistency."
           />
         </div>
       </section>
@@ -87,7 +87,7 @@ export function CommunityPage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            description="The goal is to show future platform depth with enough clarity that the page feels intentional today."
+            description="A structured community layer designed around training progress, not social noise."
             eyebrow="Community preview"
             title="A structured community layer"
           />
@@ -132,13 +132,13 @@ export function CommunityPage() {
       </section>
 
       <CTASection
-        description="Community makes the broader FoFit vision more believable because it shows the platform can support accountability, groups, and shared momentum beyond solo sessions."
+        description="Join early and be part of FoFit's founding community."
         pills={["Challenges", "Groups", "Shared progress"]}
         title={
           <>
-            Community is a future layer
+            Training together
             <br />
-            that already belongs in the architecture.
+            compounds faster than training alone.
           </>
         }
       />

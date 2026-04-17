@@ -55,7 +55,7 @@ export function ProductPage() {
           { label: "Join early access", intent: "waitlist" },
           { label: "Explore pricing", to: "/pricing", variant: "secondary" },
         ]}
-        description="This page carries the depth that should never have been trapped inside a single landing-page scroll. FoFit works because the layers reinforce one another."
+        description="Planning, guidance, and progress tracking work together — not as separate apps you have to manage yourself."
         eyebrow="Product"
         media={<HeroDeviceMockups />}
         title={
@@ -72,7 +72,7 @@ export function ProductPage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            description="These three pillars are still the clearest expression of the product. The difference now is that they live inside a deeper system, not a one-page narrative."
+            description="Three layers. One system. No stitching tools together."
             eyebrow="System architecture"
             title="Three layers, one product logic"
           />
@@ -83,7 +83,7 @@ export function ProductPage() {
       <section className="page-section page-section--tight">
         <div className="container">
           <PlatformShowcase
-            description="The product page should feel like the system has real operating depth. These panels make the planning, coaching, and analytics layers feel more substantial."
+            description="Plan, train, and track — with each layer informing the next."
             eyebrow="System in action"
             panels={[
               {
@@ -111,7 +111,7 @@ export function ProductPage() {
                 ],
               },
             ]}
-            title="The platform feels deeper when the layers are visible."
+            title="See how each layer works."
           />
         </div>
       </section>
@@ -138,7 +138,7 @@ export function ProductPage() {
       <section className="page-section page-section--tight">
         <div className="container">
           <SectionHeader
-            description="This is where the site goes deeper than the homepage: specific layers, clearer responsibilities, and product thinking that feels like platform design."
+            description="Six modules. Each one doing its part to make your next training decision clearer."
             eyebrow="Deeper product views"
             title="The product layers in detail"
           />
@@ -174,13 +174,13 @@ export function ProductPage() {
       </section>
 
       <CTASection
-        description="FoFit should look and read like a product company with architecture, not like a single-feature experiment with a nice hero section."
+        description="Join early and train with a system built to grow alongside you."
         pills={["Planning", "Guidance", "Progress", "Recovery"]}
         title={
           <>
-            The product story is now deep enough
+            One platform.
             <br />
-            to justify the platform claim.
+            Every layer of your training.
           </>
         }
       />

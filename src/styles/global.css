@@ -363,7 +363,7 @@ main {
 
 .page-hero {
   position: relative;
-  padding: 5rem 0 3rem;
+  padding: 2.5rem 0 2rem;
 }
 
 .page-hero--compact {
@@ -376,7 +376,7 @@ main {
   grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
   gap: 2rem;
   align-items: center;
-  min-height: calc(100svh - 4.5rem);
+  min-height: min(78vh, 720px);
 }
 
 .page-hero--compact .page-hero__inner {
@@ -1292,6 +1292,68 @@ main {
   color: var(--text-soft);
   font-size: 0.84rem;
 }
+
+/* PlatformShowcase minis */
+
+.showcase-mini {
+  display: grid;
+  gap: 0.75rem;
+  height: 100%;
+}
+
+.showcase-calendar__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.3rem;
+}
+
+.showcase-calendar__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.45rem 0.2rem;
+  border-radius: 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.showcase-calendar__cell--filled {
+  background: rgba(42, 102, 255, 0.2);
+  border-color: rgba(42, 102, 255, 0.36);
+}
+
+.showcase-calendar__day {
+  color: var(--text-soft);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.showcase-calendar__label {
+  color: #2A66FF;
+  font-size: 0.52rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.showcase-chat__bubbles {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.showcase-chart__kicker {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: -0.05em;
+  color: #2A66FF;
+  line-height: 1;
+}
+
+/* end PlatformShowcase minis */
 
 .waitlist-modal {
   position: fixed;

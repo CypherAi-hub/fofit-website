@@ -44,7 +44,7 @@ export function AboutPage() {
           { label: "Explore updates", to: "/updates", variant: "secondary" },
         ]}
         compact
-        description="The About route should feel like a company page, not a founder note pasted into the bottom of a landing page. It needs polish, clarity, and a future-facing point of view."
+        description="We started from a real frustration: too many fitness tools, not enough clarity. FoFit connects planning, guidance, and progress into one system built to last."
         eyebrow="About"
         title={
           <>
@@ -88,7 +88,7 @@ export function AboutPage() {
       <section className="page-section page-section--tight">
         <div className="container">
           <PlatformShowcase
-            description="About pages feel more like real company pages when they connect mission to product surfaces and future company shape."
+            description="FoFit is building around how people actually train — not how fitness apps traditionally categorize features."
             eyebrow="Company in motion"
             panels={[
               {
@@ -116,7 +116,7 @@ export function AboutPage() {
                 ],
               },
             ]}
-            title="The company story should feel as grounded as the product story."
+            title="Product conviction, company direction, and the people it's built for."
           />
         </div>
       </section>
@@ -124,7 +124,7 @@ export function AboutPage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            description="These principles are the bridge between company tone and product decisions. They keep the website from feeling like empty brand language."
+            description="Every decision at FoFit comes back to these four commitments."
             eyebrow="Principles"
             title="What the company is building toward"
           />
@@ -165,13 +165,13 @@ export function AboutPage() {
       </section>
 
       <CTASection
-        description="The About page now frames FoFit as a focused product company with a stronger operating point of view and a believable long-term direction."
+        description="Join early and help shape the platform from the start."
         pills={["Mission", "Product clarity", "Future ecosystem"]}
         title={
           <>
-            FoFit is being positioned as a company,
+            A focused product.
             <br />
-            not just a launch concept.
+            A clear roadmap. A long game.
           </>
         }
       />

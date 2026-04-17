@@ -25,10 +25,10 @@ export function HomePage() {
       />
       <PageHero
         actions={[
-          { label: "Get Early Access", intent: "waitlist" },
-          { label: "See the platform", to: "/product", variant: "secondary" },
+          { label: "Join the waitlist", intent: "waitlist" },
+          { label: "See how it works", to: "/product", variant: "secondary" },
         ]}
-        description="FoFit combines structured training, adaptive AI guidance, progress tracking, nutrition direction, and future coaching surfaces into one focused system."
+        description="FoFit plans your week, guides you mid-workout, and shows you what moved. One system instead of five disconnected apps."
         eyebrow="Premium fitness platform"
         media={<HeroDeviceMockups />}
         title={
@@ -37,7 +37,7 @@ export function HomePage() {
             <br />
             Progress faster.
             <br />
-            Built as a real platform.
+            Built to train you — not just track you.
           </>
         }
       />
@@ -47,7 +47,7 @@ export function HomePage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            description="The best parts of the original landing page belong here: a clear system thesis, strong hierarchy, and a more mature sense of product depth."
+            description="Three connected layers — planning, live guidance, and progress intelligence — working together instead of asking you to stitch tools together."
             eyebrow="The system"
             title={
               <>
@@ -86,7 +86,7 @@ export function HomePage() {
       <section className="page-section">
         <div className="container">
           <PlatformShowcase
-            description="The homepage should prove that FoFit is more than a promise. These product surfaces give the brand more weight and help the conversion story feel grounded."
+            description="Three surfaces doing the work: what to train today, what to adjust mid-session, what changed this month."
             eyebrow="Product showcase"
             panels={[
               {
@@ -114,7 +114,7 @@ export function HomePage() {
                 ],
               },
             ]}
-            title="A platform brand needs product gravity."
+            title="See the system in motion."
           />
         </div>
       </section>
@@ -122,7 +122,7 @@ export function HomePage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            description="Home should preview the platform, not try to explain every module at once. These are the most important layers to understand first."
+            description="Planning, guidance, and progress tracking — the three layers every serious training system needs."
             eyebrow="Platform depth"
             title="The core modules preview"
           />
@@ -134,9 +134,9 @@ export function HomePage() {
         <div className="container">
           <SectionHeader
             align="center"
-            description="The product should feel credible even before a user touches it. That comes from a consistent structure and believable product language."
+            description="Real people. Real training blocks. Real progress numbers — before you spend a dollar."
             eyebrow="Trust"
-            title="A more serious front door for the brand"
+            title="Built for people who train seriously"
           />
           <TestimonialGrid />
         </div>
@@ -146,21 +146,21 @@ export function HomePage() {
         <div className="container split-layout">
           <div className="content-stack reveal">
             <span className="eyebrow">Membership value</span>
-            <h2 className="section-title">Premium should feel worth joining before the first checkout screen.</h2>
+            <h2 className="section-title">A platform that pays for itself in better training decisions.</h2>
             <p className="section-description">
-              Stronger conversion comes from showing why the platform matters:
-              structured training, better decision support, richer progress
-              visibility, and access to the ecosystem as it expands.
+              Structured training blocks, adaptive guidance, richer progress
+              visibility, and access to every ecosystem layer as it launches —
+              all under one membership.
             </p>
           </div>
           <div className="detail-grid detail-grid--two">
             <article className="surface-card detail-card reveal">
               <h3>Founding-member pricing</h3>
-              <p>Early access turns into a cleaner value story when the member understands what they are getting first.</p>
+              <p>Lock in $14/mo for life. Price goes up at launch — founding members keep their rate forever.</p>
             </article>
             <article className="surface-card detail-card reveal">
               <h3>Platform-first roadmap</h3>
-              <p>Coaching, teams, community, and premium insight layers feel more believable when previewed from the front door.</p>
+              <p>Coaching, teams, community, and premium insight layers — all on the way, all included in your membership.</p>
             </article>
           </div>
         </div>
@@ -169,7 +169,7 @@ export function HomePage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            description="The site now treats pricing as part of a broader product story: clear plans, confident positioning, and room to scale into teams."
+            description="Start free. Founding members lock in $14/mo for life. Team and coaching tiers come later."
             eyebrow="Pricing preview"
             title="Simple now. Scalable later."
           />
@@ -180,7 +180,7 @@ export function HomePage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            description="Editorial depth matters because it makes the platform feel informed, durable, and worth trusting over the long term."
+            description="Practical reads on training, nutrition, recovery, and performance — written for people who take their results seriously."
             eyebrow="Insights preview"
             title="Training, nutrition, recovery, performance"
           />
@@ -191,7 +191,7 @@ export function HomePage() {
       <section className="page-section">
         <div className="container">
           <SectionHeader
-            description="FoFit should already hint at where it is going: coaches, community, store, updates, and teams all reinforce the idea of a broader fitness ecosystem."
+            description="Coaches, community, store, and teams — each layer is being built deliberately so the whole ecosystem grows without losing focus."
             eyebrow="Ecosystem"
             title="Built to expand beyond one feature set"
           />
@@ -200,13 +200,13 @@ export function HomePage() {
       </section>
 
       <CTASection
-        description="The goal is not to look like a launch page forever. The goal is to establish FoFit as a company with a focused product, a credible roadmap, and room to become much bigger."
+        description="Join the waitlist. Founding-member pricing closes at launch."
         pills={["Structured training", "Adaptive guidance", "Future coaching"]}
         title={
           <>
-            FoFit should feel like a company
+            Training should compound.
             <br />
-            building something durable.
+            So should your tools.
           </>
         }
       />
