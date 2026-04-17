@@ -52,7 +52,7 @@ export function ProductPage() {
       />
       <PageHero
         actions={[
-          { label: "Join early access", intent: "waitlist" },
+          { label: "Join the waitlist", intent: "waitlist" },
           { label: "Explore pricing", to: "/pricing", variant: "secondary" },
         ]}
         description="Planning, guidance, and progress tracking work together — not as separate apps you have to manage yourself."

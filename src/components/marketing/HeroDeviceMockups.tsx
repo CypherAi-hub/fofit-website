@@ -3,15 +3,18 @@ export function HeroDeviceMockups() {
     <div className="device-showcase">
       <article className="device device--left">
         <header className="device__header">
-          <span>Active workout</span>
-          <span>Day 1</span>
+          <span>Today&apos;s plan</span>
+          <span>Week 8</span>
         </header>
         <div className="device__body">
-          <p className="device__eyebrow">Upper body · Session flow</p>
-          <h3>Bench Press</h3>
-          <div className="device__ring">
-            <strong>00:45</strong>
-            <span>Rest timer</span>
+          <p className="device__eyebrow">Planning engine</p>
+          <p className="device__title">Upper body power</p>
+          <div className="device__week">
+            <span className="device__week-pill device__week-pill--filled">Mon</span>
+            <span className="device__week-pill">Tue</span>
+            <span className="device__week-pill device__week-pill--filled">Wed</span>
+            <span className="device__week-pill">Thu</span>
+            <span className="device__week-pill device__week-pill--filled">Fri</span>
           </div>
           <div className="device__rows">
             <div>
@@ -19,12 +22,12 @@ export function HeroDeviceMockups() {
               <strong>4 x 6-8</strong>
             </div>
             <div>
-              <span>Load</span>
-              <strong>135 lb</strong>
+              <span>Focus</span>
+              <strong>Chest + shoulders</strong>
             </div>
             <div>
-              <span>Next</span>
-              <strong>Incline DB Press</strong>
+              <span>Constraint</span>
+              <strong>55 minutes</strong>
             </div>
           </div>
         </div>
@@ -34,6 +37,10 @@ export function HeroDeviceMockups() {
           <span>Cypher AI</span>
           <span>Live</span>
         </header>
+        <div className="device__signal">
+          <span className="device__signal-dot" />
+          Recovery lower than usual. Adjusting volume.
+        </div>
         <div className="device__chat">
           <div className="chat-bubble chat-bubble--coach">
             Your push volume is trending up. Move bench up five pounds if last
@@ -55,6 +62,8 @@ export function HeroDeviceMockups() {
           <span>Week 8</span>
         </header>
         <div className="device__body">
+          <p className="device__eyebrow">Progress intelligence</p>
+          <p className="device__title">Bench up 15% this month</p>
           <div className="device__stats">
             <div>
               <strong>24</strong>

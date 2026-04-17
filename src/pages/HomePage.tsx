@@ -1,20 +1,14 @@
 import { ArticleGrid } from "../components/marketing/ArticleGrid";
 import { CTASection } from "../components/marketing/CTASection";
-import { ComparisonBlock } from "../components/marketing/ComparisonBlock";
 import { EcosystemTeaser } from "../components/marketing/EcosystemTeaser";
-import { FeatureGrid } from "../components/marketing/FeatureGrid";
 import { HeroDeviceMockups } from "../components/marketing/HeroDeviceMockups";
-import { PricingPreview } from "../components/marketing/PricingPreview";
 import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
-import { SystemPillars } from "../components/marketing/SystemPillars";
-import { TestimonialGrid } from "../components/marketing/TestimonialGrid";
+import { PricingPreview } from "../components/marketing/PricingPreview";
 import { TrustBand } from "../components/marketing/TrustBand";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { SectionHeader } from "../components/ui/SectionHeader";
-import { StatBand } from "../components/ui/StatBand";
 import { insightArticles } from "../data/insights";
-import { coreFeatures, platformStats, systemPillars } from "../data/platform";
 
 export function HomePage() {
   return (
@@ -28,159 +22,144 @@ export function HomePage() {
           { label: "Join the waitlist", intent: "waitlist" },
           { label: "See how it works", to: "/product", variant: "secondary" },
         ]}
-        description="FoFit plans your week, guides you mid-workout, and shows you what moved. One system instead of five disconnected apps."
+        className="page-hero--home"
+        description="FoFit plans your week, guides you mid-workout, and shows you what moved."
         eyebrow="Premium fitness platform"
         media={<HeroDeviceMockups />}
         title={
-          <>
-            Train smarter.
-            <br />
-            Progress faster.
-            <br />
-            Built to train you — not just track you.
-          </>
+          <span className="home-hero__title-group">
+            <span>Train smarter.</span>
+            <span className="home-hero__title-accent">Progress faster.</span>
+            <span className="home-hero__support-line">Built to train you — not just track you.</span>
+          </span>
         }
       />
+
       <TrustBand />
-      <StatBand items={platformStats} />
 
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            description="Three connected layers — planning, live guidance, and progress intelligence — working together instead of asking you to stitch tools together."
-            eyebrow="The system"
-            title={
-              <>
-                A fitness platform.
-                <br />
-                Not just an app.
-              </>
-            }
-          />
-          <SystemPillars items={systemPillars} />
-        </div>
-      </section>
-
-      <section className="page-section">
-        <div className="container">
-          <ComparisonBlock
-            afterItems={[
-              "One connected system for planning, guidance, and progress",
-              "A product that adapts around the member instead of forcing generic structure",
-              "Training direction that extends beyond the session itself",
-              "A clear foundation for community, coaching, teams, and future ecosystem layers",
-            ]}
-            afterTitle="FoFit as a platform"
-            beforeItems={[
-              "Workout logging in one app, nutrition in another, and guidance nowhere",
-              "Plans that stop feeling relevant the moment real life changes",
-              "Progress data that exists without helping the next decision",
-              "No sense of where the product can grow beyond a single feature",
-            ]}
-            beforeTitle="The fragmented status quo"
-            title="Why FoFit"
-          />
-        </div>
-      </section>
-
-      <section className="page-section">
+      <section className="page-section home-section home-section--modules">
         <div className="container">
           <PlatformShowcase
-            description="Three surfaces doing the work: what to train today, what to adjust mid-session, what changed this month."
-            eyebrow="Product showcase"
+            className="platform-showcase--home"
+            description="Planning, adaptive coaching, progress intelligence, nutrition, discover, and community working like one training system instead of five disconnected tools."
+            eyebrow="Six modules. One system."
             panels={[
               {
-                caption: "Adaptive planning",
-                title: "Training blocks that reshape around the member",
+                caption: "Cypher AI",
+                description:
+                  "Adaptive guidance that adjusts loads, suggests swaps, and explains the call while you train.",
+                size: "feature",
                 stats: [
-                  { label: "Programs", value: "Custom" },
-                  { label: "Adjustments", value: "Session-aware" },
+                  { label: "Coaching", value: "Adaptive" },
+                  { label: "Timing", value: "Mid-session" },
                 ],
+                title: "Meet Cypher. Coaching that stays useful when the workout gets real.",
+                tone: "blue",
+                variant: "chat",
               },
               {
-                caption: "Guidance layer",
-                title: "Cypher keeps support close to the training moment",
+                caption: "Progress intelligence",
+                description:
+                  "Strength trends, consistency, and coverage brought together so every completed block sharpens the next one.",
+                size: "tall",
                 stats: [
-                  { label: "Coach logic", value: "24/7" },
-                  { label: "Recovery cues", value: "Live" },
-                ],
-              },
-              {
-                caption: "Performance visibility",
-                title: "Progress gets interpreted, not only recorded",
-                stats: [
-                  { label: "Tracking", value: "Multi-layer" },
                   { label: "Momentum", value: "Visible" },
+                  { label: "Tracking", value: "Compounding" },
                 ],
+                title: "Progress that tells you what changed — not just what you logged.",
+                tone: "green",
+                variant: "chart",
+              },
+              {
+                caption: "Planning",
+                description:
+                  "Programs shaped around schedule, equipment, and real training constraints before the week even starts.",
+                size: "wide",
+                stats: [
+                  { label: "Schedule fit", value: "Personalized" },
+                  { label: "Flexibility", value: "Built-in" },
+                ],
+                title: "A weekly structure you can actually follow when life is not perfectly clean.",
+                tone: "default",
+                variant: "calendar",
+              },
+              {
+                caption: "Nutrition",
+                description:
+                  "Food guidance stays close to training demand so nutrition supports the block instead of living in a separate app.",
+                stats: [
+                  { label: "Direction", value: "Training-linked" },
+                  { label: "Logging", value: "Simplified" },
+                ],
+                title: "Macros without making the system feel heavier.",
+                tone: "orange",
+                variant: "nutrition",
+              },
+              {
+                caption: "Discover",
+                description:
+                  "Find the right session, recovery flow, or goal-focused path when the original plan needs to flex.",
+                stats: [
+                  { label: "Matching", value: "Goal-based" },
+                  { label: "Recovery", value: "Included" },
+                ],
+                title: "The right next session when the week changes.",
+                tone: "violet",
+                variant: "discover",
+              },
+              {
+                caption: "Community",
+                description:
+                  "Accountability, challenges, and shared momentum that reinforce the plan instead of distracting from it.",
+                stats: [
+                  { label: "Challenges", value: "Planned" },
+                  { label: "Support", value: "Shared" },
+                ],
+                title: "Community designed to make consistency easier to keep.",
+                tone: "default",
+                variant: "community",
               },
             ]}
-            title="See the system in motion."
+            title="Everything your training needs. In one place."
           />
         </div>
       </section>
 
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            description="Planning, guidance, and progress tracking — the three layers every serious training system needs."
-            eyebrow="Platform depth"
-            title="The core modules preview"
-          />
-          <FeatureGrid items={coreFeatures.slice(0, 4)} />
-        </div>
-      </section>
-
-      <section className="page-section page-section--tight">
-        <div className="container">
-          <SectionHeader
-            align="center"
-            description="Real people. Real training blocks. Real progress numbers — before you spend a dollar."
-            eyebrow="Trust"
-            title="Built for people who train seriously"
-          />
-          <TestimonialGrid />
-        </div>
-      </section>
-
-      <section className="page-section page-section--tight">
-        <div className="container split-layout">
-          <div className="content-stack reveal">
+      <section className="page-section home-section home-section--membership">
+        <div className="container home-membership">
+          <div className="content-stack reveal home-membership__intro">
             <span className="eyebrow">Membership value</span>
-            <h2 className="section-title">A platform that pays for itself in better training decisions.</h2>
+            <h2 className="section-title">A premium system that earns its place in your training every week.</h2>
             <p className="section-description">
-              Structured training blocks, adaptive guidance, richer progress
-              visibility, and access to every ecosystem layer as it launches —
-              all under one membership.
+              Planning, adaptive guidance, progress interpretation, and future
+              ecosystem layers under one membership instead of a stack of
+              narrow tools.
             </p>
+            <div className="home-membership__points">
+              <span>Structured programming</span>
+              <span>Cypher coaching</span>
+              <span>Progress intelligence</span>
+            </div>
           </div>
-          <div className="detail-grid detail-grid--two">
-            <article className="surface-card detail-card reveal">
-              <h3>Founding-member pricing</h3>
-              <p>Lock in $14/mo for life. Price goes up at launch — founding members keep their rate forever.</p>
-            </article>
-            <article className="surface-card detail-card reveal">
-              <h3>Platform-first roadmap</h3>
-              <p>Coaching, teams, community, and premium insight layers — all on the way, all included in your membership.</p>
-            </article>
+          <div className="surface-card reveal home-membership__callout">
+            <span className="feature-card__kicker">Premium membership</span>
+            <h3>Founding members lock in $14/mo for life.</h3>
+            <p>Join now and keep the founding rate when launch pricing goes up.</p>
+            <div className="home-membership__callout-meta">
+              <strong>One membership</strong>
+              <span>Planning, guidance, progress, and future ecosystem layers.</span>
+            </div>
           </div>
+        </div>
+        <div className="container">
+          <PricingPreview className="pricing-preview--home" />
         </div>
       </section>
 
-      <section className="page-section">
+      <section className="page-section home-section">
         <div className="container">
           <SectionHeader
-            description="Start free. Founding members lock in $14/mo for life. Team and coaching tiers come later."
-            eyebrow="Pricing preview"
-            title="Simple now. Scalable later."
-          />
-          <PricingPreview />
-        </div>
-      </section>
-
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            description="Practical reads on training, nutrition, recovery, and performance — written for people who take their results seriously."
+            description="Practical reads on training, nutrition, recovery, and performance that deepen the system without taking over the page."
             eyebrow="Insights preview"
             title="Training, nutrition, recovery, performance"
           />
@@ -188,13 +167,17 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            description="Coaches, community, store, and teams — each layer is being built deliberately so the whole ecosystem grows without losing focus."
-            eyebrow="Ecosystem"
-            title="Built to expand beyond one feature set"
-          />
+      <section className="page-section home-section">
+        <div className="container home-ecosystem">
+          <div className="content-stack reveal">
+            <span className="eyebrow">Ecosystem</span>
+            <h2 className="section-title">One training home now. More useful layers as FoFit grows.</h2>
+            <p className="section-description">
+              Coaching, teams, store, and community should feel like natural
+              extensions of the product — not distractions bolted on for the
+              sake of feature count.
+            </p>
+          </div>
           <EcosystemTeaser />
         </div>
       </section>

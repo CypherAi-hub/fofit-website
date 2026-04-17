@@ -40,7 +40,7 @@ export function AboutPage() {
       />
       <PageHero
         actions={[
-          { label: "Join early access", intent: "waitlist" },
+          { label: "Join the waitlist", intent: "waitlist" },
           { label: "Explore updates", to: "/updates", variant: "secondary" },
         ]}
         compact

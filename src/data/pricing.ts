@@ -35,7 +35,7 @@ export const pricingPlans: PricingPlan[] = [
     annual: "$119",
     annualNote: "$9.92/mo billed annually",
     featured: true,
-    cta: "Get Early Access",
+    cta: "Join the waitlist",
     description:
       "For athletes and committed lifters who want adaptive planning, deeper feedback, and a more connected training system.",
     features: [

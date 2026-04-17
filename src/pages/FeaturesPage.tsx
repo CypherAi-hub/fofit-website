@@ -16,7 +16,7 @@ export function FeaturesPage() {
       />
       <PageHero
         actions={[
-          { label: "Get early access", intent: "waitlist" },
+          { label: "Join the waitlist", intent: "waitlist" },
           { label: "Read the product story", to: "/product", variant: "secondary" },
         ]}
         compact

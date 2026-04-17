@@ -18,6 +18,7 @@ type PageHeroProps = {
   actions?: HeroAction[];
   media?: ReactNode;
   compact?: boolean;
+  className?: string;
 };
 
 export function PageHero({
@@ -27,9 +28,10 @@ export function PageHero({
   actions = [],
   media,
   compact = false,
+  className = "",
 }: PageHeroProps) {
   return (
-    <section className={`page-hero ${compact ? "page-hero--compact" : ""}`}>
+    <section className={`page-hero ${compact ? "page-hero--compact" : ""} ${className}`.trim()}>
       <div className="hero-orb hero-orb--one" />
       <div className="hero-orb hero-orb--two" />
       <div className="hero-gridlines" />
