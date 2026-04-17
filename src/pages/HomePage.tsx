@@ -25,6 +25,7 @@ export function HomePage() {
         className="page-hero--home"
         description="FoFit plans your week, guides you mid-workout, and shows you what moved."
         eyebrow="Premium fitness platform"
+        mediaClassName="page-hero__media--home"
         media={<HeroDeviceMockups />}
         title={
           <span className="home-hero__title-group">
@@ -126,37 +127,39 @@ export function HomePage() {
       </section>
 
       <section className="page-section home-section home-section--membership">
-        <div className="container home-membership">
-          <div className="content-stack reveal home-membership__intro">
-            <span className="eyebrow">Membership value</span>
-            <h2 className="section-title">A premium system that earns its place in your training every week.</h2>
-            <p className="section-description">
-              Planning, adaptive guidance, progress interpretation, and future
-              ecosystem layers under one membership instead of a stack of
-              narrow tools.
-            </p>
-            <div className="home-membership__points">
-              <span>Structured programming</span>
-              <span>Cypher coaching</span>
-              <span>Progress intelligence</span>
-            </div>
-          </div>
-          <div className="surface-card reveal home-membership__callout">
-            <span className="feature-card__kicker">Premium membership</span>
-            <h3>Founding members lock in $14/mo for life.</h3>
-            <p>Join now and keep the founding rate when launch pricing goes up.</p>
-            <div className="home-membership__callout-meta">
-              <strong>One membership</strong>
-              <span>Planning, guidance, progress, and future ecosystem layers.</span>
-            </div>
-          </div>
-        </div>
         <div className="container">
-          <PricingPreview className="pricing-preview--home" />
+          <div className="home-pricing-shell">
+            <div className="home-membership">
+              <div className="content-stack reveal home-membership__intro">
+                <span className="eyebrow">Membership value</span>
+                <h2 className="section-title">A premium system that earns its place in your training every week.</h2>
+                <p className="section-description">
+                  Planning, adaptive guidance, progress interpretation, and future
+                  ecosystem layers under one membership instead of a stack of
+                  narrow tools.
+                </p>
+                <div className="home-membership__points">
+                  <span>Structured programming</span>
+                  <span>Cypher coaching</span>
+                  <span>Progress intelligence</span>
+                </div>
+              </div>
+              <div className="surface-card reveal home-membership__callout">
+                <span className="feature-card__kicker">Premium membership</span>
+                <h3>Founding members lock in $14/mo for life.</h3>
+                <p>Join now and keep the founding rate when launch pricing goes up.</p>
+                <div className="home-membership__callout-meta">
+                  <strong>One membership</strong>
+                  <span>Planning, guidance, progress, and future ecosystem layers.</span>
+                </div>
+              </div>
+            </div>
+            <PricingPreview className="pricing-preview--home" />
+          </div>
         </div>
       </section>
 
-      <section className="page-section home-section">
+      <section className="page-section home-section home-section--insights">
         <div className="container">
           <SectionHeader
             description="Practical reads on training, nutrition, recovery, and performance that deepen the system without taking over the page."
@@ -167,7 +170,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="page-section home-section">
+      <section className="page-section home-section home-section--ecosystem">
         <div className="container home-ecosystem">
           <div className="content-stack reveal">
             <span className="eyebrow">Ecosystem</span>

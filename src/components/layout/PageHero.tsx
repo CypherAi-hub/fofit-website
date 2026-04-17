@@ -19,6 +19,7 @@ type PageHeroProps = {
   media?: ReactNode;
   compact?: boolean;
   className?: string;
+  mediaClassName?: string;
 };
 
 export function PageHero({
@@ -29,6 +30,7 @@ export function PageHero({
   media,
   compact = false,
   className = "",
+  mediaClassName = "",
 }: PageHeroProps) {
   return (
     <section className={`page-hero ${compact ? "page-hero--compact" : ""} ${className}`.trim()}>
@@ -66,7 +68,11 @@ export function PageHero({
             </div>
           ) : null}
         </div>
-        {media ? <div className="page-hero__media reveal reveal--delay-2">{media}</div> : null}
+        {media ? (
+          <div className={`page-hero__media reveal reveal--delay-2 ${mediaClassName}`.trim()}>
+            {media}
+          </div>
+        ) : null}
       </div>
     </section>
   );
