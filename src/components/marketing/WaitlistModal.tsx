@@ -8,6 +8,7 @@ import {
   waitlistSuccessPoints,
 } from "../../data/waitlist";
 import { Button } from "../ui/Button";
+import { joinWaitlist } from "../../lib/waitlist";
 
 type WaitlistStatus = "idle" | "submitting" | "success" | "error";
 
@@ -53,6 +54,7 @@ export function WaitlistModal() {
   const [status, setStatus] = useState<WaitlistStatus>("idle");
   const [error, setError] = useState<string | null>(null);
   const [savedMode, setSavedMode] = useState<"remote" | "local" | null>(null);
+  const [realReferralCode, setRealReferralCode] = useState<string | null>(null);
   const firstInputRef = useRef<HTMLInputElement | null>(null);
   const modalShellRef = useRef<HTMLDivElement | null>(null);
   const lastActiveElementRef = useRef<HTMLElement | null>(null);
@@ -152,6 +154,7 @@ export function WaitlistModal() {
       setStep(0);
       setStatus("idle");
       setError(null);
+      setRealReferralCode(null);
     }
   }, [isOpen]);
 
@@ -164,7 +167,6 @@ export function WaitlistModal() {
     return null;
   }
 
-  const endpoint = import.meta.env.VITE_WAITLIST_ENDPOINT;
   const firstNameValid = form.firstName.trim().length >= 2;
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
   const formValid = firstNameValid && emailValid;
@@ -182,58 +184,18 @@ export function WaitlistModal() {
     setStatus("submitting");
     setError(null);
 
-    const payload = {
-      ...form,
-      source: "website",
-      referralCode,
-      submittedAt: new Date().toISOString(),
-    };
+    const result = await joinWaitlist(form.firstName.trim(), form.email.trim());
 
-    try {
-      if (endpoint) {
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
-
-        if (!response.ok) {
-          throw new Error("Remote waitlist request failed");
-        }
-
-        setSavedMode("remote");
-      } else {
-        const existing = window.localStorage.getItem("fofit-waitlist-submissions");
-        const submissions = existing ? (JSON.parse(existing) as typeof payload[]) : [];
-        submissions.push(payload);
-        window.localStorage.setItem(
-          "fofit-waitlist-submissions",
-          JSON.stringify(submissions),
-        );
-        setSavedMode("local");
-      }
-
+    if (result.kind === "success" || result.kind === "already_joined") {
+      setRealReferralCode(result.referralCode);
+      setSavedMode("remote");
       setJoinedEmail(form.email.trim());
       setStatus("success");
       setStep(2);
       window.localStorage.removeItem(STORAGE_KEY);
-    } catch {
+    } else {
       setStatus("error");
-      setError(
-        "We hit a snag saving your request. You can still continue and we will keep your draft locally in this browser.",
-      );
-      const existing = window.localStorage.getItem("fofit-waitlist-submissions");
-      const submissions = existing ? (JSON.parse(existing) as typeof payload[]) : [];
-      submissions.push(payload);
-      window.localStorage.setItem(
-        "fofit-waitlist-submissions",
-        JSON.stringify(submissions),
-      );
-      setSavedMode("local");
-      setJoinedEmail(form.email.trim());
-      setStep(2);
+      setError(result.message);
     }
   }
 
@@ -397,7 +359,7 @@ export function WaitlistModal() {
               <Button onClick={() => setStep(0)} variant="ghost">
                 Back
               </Button>
-              <Button onClick={handleSubmit} size="lg">
+              <Button disabled={status === "submitting"} onClick={handleSubmit} size="lg">
                 {status === "submitting" ? "Saving..." : "Join waitlist"}
               </Button>
             </div>
@@ -414,9 +376,7 @@ export function WaitlistModal() {
               {form.firstName || "You"} now have a spot in FoFit early access.
             </h2>
             <p id={WAITLIST_DESCRIPTION_IDS[2]}>
-              {savedMode === "remote"
-                ? "Your request was sent successfully and you’ll be included in the next early-access wave."
-                : "Your request has been saved in local fallback mode for now. Add a live backend endpoint when you’re ready and this flow can submit remotely without redesign."}
+              Your request was sent successfully and you’ll be included in the next early-access wave.
             </p>
             <div className="waitlist-success__meta">
               <div>
@@ -425,17 +385,13 @@ export function WaitlistModal() {
               </div>
               <div>
                 <span>Referral code</span>
-                <strong>{referralCode}</strong>
+                <strong>{realReferralCode ?? referralCode}</strong>
               </div>
             </div>
             <div className="waitlist-success__list">
               {waitlistSuccessPoints.map((point) => (
                 <div key={point}>{point}</div>
               ))}
-            </div>
-            <div className="waitlist-inline-note">
-              Live endpoint support: set <code>VITE_WAITLIST_ENDPOINT</code> to wire
-              this flow into your backend.
             </div>
             <div className="waitlist-actions">
               <Button onClick={close} size="lg">

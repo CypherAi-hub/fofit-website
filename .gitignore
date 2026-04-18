@@ -1,6 +1,7 @@
 dist/
 node_modules/
 .DS_Store
+.env.local
 
 # a11y audit artifacts
 axe-before.json
