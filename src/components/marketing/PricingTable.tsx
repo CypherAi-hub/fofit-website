@@ -6,7 +6,8 @@ import { Card } from "../ui/Card";
 export function PricingTable() {
   const [annual, setAnnual] = useState(false);
   const [starterPlan, premiumPlan] = pricingPlans;
-  const foundingPrice = annual ? "$119" : "$14";
+  const foundingPrice = annual ? "$120" : "$14";
+  const foundingUnit = annual ? "/yr" : "/mo";
 
   return (
     <div className="pricing-table">
@@ -37,7 +38,10 @@ export function PricingTable() {
           >
             <div className="pricing-card__top">
               <span className="pricing-card__name">{plan.name}</span>
-              <strong>{annual ? plan.annual : plan.monthly}</strong>
+              <strong>
+                {plan.monthly === "$0" ? "Free" : (annual ? plan.annual : plan.monthly)}
+                {plan.monthly !== "$0" && <span className="pricing-card__unit">{annual ? "/yr" : "/mo"}</span>}
+              </strong>
               <p>{annual ? plan.annualNote : plan.tagline}</p>
             </div>
             <p className="pricing-card__description">{plan.description}</p>
@@ -55,9 +59,11 @@ export function PricingTable() {
         ))}
         <Card className="pricing-card pricing-card--editorial reveal">
           <div className="pricing-card__top">
-            <span className="pricing-card__badge">Founding class</span>
             <span className="pricing-card__name">Founding</span>
-            <strong>{foundingPrice}</strong>
+            <strong>
+              {foundingPrice}
+              <span className="pricing-card__unit">{foundingUnit}</span>
+            </strong>
             <p>The first 500 members lock the full Premium product at this rate for life.</p>
           </div>
           <p className="pricing-card__description">
@@ -70,7 +76,7 @@ export function PricingTable() {
             <li>Named as an early supporter inside the app</li>
           </ul>
           <div className="pricing-card__meta">
-            <span>{annual ? "$9.92/mo billed annually" : "Month to month"}</span>
+            <span>{annual ? "$10/mo billed annually" : "Month to month"}</span>
             <span>Rate holds for founding members</span>
           </div>
           <EarlyAccessButton>
@@ -80,7 +86,7 @@ export function PricingTable() {
       </div>
 
       <p className="pricing-table__footer">
-        HSA/FSA eligible · cancel anytime · export your data in one tap
+        Cancel anytime · export your data in one tap
       </p>
 
       <div className="comparison-table">

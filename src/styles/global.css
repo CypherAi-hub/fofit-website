@@ -324,6 +324,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  width: fit-content;
   padding: 0.45rem 0.8rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1706,6 +1707,15 @@ main {
   gap: 0.45rem;
   color: var(--text-soft);
   font-size: 0.72rem;
+}
+
+.showcase-macro__meals {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.35rem;
+  color: var(--text-soft);
+  font-size: 0.68rem;
 }
 
 .showcase-discover__match {

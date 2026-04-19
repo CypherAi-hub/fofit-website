@@ -38,7 +38,7 @@ export type ProofOutcome = {
 export const heroFigure: FigureAsset = {
   src: appScreens.workout.device.src,
   alt: appScreens.workout.device.alt,
-  label: "FIG 00.1",
+  label: "",
   caption: "Active workout logging — Incline Dumbbell Press, set 2 of 4.",
   frame: "bare",
   tilt: "right",
@@ -48,7 +48,7 @@ export const heroFigure: FigureAsset = {
 export const planFigure: FigureAsset = {
   src: appScreens.discover.device.src,
   alt: appScreens.discover.device.alt,
-  label: "FIG 02.1",
+  label: "",
   caption: "Workout discovery tailored to today's plan.",
   frame: "bare",
   tilt: "left",
@@ -58,7 +58,7 @@ export const planFigure: FigureAsset = {
 export const transcriptFigure: FigureAsset = {
   src: appScreens.cypher.device.src,
   alt: appScreens.cypher.device.alt,
-  label: "FIG 03.1",
+  label: "",
   caption: "Cypher responding to a tired-morning training question.",
   frame: "bare",
   tilt: "flat",
@@ -68,7 +68,7 @@ export const transcriptFigure: FigureAsset = {
 export const nutritionFigure: FigureAsset = {
   src: nutritionDashboard,
   alt: "FoFit nutrition dashboard showing calorie and macro tracking tied to the training system.",
-  label: "FIG 04.3",
+  label: "",
   caption: "Nutrition that stays close to the training block instead of drifting into a separate app.",
   frame: "phone",
   tilt: "right",
@@ -77,7 +77,7 @@ export const nutritionFigure: FigureAsset = {
 export const progressFigureAsset: FigureAsset = {
   src: appScreens.journey.device.src,
   alt: appScreens.journey.device.alt,
-  label: "FIG 05.1",
+  label: "",
   caption: "47 sessions strong — Alex Chen's training journey.",
   frame: "bare",
   tilt: "flat",

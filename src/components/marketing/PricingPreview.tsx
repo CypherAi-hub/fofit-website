@@ -15,7 +15,7 @@ export function PricingPreview({ className = "" }: PricingPreviewProps) {
           key={plan.name}
         >
           <div className="pricing-card__top">
-            <span className="pricing-card__badge">{plan.featured ? "Founding member" : "Starter"}</span>
+            {plan.featured ? <span className="pricing-card__badge">Founding member</span> : null}
             <span className="pricing-card__name">{plan.name}</span>
             <strong>{plan.monthly}</strong>
             <span className="pricing-card__billing">{plan.featured ? "/mo for life" : "to start"}</span>

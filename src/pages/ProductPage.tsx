@@ -25,19 +25,19 @@ const operatingLayers = [
 const productFigures = [
   {
     asset: planFigure,
-    eyebrow: "FIG 02.1",
+    eyebrow: "Plan",
     title: "The plan starts with reality.",
     description: "Seven days, forty-one exercises, one structure built from the week you actually have.",
   },
   {
     asset: transcriptFigure,
-    eyebrow: "FIG 02.2",
+    eyebrow: "Cypher",
     title: "Cypher stays inside the product.",
     description: "The AI does not live as a floating promise. It sits in the workflow and answers the next real question.",
   },
   {
     asset: progressFigureAsset,
-    eyebrow: "FIG 02.3",
+    eyebrow: "Progress",
     title: "Progress is an operating surface.",
     description: "The product explains what changed and what should move next instead of handing you a graph and leaving.",
   },

@@ -134,7 +134,7 @@ export function ProductVideo() {
           <FigureLabel
             caption="Thirty seconds across splash, discovery, Cypher, workout logging, and journey."
             className="product-video__label"
-            label="FIG 01.1"
+            label=""
           />
         </div>
       </div>

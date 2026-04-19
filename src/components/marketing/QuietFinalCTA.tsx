@@ -6,11 +6,11 @@ export function QuietFinalCTA() {
     <section className="quiet-final-cta">
       <div className="quiet-final-cta__inner">
         <EditorialHeading
-          accent="differently"
+          accent="honestly"
           as="p"
           className="quiet-final-cta__line"
         >
-          Train {"{italic}"}. Or keep tracking.
+          {"Train {italic}. Or keep tracking."}
         </EditorialHeading>
 
         <p className="quiet-final-cta__sub">

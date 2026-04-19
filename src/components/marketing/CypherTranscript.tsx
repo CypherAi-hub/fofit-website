@@ -41,7 +41,7 @@ export function CypherTranscript({ turns }: CypherTranscriptProps) {
           <FigureLabel
             caption="A real Cypher thread. The decisions above are specific because the product remembers context."
             className="transcript-card__label"
-            label="FIG 02.1"
+            label=""
           />
         </div>
       </div>

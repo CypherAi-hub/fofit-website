@@ -90,7 +90,7 @@ function NutritionMini() {
     <div className="showcase-mini showcase-mini--nutrition">
       <div className="device__header">
         <span>Fueling</span>
-        <span>Today</span>
+        <span>1,820 / 2,200 cal</span>
       </div>
       <div className="showcase-macro__bars">
         <span />
@@ -98,9 +98,14 @@ function NutritionMini() {
         <span />
       </div>
       <div className="showcase-macro__labels">
-        <span>P 165g</span>
-        <span>C 220g</span>
-        <span>F 58g</span>
+        <span>P 142/180g</span>
+        <span>C 168/220g</span>
+        <span>F 58/75g</span>
+      </div>
+      <div className="showcase-macro__meals">
+        <span>Breakfast · 520 cal</span>
+        <span>Lunch · 760 cal</span>
+        <span style={{ opacity: 0.4 }}>Dinner · —</span>
       </div>
     </div>
   );

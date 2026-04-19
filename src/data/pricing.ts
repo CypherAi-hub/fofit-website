@@ -32,8 +32,8 @@ export const pricingPlans: PricingPlan[] = [
     name: "Premium",
     tagline: "The full FoFit system",
     monthly: "$14",
-    annual: "$119",
-    annualNote: "$9.92/mo billed annually",
+    annual: "$120",
+    annualNote: "$10/mo billed annually",
     featured: true,
     cta: "Join the waitlist",
     description:
