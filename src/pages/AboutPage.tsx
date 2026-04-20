@@ -1,32 +1,14 @@
 import { CTASection } from "../components/marketing/CTASection";
+import { AIWorkforce } from "../components/marketing/AIWorkforce";
 import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { DeviceFigure } from "../components/marketing/DeviceFigure";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Card } from "../components/ui/Card";
 import { EditorialHeading } from "../components/ui/EditorialHeading";
-import { SectionHeader } from "../components/ui/SectionHeader";
 import { heroFigure } from "../data/editorial";
 import { roadmapThemes } from "../data/updates";
 
-const principles = [
-  {
-    title: "Build around real training behavior",
-    description: "Structure should fit how people actually train, recover, travel, and stay consistent.",
-  },
-  {
-    title: "Keep guidance practical",
-    description: "Advice matters only if it helps during the session and holds up after the workout ends.",
-  },
-  {
-    title: "Treat depth as trust",
-    description: "The product should show its logic clearly enough that a serious athlete can believe it quickly.",
-  },
-  {
-    title: "Expand without losing focus",
-    description: "Coaches, teams, and community should extend the training system instead of splintering it.",
-  },
-] as const;
 
 export function AboutPage() {
   return (
@@ -71,23 +53,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="page-section editorial-section">
-        <div className="container">
-          <SectionHeader
-            description="Four commitments that shape every decision about the product."
-            eyebrow="Principles"
-            title="What guides the company"
-          />
-          <div className="detail-grid">
-            {principles.map((principle) => (
-              <Card className="detail-card reveal editorial-card" key={principle.title}>
-                <h3>{principle.title}</h3>
-                <p>{principle.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <AIWorkforce />
 
       <section className="page-section editorial-section editorial-section--tight">
         <div className="container split-layout">

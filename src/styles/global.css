@@ -3316,3 +3316,254 @@ code {
     transform: none !important;
   }
 }
+
+/* AI Workforce — About page */
+.ai-workforce {
+  --cypher-accent: #E8E4D8;
+  --casey-accent: #4A7CFF;
+  --avery-accent: #C65B7C;
+  --staff-card-bg: #131315;
+  --staff-card-inner: #18181B;
+  --staff-border: rgba(245, 242, 236, 0.10);
+  --staff-border-strong: rgba(245, 242, 236, 0.18);
+  --staff-fg-dim: rgba(245, 242, 236, 0.55);
+  --staff-fg-faint: rgba(245, 242, 236, 0.28);
+  --staff-fg-whisper: rgba(245, 242, 236, 0.14);
+
+  position: relative;
+  padding: clamp(3rem, 7vw, 5.5rem) 0;
+}
+
+.ai-workforce::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(74, 124, 255, 0.06), transparent 50%),
+    radial-gradient(ellipse at 80% 85%, rgba(198, 91, 124, 0.06), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ai-workforce > * {
+  position: relative;
+  z-index: 1;
+}
+
+.ai-workforce__intro {
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  padding: 0 1.25rem;
+  text-align: left;
+}
+
+.ai-workforce__headline {
+  font-family: var(--font-display-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: var(--text-strong);
+  margin: 0.75rem 0 1rem;
+}
+
+.ai-workforce__headline em {
+  font-style: italic;
+  color: #2A66FF;
+}
+
+.ai-workforce__sub {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0;
+}
+
+.ai-workforce__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+@media (max-width: 960px) {
+  .ai-workforce__grid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    gap: 1.25rem;
+  }
+}
+
+.staff-card {
+  background: var(--staff-card-bg);
+  border: 1px solid var(--staff-border);
+  border-radius: 2px;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: staffCardRise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  transition:
+    transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.4s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--staff-border-strong);
+}
+
+.staff-card:nth-child(1) { animation-delay: 0.1s; }
+.staff-card:nth-child(2) { animation-delay: 0.25s; }
+.staff-card:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes staffCardRise {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .staff-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.staff-card__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--staff-border);
+  font-family: var(--font-label-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--staff-fg-dim);
+}
+
+.staff-card__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.staff-card__glyph {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--staff-card-inner);
+}
+
+.staff-card__glyph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, var(--staff-fg-whisper) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--staff-fg-whisper) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.staff-card__glyph svg {
+  position: relative;
+  width: 62%;
+  height: auto;
+  z-index: 2;
+}
+
+.staff-card__body {
+  padding: 22px 18px 16px;
+  border-top: 1px solid var(--staff-border);
+}
+
+.staff-card__name {
+  font-family: var(--font-display-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-bottom: 10px;
+}
+
+.staff-card__role {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--staff-fg-dim);
+}
+
+.staff-card__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  border-top: 1px solid var(--staff-border);
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--staff-fg-faint);
+}
+
+.staff-card--cypher .staff-card__dot {
+  background: var(--cypher-accent);
+  box-shadow: 0 0 12px rgba(232, 228, 216, 0.4);
+}
+.staff-card--casey .staff-card__dot {
+  background: var(--casey-accent);
+  box-shadow: 0 0 12px rgba(74, 124, 255, 0.5);
+}
+.staff-card--avery .staff-card__dot {
+  background: var(--avery-accent);
+  box-shadow: 0 0 12px rgba(198, 91, 124, 0.5);
+}
+
+.staff-card--cypher .staff-card__name { color: var(--cypher-accent); }
+.staff-card--casey .staff-card__name { color: var(--casey-accent); }
+.staff-card--avery .staff-card__name { color: var(--avery-accent); }
+
+.staff-card--cypher .staff-card__glyph svg { color: var(--cypher-accent); }
+.staff-card--casey .staff-card__glyph svg { color: var(--casey-accent); }
+.staff-card--avery .staff-card__glyph svg { color: var(--avery-accent); }
+
+.staff-card--cypher .staff-card__glyph {
+  background: radial-gradient(circle at 50% 40%, rgba(232, 228, 216, 0.05), var(--staff-card-inner) 70%);
+}
+.staff-card--casey .staff-card__glyph {
+  background: radial-gradient(circle at 50% 40%, rgba(74, 124, 255, 0.12), var(--staff-card-inner) 70%);
+}
+.staff-card--avery .staff-card__glyph {
+  background: radial-gradient(circle at 50% 40%, rgba(198, 91, 124, 0.12), var(--staff-card-inner) 70%);
+}
+
+.ai-workforce__founder {
+  max-width: 1180px;
+  margin: 3rem auto 0;
+  padding: 0 1.25rem;
+  text-align: center;
+  font-family: var(--font-display-serif);
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-style: normal;
+}
+
+.ai-workforce__founder em {
+  font-style: italic;
+  color: #2A66FF;
+}

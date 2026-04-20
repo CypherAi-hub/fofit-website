@@ -1,6 +1,5 @@
-import cypherNutritionThread from "../assets/editorial/cypher-nutrition-thread.png";
-import nutritionDashboard from "../assets/editorial/nutrition-dashboard.jpg";
 import { appScreens } from "../assets/brand/manifest";
+import { realAppScreens } from "./appScreens";
 
 export type FigureAsset = {
   alt: string;
@@ -36,40 +35,37 @@ export type ProofOutcome = {
 };
 
 export const heroFigure: FigureAsset = {
-  src: appScreens.workout.device.src,
-  alt: appScreens.workout.device.alt,
+  src: realAppScreens.workoutHome.src,
+  alt: realAppScreens.workoutHome.alt,
   label: "",
   caption: "Active workout logging — Incline Dumbbell Press, set 2 of 4.",
   frame: "bare",
   tilt: "right",
-  treatment: appScreens.workout.device.treatment,
 };
 
 export const planFigure: FigureAsset = {
-  src: appScreens.discover.device.src,
-  alt: appScreens.discover.device.alt,
+  src: realAppScreens.discoverPlan.src,
+  alt: realAppScreens.discoverPlan.alt,
   label: "",
   caption: "Workout discovery tailored to today's plan.",
   frame: "bare",
   tilt: "left",
-  treatment: appScreens.discover.device.treatment,
 };
 
 export const transcriptFigure: FigureAsset = {
-  src: appScreens.cypher.device.src,
-  alt: appScreens.cypher.device.alt,
+  src: realAppScreens.cypherBrief.src,
+  alt: realAppScreens.cypherBrief.alt,
   label: "",
   caption: "Cypher responding to a tired-morning training question.",
   frame: "bare",
   tilt: "flat",
-  treatment: appScreens.cypher.device.treatment,
 };
 
 export const nutritionFigure: FigureAsset = {
-  src: nutritionDashboard,
-  alt: "FoFit nutrition dashboard showing calorie and macro tracking tied to the training system.",
+  src: realAppScreens.nutritionTracking.src,
+  alt: realAppScreens.nutritionTracking.alt,
   label: "",
-  caption: "Nutrition that stays close to the training block instead of drifting into a separate app.",
+  caption: "Nutrition that stays close to the training block. Ring on the left, macros on the right, meals below.",
   frame: "phone",
   tilt: "right",
 };

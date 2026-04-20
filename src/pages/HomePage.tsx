@@ -14,7 +14,6 @@ import { PageMeta } from "../components/layout/PageMeta";
 import { EditorialHeading } from "../components/ui/EditorialHeading";
 import { Link } from "react-router-dom";
 import {
-  cypherTranscript,
   dailyLoopFigures,
   personalizationFacts,
   progressFigureAsset,
@@ -72,7 +71,7 @@ export function HomePage() {
 
       <ProductVideo />
 
-      <CypherTranscript turns={cypherTranscript} />
+      <CypherTranscript />
 
       <section className="page-section editorial-section">
         <div className="container">

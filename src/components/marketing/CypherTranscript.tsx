@@ -1,12 +1,18 @@
 import { ChapterIntro } from "./ChapterIntro";
+import { DeviceFigure } from "./DeviceFigure";
 import { FigureLabel } from "./FigureLabel";
-import type { TranscriptTurn } from "../../data/editorial";
+import { realAppScreens } from "../../data/appScreens";
 
-type CypherTranscriptProps = {
-  turns: TranscriptTurn[];
+const cypherBriefFigure = {
+  src: realAppScreens.cypherBrief.src,
+  alt: realAppScreens.cypherBrief.alt,
+  label: "",
+  caption: "The Cypher Brief that shows up in the app every morning. Real context. Real session priorities. Real voice.",
+  frame: "bare" as const,
+  tilt: "flat" as const,
 };
 
-export function CypherTranscript({ turns }: CypherTranscriptProps) {
+export function CypherTranscript() {
   return (
     <section className="page-section editorial-section editorial-section--transcript">
       <div className="container">
@@ -21,25 +27,9 @@ export function CypherTranscript({ turns }: CypherTranscriptProps) {
             }
             description="Cypher remembers the athlete, the block, and the cost of the next call. Here is a real thread, rendered without marketing adjectives."
           />
-          <div className="transcript-card__meta">
-            <span aria-hidden="true" />
-            <span>06:42 / Apr 16 / unedited</span>
-            <span aria-hidden="true" />
-          </div>
-          <div className="transcript-thread" role="list">
-            {turns.map((turn, index) => (
-              <div
-                className={`transcript-thread__turn transcript-thread__turn--${turn.speaker}`}
-                key={`${turn.speaker}-${index}`}
-                role="listitem"
-              >
-                {turn.speaker === "cypher" ? <span className="transcript-thread__speaker">Cypher</span> : null}
-                <p>{turn.text}</p>
-              </div>
-            ))}
-          </div>
+          <DeviceFigure asset={cypherBriefFigure} className="transcript-card__device" />
           <FigureLabel
-            caption="A real Cypher thread. The decisions above are specific because the product remembers context."
+            caption="The Cypher Brief that shows up in the app every morning. Real context. Real session priorities. Real voice."
             className="transcript-card__label"
             label=""
           />
