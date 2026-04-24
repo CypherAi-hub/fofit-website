@@ -11,6 +11,7 @@ import workoutDevice from "./app-screens/device/04-workout.png";
 import journeyDevice from "./app-screens/device/05-journey.png";
 
 import heroLoop from "./video/hero-loop.mp4";
+import heroLoopPoster from "./video/hero-loop-poster.jpg";
 import socialSquare from "./video/social-square.mp4";
 import socialVertical from "./video/social-vertical.mp4";
 
@@ -73,7 +74,7 @@ export const appScreens = {
 export const brandVideos = {
   heroLoop: {
     aspect: "landscape",
-    poster: workoutDevice,
+    poster: heroLoopPoster,
     src: heroLoop,
   },
   socialSquare: {
