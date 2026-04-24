@@ -4175,3 +4175,100 @@ code {
     margin: 0 auto;
   }
 }
+
+.user-menu {
+  position: relative;
+}
+
+.user-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(135deg, #2a66ff, #58d2ff);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.user-menu__trigger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px -14px rgba(42, 102, 255, 0.65);
+}
+
+.user-menu__panel {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  right: 0;
+  min-width: 16rem;
+  display: grid;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(7, 8, 12, 0.98);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.8);
+  padding: 0.5rem;
+  z-index: 20;
+}
+
+.user-menu__header {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.75rem 0.9rem 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 0.25rem;
+}
+
+.user-menu__label {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.user-menu__header strong {
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  font-weight: 500;
+  color: var(--text-primary, #fafafa);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-menu__item {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: transparent;
+  color: var(--text-primary, #fafafa);
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 120ms ease;
+}
+
+.user-menu__item:hover,
+.user-menu__item:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
+
+.user-menu__item--danger {
+  color: #fca5a5;
+}
+
+.user-menu__item--danger:hover {
+  background: rgba(239, 68, 68, 0.12);
+}
