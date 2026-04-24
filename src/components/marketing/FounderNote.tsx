@@ -1,8 +1,7 @@
 import { ChapterIntro } from "./ChapterIntro";
 
-// TODO(user): replace placeholder LinkedIn href + IG handle before launch.
-const FOUNDER_LINKEDIN_URL = "#";
-const FOUNDER_INSTAGRAM_URL = "#";
+const FOUNDER_LINKEDIN_URL = "https://www.linkedin.com/in/kenan-larry-993350332";
+const FOUNDER_INSTAGRAM_URL = "https://www.instagram.com/jusssskenan";
 
 export function FounderNote() {
   return (
