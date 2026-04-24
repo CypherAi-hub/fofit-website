@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Button } from "../components/ui/Button";
 import { useAuth } from "../lib/auth-context";
+import { useWaitlistClaim } from "../lib/waitlist-claim";
 
 const FOUNDER_LINKEDIN_URL = "https://www.linkedin.com/in/kenan-larry-993350332";
 
 export function WelcomePage() {
   const { user } = useAuth();
+  useWaitlistClaim();
   const name =
     (user?.user_metadata?.full_name as string | undefined) ||
     (user?.user_metadata?.name as string | undefined) ||

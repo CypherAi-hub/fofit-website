@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Button } from "../components/ui/Button";
 import { useAuth } from "../lib/auth-context";
+import { useWaitlistClaim } from "../lib/waitlist-claim";
 
 export function DashboardPage() {
   const navigate = useNavigate();
   const { session, user, loading, signOut } = useAuth();
+  useWaitlistClaim();
 
   useEffect(() => {
     if (!loading && !session) {
