@@ -8,6 +8,31 @@ export type FAQGroup = {
 
 export const faqGroups: FAQGroup[] = [
   {
+    title: "Launch",
+    items: [
+      {
+        question: "Is FoFit live yet?",
+        answer:
+          "The mobile app is in closed beta. The waitlist is open today, and founding members get access first as TestFlight invites go out.",
+      },
+      {
+        question: "When does it launch?",
+        answer:
+          "Public launch is targeted for summer 2026. Waitlist signups are notified the moment a TestFlight seat opens, well before the wider release.",
+      },
+      {
+        question: "Is it free?",
+        answer:
+          "Starter is always free — workout logging, structured starter plans, and basic progress trends. Premium is $14/month (or $119/year), and founding members lock that rate for life.",
+      },
+      {
+        question: "Who is it for?",
+        answer:
+          "Student athletes first. FoFit is built for people training around class, practice, travel, and the rest of a real week. Lifters and coaches fit too, but the product voice is written for the athlete-in-season.",
+      },
+    ],
+  },
+  {
     title: "Product",
     items: [
       {
