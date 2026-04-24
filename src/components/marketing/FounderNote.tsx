@@ -34,7 +34,7 @@ export function FounderNote() {
             <a
               className="founder-note__link"
               href={FOUNDER_LINKEDIN_URL}
-              rel="noreferrer"
+              rel="noopener noreferrer"
               target="_blank"
             >
               LinkedIn →
@@ -42,7 +42,7 @@ export function FounderNote() {
             <a
               className="founder-note__link"
               href={FOUNDER_INSTAGRAM_URL}
-              rel="noreferrer"
+              rel="noopener noreferrer"
               target="_blank"
             >
               Instagram →
