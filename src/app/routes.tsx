@@ -12,6 +12,7 @@ import { CoachesPage } from "../pages/CoachesPage";
 import { StorePage } from "../pages/StorePage";
 import { TeamsPage } from "../pages/TeamsPage";
 import { ShopPage, NutritionPage } from "../pages/ComingSoonPage";
+import { SubmissionPreviewPage } from "../pages/SubmissionPreviewPage";
 import { SignupPage } from "../pages/SignupPage";
 import { LoginPage } from "../pages/LoginPage";
 import { WelcomePage } from "../pages/WelcomePage";
@@ -34,6 +35,7 @@ export function AppRoutes() {
       <Route path="/teams" element={<TeamsPage />} />
       <Route path="/shop" element={<ShopPage />} />
       <Route path="/nutrition" element={<NutritionPage />} />
+      <Route path="/submission-preview" element={<SubmissionPreviewPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/welcome" element={<WelcomePage />} />
