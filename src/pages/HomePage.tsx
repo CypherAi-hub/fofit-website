@@ -2,6 +2,7 @@ import { ArticleGrid } from "../components/marketing/ArticleGrid";
 import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { CypherTranscript } from "../components/marketing/CypherTranscript";
 import { DeviceFigure } from "../components/marketing/DeviceFigure";
+import { FounderNote } from "../components/marketing/FounderNote";
 import { HeroDeviceMockups } from "../components/marketing/HeroDeviceMockups";
 import { PersonalizationDossier } from "../components/marketing/PersonalizationDossier";
 import { PricingPreview } from "../components/marketing/PricingPreview";
@@ -122,12 +123,14 @@ export function HomePage() {
         </div>
       </section>
 
+      <FounderNote />
+
       <section className="page-section editorial-section editorial-section--pricing">
         <div className="container">
           <div className="editorial-pricing-intro">
             <ChapterIntro
               description="Start free. Move to Premium when you want the full FoFit system. Join early and the founding rate stays locked."
-              index="06"
+              index="07"
               label="Membership"
               title={
                 <>
@@ -148,7 +151,7 @@ export function HomePage() {
         <div className="container">
           <ChapterIntro
             description="Three extensions, shown in the order they are most likely to ship. No vaporware, no vague ecosystem theater."
-            index="07"
+            index="08"
             label="On the horizon"
             title={
               <>
@@ -177,7 +180,7 @@ export function HomePage() {
         <div className="container">
           <ChapterIntro
             description="Short reads on training, recovery, nutrition, and the decisions that keep a block moving."
-            index="08"
+            index="09"
             label="Field notes"
             title={
               <>
