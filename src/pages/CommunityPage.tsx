@@ -10,7 +10,7 @@ const communityBlocks = [
   {
     title: "Accountability",
     description:
-      "Shared check-ins and visible progress loops can reinforce consistency without turning the product into a noisy social feed.",
+      "Shared check-ins and visible progress loops reinforce consistency without turning the product into a noisy social feed.",
   },
   {
     title: "Challenges",
@@ -28,7 +28,7 @@ export function CommunityPage() {
   return (
     <>
       <PageMeta
-        description="See how FoFit can expand into accountability, challenges, shared progress, groups, and coach-ready community structures."
+        description="Accountability, challenges, shared progress, groups, and coach-ready community structures — built into FoFit."
         title="FoFit Community | Accountability, Challenges, and Shared Progress"
       />
       <PageHero

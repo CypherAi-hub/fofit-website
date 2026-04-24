@@ -20,7 +20,7 @@ const teamUseCases = [
   {
     title: "Coaches and performance groups",
     description:
-      "A scalable layer where structured training, member context, and coach oversight can work together.",
+      "A scalable layer where structured training, member context, and coach oversight work together.",
   },
 ];
 
