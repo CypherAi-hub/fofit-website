@@ -66,7 +66,7 @@ export function CommunityPage() {
               },
               {
                 caption: "Coach-ready",
-                title: "A community layer that can support higher-accountability guidance",
+                title: "A community layer that supports higher-accountability guidance",
                 stats: [],
               },
             ]}
@@ -122,6 +122,8 @@ export function CommunityPage() {
 
       <CTASection
         description="Join early and be part of FoFit's founding community."
+        note="Premium athletes get the full community layer at launch. Founding members lock the rate."
+        noteClassName="community-cta__premium-note"
         pills={["Challenges", "Groups", "Shared progress"]}
         title={
           <>
