@@ -128,7 +128,7 @@ export function ProductVideo() {
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 ref={videoRef}
                 src={brandVideos.heroLoop.src}
               />

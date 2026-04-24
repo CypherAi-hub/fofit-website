@@ -134,12 +134,12 @@ export function HomePage() {
               label="Membership"
               title={
                 <>
-                  Fourteen dollars. <em>Forever</em>, if you&apos;re early.
+                  Twelve ninety-nine. <em>Forever</em>, if you&apos;re early.
                 </>
               }
             />
             <div className="editorial-pricing-intro__note reveal">
-              <span>FoFit Premium is $14/month or $119/year.</span>
+              <span>FoFit Premium is $12.99/month or $99/year.</span>
               <p>The first members keep that rate even as Cypher, recovery, teams, and coaching get deeper.</p>
             </div>
           </div>

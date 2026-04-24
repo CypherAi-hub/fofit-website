@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Button } from "../components/ui/Button";
 import { useAuth } from "../lib/auth-context";
@@ -7,8 +8,26 @@ import { useWaitlistClaim } from "../lib/waitlist-claim";
 const FOUNDER_LINKEDIN_URL = "https://www.linkedin.com/in/kenan-larry-993350332";
 
 export function WelcomePage() {
-  const { user } = useAuth();
+  const navigate = useNavigate();
+  const { session, user, loading } = useAuth();
   useWaitlistClaim();
+
+  useEffect(() => {
+    if (!loading && !session) {
+      navigate("/login", { replace: true });
+    }
+  }, [loading, session, navigate]);
+
+  if (loading || !session) {
+    return (
+      <section className="auth-page auth-page--centered">
+        <div className="container auth-welcome">
+          <p className="auth-welcome__description">Loading…</p>
+        </div>
+      </section>
+    );
+  }
+
   const name =
     (user?.user_metadata?.full_name as string | undefined) ||
     (user?.user_metadata?.name as string | undefined) ||

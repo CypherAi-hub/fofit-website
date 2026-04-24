@@ -31,7 +31,7 @@ export function LoginPage() {
               Pick up where you left off. Your web session and your mobile session share the same account.
             </p>
             <p className="auth-page__switch">
-              Don&apos;t have an account yet? <Link to="/#waitlist">Join the waitlist →</Link>
+              Don&apos;t have an account yet? <Link to="/signup">Create one →</Link>
             </p>
           </div>
           <div className="auth-page__panel">

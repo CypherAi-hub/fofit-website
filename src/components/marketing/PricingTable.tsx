@@ -64,7 +64,7 @@ export function PricingTable() {
               {foundingPrice}
               <span className="pricing-card__unit">{foundingUnit}</span>
             </strong>
-            <p>The first 250 members lock the full Premium product at this rate for life.</p>
+            <p>The first 500 members lock the full Premium product at this rate for life.</p>
           </div>
           <p className="pricing-card__description">
             Join before launch and the rate does not move as FoFit adds more coaching, team, and recovery depth.
