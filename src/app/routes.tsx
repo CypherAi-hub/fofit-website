@@ -11,6 +11,7 @@ import { UpdatesPage } from "../pages/UpdatesPage";
 import { CoachesPage } from "../pages/CoachesPage";
 import { StorePage } from "../pages/StorePage";
 import { TeamsPage } from "../pages/TeamsPage";
+import { ShopPage, NutritionPage } from "../pages/ComingSoonPage";
 
 export function AppRoutes() {
   return (
@@ -27,6 +28,8 @@ export function AppRoutes() {
       <Route path="/coaches" element={<CoachesPage />} />
       <Route path="/store" element={<StorePage />} />
       <Route path="/teams" element={<TeamsPage />} />
+      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/nutrition" element={<NutritionPage />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );

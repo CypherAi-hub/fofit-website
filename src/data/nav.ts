@@ -43,8 +43,8 @@ export const footerColumns = [
     links: [
       { label: "Insights", to: "/insights" },
       { label: "FAQ", to: "/faq" },
-      { label: "Store", to: "/store" },
-      { label: "Contact", to: "/about" },
+      { label: "Shop", to: "/shop" },
+      { label: "Nutrition", to: "/nutrition" },
     ],
   },
   {
