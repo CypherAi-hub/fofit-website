@@ -2,6 +2,7 @@ import { ArticleGrid } from "../components/marketing/ArticleGrid";
 import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { CypherTranscript } from "../components/marketing/CypherTranscript";
 import { DeviceFigure } from "../components/marketing/DeviceFigure";
+import { FounderNote } from "../components/marketing/FounderNote";
 import { HeroDeviceMockups } from "../components/marketing/HeroDeviceMockups";
 import { PersonalizationDossier } from "../components/marketing/PersonalizationDossier";
 import { PricingPreview } from "../components/marketing/PricingPreview";
@@ -46,8 +47,8 @@ export function HomePage() {
   return (
     <>
       <PageMeta
-        description="FoFit is the training platform with Cypher — an AI that remembers the athlete, adapts the next session, and keeps progress tied to real life."
-        title="FoFit | Premium Fitness Platform"
+        description="FoFit is the training platform with Cypher — built for student athletes who train around class, practice, and the rest of a real week."
+        title="FoFit | Training platform for student athletes"
       />
       <PageHero
         actions={[
@@ -55,8 +56,8 @@ export function HomePage() {
           { label: "See how it works", to: "/product", variant: "secondary" },
         ]}
         className="page-hero--editorial"
-        description="FoFit is the training platform with Cypher — an AI that remembers the athlete, adapts the next session, and keeps progress attached to the real week."
-        eyebrow="001 / FoFit"
+        description="FoFit is the training platform with Cypher — an AI that remembers the athlete, adapts the next session, and keeps progress attached to the real week. Built for student athletes training around class, practice, and travel."
+        eyebrow="For student athletes"
         media={<HeroDeviceMockups />}
         mediaClassName="page-hero__media--editorial"
         title={
@@ -122,12 +123,14 @@ export function HomePage() {
         </div>
       </section>
 
+      <FounderNote />
+
       <section className="page-section editorial-section editorial-section--pricing">
         <div className="container">
           <div className="editorial-pricing-intro">
             <ChapterIntro
               description="Start free. Move to Premium when you want the full FoFit system. Join early and the founding rate stays locked."
-              index="06"
+              index="07"
               label="Membership"
               title={
                 <>
@@ -148,7 +151,7 @@ export function HomePage() {
         <div className="container">
           <ChapterIntro
             description="Three extensions, shown in the order they are most likely to ship. No vaporware, no vague ecosystem theater."
-            index="07"
+            index="08"
             label="On the horizon"
             title={
               <>
@@ -177,7 +180,7 @@ export function HomePage() {
         <div className="container">
           <ChapterIntro
             description="Short reads on training, recovery, nutrition, and the decisions that keep a block moving."
-            index="08"
+            index="09"
             label="Field notes"
             title={
               <>

@@ -1,6 +1,5 @@
 import { ChapterIntro } from "./ChapterIntro";
 import { DeviceFigure } from "./DeviceFigure";
-import { FigureLabel } from "./FigureLabel";
 import { realAppScreens } from "../../data/appScreens";
 
 const cypherBriefFigure = {
@@ -28,11 +27,6 @@ export function CypherTranscript() {
             description="Cypher remembers the athlete, the block, and the cost of the next call. Here is a real thread, rendered without marketing adjectives."
           />
           <DeviceFigure asset={cypherBriefFigure} className="transcript-card__device" />
-          <FigureLabel
-            caption="The Cypher Brief that shows up in the app every morning. Real context. Real session priorities. Real voice."
-            className="transcript-card__label"
-            label=""
-          />
         </div>
       </div>
     </section>
