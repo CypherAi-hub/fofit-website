@@ -14,6 +14,7 @@ function prefersReducedMotion() {
 export function ProductVideo() {
   const [reducedMotion, setReducedMotion] = useState(prefersReducedMotion);
   const [playbackFallback, setPlaybackFallback] = useState(false);
+  const [hasPlayed, setHasPlayed] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -61,6 +62,7 @@ export function ProductVideo() {
         await video.play();
         if (!cancelled) {
           setPlaybackFallback(false);
+          setHasPlayed(true);
         }
       } catch {
         if (!cancelled) {
@@ -109,27 +111,28 @@ export function ProductVideo() {
             }
           />
           <div className="product-video__frame">
-            {showPoster ? (
+            {showPoster || !hasPlayed ? (
               <img
                 alt="FoFit workout screen showing Incline Dumbbell Press in progress."
                 className="product-video__media product-video__media--poster"
                 loading="lazy"
                 src={posterAsset}
               />
-            ) : (
+            ) : null}
+            {!showPoster ? (
               <video
                 aria-label="Thirty-second FoFit product walkthrough showing splash, discover, Cypher, workout logging, and journey screens."
                 autoPlay
-                className="product-video__media"
+                className="product-video__media product-video__media--video"
+                data-playing={hasPlayed || undefined}
                 loop
                 muted
                 playsInline
-                poster={posterAsset}
-                preload="metadata"
+                preload="auto"
                 ref={videoRef}
                 src={brandVideos.heroLoop.src}
               />
-            )}
+            ) : null}
           </div>
           <FigureLabel
             caption="Thirty seconds across splash, discovery, Cypher, workout logging, and journey."

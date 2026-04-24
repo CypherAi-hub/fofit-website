@@ -2695,22 +2695,41 @@ code {
 }
 
 .product-video__frame {
+  position: relative;
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 6rem 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: clamp(1rem, 2vw, 1.75rem);
   background: #05060a;
+  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.8);
 }
 
 .product-video__media {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .product-video__media--poster {
-  width: min(100%, 22rem);
-  margin: 0 auto;
+  object-fit: contain;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  z-index: 1;
+}
+
+.product-video__media--video {
+  opacity: 0;
+  transition: opacity 320ms ease-out;
+  z-index: 2;
+}
+
+.product-video__media--video[data-playing] {
+  opacity: 1;
 }
 
 .product-video__label {
