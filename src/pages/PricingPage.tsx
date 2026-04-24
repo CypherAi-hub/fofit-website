@@ -2,6 +2,8 @@ import { FAQAccordion } from "../components/marketing/FAQAccordion";
 import { CTASection } from "../components/marketing/CTASection";
 import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { PricingTable } from "../components/marketing/PricingTable";
+import { VerifiedDiscounts } from "../components/marketing/VerifiedDiscounts";
+import { CypherTokens } from "../components/marketing/CypherTokens";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { EditorialHeading } from "../components/ui/EditorialHeading";
@@ -22,7 +24,7 @@ export function PricingPage() {
   return (
     <>
       <PageMeta
-        description="Start free. Premium at $14/month. Founding members lock in $14/mo for life and keep the full FoFit system as it grows."
+        description="Start free. Premium at $12.99/month. Founding members lock in $12.99/mo for life and keep the full FoFit system as it grows."
         title="FoFit Pricing | Clear Plans for a Growing Platform"
       />
       <PageHero
@@ -31,7 +33,7 @@ export function PricingPage() {
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
-        description="Start free. Premium at $14/month. Founding members lock in $14/mo for life — the rate never moves."
+        description="Start free. Premium at $12.99/month. Founding members lock in $12.99/mo for life — the rate never moves."
         eyebrow="007 / Membership"
         title={
           <EditorialHeading accent="early" as="span" className="editorial-heading--compact">
@@ -60,6 +62,13 @@ export function PricingPage() {
             </div>
           </div>
           <PricingTable />
+        </div>
+      </section>
+
+      <section className="page-section">
+        <div className="container">
+          <VerifiedDiscounts />
+          <CypherTokens />
         </div>
       </section>
 

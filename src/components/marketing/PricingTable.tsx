@@ -6,7 +6,7 @@ import { Card } from "../ui/Card";
 export function PricingTable() {
   const [annual, setAnnual] = useState(false);
   const [starterPlan, premiumPlan] = pricingPlans;
-  const foundingPrice = annual ? "$120" : "$14";
+  const foundingPrice = annual ? "$99" : "$12.99";
   const foundingUnit = annual ? "/yr" : "/mo";
 
   return (
@@ -76,7 +76,7 @@ export function PricingTable() {
             <li>Named as an early supporter inside the app</li>
           </ul>
           <div className="pricing-card__meta">
-            <span>{annual ? "$10/mo billed annually" : "Month to month"}</span>
+            <span>{annual ? "$8.25/mo billed annually" : "Month to month"}</span>
             <span>Rate holds for founding members</span>
           </div>
           <EarlyAccessButton>

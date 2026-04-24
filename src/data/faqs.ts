@@ -23,7 +23,7 @@ export const faqGroups: FAQGroup[] = [
       {
         question: "Is it free?",
         answer:
-          "Starter is always free — workout logging, structured starter plans, and basic progress trends. Premium is $14/month (or $119/year), and founding members lock that rate for life.",
+          "Starter is always free — workout logging, structured starter plans, basic progress trends, and 5 Cypher sessions per month. Premium is $12.99/month ($99/yr, effective $8.25/mo), and founding members lock that rate for life.",
       },
       {
         question: "Who is it for?",
@@ -53,7 +53,22 @@ export const faqGroups: FAQGroup[] = [
       {
         question: "Is there a free plan?",
         answer:
-          "Yes. Starter gives users a clean entry point for logging, structure, and basic progress. Premium unlocks adaptive guidance, deeper analytics, and future ecosystem layers.",
+          "Yes. Starter gives athletes a clean entry point for logging, structure, basic progress, and 5 Cypher sessions per month. Premium adds adaptive guidance, deeper analytics, and future ecosystem layers.",
+      },
+      {
+        question: "Is there a discount for students or military?",
+        answer:
+          "Yes. Premium · Student is $7.99/mo for verified .edu email holders. Premium · Hero is $9.99/mo for military, first responders, medical workers, and teachers, verified through SheerID. Both rates hold as long as eligibility is current.",
+      },
+      {
+        question: "What are Cypher Tokens?",
+        answer:
+          "Tokens are pay-as-you-go for athletes who want to use Cypher without a subscription. One token = one Cypher session. Free Starter members get 5 sessions per month included. After that, top up with a token pack — they never expire and stack with any plan.",
+      },
+      {
+        question: "Do I get a free trial?",
+        answer:
+          "Yes. Premium annual includes a 7-day free trial — full access to Cypher, adaptive plans, nutrition direction, and analytics. Cancel before day 7 and you're not charged.",
       },
       {
         question: "Will there be team or school pricing?",

@@ -4318,3 +4318,229 @@ code {
 .user-menu__item--danger:hover {
   background: rgba(239, 68, 68, 0.12);
 }
+
+/* ============================================================
+   PRICING V4 — Verified discounts + Cypher Tokens
+   ============================================================ */
+
+.verified-discounts {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.verified-discounts__header {
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.verified-discounts__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue, #2A66FF);
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.verified-discounts__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0 0 0.75rem;
+  color: var(--text-strong);
+}
+
+.verified-discounts__title em {
+  font-style: italic;
+  color: var(--blue, #2A66FF);
+}
+
+.verified-discounts__lede {
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  max-width: 60ch;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.verified-discounts__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.verified-discount-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.verified-discount-card__name {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.verified-discount-card__price {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  letter-spacing: -0.025em;
+  color: var(--text-strong);
+  line-height: 1;
+}
+
+.verified-discount-card__annual {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.verified-discount-card__desc {
+  color: var(--text-strong);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.verified-discount-card__elig {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  padding-top: 0.85rem;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+.cypher-tokens {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cypher-tokens__header {
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.cypher-tokens__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #c084fc;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.cypher-tokens__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0 0 0.75rem;
+  color: var(--text-strong);
+}
+
+.cypher-tokens__title em {
+  font-style: italic;
+  color: #c084fc;
+}
+
+.cypher-tokens__lede {
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  max-width: 60ch;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.cypher-tokens__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: 1.5rem;
+}
+
+.cypher-token-pack {
+  background: rgba(255, 255, 255, 0.04);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  text-align: center;
+}
+
+.cypher-token-pack--featured {
+  background: rgba(192, 132, 252, 0.06);
+  border-color: rgba(192, 132, 252, 0.4);
+}
+
+.cypher-token-pack__count {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  letter-spacing: -0.025em;
+  color: var(--text-strong);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.cypher-token-pack__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.cypher-token-pack__price {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+  letter-spacing: -0.025em;
+  color: #c084fc;
+  margin-bottom: 0.5rem;
+}
+
+.cypher-token-pack__per {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.cypher-token-pack__savings {
+  color: var(--cyan, #00D4FF);
+  font-weight: 500;
+}
+
+.cypher-tokens__footnote {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.55;
+  max-width: 60ch;
+  margin: 0 auto;
+  padding-top: 1rem;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 720px) {
+  .verified-discounts__grid,
+  .cypher-tokens__grid {
+    grid-template-columns: 1fr;
+  }
+}
