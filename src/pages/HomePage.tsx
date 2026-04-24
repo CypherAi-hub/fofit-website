@@ -46,8 +46,8 @@ export function HomePage() {
   return (
     <>
       <PageMeta
-        description="FoFit is the training platform with Cypher — an AI that remembers the athlete, adapts the next session, and keeps progress tied to real life."
-        title="FoFit | Premium Fitness Platform"
+        description="FoFit is the training platform with Cypher — built for student athletes who train around class, practice, and the rest of a real week."
+        title="FoFit | Training platform for student athletes"
       />
       <PageHero
         actions={[
@@ -55,8 +55,8 @@ export function HomePage() {
           { label: "See how it works", to: "/product", variant: "secondary" },
         ]}
         className="page-hero--editorial"
-        description="FoFit is the training platform with Cypher — an AI that remembers the athlete, adapts the next session, and keeps progress attached to the real week."
-        eyebrow="001 / FoFit"
+        description="FoFit is the training platform with Cypher — an AI that remembers the athlete, adapts the next session, and keeps progress attached to the real week. Built for student athletes training around class, practice, and travel."
+        eyebrow="For student athletes"
         media={<HeroDeviceMockups />}
         mediaClassName="page-hero__media--editorial"
         title={
