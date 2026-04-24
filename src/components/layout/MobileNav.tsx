@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { primaryNav } from "../../data/nav";
 import { EarlyAccessButton } from "../marketing/EarlyAccessButton";
+import { useAuth } from "../../lib/auth-context";
 
 export const MOBILE_NAV_ID = "mobile-navigation";
 
@@ -10,6 +11,16 @@ type MobileNavProps = {
 };
 
 export function MobileNav({ open, onClose }: MobileNavProps) {
+  const { session, loading, signOut } = useAuth();
+  const signedIn = !loading && !!session;
+  const navigate = useNavigate();
+
+  async function onSignOut() {
+    onClose();
+    await signOut();
+    navigate("/", { replace: true });
+  }
+
   return (
     <div
       className={`mobile-nav ${open ? "mobile-nav--open" : ""}`}
@@ -42,9 +53,29 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               {link.label}
             </NavLink>
           ))}
-          <EarlyAccessButton className="mobile-nav__cta" size="lg">
-            Join the waitlist
-          </EarlyAccessButton>
+          {signedIn ? (
+            <>
+              <NavLink className="mobile-nav__link" onClick={onClose} to="/dashboard">
+                Dashboard
+              </NavLink>
+              <button
+                className="button button--ghost button--lg mobile-nav__cta"
+                onClick={onSignOut}
+                type="button"
+              >
+                Sign out
+              </button>
+            </>
+          ) : (
+            <>
+              <NavLink className="mobile-nav__link" onClick={onClose} to="/login">
+                Sign in
+              </NavLink>
+              <EarlyAccessButton className="mobile-nav__cta" size="lg">
+                Join the waitlist
+              </EarlyAccessButton>
+            </>
+          )}
         </nav>
         <p className="mobile-nav__footnote">
           A premium training platform built around planning, guidance, progress,
