@@ -8,6 +8,7 @@ export type PricingPlan = {
   cta: string;
   description: string;
   features: string[];
+  trial?: string;
 };
 
 export const pricingPlans: PricingPlan[] = [
@@ -25,15 +26,16 @@ export const pricingPlans: PricingPlan[] = [
       "Structured starter plans",
       "Basic progress trends",
       "Exercise library access",
-      "Limited insight content",
+      "5 Cypher sessions / month",
+      "Top up with token packs anytime",
     ],
   },
   {
     name: "Premium",
     tagline: "The full FoFit system",
-    monthly: "$14",
-    annual: "$120",
-    annualNote: "$10/mo billed annually",
+    monthly: "$12.99",
+    annual: "$99",
+    annualNote: "$8.25/mo billed annually · 7-day free trial",
     featured: true,
     cta: "Join the waitlist",
     description:
@@ -46,6 +48,7 @@ export const pricingPlans: PricingPlan[] = [
       "Recovery and readiness concepts",
       "Priority access to future coaching layers",
     ],
+    trial: "7-day free trial on annual",
   },
 ];
 
@@ -62,7 +65,7 @@ export const pricingComparison = [
   },
   {
     feature: "AI coaching",
-    starter: "Not included",
+    starter: "5 sessions / month",
     premium: "Unlimited",
   },
   {
@@ -86,4 +89,68 @@ export const pricingAssurances = [
   "Cancel anytime with no lock-in contract.",
   "One platform for planning, execution, analytics, and future coaching.",
   "Premium members get first access to new ecosystem modules as they launch.",
+];
+
+export type VerifiedDiscount = {
+  name: string;
+  price: string;
+  annual: string;
+  eligibility: string;
+  description: string;
+  discountPct: number;
+};
+
+export const verifiedDiscounts: VerifiedDiscount[] = [
+  {
+    name: "Premium · Student",
+    price: "$7.99/mo",
+    annual: "$69/yr",
+    eligibility: "Verified .edu email or SheerID",
+    description: "For as long as you're enrolled.",
+    discountPct: 38,
+  },
+  {
+    name: "Premium · Hero",
+    price: "$9.99/mo",
+    annual: "$89/yr",
+    eligibility: "Military, first responders, medical workers, teachers (verified through SheerID)",
+    description: "For those who serve.",
+    discountPct: 23,
+  },
+];
+
+export type CypherTokenPack = {
+  count: number;
+  label: string;
+  price: string;
+  perSession: string;
+  savings: string | null;
+  featured: boolean;
+};
+
+export const cypherTokenPacks: CypherTokenPack[] = [
+  {
+    count: 5,
+    label: "Try Pack",
+    price: "$1.99",
+    perSession: "$0.40 / session",
+    savings: null,
+    featured: false,
+  },
+  {
+    count: 25,
+    label: "Most Popular",
+    price: "$7.99",
+    perSession: "$0.32 / session",
+    savings: "save 20%",
+    featured: true,
+  },
+  {
+    count: 100,
+    label: "Power Pack",
+    price: "$24.99",
+    perSession: "$0.25 / session",
+    savings: "save 38%",
+    featured: false,
+  },
 ];
