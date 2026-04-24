@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { primaryNav, ecosystemLinks } from "../../data/nav";
+import { primaryNav } from "../../data/nav";
 import { EarlyAccessButton } from "../marketing/EarlyAccessButton";
 
 export const MOBILE_NAV_ID = "mobile-navigation";
@@ -30,7 +30,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           </button>
         </div>
         <nav aria-label="Mobile" className="mobile-nav__links">
-          {[...primaryNav, ...ecosystemLinks].map((link) => (
+          {primaryNav.map((link) => (
             <NavLink
               className={({ isActive }) =>
                 `mobile-nav__link ${isActive ? "is-active" : ""}`
