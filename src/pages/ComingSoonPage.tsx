@@ -43,7 +43,7 @@ export function ShopPage() {
       metaTitle="Shop | FoFit"
       title={
         <>
-          The shop opens <em>soon</em>.
+          Shop, <em>soon</em>.
         </>
       }
     />

@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -17,6 +18,7 @@ body {
     var(--bg);
   color: var(--text);
   min-width: 320px;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -375,6 +377,7 @@ main {
   font-size: clamp(2.1rem, 4.4vw, 4.9rem);
   line-height: 0.96;
   letter-spacing: -0.06em;
+  overflow-wrap: break-word;
 }
 
 .section-description,
@@ -421,6 +424,7 @@ main {
 
 .page-hero__description {
   max-width: 41rem;
+  overflow-wrap: break-word;
 }
 
 .page-hero--home {
@@ -2328,12 +2332,26 @@ code {
   }
 
   .container {
-    width: min(var(--container), calc(100% - 1.25rem));
+    width: min(var(--container), calc(100% - 2rem));
+  }
+
+  .page-hero__inner,
+  .page-hero--home .page-hero__inner,
+  .page-hero--editorial .page-hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-hero__content,
+  .page-hero__description,
+  .page-hero__title,
+  .button-row {
+    max-width: 100%;
+    min-width: 0;
   }
 
   .page-hero__title,
   .cta-section h2 {
-    font-size: clamp(2rem, 12vw, 3.5rem);
+    font-size: clamp(1.85rem, 9vw, 3.5rem);
   }
 
   .feature-grid,
