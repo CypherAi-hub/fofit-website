@@ -2,6 +2,9 @@ import { CTASection } from "../components/marketing/CTASection";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Card } from "../components/ui/Card";
+import { teamsTiers } from "../data/pricing";
+
+const TEAMS_DEMO_MAILTO = "mailto:teams@fofit.app?subject=FoFit%20Teams%20demo";
 
 const teamUseCases = [
   {
@@ -25,16 +28,16 @@ export function TeamsPage() {
   return (
     <>
       <PageMeta
-        description="FoFit Teams previews how the platform can expand into schools, clubs, and high-accountability training groups."
+        description="FoFit Teams — per-team pricing for schools, clubs, and training groups. Every athlete gets Premium. Coach view layered on top."
         title="FoFit Teams | Schools, Clubs, and Group Training Systems"
       />
       <PageHero
         actions={[
-          { label: "Join the waitlist", intent: "waitlist" },
-          { label: "See community", to: "/community", variant: "secondary" },
+          { label: "Book a demo", href: TEAMS_DEMO_MAILTO },
+          { label: "Join the waitlist", intent: "waitlist", variant: "secondary" },
         ]}
         compact
-        description="See how FoFit can support schools, clubs, and training groups that need structure, visibility, and consistency."
+        description="Per-team pricing for schools, clubs, and training groups that need structure, visibility, and consistency."
         eyebrow="Teams"
         title={
           <>
@@ -56,17 +59,42 @@ export function TeamsPage() {
         </div>
       </section>
 
+      <section className="page-section">
+        <div className="container">
+          <div className="teams-tiers">
+            <div className="teams-tiers__header">
+              <span className="teams-tiers__eyebrow">FIG 02 — TEAMS PRICING</span>
+              <h2 className="teams-tiers__title">
+                Inside <em>FoFit Teams</em>.
+              </h2>
+              <p className="teams-tiers__lede">
+                Per-team pricing, not per-seat. Every athlete on the roster gets Premium included. The coach view layered on top.
+              </p>
+            </div>
+
+            <div className="teams-tiers__grid">
+              {teamsTiers.map((tier) => (
+                <article
+                  className={`teams-tier-card${tier.featured ? " teams-tier-card--featured" : ""}`}
+                  key={tier.name}
+                >
+                  <div className="teams-tier-card__name">{tier.name}</div>
+                  <div className="teams-tier-card__price">{tier.price}</div>
+                  <p className="teams-tier-card__fit">{tier.fit}</p>
+                  <div className="teams-tier-card__desc">{tier.description}</div>
+                </article>
+              ))}
+            </div>
+
+            <div className="teams-tiers__footnote">
+              Founding school partner pilots available for the first cohort of athletic departments. Email teams@fofit.app for terms.
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="page-section page-section--tight">
-        <div className="container split-layout">
-          <Card className="spotlight-card reveal">
-            <span className="eyebrow">Admin concepts</span>
-            <h3>What a future team layer could include</h3>
-            <ul className="check-list">
-              <li>Shared dashboards and completion visibility</li>
-              <li>Group challenge structures and progress views</li>
-              <li>Coach-ready oversight without losing the member experience</li>
-            </ul>
-          </Card>
+        <div className="container">
           <div className="content-stack reveal">
             <span className="eyebrow">Why teams need this</span>
             <h2 className="section-title">Training groups need more than a shared spreadsheet.</h2>
@@ -80,7 +108,11 @@ export function TeamsPage() {
       </section>
 
       <CTASection
-        description="Join the waitlist if you want FoFit for a school, club, or accountability-driven training group."
+        actions={[
+          { label: "Book a demo", href: TEAMS_DEMO_MAILTO },
+          { label: "Join the waitlist", intent: "waitlist", variant: "secondary" },
+        ]}
+        description="Book a demo if you run a team. Join the waitlist if you train on one."
         pills={["Schools", "Clubs", "Coach-ready groups"]}
         title={
           <>
