@@ -4544,3 +4544,140 @@ code {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   COMMUNITY CTA — Premium connection note
+   ============================================================ */
+
+.community-cta__premium-note {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue, #2A66FF);
+  margin: 1.25rem 0 0.5rem;
+  text-align: center;
+}
+
+/* ============================================================
+   TEAMS PAGE — Tier surfacing (v4 alignment)
+   ============================================================ */
+
+.teams-tiers {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.teams-tiers__header {
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.teams-tiers__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue, #2A66FF);
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.teams-tiers__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0 0 0.75rem;
+  color: var(--text-strong);
+}
+
+.teams-tiers__title em {
+  font-style: italic;
+  color: var(--blue, #2A66FF);
+}
+
+.teams-tiers__lede {
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  max-width: 60ch;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.teams-tiers__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: 1.5rem;
+}
+
+.teams-tier-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.teams-tier-card--featured {
+  background: rgba(42, 102, 255, 0.06);
+  border-color: rgba(42, 102, 255, 0.4);
+}
+
+.teams-tier-card__name {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.teams-tier-card__price {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.85rem, 3vw, 2.35rem);
+  letter-spacing: -0.025em;
+  color: var(--text-strong);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.teams-tier-card__fit {
+  color: var(--text-strong);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 0.85rem;
+}
+
+.teams-tier-card__desc {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  padding-top: 0.85rem;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+  margin-top: auto;
+}
+
+.teams-tiers__footnote {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--blue, #2A66FF);
+  text-align: center;
+  line-height: 1.55;
+  max-width: 60ch;
+  margin: 1.5rem auto 0;
+  padding-top: 1rem;
+  border-top: 0.5px solid rgba(42, 102, 255, 0.2);
+}
+
+@media (max-width: 720px) {
+  .teams-tiers__grid {
+    grid-template-columns: 1fr;
+  }
+}

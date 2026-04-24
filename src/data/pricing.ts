@@ -119,6 +119,36 @@ export const verifiedDiscounts: VerifiedDiscount[] = [
   },
 ];
 
+export type TeamsTier = {
+  name: string;
+  price: string;
+  fit: string;
+  description: string;
+  featured?: boolean;
+};
+
+export const teamsTiers: TeamsTier[] = [
+  {
+    name: "Team",
+    price: "$49/mo",
+    fit: "Personal trainers & small studios",
+    description: "Up to 10 athletes · 1 coach · basic coach dashboard",
+  },
+  {
+    name: "Pro",
+    price: "$99/mo",
+    fit: "Gyms, CrossFit boxes & private studios",
+    description: "Up to 30 athletes · 3 coach seats · custom branding · analytics",
+    featured: true,
+  },
+  {
+    name: "Program",
+    price: "From $199/mo",
+    fit: "High schools & college athletic departments",
+    description: "Unlimited athletes · SSO · priority support · white-label · scales by athlete count and division",
+  },
+];
+
 export type CypherTokenPack = {
   count: number;
   label: string;
