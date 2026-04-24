@@ -21,5 +21,5 @@ export const waitlistBenefits = [
 export const waitlistSuccessPoints = [
   "You will hear when FoFit opens the next access window.",
   "Your info is saved for product updates and early member invites.",
-  "Referral and sharing tools can be layered onto this flow later.",
+  "Your referral code is ready — share it to move up.",
 ];

@@ -323,8 +323,7 @@ export function WaitlistModal() {
             <span className="eyebrow">Training profile</span>
             <h2 id={WAITLIST_TITLE_IDS[1]}>Tell us how you want FoFit to meet you.</h2>
             <p id={WAITLIST_DESCRIPTION_IDS[1]}>
-              This keeps the flow feeling premium now and gives the backend room
-              for better segmentation later.
+              A quick detail so we can set up your early access.
             </p>
             <div className="waitlist-choice-grid">
               {waitlistGoals.map((goal) => (
@@ -373,7 +372,7 @@ export function WaitlistModal() {
             </div>
             <div className="waitlist-success__badge">You’re in</div>
             <h2 id={WAITLIST_TITLE_IDS[2]}>
-              {form.firstName || "You"} now have a spot in FoFit early access.
+              {form.firstName || "You"}, you now have a spot in FoFit early access.
             </h2>
             <p id={WAITLIST_DESCRIPTION_IDS[2]}>
               Your request was sent successfully and you’ll be included in the next early-access wave.
