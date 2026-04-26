@@ -7,7 +7,7 @@ import { HeroDeviceMockups } from "../components/marketing/HeroDeviceMockups";
 import { PersonalizationDossier } from "../components/marketing/PersonalizationDossier";
 import { PricingPreview } from "../components/marketing/PricingPreview";
 import { ProgressMetricGrid } from "../components/marketing/ProgressMetricGrid";
-import { ProductVideo } from "../components/marketing/ProductVideo";
+import { ProductWalkthrough } from "../components/marketing/ProductWalkthrough";
 import { QuietFinalCTA } from "../components/marketing/QuietFinalCTA";
 import { TrustBand } from "../components/marketing/TrustBand";
 import { PageHero } from "../components/layout/PageHero";
@@ -70,7 +70,7 @@ export function HomePage() {
 
       <TrustBand />
 
-      <ProductVideo />
+      <ProductWalkthrough />
 
       <CypherTranscript />
 
