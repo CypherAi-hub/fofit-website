@@ -1,6 +1,7 @@
 import { CTASection } from "../components/marketing/CTASection";
 import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { DeviceFigure } from "../components/marketing/DeviceFigure";
+import { ExerciseLibraryPreview } from "../components/marketing/ExerciseLibraryPreview";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { EditorialHeading } from "../components/ui/EditorialHeading";
@@ -143,6 +144,8 @@ export function ProductPage() {
           </div>
         </div>
       </section>
+
+      <ExerciseLibraryPreview />
 
       <CTASection
         description="Join the waitlist. Founding-member pricing closes at launch."
