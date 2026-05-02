@@ -3,12 +3,12 @@ import { CypherTranscript } from "../components/marketing/CypherTranscript";
 import { EarlyAccessButton } from "../components/marketing/EarlyAccessButton";
 import { ExerciseLibraryPreview } from "../components/marketing/ExerciseLibraryPreview";
 import { FoundingStatsBand } from "../components/marketing/FoundingStatsBand";
+import { FoFitTeamsSection } from "../components/marketing/FoFitTeamsSection";
 import { HomeVideoHero } from "../components/marketing/HomeVideoHero";
 import { PricingPreview } from "../components/marketing/PricingPreview";
 import { ProductVideo } from "../components/marketing/ProductVideo";
 import { ThreePathsSection } from "../components/marketing/ThreePathsSection";
 import { PageMeta } from "../components/layout/PageMeta";
-import { Button } from "../components/ui/Button";
 import { insightArticles } from "../data/insights";
 
 const operatingCards = [
@@ -61,6 +61,8 @@ export function HomePage() {
       <ExerciseLibraryPreview eyebrow="03 / DEMO LIBRARY" />
 
       <CypherTranscript index="04" />
+
+      <FoFitTeamsSection />
 
       <section className="v3-system">
         <div className="container v3-system__inner">
@@ -121,27 +123,10 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="v3-teams">
-        <div className="container v3-teams__inner">
-          <div>
-            <div className="v3-section-kicker">08 / FOR TEAMS</div>
-            <h2>D2 / D3 programs need infrastructure, not another consumer app.</h2>
-          </div>
-          <p>
-            Team access opens Spring 2026 for coaches who need shared
-            programming, completion visibility, and training context without
-            hiring a full performance department.
-          </p>
-          <Button href="mailto:teams@fofit.app?subject=FoFit%20Teams%20access" variant="secondary">
-            Request team access
-          </Button>
-        </div>
-      </section>
-
       <section className="v3-pricing">
         <div className="container">
           <div className="v3-pricing__header">
-            <div className="v3-section-kicker">09 / MEMBERSHIP</div>
+            <div className="v3-section-kicker">08 / MEMBERSHIP</div>
             <h2>$12.99/mo. Forever, if you&apos;re early.</h2>
             <p>
               Start free. Move to Premium when you want the full FoFit system.
@@ -156,7 +141,7 @@ export function HomePage() {
       <section className="v3-notes">
         <div className="container v3-notes__inner">
           <div className="v3-notes__header">
-            <div className="v3-section-kicker">10 / FIELD NOTES</div>
+            <div className="v3-section-kicker">09 / FIELD NOTES</div>
             <h2>The publication side of the training system.</h2>
             <p>
               Short reads on training, recovery, nutrition, and the decisions

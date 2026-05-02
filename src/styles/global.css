@@ -4945,6 +4945,160 @@ code {
   }
 }
 
+.teams-page-hero__media {
+  align-self: stretch;
+}
+
+.teams-dashboard-mockup {
+  display: grid;
+  gap: 1.1rem;
+  min-height: 28rem;
+  padding: clamp(1.25rem, 2.5vw, 1.8rem);
+  border: 1px solid rgba(34, 211, 255, 0.14);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(0, 255, 170, 0.1), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+    rgba(5, 8, 13, 0.92);
+  box-shadow: var(--shadow);
+}
+
+.teams-dashboard-mockup__top,
+.teams-dashboard-mockup__stats,
+.teams-dashboard-mockup__row {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.teams-dashboard-mockup__top {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+}
+
+.teams-dashboard-mockup__top span,
+.teams-dashboard-mockup__stats span,
+.teams-dashboard-mockup__row strong,
+.teams-page-proof__card span,
+.teams-page-pricing span {
+  color: rgba(34, 211, 255, 0.82);
+  font-family: var(--font-label-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.teams-dashboard-mockup__top strong {
+  color: var(--text-strong);
+  font-size: 1.45rem;
+}
+
+.teams-dashboard-mockup__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+}
+
+.teams-dashboard-mockup__stats div {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1rem;
+  background: rgba(4, 7, 12, 0.64);
+}
+
+.teams-dashboard-mockup__stats strong {
+  color: var(--text-strong);
+  font-size: 1.8rem;
+}
+
+.teams-dashboard-mockup__rows {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.teams-dashboard-mockup__row {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr) 5rem;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.85rem;
+}
+
+.teams-dashboard-mockup__row span {
+  color: var(--text-strong);
+}
+
+.teams-dashboard-mockup__row div {
+  height: 0.42rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.teams-dashboard-mockup__row i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+}
+
+.teams-page-proof__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.teams-page-proof__card {
+  display: grid;
+  gap: 1rem;
+  min-height: 24rem;
+}
+
+.teams-page-proof__card h2,
+.teams-page-pricing h2 {
+  margin: auto 0 0;
+  color: var(--text-strong);
+  font-family: var(--font-display-serif);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.03;
+}
+
+.teams-page-proof__card p,
+.teams-page-pricing p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.teams-page-pricing {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid rgba(34, 211, 255, 0.14);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(0, 255, 170, 0.08), transparent 42%),
+    rgba(255, 255, 255, 0.035);
+}
+
+.teams-page-pricing h2 {
+  max-width: 46rem;
+}
+
+@media (max-width: 860px) {
+  .teams-page-proof__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .teams-page-proof__card {
+    min-height: auto;
+  }
+}
+
 /* ============================================================
    Walkthrough section
    ============================================================ */
@@ -6714,22 +6868,56 @@ body::before {
 }
 
 .v3-teams {
-  padding: 5rem 0;
+  padding: 6rem 0;
   background:
-    linear-gradient(135deg, rgba(0, 200, 117, 0.14), transparent 42%),
+    linear-gradient(135deg, rgba(0, 255, 170, 0.1), transparent 42%),
     linear-gradient(180deg, rgba(11, 18, 32, 0.96), rgba(6, 7, 10, 0.96));
 }
 
 .v3-teams__inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.62fr) auto;
   gap: 2rem;
-  align-items: end;
+}
+
+.v3-teams__copy {
+  display: grid;
+  gap: 1rem;
+  max-width: 58rem;
+}
+
+.v3-teams__feature-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.v3-teams__feature {
+  display: grid;
+  gap: 1rem;
+  min-height: 16rem;
+  padding: 1.4rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.038), rgba(255, 255, 255, 0.014)),
+    rgba(5, 8, 13, 0.94);
+}
+
+.v3-teams__feature span {
+  margin-top: auto;
+  color: var(--text-strong);
+  font-family: var(--font-display-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.05;
 }
 
 .v3-teams h2 {
   margin-top: 0.9rem;
-  font-size: 3.25rem;
+  font-size: 4rem;
 }
 
 .v3-pricing {
@@ -6779,6 +6967,7 @@ body::before {
   .v3-system__header h2,
   .v3-week h2,
   .v3-contrast h2,
+  .v3-teams h2,
   .v3-pricing h2,
   .v3-notes h2,
   .v3-final h2 {
@@ -6787,7 +6976,7 @@ body::before {
 
   .v3-operating-grid,
   .v3-week__inner,
-  .v3-teams__inner {
+  .v3-teams__feature-row {
     grid-template-columns: 1fr;
   }
 
@@ -6819,6 +7008,10 @@ body::before {
 
   .v3-operating-card {
     min-height: 14rem;
+  }
+
+  .v3-teams__feature {
+    min-height: 13rem;
   }
 
   .v3-week__signal,
