@@ -27,7 +27,7 @@ export const pricingPlans: PricingPlan[] = [
       "Basic progress trends",
       "Exercise library access",
       "5 Cypher sessions / month",
-      "Top up with token packs anytime",
+      "Top up Cypher access in-app",
     ],
   },
   {
