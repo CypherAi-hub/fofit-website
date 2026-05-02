@@ -1,18 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { useEarlyAccess } from "../../app/waitlist-context";
+import { type WaitlistRole, useEarlyAccess } from "../../app/waitlist-context";
 import {
   waitlistBenefits,
   waitlistGoals,
   waitlistProfiles,
+  waitlistRoles,
   waitlistSuccessPoints,
 } from "../../data/waitlist";
-import { Button } from "../ui/Button";
 import { joinWaitlist } from "../../lib/waitlist";
+import { Button } from "../ui/Button";
 
 type WaitlistStatus = "idle" | "submitting" | "success" | "error";
+type StepDirection = "forward" | "back";
 
 type WaitlistForm = {
+  role: WaitlistRole | null;
   firstName: string;
   email: string;
   goal: string;
@@ -20,6 +23,7 @@ type WaitlistForm = {
 };
 
 const INITIAL_FORM: WaitlistForm = {
+  role: null,
   firstName: "",
   email: "",
   goal: waitlistGoals[0],
@@ -28,15 +32,18 @@ const INITIAL_FORM: WaitlistForm = {
 
 const STORAGE_KEY = "fofit-waitlist-draft";
 const VALIDATION_ERROR = "Enter a valid first name and email to continue.";
+const ROLE_ERROR = "Choose a FoFit path to continue.";
 const WAITLIST_TITLE_IDS = [
   "waitlist-title-step-0",
   "waitlist-title-step-1",
   "waitlist-title-step-2",
+  "waitlist-title-step-3",
 ] as const;
 const WAITLIST_DESCRIPTION_IDS = [
   "waitlist-description-step-0",
   "waitlist-description-step-1",
   "waitlist-description-step-2",
+  "waitlist-description-step-3",
 ] as const;
 const WAITLIST_ERROR_ID = "waitlist-form-error";
 const FIRST_NAME_INPUT_ID = "waitlist-first-name";
@@ -47,14 +54,23 @@ function buildReferralCode(firstName: string, email: string) {
   return `ff-${seed.slice(0, 8) || "member"}`;
 }
 
+function progressStepClass(step: number, index: number) {
+  if (index < step) {
+    return "is-complete";
+  }
+  return index === step ? "is-active" : "";
+}
+
 export function WaitlistModal() {
-  const { close, isOpen, joinedEmail, setJoinedEmail } = useEarlyAccess();
+  const { close, initialRole, isOpen, setJoinedEmail } = useEarlyAccess();
   const [step, setStep] = useState(0);
+  const [direction, setDirection] = useState<StepDirection>("forward");
   const [form, setForm] = useState<WaitlistForm>(INITIAL_FORM);
   const [status, setStatus] = useState<WaitlistStatus>("idle");
   const [error, setError] = useState<string | null>(null);
-  const [savedMode, setSavedMode] = useState<"remote" | "local" | null>(null);
   const [realReferralCode, setRealReferralCode] = useState<string | null>(null);
+  const firstRoleRef = useRef<HTMLButtonElement | null>(null);
+  const roleContinueRef = useRef<HTMLButtonElement | null>(null);
   const firstInputRef = useRef<HTMLInputElement | null>(null);
   const modalShellRef = useRef<HTMLDivElement | null>(null);
   const lastActiveElementRef = useRef<HTMLElement | null>(null);
@@ -120,14 +136,25 @@ export function WaitlistModal() {
     if (stored) {
       try {
         const parsed = JSON.parse(stored) as Partial<WaitlistForm>;
-        setForm((current) => ({ ...current, ...parsed }));
+        setForm((current) => ({
+          ...current,
+          ...parsed,
+          role: initialRole ?? null,
+        }));
       } catch {
         window.localStorage.removeItem(STORAGE_KEY);
+        setForm((current) => ({ ...current, role: initialRole ?? null }));
       }
+    } else {
+      setForm((current) => ({ ...current, role: initialRole ?? null }));
     }
 
     requestAnimationFrame(() => {
-      firstInputRef.current?.focus();
+      if (initialRole) {
+        roleContinueRef.current?.focus();
+        return;
+      }
+      firstRoleRef.current?.focus();
     });
 
     return () => {
@@ -139,7 +166,7 @@ export function WaitlistModal() {
       window.scrollTo({ top: scrollYRef.current, behavior: "auto" });
       lastActiveElementRef.current?.focus();
     };
-  }, [close, isOpen]);
+  }, [close, initialRole, isOpen]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -152,6 +179,7 @@ export function WaitlistModal() {
   useEffect(() => {
     if (!isOpen) {
       setStep(0);
+      setDirection("forward");
       setStatus("idle");
       setError(null);
       setRealReferralCode(null);
@@ -162,6 +190,7 @@ export function WaitlistModal() {
     () => buildReferralCode(form.firstName, form.email),
     [form.email, form.firstName],
   );
+  const selectedRole = waitlistRoles.find((role) => role.value === form.role) ?? null;
 
   if (!isOpen) {
     return null;
@@ -175,23 +204,59 @@ export function WaitlistModal() {
   const activeDescriptionId =
     WAITLIST_DESCRIPTION_IDS[Math.min(step, WAITLIST_DESCRIPTION_IDS.length - 1)];
 
-  async function handleSubmit() {
+  function goToStep(nextStep: number) {
+    setDirection(nextStep > step ? "forward" : "back");
+    setStep(nextStep);
+  }
+
+  function handleRoleContinue() {
+    if (!form.role) {
+      setError(ROLE_ERROR);
+      return;
+    }
+    setError(null);
+    goToStep(1);
+    requestAnimationFrame(() => firstInputRef.current?.focus());
+  }
+
+  function handleNameContinue() {
     if (!formValid) {
       setError(VALIDATION_ERROR);
+      return;
+    }
+    setError(null);
+    goToStep(2);
+  }
+
+  async function handleSubmit() {
+    if (!form.role) {
+      setError(ROLE_ERROR);
+      goToStep(0);
+      return;
+    }
+
+    if (!formValid) {
+      setError(VALIDATION_ERROR);
+      goToStep(1);
       return;
     }
 
     setStatus("submitting");
     setError(null);
 
-    const result = await joinWaitlist(form.firstName.trim(), form.email.trim());
+    const result = await joinWaitlist({
+      name: form.firstName.trim(),
+      email: form.email.trim(),
+      role: form.role,
+      goal: form.goal,
+      profile: form.profile,
+    });
 
     if (result.kind === "success" || result.kind === "already_joined") {
       setRealReferralCode(result.referralCode);
-      setSavedMode("remote");
       setJoinedEmail(form.email.trim());
       setStatus("success");
-      setStep(2);
+      goToStep(3);
       window.localStorage.removeItem(STORAGE_KEY);
     } else {
       setStatus("error");
@@ -227,171 +292,205 @@ export function WaitlistModal() {
           <h3>A premium path into the platform.</h3>
           <p>
             Claim a founding spot, keep the early Premium rate, and help shape
-            the first student-athlete release before the wider launch.
+            the first release for lifters, athletes, and coaches.
           </p>
           <div className="waitlist-aside__card">
             <span>Platform focus</span>
             <strong>Structured training · Adaptive guidance · Premium membership</strong>
           </div>
         </div>
-        {step === 0 ? (
-          <div className="waitlist-modal__panel">
-            <div className="waitlist-progress">
-              <span className="is-active" />
-              <span />
-              <span />
-            </div>
-            <span className="eyebrow">Founding member access</span>
-            <h2 id={WAITLIST_TITLE_IDS[0]}>Step into FoFit before the wider launch.</h2>
-            <p id={WAITLIST_DESCRIPTION_IDS[0]}>
-              Claim early access to the premium release, founding-member pricing,
-              and the first wave of deeper platform features.
-            </p>
-            <div className="waitlist-fields">
-              <label>
-                <span>First name</span>
-                <input
-                  aria-describedby={
-                    hasValidationError && !firstNameValid ? WAITLIST_ERROR_ID : undefined
-                  }
-                  aria-invalid={hasValidationError && !firstNameValid}
-                  id={FIRST_NAME_INPUT_ID}
-                  onChange={(event) =>
-                    setForm((current) => ({ ...current, firstName: event.target.value }))
-                  }
-                  placeholder="Kenan"
-                  ref={firstInputRef}
-                  value={form.firstName}
-                />
-              </label>
-              <label>
-                <span>Email</span>
-                <input
-                  aria-describedby={hasValidationError && !emailValid ? WAITLIST_ERROR_ID : undefined}
-                  aria-invalid={hasValidationError && !emailValid}
-                  id={EMAIL_INPUT_ID}
-                  onChange={(event) =>
-                    setForm((current) => ({ ...current, email: event.target.value }))
-                  }
-                  placeholder="you@domain.com"
-                  type="email"
-                  value={form.email}
-                />
-              </label>
-            </div>
-            <div className="waitlist-modal__benefits">
-              {waitlistBenefits.map((benefit) => (
-                <div className="waitlist-benefit" key={benefit}>
-                  {benefit}
+        <div
+          className={`waitlist-modal__panel waitlist-modal__panel--${direction} ${
+            step === 3 ? "waitlist-modal__panel--success" : ""
+          }`.trim()}
+          key={step}
+        >
+          <div className="waitlist-progress" aria-label={`Step ${step + 1} of 4`}>
+            {WAITLIST_TITLE_IDS.map((id, index) => (
+              <span className={progressStepClass(step, index)} key={id} />
+            ))}
+          </div>
+
+          {step === 0 ? (
+            <>
+              <span className="eyebrow">Choose your path</span>
+              <h2 id={WAITLIST_TITLE_IDS[0]}>What brings you to FoFit?</h2>
+              <p id={WAITLIST_DESCRIPTION_IDS[0]}>
+                Pick the path that matches how you&apos;ll use FoFit. This shapes what we send you.
+              </p>
+              <div className="waitlist-role-grid">
+                {waitlistRoles.map((role, index) => (
+                  <button
+                    aria-pressed={form.role === role.value}
+                    className={`waitlist-role-card ${form.role === role.value ? "is-selected" : ""}`}
+                    key={role.value}
+                    onClick={() => {
+                      setError(null);
+                      setForm((current) => ({ ...current, role: role.value }));
+                    }}
+                    ref={index === 0 ? firstRoleRef : undefined}
+                    type="button"
+                  >
+                    <span>{role.label}</span>
+                    <strong>{role.forText}</strong>
+                    <ul>
+                      {role.outcomes.map((outcome) => (
+                        <li key={outcome}>{outcome}</li>
+                      ))}
+                    </ul>
+                  </button>
+                ))}
+              </div>
+              {error ? <div className="waitlist-error" id={WAITLIST_ERROR_ID}>{error}</div> : null}
+              <div className="waitlist-actions">
+                <Button onClick={close} variant="ghost">
+                  Maybe later
+                </Button>
+                <button
+                  className="button button--primary button--lg"
+                  disabled={!form.role}
+                  onClick={handleRoleContinue}
+                  ref={roleContinueRef}
+                  type="button"
+                >
+                  Continue
+                </button>
+              </div>
+            </>
+          ) : step === 1 ? (
+            <>
+              <span className="eyebrow">Founding member access</span>
+              <h2 id={WAITLIST_TITLE_IDS[1]}>Where should we send early access?</h2>
+              <p id={WAITLIST_DESCRIPTION_IDS[1]}>
+                Claim the founding rate and help shape the first public release.
+              </p>
+              <div className="waitlist-fields">
+                <label>
+                  <span>First name</span>
+                  <input
+                    aria-describedby={
+                      hasValidationError && !firstNameValid ? WAITLIST_ERROR_ID : undefined
+                    }
+                    aria-invalid={hasValidationError && !firstNameValid}
+                    id={FIRST_NAME_INPUT_ID}
+                    onChange={(event) =>
+                      setForm((current) => ({ ...current, firstName: event.target.value }))
+                    }
+                    placeholder="Kenan"
+                    ref={firstInputRef}
+                    value={form.firstName}
+                  />
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input
+                    aria-describedby={hasValidationError && !emailValid ? WAITLIST_ERROR_ID : undefined}
+                    aria-invalid={hasValidationError && !emailValid}
+                    id={EMAIL_INPUT_ID}
+                    onChange={(event) =>
+                      setForm((current) => ({ ...current, email: event.target.value }))
+                    }
+                    placeholder="you@domain.com"
+                    type="email"
+                    value={form.email}
+                  />
+                </label>
+              </div>
+              <div className="waitlist-modal__benefits">
+                {waitlistBenefits.map((benefit) => (
+                  <div className="waitlist-benefit" key={benefit}>
+                    {benefit}
+                  </div>
+                ))}
+              </div>
+              {error ? <div className="waitlist-error" id={WAITLIST_ERROR_ID}>{error}</div> : null}
+              <div className="waitlist-actions">
+                <Button onClick={() => goToStep(0)} variant="ghost">
+                  Back
+                </Button>
+                <Button onClick={handleNameContinue} size="lg">
+                  Continue
+                </Button>
+              </div>
+            </>
+          ) : step === 2 ? (
+            <>
+              <span className="eyebrow">Training profile</span>
+              <h2 id={WAITLIST_TITLE_IDS[2]}>What should FoFit help with first?</h2>
+              <p id={WAITLIST_DESCRIPTION_IDS[2]}>
+                One more detail so early access starts with the right context.
+              </p>
+              <div className="waitlist-choice-grid">
+                {waitlistGoals.map((goal) => (
+                  <button
+                    className={`waitlist-choice ${form.goal === goal ? "is-selected" : ""}`}
+                    key={goal}
+                    onClick={() => setForm((current) => ({ ...current, goal }))}
+                    type="button"
+                  >
+                    {goal}
+                  </button>
+                ))}
+              </div>
+              <div className="waitlist-choice-grid waitlist-choice-grid--secondary">
+                {waitlistProfiles.map((profile) => (
+                  <button
+                    className={`waitlist-choice ${form.profile === profile ? "is-selected" : ""}`}
+                    key={profile}
+                    onClick={() => setForm((current) => ({ ...current, profile }))}
+                    type="button"
+                  >
+                    {profile}
+                  </button>
+                ))}
+              </div>
+              {error ? <div className="waitlist-error">{error}</div> : null}
+              <div className="waitlist-actions">
+                <Button onClick={() => goToStep(1)} variant="ghost">
+                  Back
+                </Button>
+                <Button disabled={status === "submitting"} onClick={handleSubmit} size="lg">
+                  {status === "submitting" ? "Saving..." : "Join waitlist"}
+                </Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="waitlist-success__badge">You&apos;re in</div>
+              <h2 id={WAITLIST_TITLE_IDS[3]}>
+                {form.firstName || "You"}, you now have a spot in FoFit early access.
+              </h2>
+              <p id={WAITLIST_DESCRIPTION_IDS[3]}>
+                {selectedRole?.confirmation ??
+                  "Your request was sent successfully and you will be included in the next early-access wave."}
+              </p>
+              <div className="waitlist-success__meta">
+                <div>
+                  <span>Email</span>
+                  <strong>{form.email}</strong>
                 </div>
-              ))}
-            </div>
-            {error ? <div className="waitlist-error" id={WAITLIST_ERROR_ID}>{error}</div> : null}
-            <div className="waitlist-actions">
-              <Button onClick={close} variant="ghost">
-                Maybe later
-              </Button>
-              <Button
-                onClick={() => {
-                  if (!formValid) {
-                    setError(VALIDATION_ERROR);
-                    return;
-                  }
-                  setError(null);
-                  setStep(1);
-                }}
-                size="lg"
-              >
-                Continue
-              </Button>
-            </div>
-          </div>
-        ) : step === 1 ? (
-          <div className="waitlist-modal__panel">
-            <div className="waitlist-progress">
-              <span className="is-complete" />
-              <span className="is-active" />
-              <span />
-            </div>
-            <span className="eyebrow">Training profile</span>
-            <h2 id={WAITLIST_TITLE_IDS[1]}>Tell us how you want FoFit to meet you.</h2>
-            <p id={WAITLIST_DESCRIPTION_IDS[1]}>
-              A quick detail so we can set up your early access.
-            </p>
-            <div className="waitlist-choice-grid">
-              {waitlistGoals.map((goal) => (
-                <button
-                  className={`waitlist-choice ${
-                    form.goal === goal ? "is-selected" : ""
-                  }`}
-                  key={goal}
-                  onClick={() => setForm((current) => ({ ...current, goal }))}
-                  type="button"
-                >
-                  {goal}
-                </button>
-              ))}
-            </div>
-            <div className="waitlist-choice-grid waitlist-choice-grid--secondary">
-              {waitlistProfiles.map((profile) => (
-                <button
-                  className={`waitlist-choice ${
-                    form.profile === profile ? "is-selected" : ""
-                  }`}
-                  key={profile}
-                  onClick={() => setForm((current) => ({ ...current, profile }))}
-                  type="button"
-                >
-                  {profile}
-                </button>
-              ))}
-            </div>
-            {error ? <div className="waitlist-error">{error}</div> : null}
-            <div className="waitlist-actions">
-              <Button onClick={() => setStep(0)} variant="ghost">
-                Back
-              </Button>
-              <Button disabled={status === "submitting"} onClick={handleSubmit} size="lg">
-                {status === "submitting" ? "Saving..." : "Join waitlist"}
-              </Button>
-            </div>
-          </div>
-        ) : (
-          <div className="waitlist-modal__panel waitlist-modal__panel--success">
-            <div className="waitlist-progress">
-              <span className="is-complete" />
-              <span className="is-complete" />
-              <span className="is-active" />
-            </div>
-            <div className="waitlist-success__badge">You’re in</div>
-            <h2 id={WAITLIST_TITLE_IDS[2]}>
-              {form.firstName || "You"}, you now have a spot in FoFit early access.
-            </h2>
-            <p id={WAITLIST_DESCRIPTION_IDS[2]}>
-              Your request was sent successfully and you’ll be included in the next early-access wave.
-            </p>
-            <div className="waitlist-success__meta">
-              <div>
-                <span>Email</span>
-                <strong>{form.email}</strong>
+                <div>
+                  <span>Path</span>
+                  <strong>{selectedRole?.label ?? "FoFit"}</strong>
+                </div>
+                <div>
+                  <span>Referral code</span>
+                  <strong>{realReferralCode ?? referralCode}</strong>
+                </div>
               </div>
-              <div>
-                <span>Referral code</span>
-                <strong>{realReferralCode ?? referralCode}</strong>
+              <div className="waitlist-success__list">
+                {waitlistSuccessPoints.map((point) => (
+                  <div key={point}>{point}</div>
+                ))}
               </div>
-            </div>
-            <div className="waitlist-success__list">
-              {waitlistSuccessPoints.map((point) => (
-                <div key={point}>{point}</div>
-              ))}
-            </div>
-            <div className="waitlist-actions">
-              <Button onClick={close} size="lg">
-                Return to site
-              </Button>
-            </div>
-          </div>
-        )}
+              <div className="waitlist-actions">
+                <Button onClick={close} size="lg">
+                  Return to site
+                </Button>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>,
     document.body,

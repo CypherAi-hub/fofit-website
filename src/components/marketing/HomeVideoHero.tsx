@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
+import { FOUNDING_LIMIT, getWaitlistCount } from "../../lib/waitlist";
 import { Button } from "../ui/Button";
 import { EarlyAccessButton } from "./EarlyAccessButton";
 
-const foundingLimit = 500;
 const ecosystemSignals = [
   { label: "Phone", detail: "Cypher brief before practice" },
   { label: "Watch", detail: "Log sets without carrying the phone" },
@@ -9,6 +10,26 @@ const ecosystemSignals = [
 ] as const;
 
 export function HomeVideoHero() {
+  const [claimedCount, setClaimedCount] = useState<number | null>(null);
+  const [foundingLimit, setFoundingLimit] = useState(FOUNDING_LIMIT);
+  const hasLiveCount = claimedCount !== null;
+
+  useEffect(() => {
+    let cancelled = false;
+
+    getWaitlistCount().then((result) => {
+      if (cancelled || result.kind !== "success") {
+        return;
+      }
+      setClaimedCount(result.count);
+      setFoundingLimit(result.limit);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <section className="home-video-hero">
       <video
@@ -34,27 +55,38 @@ export function HomeVideoHero() {
 
       <div className="container home-video-hero__inner">
         <div className="home-video-hero__content reveal">
-          <span className="home-video-hero__eyebrow">FOR STUDENT ATHLETES</span>
+          <span className="home-video-hero__eyebrow">TRAIN WITH STRUCTURE</span>
           <h1>
             The training platform that <em>remembers</em> the athlete.
           </h1>
           <p>
-            Cypher adapts the next session, keeps progress attached to the real
-            week, and shows up before practice. Built for student athletes
-            training around class, travel, and a head coach&apos;s schedule.
+            For lifters, athletes, and coaches who want training that actually
+            fits the real week. Cypher remembers the context, adapts the next
+            session, and shows up before you do.
           </p>
 
           <div className="button-row home-video-hero__actions">
             <EarlyAccessButton size="lg">Join the founding 500</EarlyAccessButton>
-            <Button href="#cypher" size="lg" variant="secondary">
-              See Cypher in action
+            <Button href="#three-paths" size="lg" variant="secondary">
+              Choose your path
             </Button>
           </div>
 
           <div className="home-video-hero__trust" aria-label="Founding membership progress">
-            <span className="home-video-hero__pulse" aria-hidden="true" />
+            <span
+              className={`home-video-hero__pulse ${hasLiveCount ? "is-live" : ""}`}
+              aria-hidden="true"
+            />
             <span>
-              <strong>{foundingLimit}</strong> founding spots
+              {hasLiveCount ? (
+                <>
+                  <strong>{claimedCount}</strong> of {foundingLimit} founding spots claimed
+                </>
+              ) : (
+                <>
+                  <strong>{foundingLimit}</strong> founding spots
+                </>
+              )}
             </span>
             <span className="home-video-hero__divider" aria-hidden="true" />
             <span>founding rate locked at $12.99/mo for life</span>

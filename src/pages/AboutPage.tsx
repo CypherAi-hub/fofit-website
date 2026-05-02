@@ -23,7 +23,7 @@ export function AboutPage() {
           { label: "Explore updates", to: "/updates", variant: "secondary" },
         ]}
         compact
-        description="FoFit started from a simple frustration: too many fitness tools, not enough clarity. Planning, guidance, and progress belong together."
+        description="FoFit brings planning, guidance, and progress into one system for lifters, athletes, and teams."
         eyebrow="About"
         title={
           <EditorialHeading accent="concept" as="span" className="editorial-heading--compact">
@@ -35,18 +35,19 @@ export function AboutPage() {
       <section className="page-section editorial-section editorial-section--tight">
         <div className="container split-layout split-layout--editorial">
           <div className="content-stack reveal">
-          <ChapterIntro
-            description="FoFit exists because most people still train across too many disconnected tools and too much guesswork."
-            index="01"
-            label="Why FoFit exists"
-            title={
-              <>
-                Better training should stay <em>reachable</em>.
-              </>
-            }
-          />
+            <ChapterIntro
+              description="The paths are different because training context is different. The product stays unified: Cypher, structure, progress, and memory."
+              index="01"
+              label="Why FoFit exists"
+              title={
+                <>
+                  One product. Three paths into <em>it</em>.
+                </>
+              }
+            />
             <p className="section-description">
-              The product is for beginners who need structure, lifters who want cleaner progression, and athletes who want a system that compounds.
+              FoFit exists because most people still train across too many
+              disconnected tools and too much guesswork.
             </p>
           </div>
           <DeviceFigure asset={heroFigure} className="split-layout__figure about-hero-figure" />
@@ -80,8 +81,8 @@ export function AboutPage() {
       </section>
 
       <CTASection
-        description="FoFit is building a focused training platform. Cypher today. Coaches and teams next."
-        pills={["Mission", "Product clarity", "Long game"]}
+        description="FoFit is building a focused training platform. Lifters, athletes, and teams can start from different paths without leaving the same system."
+        pills={["Mission", "Three paths", "Long game"]}
         title={
           <>
             A company,

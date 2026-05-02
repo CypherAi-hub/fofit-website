@@ -20,8 +20,8 @@ export function ProductVideo() {
         <div className="product-proof reveal">
           <ChapterIntro
             centered
-            description="A code-native look at the surfaces FoFit has to connect: the weekly plan, the live session, and a watch-level training moment."
-            index="01"
+            description="A code-native look at the surfaces FoFit has to connect: the weekly plan, the live session, and a watch-level training moment for the path you chose."
+            index="02"
             label="Walkthrough"
             title={
               <>
@@ -45,7 +45,7 @@ export function ProductVideo() {
             <div className="product-proof__laptop" aria-label="FoFit weekly planning surface">
               <div className="product-proof__topbar">
                 <span>FoFit OS</span>
-                <span>Week 12 · Maryville athlete</span>
+                <span>Week 12 · Training context</span>
               </div>
               <div className="product-proof__grid">
                 <div className="product-proof__brief">

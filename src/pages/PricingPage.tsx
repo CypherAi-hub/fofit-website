@@ -7,13 +7,13 @@ import { CypherTokens } from "../components/marketing/CypherTokens";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { EditorialHeading } from "../components/ui/EditorialHeading";
-import { Card } from "../components/ui/Card";
 import { faqGroups } from "../data/faqs";
+import { teamsTiers } from "../data/pricing";
 
 const pricingNotes = [
-  "Starter is workout logging and structure.",
-  "Premium is the full FoFit system — Cypher, adaptive plans, nutrition direction, and deeper analytics.",
-  "Founding members keep the early rate as the platform grows.",
+  "Starter stays free for logging, structure, and a clean place to begin.",
+  "Premium is the full individual system — Cypher, adaptive plans, nutrition direction, and deeper feedback.",
+  "Founding members keep the early individual rate as the platform gets deeper.",
 ] as const;
 
 export function PricingPage() {
@@ -24,7 +24,7 @@ export function PricingPage() {
   return (
     <>
       <PageMeta
-        description="Start free. Premium at $12.99/month. Founding members lock in $12.99/mo for life and keep the full FoFit system as it grows."
+        description="FoFit stays simple for individuals. FoFit Teams gives coaches and groups a rollout path without changing the consumer membership."
         title="FoFit Pricing | Clear Plans for a Growing Platform"
       />
       <PageHero
@@ -33,7 +33,7 @@ export function PricingPage() {
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
-        description="Start free. Premium at $12.99/month. Founding members lock in $12.99/mo for life — the rate never moves."
+        description="FoFit stays simple for individuals. FoFit Teams gives coaches and groups a rollout path without changing the consumer membership."
         eyebrow="007 / Membership"
         title={
           <EditorialHeading accent="early" as="span" className="editorial-heading--compact">
@@ -42,16 +42,21 @@ export function PricingPage() {
         }
       />
 
-      <section className="page-section editorial-section">
+      <nav className="pricing-section-nav" aria-label="Pricing sections">
+        <a href="#fofit-consumer">FoFit</a>
+        <a href="#fofit-teams">FoFit Teams</a>
+      </nav>
+
+      <section className="page-section editorial-section" id="fofit-consumer">
         <div className="container">
           <div className="pricing-page__intro">
             <ChapterIntro
-              description="FoFit is priced like a membership, not a generic feature gate. The product stays simple. The value gets easier to see."
+              description="Starter stays free. Premium is the full individual training system with Cypher, adaptive planning, and deeper feedback."
               index="01"
-              label="Plans"
+              label="FoFit"
               title={
                 <>
-                  What Premium actually <em>unlocks</em>.
+                  FoFit for lifters and <em>athletes</em>.
                 </>
               }
             />
@@ -62,34 +67,43 @@ export function PricingPage() {
             </div>
           </div>
           <PricingTable />
-        </div>
-      </section>
-
-      <section className="page-section">
-        <div className="container">
           <VerifiedDiscounts />
           <CypherTokens />
         </div>
       </section>
 
-      <section className="page-section editorial-section editorial-section--tight">
-        <div className="container split-layout">
-          <Card className="spotlight-card reveal editorial-card">
-            <span className="eyebrow">Billing confidence</span>
-            <h3>Clear first. Premium second.</h3>
-            <p>
-              Cancel anytime. Export your data. Start free, then move up when
-              you want the full FoFit system.
-            </p>
-          </Card>
-          <Card className="spotlight-card reveal editorial-card">
-            <span className="eyebrow">Teams and coaches</span>
-            <h3>Those tiers get their own launch when they are ready.</h3>
-            <p>
-              Consumer pricing stays focused on the individual athlete. Teams,
-              schools, and coaches get a dedicated offer later.
-            </p>
-          </Card>
+      <section className="page-section editorial-section editorial-section--tight" id="fofit-teams">
+        <div className="container">
+          <div className="pricing-page__intro">
+            <ChapterIntro
+              description="Per-team pricing for schools, clubs, and training groups that need structure, visibility, and consistency."
+              index="02"
+              label="FoFit Teams"
+              title={
+                <>
+                  FoFit Teams for coaches and <em>groups</em>.
+                </>
+              }
+            />
+          </div>
+          <div className="teams-tiers pricing-teams">
+            <div className="teams-tiers__grid">
+              {teamsTiers.map((tier) => (
+                <article
+                  className={`teams-tier-card${tier.featured ? " teams-tier-card--featured" : ""}`}
+                  key={tier.name}
+                >
+                  <div className="teams-tier-card__name">{tier.name}</div>
+                  <div className="teams-tier-card__price">{tier.price}</div>
+                  <p className="teams-tier-card__fit">{tier.fit}</p>
+                  <div className="teams-tier-card__desc">{tier.description}</div>
+                </article>
+              ))}
+            </div>
+            <div className="teams-tiers__footnote">
+              Team access opens Spring 2026. Email teams@fofit.app for founding school partner terms.
+            </div>
+          </div>
         </div>
       </section>
 
@@ -101,7 +115,7 @@ export function PricingPage() {
 
       <CTASection
         description="Join the founding 500. The rate never moves."
-        pills={["Starter", "Premium", "Founding"]}
+        pills={["Starter", "Premium", "Teams"]}
         title={
           <>
             Clear today.

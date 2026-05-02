@@ -31,7 +31,7 @@ export function InsightsPage() {
           { label: "See FAQ", to: "/faq", variant: "secondary" },
         ]}
         compact
-        description="Read practical training, nutrition, recovery, and performance content built for people who want better decisions."
+        description="Read practical training, nutrition, recovery, and performance notes for lifters, athletes, and coaches building better decisions."
         eyebrow="Insights"
         title={
           <>
@@ -87,7 +87,7 @@ export function InsightsPage() {
       </section>
 
       <CTASection
-        description="Join the waitlist for structured training, adaptive guidance, and insight you can use right away."
+        description="Join the waitlist for structured training, adaptive guidance, and the path that fits how you train."
         pills={["Training", "Nutrition", "Recovery", "Mindset"]}
         title={
           <>

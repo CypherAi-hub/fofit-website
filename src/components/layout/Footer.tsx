@@ -8,8 +8,8 @@ export function Footer() {
         <div className="footer-brand">
           <div className="brand-mark">FoFit</div>
           <p>
-            FoFit is the training platform for student athletes whose weeks do
-            not fit a clean spreadsheet.
+            FoFit is the training platform for lifters, athletes, and teams
+            whose training needs more memory than a spreadsheet.
           </p>
         </div>
         {footerColumns.map((column) => (

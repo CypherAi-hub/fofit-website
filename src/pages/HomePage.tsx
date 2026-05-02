@@ -5,6 +5,7 @@ import { FoundingStatsBand } from "../components/marketing/FoundingStatsBand";
 import { HomeVideoHero } from "../components/marketing/HomeVideoHero";
 import { PricingPreview } from "../components/marketing/PricingPreview";
 import { ProductVideo } from "../components/marketing/ProductVideo";
+import { ThreePathsSection } from "../components/marketing/ThreePathsSection";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Button } from "../components/ui/Button";
 import { insightArticles } from "../data/insights";
@@ -28,8 +29,8 @@ const operatingCards = [
 ] as const;
 
 const weekSignals = [
-  "Monday lift moved after film",
-  "Protein target follows dining hall reality",
+  "Workday lift moved into a shorter window",
+  "Protein target follows the meals you can actually get",
   "Sleep debt changes volume, not standards",
   "Travel day switches equipment automatically",
   "Coach dashboard path for D2 / D3 teams",
@@ -45,12 +46,14 @@ export function HomePage() {
   return (
     <>
       <PageMeta
-        description="FoFit is the training platform with Cypher — built for student athletes who train around class, practice, and the rest of a real week."
-        title="FoFit | Training platform for student athletes"
+        description="FoFit is the training platform with Cypher — built for lifters, athletes, and coaches who need structure around the real week."
+        title="FoFit | Training platform for lifters, athletes, and coaches"
       />
       <HomeVideoHero />
 
       <FoundingStatsBand />
+
+      <ThreePathsSection />
 
       <ProductVideo />
 
@@ -58,13 +61,12 @@ export function HomePage() {
 
       <section className="v3-system">
         <div className="container v3-system__inner">
-          <div className="v3-section-kicker">03 / OPERATING SYSTEM</div>
+          <div className="v3-section-kicker">04 / OPERATING SYSTEM</div>
           <div className="v3-system__header">
-            <h2>Built around the week that normal fitness apps ignore.</h2>
+            <h2>Built around the context most fitness apps drop.</h2>
             <p>
-              D2 and D3 athletes do not train in a clean spreadsheet. FoFit
-              treats practice, class, travel, soreness, and equipment as part of
-              the plan instead of excuses outside it.
+              FoFit treats schedule, soreness, equipment, goals, and group
+              context as part of the plan instead of excuses outside it.
             </p>
           </div>
           <div className="v3-operating-grid">
@@ -82,15 +84,15 @@ export function HomePage() {
       <section className="v3-week">
         <div className="container v3-week__inner">
           <div className="v3-week__copy">
-            <div className="v3-section-kicker">04 / COLLEGIATE MEMORY</div>
-            <h2>Cypher is more valuable because the week is messy.</h2>
+            <div className="v3-section-kicker">05 / THE REAL WEEK, REMEMBERED</div>
+            <h2>Cypher remembers what the week tried to break.</h2>
             <p>
               Most apps record the lift after it happens. Cypher changes the
-              next call while the week is still moving, especially for athletes
-              training without a full D1 staff around them.
+              next call while the week is still moving, whether you are
+              rebuilding consistency, training in-season, or leading a group.
             </p>
           </div>
-          <div className="v3-week__rail" aria-label="Student athlete week signals">
+          <div className="v3-week__rail" aria-label="Training week signals">
             {weekSignals.map((signal, index) => (
               <div className="v3-week__signal reveal" key={signal}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
@@ -103,7 +105,7 @@ export function HomePage() {
 
       <section className="v3-contrast">
         <div className="container v3-contrast__inner">
-          <div className="v3-section-kicker">05 / POSITIONING</div>
+          <div className="v3-section-kicker">06 / POSITIONING</div>
           <h2>Not a tracker with nicer charts. Not a prompt box with reps.</h2>
           <div className="v3-contrast__rows">
             {comparisonRows.map(([label, detail]) => (
@@ -119,7 +121,7 @@ export function HomePage() {
       <section className="v3-teams">
         <div className="container v3-teams__inner">
           <div>
-            <div className="v3-section-kicker">06 / FOR TEAMS</div>
+            <div className="v3-section-kicker">07 / FOR TEAMS</div>
             <h2>D2 / D3 programs need infrastructure, not another consumer app.</h2>
           </div>
           <p>
@@ -136,7 +138,7 @@ export function HomePage() {
       <section className="v3-pricing">
         <div className="container">
           <div className="v3-pricing__header">
-            <div className="v3-section-kicker">07 / MEMBERSHIP</div>
+            <div className="v3-section-kicker">08 / MEMBERSHIP</div>
             <h2>$12.99/mo. Forever, if you&apos;re early.</h2>
             <p>
               Start free. Move to Premium when you want the full FoFit system.
@@ -151,7 +153,7 @@ export function HomePage() {
       <section className="v3-notes">
         <div className="container v3-notes__inner">
           <div className="v3-notes__header">
-            <div className="v3-section-kicker">08 / FIELD NOTES</div>
+            <div className="v3-section-kicker">09 / FIELD NOTES</div>
             <h2>The publication side of the training system.</h2>
             <p>
               Short reads on training, recovery, nutrition, and the decisions
