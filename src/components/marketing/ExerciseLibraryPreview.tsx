@@ -12,9 +12,15 @@ const exercises = [
   { slug: "overhead-tricep-extension",name: "Overhead Tricep Extension",     muscle: "ARMS" },
   { slug: "lateral-raises",           name: "Lateral Raises",                muscle: "SHOULDERS" },
   { slug: "forearm-plank",            name: "Forearm Plank",                 muscle: "CORE" },
-]
+];
 
-export function ExerciseLibraryPreview() {
+type ExerciseLibraryPreviewProps = {
+  eyebrow?: string;
+};
+
+export function ExerciseLibraryPreview({
+  eyebrow = "FIG 03 — DEMO LIBRARY",
+}: ExerciseLibraryPreviewProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -34,7 +40,7 @@ export function ExerciseLibraryPreview() {
     <section className="exercise-library" ref={sectionRef} aria-labelledby="exercise-library-title">
       <div className="container">
         <header className="exercise-library__header">
-          <p className="exercise-library__eyebrow">FIG 03 — DEMO LIBRARY</p>
+          <p className="exercise-library__eyebrow">{eyebrow}</p>
           <h2 className="exercise-library__title" id="exercise-library-title">
             See every move, <em>in action</em>.
           </h2>
@@ -54,7 +60,6 @@ export function ExerciseLibraryPreview() {
                 loop
                 muted
                 playsInline
-                poster={`/videos/exercises/${exercise.slug}-poster.jpg`}
                 preload="metadata"
                 src={`/videos/exercises/${exercise.slug}.MP4`}
               />
