@@ -13,7 +13,7 @@ export function CypherTranscript() {
         <div className="cypher-action reveal">
           <div className="cypher-action__copy">
             <ChapterIntro
-              index="02"
+              index="03"
               label="Cypher"
               title={
                 <>

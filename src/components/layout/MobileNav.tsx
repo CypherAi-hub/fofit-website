@@ -78,8 +78,8 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           )}
         </nav>
         <p className="mobile-nav__footnote">
-          A premium training platform built around planning, guidance, progress,
-          and future coaching layers.
+          A training platform for lifters, athletes, and teams built around
+          planning, guidance, and progress.
         </p>
       </aside>
     </div>

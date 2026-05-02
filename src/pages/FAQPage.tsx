@@ -19,7 +19,7 @@ export function FAQPage() {
           { label: "Read insights", to: "/insights", variant: "secondary" },
         ]}
         compact
-        description="Everything about pricing, access, Cypher, data, and support — in one place."
+        description="Everything about pricing, access, Cypher, the three paths, Teams, data, and support — in one place."
         eyebrow="FAQ"
         title={
           <>

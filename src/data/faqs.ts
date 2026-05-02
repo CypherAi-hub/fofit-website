@@ -28,7 +28,7 @@ export const faqGroups: FAQGroup[] = [
       {
         question: "Who is it for?",
         answer:
-          "Student athletes first. FoFit is built for people training around class, practice, travel, and the rest of a real week. Lifters and coaches fit too, but the product voice is written for the athlete-in-season.",
+          "FoFit has three paths: Lifter, Athlete, and Coach. Beginners can start with structure, athletes can train around a real week, and coaches can follow the FoFit Teams path.",
       },
     ],
   },
@@ -44,6 +44,16 @@ export const faqGroups: FAQGroup[] = [
         question: "Is FoFit only for advanced lifters?",
         answer:
           "No. The platform is built for beginners, intermediate lifters, and athletes who want more structure than a generic workout app can offer.",
+      },
+      {
+        question: "Is FoFit only for student athletes?",
+        answer:
+          "No. Student athletes shaped the product and remain the proof, but FoFit is not limited to them. Athlete is aspirational here.",
+      },
+      {
+        question: "Can I change my path later?",
+        answer:
+          "Yes. The role picker helps FoFit understand your starting context. It does not lock your account forever.",
       },
     ],
   },
@@ -74,6 +84,11 @@ export const faqGroups: FAQGroup[] = [
         question: "Will there be team or school pricing?",
         answer:
           "Yes. FoFit is designed to expand into schools, clubs, and performance groups with shared structures and broader account management.",
+      },
+      {
+        question: "What is FoFit Teams?",
+        answer:
+          "FoFit Teams is the B2B path for coaches, schools, clubs, and training groups that need shared structure and visibility.",
       },
     ],
   },

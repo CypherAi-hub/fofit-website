@@ -10,10 +10,17 @@ import {
 
 type WaitlistContextValue = {
   isOpen: boolean;
-  open: () => void;
+  open: (options?: WaitlistOpenOptions) => void;
   close: () => void;
+  initialRole: WaitlistRole | null;
   joinedEmail: string | null;
   setJoinedEmail: (email: string | null) => void;
+};
+
+export type WaitlistRole = "lifter" | "athlete" | "coach";
+
+export type WaitlistOpenOptions = {
+  initialRole?: WaitlistRole;
 };
 
 const WaitlistContext = createContext<WaitlistContextValue | null>(null);
@@ -22,6 +29,7 @@ const JOINED_KEY = "fofit-waitlist-joined-email";
 
 export function WaitlistProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [initialRole, setInitialRole] = useState<WaitlistRole | null>(null);
   const [joinedEmail, setJoinedEmailState] = useState<string | null>(null);
 
   useEffect(() => {
@@ -40,15 +48,23 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
     window.localStorage.removeItem(JOINED_KEY);
   }, []);
 
+  const open = useCallback((options?: WaitlistOpenOptions) => {
+    setInitialRole(options?.initialRole ?? null);
+    setIsOpen(true);
+  }, []);
+
+  const close = useCallback(() => setIsOpen(false), []);
+
   const value = useMemo(
     () => ({
       isOpen,
-      open: () => setIsOpen(true),
-      close: () => setIsOpen(false),
+      open,
+      close,
+      initialRole,
       joinedEmail,
       setJoinedEmail,
     }),
-    [isOpen, joinedEmail, setJoinedEmail],
+    [close, initialRole, isOpen, joinedEmail, open, setJoinedEmail],
   );
 
   return (
