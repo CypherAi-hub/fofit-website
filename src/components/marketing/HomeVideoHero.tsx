@@ -57,7 +57,7 @@ export function HomeVideoHero() {
         <div className="home-video-hero__content reveal">
           <span className="home-video-hero__eyebrow">TRAIN WITH STRUCTURE</span>
           <h1>
-            The training platform that <em>remembers</em> the athlete.
+            The training platform that <em>remembers</em> you.
           </h1>
           <p>
             For lifters, athletes, and coaches who want training that actually
@@ -90,15 +90,6 @@ export function HomeVideoHero() {
             </span>
             <span className="home-video-hero__divider" aria-hidden="true" />
             <span>founding rate locked at $12.99/mo for life</span>
-          </div>
-
-          <div className="home-video-hero__proof">
-            <div className="home-video-hero__avatars" aria-hidden="true">
-              <span>ML</span>
-              <span>D3</span>
-              <span>AT</span>
-            </div>
-            <span>Built with student athletes from Maryville and 4 other D2 / D3 programs</span>
           </div>
 
           <div className="home-video-hero__ecosystem" aria-label="FoFit device and team surfaces">
