@@ -5757,6 +5757,7 @@ body::before {
 .home-video-hero__shade {
   z-index: -2;
   background:
+    radial-gradient(ellipse at 94% 92%, rgba(6, 8, 13, 1) 0%, rgba(6, 8, 13, 1) 26%, rgba(6, 8, 13, 0.9) 42%, transparent 64%),
     linear-gradient(105deg, rgba(6, 8, 13, 0.94) 0%, rgba(11, 18, 32, 0.76) 42%, rgba(11, 18, 32, 0.22) 76%),
     linear-gradient(0deg, var(--overlay-bottom), transparent 48%),
     radial-gradient(circle at 82% 24%, var(--video-cyan-glow), transparent 32%);
@@ -6224,6 +6225,7 @@ body::before {
 
   .home-video-hero__shade {
     background:
+      radial-gradient(ellipse at 94% 92%, rgba(6, 8, 13, 1) 0%, rgba(6, 8, 13, 1) 28%, rgba(6, 8, 13, 0.88) 44%, transparent 66%),
       linear-gradient(180deg, rgba(6, 8, 13, 0.72), rgba(6, 8, 13, 0.94) 52%, rgba(11, 18, 32, 0.98)),
       radial-gradient(circle at 70% 18%, rgba(34, 211, 255, 0.16), transparent 32%);
   }
