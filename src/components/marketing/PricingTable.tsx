@@ -2,6 +2,7 @@ import { useState } from "react";
 import { pricingAssurances, pricingComparison, pricingPlans } from "../../data/pricing";
 import { EarlyAccessButton } from "./EarlyAccessButton";
 import { Card } from "../ui/Card";
+import { Button } from "../ui/Button";
 
 export function PricingTable() {
   const [annual, setAnnual] = useState(false);
@@ -50,11 +51,15 @@ export function PricingTable() {
                 <li key={feature}>{feature}</li>
               ))}
             </ul>
-            <EarlyAccessButton
-              variant={plan.featured ? "primary" : "secondary"}
-            >
-              {plan.cta}
-            </EarlyAccessButton>
+            {plan.featured ? (
+              <EarlyAccessButton variant="primary">
+                {plan.cta}
+              </EarlyAccessButton>
+            ) : (
+              <Button to="/signup" variant="secondary">
+                {plan.cta}
+              </Button>
+            )}
           </Card>
         ))}
         <Card className="pricing-card pricing-card--editorial reveal">
@@ -64,7 +69,7 @@ export function PricingTable() {
               {foundingPrice}
               <span className="pricing-card__unit">{foundingUnit}</span>
             </strong>
-            <p>The first 250 members lock the full Premium product at this rate for life.</p>
+            <p>The first 500 members lock the full Premium product at this rate for life.</p>
           </div>
           <p className="pricing-card__description">
             Join before launch and the rate does not move as FoFit adds more coaching, team, and recovery depth.
@@ -80,7 +85,7 @@ export function PricingTable() {
             <span>Rate holds for founding members</span>
           </div>
           <EarlyAccessButton>
-            Join the waitlist
+            Join the founding 500
           </EarlyAccessButton>
         </Card>
       </div>

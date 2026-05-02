@@ -71,8 +71,8 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               <NavLink className="mobile-nav__link" onClick={onClose} to="/login">
                 Sign in
               </NavLink>
-              <EarlyAccessButton className="mobile-nav__cta" size="lg">
-                Join the waitlist
+              <EarlyAccessButton className="mobile-nav__cta" onClick={onClose} size="lg">
+                Join founding 500
               </EarlyAccessButton>
             </>
           )}

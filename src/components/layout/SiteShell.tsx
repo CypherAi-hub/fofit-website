@@ -14,8 +14,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="site-frame">
-      <div className="ambient ambient--one" />
-      <div className="ambient ambient--two" />
       <Navbar />
       <main id="main">{children}</main>
       <Footer />

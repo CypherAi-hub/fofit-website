@@ -29,7 +29,7 @@ export function PricingPage() {
       />
       <PageHero
         actions={[
-          { label: "Join the waitlist", intent: "waitlist" },
+          { label: "Join the founding 500", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact

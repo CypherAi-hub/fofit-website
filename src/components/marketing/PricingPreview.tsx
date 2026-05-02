@@ -1,4 +1,5 @@
 import { pricingPlans } from "../../data/pricing";
+import { EarlyAccessButton } from "./EarlyAccessButton";
 import { Button } from "../ui/Button";
 import { Card } from "../ui/Card";
 
@@ -31,9 +32,15 @@ export function PricingPreview({ className = "" }: PricingPreviewProps) {
             <span>{plan.annualNote}</span>
             {plan.featured ? <span>Rate stays locked if you join early</span> : <span>Upgrade when you want the full system</span>}
           </div>
-          <Button to="/pricing" variant={plan.featured ? "primary" : "secondary"}>
-            {plan.cta}
-          </Button>
+          {plan.featured ? (
+            <EarlyAccessButton variant="primary">
+              {plan.cta}
+            </EarlyAccessButton>
+          ) : (
+            <Button to="/signup" variant="secondary">
+              {plan.cta}
+            </Button>
+          )}
         </Card>
       ))}
     </div>

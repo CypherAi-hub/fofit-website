@@ -226,9 +226,8 @@ export function WaitlistModal() {
           <span className="eyebrow">FoFit early access</span>
           <h3>A premium path into the platform.</h3>
           <p>
-            This conversion layer now lives globally across the site, so every
-            major CTA opens the same polished early-access flow instead of
-            scattering users into different outcomes.
+            Claim a founding spot, keep the early Premium rate, and help shape
+            the first student-athlete release before the wider launch.
           </p>
           <div className="waitlist-aside__card">
             <span>Platform focus</span>
@@ -287,12 +286,6 @@ export function WaitlistModal() {
                 </div>
               ))}
             </div>
-            {joinedEmail ? (
-              <div className="waitlist-inline-note">
-                Already joined as <strong>{joinedEmail}</strong>. You can still update
-                your details here.
-              </div>
-            ) : null}
             {error ? <div className="waitlist-error" id={WAITLIST_ERROR_ID}>{error}</div> : null}
             <div className="waitlist-actions">
               <Button onClick={close} variant="ghost">

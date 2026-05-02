@@ -14,7 +14,7 @@ export function QuietFinalCTA() {
         </EditorialHeading>
 
         <p className="quiet-final-cta__sub">
-          FoFit is open to the first 500 founding members.
+          500 founding spots. Founding rate locked at $12.99/mo for life.
         </p>
 
         <EarlyAccessButton className="quiet-final-cta__button" size="lg">

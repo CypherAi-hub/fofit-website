@@ -16,6 +16,13 @@
   --blue: #2a66ff;
   --cyan: #00d4ff;
   --green: #44d192;
+  --video-base: #0b1220;
+  --video-cyan: #22d3ff;
+  --video-cyan-glow: rgba(34, 211, 255, 0.18);
+  --gym-shadow: rgba(0, 0, 0, 0.6);
+  --overlay-bottom: rgba(11, 18, 32, 0.55);
+  --overlay-top: rgba(11, 18, 32, 0.18);
+  --trust-green: #00c875;
   --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
   --radius-sm: 12px;
   --radius-md: 18px;

@@ -1,107 +1,26 @@
-import { useEffect, useRef, useState } from "react";
-
-import { appScreens, brandVideos } from "../../assets/brand/manifest";
 import { ChapterIntro } from "./ChapterIntro";
-import { FigureLabel } from "./FigureLabel";
 
-const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+const weekRows = [
+  ["Mon", "Upper strength", "Bench +5 lb", "Ready"],
+  ["Tue", "Practice travel", "Volume reduced", "Protected"],
+  ["Wed", "Lower power", "Keep intensity", "On plan"],
+  ["Thu", "Class-heavy day", "35 min session", "Compressed"],
+] as const;
 
-function prefersReducedMotion() {
-  return typeof window !== "undefined"
-    && window.matchMedia(REDUCED_MOTION_QUERY).matches;
-}
+const watchStats = [
+  ["Set", "3 / 5"],
+  ["Rest", "01:10"],
+  ["RPE", "7"],
+] as const;
 
 export function ProductVideo() {
-  const [reducedMotion, setReducedMotion] = useState(prefersReducedMotion);
-  const [playbackFallback, setPlaybackFallback] = useState(false);
-  const [hasPlayed, setHasPlayed] = useState(false);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return undefined;
-    }
-
-    const mediaQuery = window.matchMedia(REDUCED_MOTION_QUERY);
-    const handleChange = (event: MediaQueryListEvent) => {
-      setReducedMotion(event.matches);
-    };
-
-    setReducedMotion(mediaQuery.matches);
-    if (typeof mediaQuery.addEventListener === "function") {
-      mediaQuery.addEventListener("change", handleChange);
-    } else {
-      mediaQuery.addListener(handleChange);
-    }
-
-    return () => {
-      if (typeof mediaQuery.removeEventListener === "function") {
-        mediaQuery.removeEventListener("change", handleChange);
-      } else {
-        mediaQuery.removeListener(handleChange);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (reducedMotion) {
-      setPlaybackFallback(false);
-      return;
-    }
-
-    const video = videoRef.current;
-    if (!video) {
-      return;
-    }
-
-    let cancelled = false;
-
-    const attemptPlayback = async () => {
-      try {
-        video.muted = true;
-        await video.play();
-        if (!cancelled) {
-          setPlaybackFallback(false);
-          setHasPlayed(true);
-        }
-      } catch {
-        if (!cancelled) {
-          setPlaybackFallback(true);
-        }
-      }
-    };
-
-    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-      void attemptPlayback();
-    } else {
-      const onCanPlay = () => {
-        void attemptPlayback();
-      };
-
-      video.addEventListener("canplay", onCanPlay, { once: true });
-      return () => {
-        cancelled = true;
-        video.removeEventListener("canplay", onCanPlay);
-        video.pause();
-      };
-    }
-
-    return () => {
-      cancelled = true;
-      video.pause();
-    };
-  }, [reducedMotion]);
-
-  const posterAsset = brandVideos.heroLoop.poster ?? appScreens.workout.device.src;
-  const showPoster = reducedMotion || playbackFallback;
-
   return (
-    <section className="page-section editorial-section editorial-section--walkthrough">
+    <section className="page-section editorial-section editorial-section--walkthrough" id="walkthrough">
       <div className="container">
-        <div className="product-video reveal">
+        <div className="product-proof reveal">
           <ChapterIntro
             centered
-            description="A quick pass through splash, discovery, Cypher, workout logging, and journey. The product should prove itself before the copy asks for belief."
+            description="A code-native look at the surfaces FoFit has to connect: the weekly plan, the live session, and a watch-level training moment."
             index="01"
             label="Walkthrough"
             title={
@@ -110,35 +29,69 @@ export function ProductVideo() {
               </>
             }
           />
-          <div className="product-video__frame">
-            {showPoster || !hasPlayed ? (
-              <img
-                alt="FoFit workout screen showing Incline Dumbbell Press in progress."
-                className="product-video__media product-video__media--poster"
-                loading="lazy"
-                src={posterAsset}
-              />
-            ) : null}
-            {!showPoster ? (
-              <video
-                aria-label="Thirty-second FoFit product walkthrough showing splash, discover, Cypher, workout logging, and journey screens."
-                autoPlay
-                className="product-video__media product-video__media--video"
-                data-playing={hasPlayed || undefined}
-                loop
-                muted
-                playsInline
-                preload="auto"
-                ref={videoRef}
-                src={brandVideos.heroLoop.src}
-              />
-            ) : null}
+
+          <div className="product-proof__stage">
+            <video
+              aria-hidden="true"
+              autoPlay
+              className="product-proof__ambient"
+              loop
+              muted
+              playsInline
+              poster="/product-devices-poster.jpg"
+              preload="metadata"
+              src="/product-devices.mp4"
+            />
+            <div className="product-proof__laptop" aria-label="FoFit weekly planning surface">
+              <div className="product-proof__topbar">
+                <span>FoFit OS</span>
+                <span>Week 12 · Maryville athlete</span>
+              </div>
+              <div className="product-proof__grid">
+                <div className="product-proof__brief">
+                  <span className="product-proof__label">Cypher brief</span>
+                  <h3>Push volume is trending up.</h3>
+                  <p>
+                    Move bench up five pounds today. Last week&apos;s RPE held
+                    at 7 and practice load is light.
+                  </p>
+                </div>
+                <div className="product-proof__week">
+                  {weekRows.map(([day, title, change, status]) => (
+                    <div className="product-proof__row" key={day}>
+                      <span>{day}</span>
+                      <strong>{title}</strong>
+                      <em>{change}</em>
+                      <small>{status}</small>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="product-proof__phone" aria-label="FoFit live session adjustment">
+              <div className="product-proof__phone-header">
+                <span>Today</span>
+                <strong>Upper Body Strength</strong>
+              </div>
+              <div className="product-proof__set-card">
+                <span>Bench press</span>
+                <strong>155 lb · 5 reps</strong>
+                <p>Cypher raised load after two clean sets.</p>
+              </div>
+              <button type="button">Log set</button>
+            </div>
+
+            <div className="product-proof__watch" aria-label="FoFit watch surface">
+              <span>FoFit Watch</span>
+              {watchStats.map(([label, value]) => (
+                <div key={label}>
+                  <small>{label}</small>
+                  <strong>{value}</strong>
+                </div>
+              ))}
+            </div>
           </div>
-          <FigureLabel
-            caption="Thirty seconds across splash, discovery, Cypher, workout logging, and journey."
-            className="product-video__label"
-            label=""
-          />
         </div>
       </div>
     </section>

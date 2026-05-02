@@ -33,9 +33,6 @@ export function Navbar() {
             ))}
           </nav>
           <div className="site-header__actions">
-            <Button to="/pricing" variant="ghost">
-              Pricing
-            </Button>
             {signedIn ? (
               <UserMenu />
             ) : (
@@ -43,7 +40,7 @@ export function Navbar() {
                 <Button to="/login" variant="ghost">
                   Sign in
                 </Button>
-                <EarlyAccessButton>Join the waitlist</EarlyAccessButton>
+                <EarlyAccessButton>Join founding 500</EarlyAccessButton>
               </>
             )}
             <button

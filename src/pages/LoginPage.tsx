@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthForm } from "../components/auth/AuthForm";
 import { PageMeta } from "../components/layout/PageMeta";
+import { EarlyAccessButton } from "../components/marketing/EarlyAccessButton";
 import { useAuth } from "../lib/auth-context";
 
 export function LoginPage() {
@@ -31,7 +32,7 @@ export function LoginPage() {
               Pick up where you left off. Your web session and your mobile session share the same account.
             </p>
             <p className="auth-page__switch">
-              Don&apos;t have an account yet? <Link to="/#waitlist">Join the waitlist →</Link>
+              Don&apos;t have an account yet? <EarlyAccessButton variant="ghost">Join founding 500 →</EarlyAccessButton>
             </p>
           </div>
           <div className="auth-page__panel">

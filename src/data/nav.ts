@@ -3,13 +3,17 @@ export type NavLinkItem = {
   to: string;
 };
 
+export type FooterLinkItem = {
+  label: string;
+  to?: string;
+  href?: string;
+};
+
 export const primaryNav: NavLinkItem[] = [
   { label: "Product", to: "/product" },
-  { label: "Features", to: "/features" },
+  { label: "Pricing", to: "/pricing" },
   { label: "Insights", to: "/insights" },
   { label: "About", to: "/about" },
-  { label: "Community", to: "/community" },
-  { label: "FAQ", to: "/faq" },
 ];
 
 export const ecosystemLinks: NavLinkItem[] = [
@@ -19,41 +23,37 @@ export const ecosystemLinks: NavLinkItem[] = [
   { label: "Teams", to: "/teams" },
 ];
 
-export const footerColumns = [
+export const footerColumns: Array<{ title: string; links: FooterLinkItem[] }> = [
   {
     title: "Product",
     links: [
-      { label: "Overview", to: "/product" },
-      { label: "Features", to: "/features" },
+      { label: "Product", to: "/product" },
       { label: "Pricing", to: "/pricing" },
-      { label: "Community", to: "/community" },
+      { label: "Insights", to: "/insights" },
+      { label: "FAQ", to: "/faq" },
     ],
   },
   {
     title: "Company",
     links: [
       { label: "About", to: "/about" },
+      { label: "Field Notes", to: "/insights" },
       { label: "Updates", to: "/updates" },
-      { label: "Coaches", to: "/coaches" },
-      { label: "Teams", to: "/teams" },
+      { label: "Contact", href: "mailto:hello@fofit.app?subject=FoFit%20contact" },
     ],
   },
   {
-    title: "Resources",
+    title: "For Teams",
     links: [
-      { label: "Insights", to: "/insights" },
-      { label: "FAQ", to: "/faq" },
-      { label: "Shop", to: "/shop" },
-      { label: "Nutrition", to: "/nutrition" },
+      { label: "Coming Spring 2026", to: "/teams" },
+      { label: "Request team access", href: "mailto:teams@fofit.app?subject=FoFit%20Teams%20access" },
     ],
   },
   {
     title: "Legal",
     links: [
-      { label: "Privacy", to: "/faq" },
-      { label: "Terms", to: "/faq" },
-      { label: "Support", to: "/faq" },
-      { label: "Security", to: "/faq" },
+      { label: "Privacy questions", href: "mailto:hello@fofit.app?subject=FoFit%20privacy" },
+      { label: "Terms questions", href: "mailto:hello@fofit.app?subject=FoFit%20terms" },
     ],
   },
 ];

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { HomePage } from "../pages/HomePage";
 import { ProductPage } from "../pages/ProductPage";
 import { FeaturesPage } from "../pages/FeaturesPage";
@@ -11,7 +11,7 @@ import { UpdatesPage } from "../pages/UpdatesPage";
 import { CoachesPage } from "../pages/CoachesPage";
 import { StorePage } from "../pages/StorePage";
 import { TeamsPage } from "../pages/TeamsPage";
-import { ShopPage, NutritionPage } from "../pages/ComingSoonPage";
+import { NutritionPage } from "../pages/ComingSoonPage";
 import { SubmissionPreviewPage } from "../pages/SubmissionPreviewPage";
 import { SignupPage } from "../pages/SignupPage";
 import { LoginPage } from "../pages/LoginPage";
@@ -33,7 +33,7 @@ export function AppRoutes() {
       <Route path="/coaches" element={<CoachesPage />} />
       <Route path="/store" element={<StorePage />} />
       <Route path="/teams" element={<TeamsPage />} />
-      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/shop" element={<Navigate replace to="/store" />} />
       <Route path="/nutrition" element={<NutritionPage />} />
       <Route path="/submission-preview" element={<SubmissionPreviewPage />} />
       <Route path="/signup" element={<SignupPage />} />

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ecosystemLinks, footerColumns } from "../../data/nav";
+import { footerColumns } from "../../data/nav";
 
 export function Footer() {
   return (
@@ -8,16 +8,9 @@ export function Footer() {
         <div className="footer-brand">
           <div className="brand-mark">FoFit</div>
           <p>
-            FoFit brings structure, adaptive guidance, and progress tracking
-            into one connected fitness system.
+            FoFit is the training platform for student athletes whose weeks do
+            not fit a clean spreadsheet.
           </p>
-          <div className="footer-pills">
-            {ecosystemLinks.map((link) => (
-              <Link className="footer-pill" key={link.to} to={link.to}>
-                {link.label}
-              </Link>
-            ))}
-          </div>
         </div>
         {footerColumns.map((column) => (
           <div className="footer-column" key={column.title}>
@@ -25,7 +18,11 @@ export function Footer() {
             <ul>
               {column.links.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.to}>{link.label}</Link>
+                  {link.href ? (
+                    <a href={link.href}>{link.label}</a>
+                  ) : (
+                    <Link to={link.to ?? "/"}>{link.label}</Link>
+                  )}
                 </li>
               ))}
             </ul>
