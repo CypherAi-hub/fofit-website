@@ -170,8 +170,8 @@ export function HomePage() {
       <section className="v3-final">
         <div className="container v3-final__inner">
           <h2>Train honestly. Or keep tracking.</h2>
-          <p>500 founding spots. Founding rate locked at $12.99/mo for life.</p>
-          <EarlyAccessButton size="lg">Join the founding 500 →</EarlyAccessButton>
+          <p>250 founding spots. Founding rate locked at $12.99/mo for life.</p>
+          <EarlyAccessButton size="lg">Join the founding 250 →</EarlyAccessButton>
         </div>
       </section>
     </>

@@ -14,11 +14,11 @@ export function QuietFinalCTA() {
         </EditorialHeading>
 
         <p className="quiet-final-cta__sub">
-          500 founding spots. Founding rate locked at $12.99/mo for life.
+          250 founding spots. Founding rate locked at $12.99/mo for life.
         </p>
 
         <EarlyAccessButton className="quiet-final-cta__button" size="lg">
-          Join the founding 500 →
+          Join the founding 250 →
         </EarlyAccessButton>
       </div>
     </section>

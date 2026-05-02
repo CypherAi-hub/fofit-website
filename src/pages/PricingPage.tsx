@@ -29,7 +29,7 @@ export function PricingPage() {
       />
       <PageHero
         actions={[
-          { label: "Join the founding 500", intent: "waitlist" },
+          { label: "Join the founding 250", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
@@ -114,7 +114,7 @@ export function PricingPage() {
       </section>
 
       <CTASection
-        description="Join the founding 500. The rate never moves."
+        description="Join the founding 250. The rate never moves."
         pills={["Starter", "Premium", "Teams"]}
         title={
           <>

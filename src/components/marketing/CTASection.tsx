@@ -21,7 +21,7 @@ type CTASectionProps = {
 };
 
 const defaultActions: CTAAction[] = [
-  { label: "Join founding 500", intent: "waitlist" },
+  { label: "Join founding 250", intent: "waitlist" },
   { label: "Explore the platform", to: "/product", variant: "secondary" },
 ];
 

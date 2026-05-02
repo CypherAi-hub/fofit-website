@@ -3,7 +3,7 @@ import type { WaitlistRole } from '../app/waitlist-context';
 const ENDPOINT = import.meta.env.VITE_WAITLIST_ENDPOINT;
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-export const FOUNDING_LIMIT = 500;
+export const FOUNDING_LIMIT = 250;
 
 export type WaitlistPayload = {
   name: string;

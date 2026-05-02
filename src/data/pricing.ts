@@ -37,7 +37,7 @@ export const pricingPlans: PricingPlan[] = [
     annual: "$99",
     annualNote: "$8.25/mo billed annually · 7-day free trial",
     featured: true,
-    cta: "Join the founding 500",
+    cta: "Join the founding 250",
     description:
       "For athletes and committed lifters who want adaptive planning, deeper feedback, and a more connected training system.",
     features: [
