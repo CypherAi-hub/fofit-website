@@ -2,8 +2,6 @@ import { FAQAccordion } from "../components/marketing/FAQAccordion";
 import { CTASection } from "../components/marketing/CTASection";
 import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { PricingTable } from "../components/marketing/PricingTable";
-import { VerifiedDiscounts } from "../components/marketing/VerifiedDiscounts";
-import { CypherTokens } from "../components/marketing/CypherTokens";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { EditorialHeading } from "../components/ui/EditorialHeading";
@@ -29,7 +27,7 @@ export function PricingPage() {
       />
       <PageHero
         actions={[
-          { label: "Join the founding 500", intent: "waitlist" },
+          { label: "Join the founding 250", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
@@ -67,8 +65,6 @@ export function PricingPage() {
             </div>
           </div>
           <PricingTable />
-          <VerifiedDiscounts />
-          <CypherTokens />
         </div>
       </section>
 
@@ -114,7 +110,7 @@ export function PricingPage() {
       </section>
 
       <CTASection
-        description="Join the founding 500. The rate never moves."
+        description="Join the founding 250. The rate never moves."
         pills={["Starter", "Premium", "Teams"]}
         title={
           <>

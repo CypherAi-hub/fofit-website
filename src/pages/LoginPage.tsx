@@ -32,7 +32,7 @@ export function LoginPage() {
               Pick up where you left off. Your web session and your mobile session share the same account.
             </p>
             <p className="auth-page__switch">
-              Don&apos;t have an account yet? <EarlyAccessButton variant="ghost">Join founding 500 →</EarlyAccessButton>
+              Don&apos;t have an account yet? <EarlyAccessButton variant="ghost">Join founding 250 →</EarlyAccessButton>
             </p>
           </div>
           <div className="auth-page__panel">

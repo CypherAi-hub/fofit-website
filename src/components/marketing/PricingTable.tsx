@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { pricingAssurances, pricingComparison, pricingPlans } from "../../data/pricing";
 import { EarlyAccessButton } from "./EarlyAccessButton";
+import { VerifiedDiscounts } from "./VerifiedDiscounts";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 
@@ -31,7 +32,7 @@ export function PricingTable() {
         </button>
       </div>
 
-      <div className="pricing-preview">
+      <div className="pricing-preview pricing-preview--primary">
         {[starterPlan, premiumPlan].map((plan) => (
           <Card
             className={`pricing-card reveal ${plan.featured ? "pricing-card--featured" : ""}`}
@@ -64,12 +65,12 @@ export function PricingTable() {
         ))}
         <Card className="pricing-card pricing-card--editorial reveal">
           <div className="pricing-card__top">
-            <span className="pricing-card__name">Founding</span>
+            <span className="pricing-card__name">Founding 250</span>
             <strong>
               {foundingPrice}
               <span className="pricing-card__unit">{foundingUnit}</span>
             </strong>
-            <p>The first 500 members lock the full Premium product at this rate for life.</p>
+            <p>250 spots. Locked rate for life.</p>
           </div>
           <p className="pricing-card__description">
             Join before launch and the rate does not move as FoFit adds more coaching, team, and recovery depth.
@@ -85,10 +86,12 @@ export function PricingTable() {
             <span>Rate holds for founding members</span>
           </div>
           <EarlyAccessButton>
-            Join the founding 500
+            Join the founding 250
           </EarlyAccessButton>
         </Card>
       </div>
+
+      <VerifiedDiscounts />
 
       <p className="pricing-table__footer">
         Cancel anytime · export your data in one tap

@@ -40,7 +40,7 @@ export function Navbar() {
                 <Button to="/login" variant="ghost">
                   Sign in
                 </Button>
-                <EarlyAccessButton>Join founding 500</EarlyAccessButton>
+                <EarlyAccessButton>Join founding 250</EarlyAccessButton>
               </>
             )}
             <button

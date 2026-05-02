@@ -72,7 +72,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                 Sign in
               </NavLink>
               <EarlyAccessButton className="mobile-nav__cta" onClick={onClose} size="lg">
-                Join founding 500
+                Join founding 250
               </EarlyAccessButton>
             </>
           )}

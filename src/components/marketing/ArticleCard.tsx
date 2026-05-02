@@ -9,10 +9,10 @@ export function ArticleCard({ article }: { article: InsightArticle }) {
       <h3>{article.title}</h3>
       <p>{article.excerpt}</p>
       <div className="article-card__meta">
-        <span>FoFit Editorial</span>
+        <span>{article.byline}</span>
         <span>{article.readTime}</span>
       </div>
-      <Link className="article-card__link" to="/insights">
+      <Link className="article-card__link" to={`/insights/${article.slug}`}>
         Explore insight
       </Link>
     </Card>

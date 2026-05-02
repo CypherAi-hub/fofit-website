@@ -1074,6 +1074,10 @@ main {
   gap: 1rem;
 }
 
+.pricing-preview--primary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .pricing-card {
   display: grid;
   gap: 1.25rem;
@@ -1202,6 +1206,125 @@ main {
   display: inline-flex;
   margin-top: 1rem;
   color: var(--text-strong);
+}
+
+.insight-article {
+  padding: 3rem 0 0;
+}
+
+.insight-article__header {
+  display: grid;
+  gap: 1rem;
+  max-width: 920px;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.insight-article__back,
+.insight-article__category,
+.insight-article__related span {
+  color: var(--cyan);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.insight-article__back {
+  width: fit-content;
+  text-decoration: none;
+}
+
+.insight-article__header h1 {
+  max-width: 880px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 6.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.insight-article__header p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.insight-article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1rem;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+}
+
+.insight-article__meta span:not(:last-child)::after {
+  content: "/";
+  margin-left: 1rem;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.insight-article__body {
+  max-width: 780px;
+  padding-bottom: 3rem;
+}
+
+.insight-article__body h2 {
+  margin: 2.5rem 0 1rem;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  letter-spacing: -0.04em;
+}
+
+.insight-article__body p {
+  margin: 0 0 1.25rem;
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.insight-article__source {
+  font-size: 0.9rem !important;
+  color: var(--text-soft) !important;
+}
+
+.insight-article__placeholder {
+  padding: 1.2rem;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.insight-article__footer {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.insight-article__footer h2 {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3.3rem);
+  letter-spacing: -0.06em;
+}
+
+.insight-article__related {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.insight-article__related a {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-strong);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .testimonial-card {
@@ -2482,6 +2605,7 @@ code {
   .comparison-grid,
   .comparison-table__head,
   .comparison-table__row,
+  .insight-article__footer,
   .support-panel,
   .footer-bottom,
   .waitlist-modal__shell {
@@ -4821,6 +4945,160 @@ code {
   }
 }
 
+.teams-page-hero__media {
+  align-self: stretch;
+}
+
+.teams-dashboard-mockup {
+  display: grid;
+  gap: 1.1rem;
+  min-height: 28rem;
+  padding: clamp(1.25rem, 2.5vw, 1.8rem);
+  border: 1px solid rgba(34, 211, 255, 0.14);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(0, 255, 170, 0.1), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+    rgba(5, 8, 13, 0.92);
+  box-shadow: var(--shadow);
+}
+
+.teams-dashboard-mockup__top,
+.teams-dashboard-mockup__stats,
+.teams-dashboard-mockup__row {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.teams-dashboard-mockup__top {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+}
+
+.teams-dashboard-mockup__top span,
+.teams-dashboard-mockup__stats span,
+.teams-dashboard-mockup__row strong,
+.teams-page-proof__card span,
+.teams-page-pricing span {
+  color: rgba(34, 211, 255, 0.82);
+  font-family: var(--font-label-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.teams-dashboard-mockup__top strong {
+  color: var(--text-strong);
+  font-size: 1.45rem;
+}
+
+.teams-dashboard-mockup__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+}
+
+.teams-dashboard-mockup__stats div {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1rem;
+  background: rgba(4, 7, 12, 0.64);
+}
+
+.teams-dashboard-mockup__stats strong {
+  color: var(--text-strong);
+  font-size: 1.8rem;
+}
+
+.teams-dashboard-mockup__rows {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.teams-dashboard-mockup__row {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr) 5rem;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.85rem;
+}
+
+.teams-dashboard-mockup__row span {
+  color: var(--text-strong);
+}
+
+.teams-dashboard-mockup__row div {
+  height: 0.42rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.teams-dashboard-mockup__row i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+}
+
+.teams-page-proof__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.teams-page-proof__card {
+  display: grid;
+  gap: 1rem;
+  min-height: 24rem;
+}
+
+.teams-page-proof__card h2,
+.teams-page-pricing h2 {
+  margin: auto 0 0;
+  color: var(--text-strong);
+  font-family: var(--font-display-serif);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.03;
+}
+
+.teams-page-proof__card p,
+.teams-page-pricing p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.teams-page-pricing {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid rgba(34, 211, 255, 0.14);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(0, 255, 170, 0.08), transparent 42%),
+    rgba(255, 255, 255, 0.035);
+}
+
+.teams-page-pricing h2 {
+  max-width: 46rem;
+}
+
+@media (max-width: 860px) {
+  .teams-page-proof__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .teams-page-proof__card {
+    min-height: auto;
+  }
+}
+
 /* ============================================================
    Walkthrough section
    ============================================================ */
@@ -6590,22 +6868,56 @@ body::before {
 }
 
 .v3-teams {
-  padding: 5rem 0;
+  padding: 6rem 0;
   background:
-    linear-gradient(135deg, rgba(0, 200, 117, 0.14), transparent 42%),
+    linear-gradient(135deg, rgba(0, 255, 170, 0.1), transparent 42%),
     linear-gradient(180deg, rgba(11, 18, 32, 0.96), rgba(6, 7, 10, 0.96));
 }
 
 .v3-teams__inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.62fr) auto;
   gap: 2rem;
-  align-items: end;
+}
+
+.v3-teams__copy {
+  display: grid;
+  gap: 1rem;
+  max-width: 58rem;
+}
+
+.v3-teams__feature-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.v3-teams__feature {
+  display: grid;
+  gap: 1rem;
+  min-height: 16rem;
+  padding: 1.4rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.038), rgba(255, 255, 255, 0.014)),
+    rgba(5, 8, 13, 0.94);
+}
+
+.v3-teams__feature span {
+  margin-top: auto;
+  color: var(--text-strong);
+  font-family: var(--font-display-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.05;
 }
 
 .v3-teams h2 {
   margin-top: 0.9rem;
-  font-size: 3.25rem;
+  font-size: 4rem;
 }
 
 .v3-pricing {
@@ -6655,6 +6967,7 @@ body::before {
   .v3-system__header h2,
   .v3-week h2,
   .v3-contrast h2,
+  .v3-teams h2,
   .v3-pricing h2,
   .v3-notes h2,
   .v3-final h2 {
@@ -6663,7 +6976,7 @@ body::before {
 
   .v3-operating-grid,
   .v3-week__inner,
-  .v3-teams__inner {
+  .v3-teams__feature-row {
     grid-template-columns: 1fr;
   }
 
@@ -6695,6 +7008,10 @@ body::before {
 
   .v3-operating-card {
     min-height: 14rem;
+  }
+
+  .v3-teams__feature {
+    min-height: 13rem;
   }
 
   .v3-week__signal,

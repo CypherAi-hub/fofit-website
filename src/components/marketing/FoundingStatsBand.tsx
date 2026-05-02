@@ -1,5 +1,5 @@
 const stats = [
-  { value: "500", label: "Founding member spots" },
+  { value: "250", label: "Founding member spots" },
   { value: "$12.99", label: "Founding rate, locked for life" },
   { value: "7 days", label: "Free trial, no card" },
   { value: "Cypher", label: "The AI that remembers" },

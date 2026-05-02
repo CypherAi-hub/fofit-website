@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { FOUNDING_LIMIT, getWaitlistCount } from "../../lib/waitlist";
 import { Button } from "../ui/Button";
 import { EarlyAccessButton } from "./EarlyAccessButton";
 
@@ -10,26 +8,6 @@ const ecosystemSignals = [
 ] as const;
 
 export function HomeVideoHero() {
-  const [claimedCount, setClaimedCount] = useState<number | null>(null);
-  const [foundingLimit, setFoundingLimit] = useState(FOUNDING_LIMIT);
-  const hasLiveCount = claimedCount !== null;
-
-  useEffect(() => {
-    let cancelled = false;
-
-    getWaitlistCount().then((result) => {
-      if (cancelled || result.kind !== "success") {
-        return;
-      }
-      setClaimedCount(result.count);
-      setFoundingLimit(result.limit);
-    });
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
   return (
     <section className="home-video-hero">
       <video
@@ -57,7 +35,7 @@ export function HomeVideoHero() {
         <div className="home-video-hero__content reveal">
           <span className="home-video-hero__eyebrow">TRAIN WITH STRUCTURE</span>
           <h1>
-            The training platform that <em>remembers</em> the athlete.
+            The training platform that <em>remembers</em> you.
           </h1>
           <p>
             For lifters, athletes, and coaches who want training that actually
@@ -66,39 +44,17 @@ export function HomeVideoHero() {
           </p>
 
           <div className="button-row home-video-hero__actions">
-            <EarlyAccessButton size="lg">Join the founding 500</EarlyAccessButton>
+            <EarlyAccessButton size="lg">Join the founding 250</EarlyAccessButton>
             <Button href="#three-paths" size="lg" variant="secondary">
               Choose your path
             </Button>
           </div>
 
-          <div className="home-video-hero__trust" aria-label="Founding membership progress">
-            <span
-              className={`home-video-hero__pulse ${hasLiveCount ? "is-live" : ""}`}
-              aria-hidden="true"
-            />
-            <span>
-              {hasLiveCount ? (
-                <>
-                  <strong>{claimedCount}</strong> of {foundingLimit} founding spots claimed
-                </>
-              ) : (
-                <>
-                  <strong>{foundingLimit}</strong> founding spots
-                </>
-              )}
-            </span>
+          <div className="home-video-hero__trust" aria-label="Founding membership terms">
+            <span className="home-video-hero__pulse" aria-hidden="true" />
+            <span>Founding rate locked at $12.99/mo for life</span>
             <span className="home-video-hero__divider" aria-hidden="true" />
-            <span>founding rate locked at $12.99/mo for life</span>
-          </div>
-
-          <div className="home-video-hero__proof">
-            <div className="home-video-hero__avatars" aria-hidden="true">
-              <span>ML</span>
-              <span>D3</span>
-              <span>AT</span>
-            </div>
-            <span>Built with student athletes from Maryville and 4 other D2 / D3 programs</span>
+            <span>250 spots total</span>
           </div>
 
           <div className="home-video-hero__ecosystem" aria-label="FoFit device and team surfaces">
