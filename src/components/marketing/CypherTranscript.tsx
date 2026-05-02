@@ -6,14 +6,18 @@ const cypherNotes = [
   "Turns history into the next useful decision.",
 ] as const;
 
-export function CypherTranscript() {
+type CypherTranscriptProps = {
+  index?: string;
+};
+
+export function CypherTranscript({ index = "03" }: CypherTranscriptProps) {
   return (
     <section className="page-section editorial-section editorial-section--transcript" id="cypher">
       <div className="container">
         <div className="cypher-action reveal">
           <div className="cypher-action__copy">
             <ChapterIntro
-              index="03"
+              index={index}
               label="Cypher"
               title={
                 <>

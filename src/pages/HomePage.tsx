@@ -1,6 +1,7 @@
 import { ArticleGrid } from "../components/marketing/ArticleGrid";
 import { CypherTranscript } from "../components/marketing/CypherTranscript";
 import { EarlyAccessButton } from "../components/marketing/EarlyAccessButton";
+import { ExerciseLibraryPreview } from "../components/marketing/ExerciseLibraryPreview";
 import { FoundingStatsBand } from "../components/marketing/FoundingStatsBand";
 import { HomeVideoHero } from "../components/marketing/HomeVideoHero";
 import { PricingPreview } from "../components/marketing/PricingPreview";
@@ -57,11 +58,13 @@ export function HomePage() {
 
       <ProductVideo />
 
-      <CypherTranscript />
+      <ExerciseLibraryPreview eyebrow="03 / DEMO LIBRARY" />
+
+      <CypherTranscript index="04" />
 
       <section className="v3-system">
         <div className="container v3-system__inner">
-          <div className="v3-section-kicker">04 / OPERATING SYSTEM</div>
+          <div className="v3-section-kicker">05 / OPERATING SYSTEM</div>
           <div className="v3-system__header">
             <h2>Built around the context most fitness apps drop.</h2>
             <p>
@@ -84,7 +87,7 @@ export function HomePage() {
       <section className="v3-week">
         <div className="container v3-week__inner">
           <div className="v3-week__copy">
-            <div className="v3-section-kicker">05 / THE REAL WEEK, REMEMBERED</div>
+            <div className="v3-section-kicker">06 / THE REAL WEEK, REMEMBERED</div>
             <h2>Cypher remembers what the week tried to break.</h2>
             <p>
               Most apps record the lift after it happens. Cypher changes the
@@ -105,7 +108,7 @@ export function HomePage() {
 
       <section className="v3-contrast">
         <div className="container v3-contrast__inner">
-          <div className="v3-section-kicker">06 / POSITIONING</div>
+          <div className="v3-section-kicker">07 / POSITIONING</div>
           <h2>Not a tracker with nicer charts. Not a prompt box with reps.</h2>
           <div className="v3-contrast__rows">
             {comparisonRows.map(([label, detail]) => (
@@ -121,7 +124,7 @@ export function HomePage() {
       <section className="v3-teams">
         <div className="container v3-teams__inner">
           <div>
-            <div className="v3-section-kicker">07 / FOR TEAMS</div>
+            <div className="v3-section-kicker">08 / FOR TEAMS</div>
             <h2>D2 / D3 programs need infrastructure, not another consumer app.</h2>
           </div>
           <p>
@@ -138,7 +141,7 @@ export function HomePage() {
       <section className="v3-pricing">
         <div className="container">
           <div className="v3-pricing__header">
-            <div className="v3-section-kicker">08 / MEMBERSHIP</div>
+            <div className="v3-section-kicker">09 / MEMBERSHIP</div>
             <h2>$12.99/mo. Forever, if you&apos;re early.</h2>
             <p>
               Start free. Move to Premium when you want the full FoFit system.
@@ -153,7 +156,7 @@ export function HomePage() {
       <section className="v3-notes">
         <div className="container v3-notes__inner">
           <div className="v3-notes__header">
-            <div className="v3-section-kicker">09 / FIELD NOTES</div>
+            <div className="v3-section-kicker">10 / FIELD NOTES</div>
             <h2>The publication side of the training system.</h2>
             <p>
               Short reads on training, recovery, nutrition, and the decisions
