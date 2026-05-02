@@ -4,6 +4,7 @@ import { ProductPage } from "../pages/ProductPage";
 import { FeaturesPage } from "../pages/FeaturesPage";
 import { PricingPage } from "../pages/PricingPage";
 import { InsightsPage } from "../pages/InsightsPage";
+import { InsightArticlePage } from "../pages/InsightArticlePage";
 import { AboutPage } from "../pages/AboutPage";
 import { CommunityPage } from "../pages/CommunityPage";
 import { FAQPage } from "../pages/FAQPage";
@@ -26,6 +27,7 @@ export function AppRoutes() {
       <Route path="/features" element={<FeaturesPage />} />
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/insights" element={<InsightsPage />} />
+      <Route path="/insights/:slug" element={<InsightArticlePage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/community" element={<CommunityPage />} />
       <Route path="/faq" element={<FAQPage />} />

@@ -1208,6 +1208,125 @@ main {
   color: var(--text-strong);
 }
 
+.insight-article {
+  padding: 3rem 0 0;
+}
+
+.insight-article__header {
+  display: grid;
+  gap: 1rem;
+  max-width: 920px;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.insight-article__back,
+.insight-article__category,
+.insight-article__related span {
+  color: var(--cyan);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.insight-article__back {
+  width: fit-content;
+  text-decoration: none;
+}
+
+.insight-article__header h1 {
+  max-width: 880px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 6.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.insight-article__header p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.insight-article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1rem;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+}
+
+.insight-article__meta span:not(:last-child)::after {
+  content: "/";
+  margin-left: 1rem;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.insight-article__body {
+  max-width: 780px;
+  padding-bottom: 3rem;
+}
+
+.insight-article__body h2 {
+  margin: 2.5rem 0 1rem;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  letter-spacing: -0.04em;
+}
+
+.insight-article__body p {
+  margin: 0 0 1.25rem;
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.insight-article__source {
+  font-size: 0.9rem !important;
+  color: var(--text-soft) !important;
+}
+
+.insight-article__placeholder {
+  padding: 1.2rem;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.insight-article__footer {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.insight-article__footer h2 {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3.3rem);
+  letter-spacing: -0.06em;
+}
+
+.insight-article__related {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.insight-article__related a {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-strong);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.035);
+}
+
 .testimonial-card {
   display: grid;
   gap: 1.5rem;
@@ -2486,6 +2605,7 @@ code {
   .comparison-grid,
   .comparison-table__head,
   .comparison-table__row,
+  .insight-article__footer,
   .support-panel,
   .footer-bottom,
   .waitlist-modal__shell {
