@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { pricingAssurances, pricingComparison, pricingPlans } from "../../data/pricing";
 import { EarlyAccessButton } from "./EarlyAccessButton";
+import { VerifiedDiscounts } from "./VerifiedDiscounts";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 
@@ -31,7 +32,7 @@ export function PricingTable() {
         </button>
       </div>
 
-      <div className="pricing-preview">
+      <div className="pricing-preview pricing-preview--primary">
         {[starterPlan, premiumPlan].map((plan) => (
           <Card
             className={`pricing-card reveal ${plan.featured ? "pricing-card--featured" : ""}`}
@@ -89,6 +90,8 @@ export function PricingTable() {
           </EarlyAccessButton>
         </Card>
       </div>
+
+      <VerifiedDiscounts />
 
       <p className="pricing-table__footer">
         Cancel anytime · export your data in one tap

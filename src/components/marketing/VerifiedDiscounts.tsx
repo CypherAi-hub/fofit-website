@@ -9,7 +9,7 @@ export function VerifiedDiscounts() {
           For students. <em>For those who serve.</em>
         </h2>
         <p className="verified-discounts__lede">
-          Same Premium product. Verified once, locked at your rate as long as you qualify.
+          Same Premium product. Verified once, locked at your rate.
         </p>
       </div>
       <div className="verified-discounts__grid">

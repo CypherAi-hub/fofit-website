@@ -1074,6 +1074,10 @@ main {
   gap: 1rem;
 }
 
+.pricing-preview--primary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .pricing-card {
   display: grid;
   gap: 1.25rem;

@@ -2,7 +2,6 @@ import { FAQAccordion } from "../components/marketing/FAQAccordion";
 import { CTASection } from "../components/marketing/CTASection";
 import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { PricingTable } from "../components/marketing/PricingTable";
-import { VerifiedDiscounts } from "../components/marketing/VerifiedDiscounts";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { EditorialHeading } from "../components/ui/EditorialHeading";
@@ -66,7 +65,6 @@ export function PricingPage() {
             </div>
           </div>
           <PricingTable />
-          <VerifiedDiscounts />
         </div>
       </section>
 
