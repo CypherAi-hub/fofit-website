@@ -7,7 +7,7 @@ export function FoFitScoreLandingSection() {
       <div className="container lp-score__inner">
         <Revealer className="lp-section-heading lp-score__copy">
           <span className="lp-kicker">FoFit Score</span>
-          <h2>Your progress should feel alive.</h2>
+          <h2>Your progress gets a pulse.</h2>
           <p>
             FoFit Score turns consistency, training, and activity into a fitness
             identity, not just a chart you forget to open.

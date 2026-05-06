@@ -7445,6 +7445,7 @@ body::before {
   font-weight: 900;
   letter-spacing: 0;
   line-height: 0.88;
+  overflow-wrap: break-word;
 }
 
 .lp-hero__title em {
@@ -7721,7 +7722,7 @@ body::before {
   }
 
   .lp-hero__title {
-    font-size: clamp(3.1rem, 17vw, 5.2rem);
+    font-size: clamp(3rem, 15vw, 4.8rem);
     line-height: 0.9;
   }
 
