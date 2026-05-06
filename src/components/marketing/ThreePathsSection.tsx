@@ -1,38 +1,45 @@
-import { waitlistRoles } from "../../data/waitlist";
+import { pathCards } from "../../data/homepage";
+import { usePointerGlow } from "../../lib/usePointerGlow";
+import { Revealer } from "../motion/Revealer";
 import { EarlyAccessButton } from "./EarlyAccessButton";
 
 export function ThreePathsSection() {
-  return (
-    <section className="three-paths-section" id="three-paths">
-      <div className="container three-paths-section__inner">
-        <div className="three-paths-section__header">
-          <div className="v3-section-kicker">01 / THREE PATHS</div>
-          <h2>One platform. Three ways in.</h2>
-          <p>
-            Start as a lifter, train as an athlete, or bring FoFit to the
-            people you lead. The same Cypher brain sits underneath each path.
-          </p>
-        </div>
+  const handlePointerMove = usePointerGlow();
 
-        <div className="three-paths-grid" aria-label="FoFit role paths">
-          {waitlistRoles.map((role) => (
-            <article className="three-path-card reveal" key={role.value}>
-              <div className="three-path-card__glyph" aria-hidden="true">
-                {role.label.slice(0, 1)}
-              </div>
-              <div>
-                <h3>{role.label}</h3>
-                <p>{role.forText}</p>
-              </div>
-              <ul>
-                {role.outcomes.map((outcome) => (
-                  <li key={outcome}>{outcome}</li>
-                ))}
-              </ul>
-              <EarlyAccessButton initialRole={role.value} variant="secondary">
-                {role.cta}
-              </EarlyAccessButton>
-            </article>
+  return (
+    <section className="lp-section lp-paths" id="three-paths">
+      <div className="container">
+        <Revealer className="lp-section-heading">
+          <span className="lp-kicker">Lifter / Athlete / Coach</span>
+          <h2>One memory layer. Three ways to train with it.</h2>
+          <p>
+            FoFit starts with the role you actually live in. The same training
+            memory supports individual progress, seasonal context, and team visibility.
+          </p>
+        </Revealer>
+
+        <div className="lp-paths__grid" aria-label="FoFit role paths">
+          {pathCards.map((card, index) => (
+            <Revealer delay={String(Math.min(index, 3)) as "0" | "1" | "2" | "3"} key={card.role}>
+              <article className="lp-card lp-path-card" onPointerMove={handlePointerMove}>
+                <div className="lp-path-card__top">
+                  <span>{card.eyebrow}</span>
+                  <strong>{card.role.slice(0, 1).toUpperCase()}</strong>
+                </div>
+                <div>
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                </div>
+                <ul>
+                  {card.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+                <EarlyAccessButton initialRole={card.role} variant="secondary">
+                  {card.cta}
+                </EarlyAccessButton>
+              </article>
+            </Revealer>
           ))}
         </div>
       </div>
