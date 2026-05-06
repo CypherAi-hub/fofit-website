@@ -45,6 +45,32 @@
   animation-delay: 0.18s;
 }
 
+.lp-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 720ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.lp-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lp-reveal--delay-1 {
+  transition-delay: 90ms;
+}
+
+.lp-reveal--delay-2 {
+  transition-delay: 180ms;
+}
+
+.lp-reveal--delay-3 {
+  transition-delay: 270ms;
+}
+
 @keyframes reveal-up {
   from {
     opacity: 0;
@@ -59,5 +85,14 @@
 @media (max-width: 920px) {
   .split-layout {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-reveal,
+  .lp-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
