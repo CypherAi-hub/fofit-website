@@ -1,46 +1,15 @@
-import { ArticleGrid } from "../components/marketing/ArticleGrid";
+import { ContextMemorySection } from "../components/marketing/ContextMemorySection";
 import { CypherTranscript } from "../components/marketing/CypherTranscript";
-import { EarlyAccessButton } from "../components/marketing/EarlyAccessButton";
-import { FoundingStatsBand } from "../components/marketing/FoundingStatsBand";
+import { DailyLoopSection } from "../components/marketing/DailyLoopSection";
+import { FoFitScoreLandingSection } from "../components/marketing/FoFitScoreLandingSection";
+import { FuelSystemSection } from "../components/marketing/FuelSystemSection";
 import { HomeVideoHero } from "../components/marketing/HomeVideoHero";
-import { PricingPreview } from "../components/marketing/PricingPreview";
-import { ProductVideo } from "../components/marketing/ProductVideo";
+import { LandingFinalCTA } from "../components/marketing/LandingFinalCTA";
+import { LandingPricingSection } from "../components/marketing/LandingPricingSection";
+import { LandingTeamsSection } from "../components/marketing/LandingTeamsSection";
+import { ProductSurfacesSection } from "../components/marketing/ProductSurfacesSection";
 import { ThreePathsSection } from "../components/marketing/ThreePathsSection";
 import { PageMeta } from "../components/layout/PageMeta";
-import { Button } from "../components/ui/Button";
-import { insightArticles } from "../data/insights";
-
-const operatingCards = [
-  {
-    label: "Before practice",
-    title: "Cypher reads the real week first.",
-    description: "Class blocks, travel, soreness, and practice load stay attached to the next training call.",
-  },
-  {
-    label: "During the lift",
-    title: "The plan can move without falling apart.",
-    description: "Miss a rep target, lose time, or feel beat up. Cypher adjusts the set, not the whole identity of the block.",
-  },
-  {
-    label: "After the session",
-    title: "Progress becomes memory.",
-    description: "The system keeps what changed, why it mattered, and what should happen next time.",
-  },
-] as const;
-
-const weekSignals = [
-  "Workday lift moved into a shorter window",
-  "Protein target follows the meals you can actually get",
-  "Sleep debt changes volume, not standards",
-  "Travel day switches equipment automatically",
-  "Coach dashboard path for D2 / D3 teams",
-] as const;
-
-const comparisonRows = [
-  ["Legacy tracker", "Records what happened"],
-  ["Generic AI plan", "Writes a workout in isolation"],
-  ["FoFit with Cypher", "Remembers the athlete and the week"],
-] as const;
 
 export function HomePage() {
   return (
@@ -50,127 +19,16 @@ export function HomePage() {
         title="FoFit | Training platform for lifters, athletes, and coaches"
       />
       <HomeVideoHero />
-
-      <FoundingStatsBand />
-
+      <ContextMemorySection />
       <ThreePathsSection />
-
-      <ProductVideo />
-
       <CypherTranscript />
-
-      <section className="v3-system">
-        <div className="container v3-system__inner">
-          <div className="v3-section-kicker">04 / OPERATING SYSTEM</div>
-          <div className="v3-system__header">
-            <h2>Built around the context most fitness apps drop.</h2>
-            <p>
-              FoFit treats schedule, soreness, equipment, goals, and group
-              context as part of the plan instead of excuses outside it.
-            </p>
-          </div>
-          <div className="v3-operating-grid">
-            {operatingCards.map((card) => (
-              <article className="v3-operating-card reveal" key={card.label}>
-                <span>{card.label}</span>
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="v3-week">
-        <div className="container v3-week__inner">
-          <div className="v3-week__copy">
-            <div className="v3-section-kicker">05 / THE REAL WEEK, REMEMBERED</div>
-            <h2>Cypher remembers what the week tried to break.</h2>
-            <p>
-              Most apps record the lift after it happens. Cypher changes the
-              next call while the week is still moving, whether you are
-              rebuilding consistency, training in-season, or leading a group.
-            </p>
-          </div>
-          <div className="v3-week__rail" aria-label="Training week signals">
-            {weekSignals.map((signal, index) => (
-              <div className="v3-week__signal reveal" key={signal}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                {signal}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="v3-contrast">
-        <div className="container v3-contrast__inner">
-          <div className="v3-section-kicker">06 / POSITIONING</div>
-          <h2>Not a tracker with nicer charts. Not a prompt box with reps.</h2>
-          <div className="v3-contrast__rows">
-            {comparisonRows.map(([label, detail]) => (
-              <div className="v3-contrast__row reveal" key={label}>
-                <span>{label}</span>
-                <strong>{detail}</strong>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="v3-teams">
-        <div className="container v3-teams__inner">
-          <div>
-            <div className="v3-section-kicker">07 / FOR TEAMS</div>
-            <h2>D2 / D3 programs need infrastructure, not another consumer app.</h2>
-          </div>
-          <p>
-            Team access opens Spring 2026 for coaches who need shared
-            programming, completion visibility, and training context without
-            hiring a full performance department.
-          </p>
-          <Button href="mailto:teams@fofit.app?subject=FoFit%20Teams%20access" variant="secondary">
-            Request team access
-          </Button>
-        </div>
-      </section>
-
-      <section className="v3-pricing">
-        <div className="container">
-          <div className="v3-pricing__header">
-            <div className="v3-section-kicker">08 / MEMBERSHIP</div>
-            <h2>$12.99/mo. Forever, if you&apos;re early.</h2>
-            <p>
-              Start free. Move to Premium when you want the full FoFit system.
-              Founding members keep the rate forever as Cypher, recovery, teams,
-              and coaching get deeper.
-            </p>
-          </div>
-          <PricingPreview className="pricing-preview--editorial v3-pricing__cards" />
-        </div>
-      </section>
-
-      <section className="v3-notes">
-        <div className="container v3-notes__inner">
-          <div className="v3-notes__header">
-            <div className="v3-section-kicker">09 / FIELD NOTES</div>
-            <h2>The publication side of the training system.</h2>
-            <p>
-              Short reads on training, recovery, nutrition, and the decisions
-              that keep a block moving.
-            </p>
-          </div>
-          <ArticleGrid articles={insightArticles.slice(0, 3)} />
-        </div>
-      </section>
-
-      <section className="v3-final">
-        <div className="container v3-final__inner">
-          <h2>Train honestly. Or keep tracking.</h2>
-          <p>500 founding spots. Founding rate locked at $12.99/mo for life.</p>
-          <EarlyAccessButton size="lg">Join the founding 500 →</EarlyAccessButton>
-        </div>
-      </section>
+      <DailyLoopSection />
+      <ProductSurfacesSection />
+      <FuelSystemSection />
+      <FoFitScoreLandingSection />
+      <LandingTeamsSection />
+      <LandingPricingSection />
+      <LandingFinalCTA />
     </>
   );
 }
