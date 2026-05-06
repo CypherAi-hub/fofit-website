@@ -69,23 +69,27 @@ App/product screenshots exist:
 - `rg -n ... src/styles/global.css src/styles/utilities.css src/styles/tokens.css`
 - `mkdir -p docs`
 
-## Pending Proof
+## Final Proof
 
-To complete after implementation:
+Completed after implementation:
 
-- `npm run build`
-- `npm run validate:copy`
-- Preview browser QA
-- Desktop homepage top-to-bottom screenshot/check
-- Mobile homepage top-to-bottom screenshot/check
-- Hero video fallback check
-- Waitlist modal opens from hero
-- Waitlist modal opens from pricing/final CTA
-- Navbar works
-- Product/pricing/coaches/teams routes still load
-- No horizontal scroll
-- Text readable on mobile
-- Reduced motion layout check
+- `npm run build` passed.
+- `npm run validate:copy` passed.
+- `./node_modules/.bin/tsc --noEmit` passed with no output.
+- Preview browser QA used `npm run preview -- --host 127.0.0.1 --port 4173`.
+- Desktop homepage section order checked through Playwright snapshot.
+- Mobile homepage checked at 390x844 with no horizontal overflow.
+- Hero video fallback checked by removing `.lp-hero__video`; product system stayed visible.
+- Waitlist modal opens from hero.
+- Waitlist modal opens from pricing.
+- Waitlist modal opens from final CTA.
+- `/product`, `/pricing`, `/coaches`, and `/teams` routes load without horizontal overflow.
+- Console errors checked: 0.
+
+Still recommended before launch:
+
+- Manual OS-level reduced-motion check.
+- Unobstructed visual screenshot review.
 
 ## Known Risk Register
 
@@ -94,3 +98,4 @@ To complete after implementation:
 - `FoFitTeamsSection.tsx` does not exist, so Teams must be implemented new.
 - Google Font import depends on network at runtime. Fallbacks must remain strong.
 - Prior memory says `npm run dev` may hang in this environment. Prefer build + preview for verification.
+- `ProductVideo.tsx` remains a pre-existing uncommitted modification and is not part of the new homepage composition.
