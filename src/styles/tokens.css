@@ -1,6 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+/* ============================================================
+   FoFit design tokens — single source of truth.
+
+   Fonts load via <link> (preconnect + stylesheet) in index.html,
+   NOT an @import here — @import is render-blocking.
+
+   Everything below the "scale" comment is additive: new tokens the
+   unified component system consumes. The colour/surface/radius
+   tokens above it are unchanged — global.css depends on them.
+   ============================================================ */
 
 :root {
+  /* --- background & surfaces --- */
   --bg: #06070a;
   --bg-elevated: #0b0f16;
   --surface: rgba(12, 15, 22, 0.82);
@@ -9,10 +19,14 @@
   --surface-muted: rgba(255, 255, 255, 0.025);
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(42, 102, 255, 0.32);
+
+  /* --- text --- */
   --text: #f5f7fb;
   --text-strong: #ffffff;
   --text-muted: rgba(245, 247, 251, 0.74);
   --text-soft: rgba(245, 247, 251, 0.48);
+
+  /* --- accents --- */
   --blue: #2a66ff;
   --cyan: #00d4ff;
   --green: #44d192;
@@ -26,14 +40,68 @@
   --overlay-bottom: rgba(11, 18, 32, 0.55);
   --overlay-top: rgba(11, 18, 32, 0.18);
   --trust-green: #00c875;
+
+  /* --- elevation & shape --- */
   --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
   --radius-sm: 12px;
   --radius-md: 18px;
   --radius-lg: 28px;
   --radius-xl: 36px;
   --container: 1180px;
+
+  /* --- type families ---
+     One grotesk (Geist) carries both display and body; hierarchy
+     comes from the scale + weight below, not a second family.
+     Instrument Serif is the editorial italic accent only.
+     IBM Plex Mono is for labels / kickers / data. */
   --font-body: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display-serif: "Instrument Serif", serif;
   --font-label-mono: "IBM Plex Mono", ui-monospace, monospace;
+  /* --font-mono was referenced 22x across global.css but never
+     declared, so 13 elements silently fell back to the body sans.
+     Declared once here — same stack as --font-label-mono. */
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* --- type scale (fluid; ~1.2–1.25 ratio) --- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.25rem, 1.6vw, 1.4rem);
+  --text-2xl: clamp(1.5rem, 2.4vw, 1.9rem);
+  --text-3xl: clamp(1.9rem, 3.4vw, 2.6rem);
+  --text-4xl: clamp(2.4rem, 4.8vw, 3.6rem);
+  --text-5xl: clamp(3rem, 6.4vw, 5rem);
+  --text-6xl: clamp(3.4rem, 8.5vw, 6.4rem);
+
+  /* --- line-height --- */
+  --leading-tight: 1.05;
+  --leading-snug: 1.22;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* --- font-weight --- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  /* --- letter-spacing --- */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-label: 0.16em;
+
+  /* --- spacing scale --- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-block: clamp(2.5rem, 4vw, 4rem);
+  --space-section: clamp(4.5rem, 9vw, 9rem);
 }
