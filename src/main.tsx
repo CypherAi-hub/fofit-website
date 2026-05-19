@@ -5,6 +5,7 @@ import App from "./app/App";
 import { AuthProvider } from "./lib/auth-context";
 import "./styles/tokens.css";
 import "./styles/global.css";
+import "./styles/landing.css";
 import "./styles/utilities.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
