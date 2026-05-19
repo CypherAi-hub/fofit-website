@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Revealer } from "../motion/Revealer";
 
 type ChapterIntroProps = {
   index: string;
@@ -9,6 +10,11 @@ type ChapterIntroProps = {
   className?: string;
 };
 
+/**
+ * Section-intro block (eyebrow + heading + lede). Emits the lp-section-heading
+ * pattern so inner-page section intros match the homepage's section headings.
+ * Props are unchanged — every ChapterIntro caller keeps working.
+ */
 export function ChapterIntro({
   index,
   label,
@@ -17,11 +23,21 @@ export function ChapterIntro({
   centered = false,
   className = "",
 }: ChapterIntroProps) {
+  const headingClass = [
+    "lp-section-heading",
+    centered ? "lp-section-heading--centered" : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div className={`chapter-intro ${centered ? "chapter-intro--centered" : ""} ${className}`.trim()}>
-      <span className="chapter-intro__eyebrow">{index} / {label}</span>
-      <h2 className="chapter-intro__title">{title}</h2>
-      <p className="chapter-intro__description">{description}</p>
-    </div>
+    <Revealer className={headingClass}>
+      <span className="lp-kicker">
+        {index} / {label}
+      </span>
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </Revealer>
   );
 }

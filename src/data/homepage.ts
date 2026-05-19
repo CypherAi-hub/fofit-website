@@ -1,7 +1,7 @@
 import type { WaitlistRole } from "../app/waitlist-context";
 
 export const heroTrustItems = [
-  "Founding 250",
+  "Founding 500",
   "$12.99/mo founding rate",
   "iOS + Android",
   "Lifter / Athlete / Coach",

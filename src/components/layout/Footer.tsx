@@ -21,7 +21,14 @@ export function Footer() {
                   {link.href ? (
                     <a href={link.href}>{link.label}</a>
                   ) : (
-                    <Link to={link.to ?? "/"}>{link.label}</Link>
+                    <Link
+                      data-cta={
+                        link.to === "/beta" ? "join-ios-beta" : undefined
+                      }
+                      to={link.to ?? "/"}
+                    >
+                      {link.label}
+                    </Link>
                   )}
                 </li>
               ))}

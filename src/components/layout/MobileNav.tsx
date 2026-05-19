@@ -46,6 +46,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               className={({ isActive }) =>
                 `mobile-nav__link ${isActive ? "is-active" : ""}`
               }
+              data-cta={link.to === "/beta" ? "join-ios-beta" : undefined}
               key={link.to}
               onClick={onClose}
               to={link.to}

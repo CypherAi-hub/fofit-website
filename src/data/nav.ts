@@ -14,6 +14,7 @@ export const primaryNav: NavLinkItem[] = [
   { label: "Pricing", to: "/pricing" },
   { label: "Insights", to: "/insights" },
   { label: "About", to: "/about" },
+  { label: "iOS Beta", to: "/beta" },
 ];
 
 export const ecosystemLinks: NavLinkItem[] = [
@@ -31,6 +32,7 @@ export const footerColumns: Array<{ title: string; links: FooterLinkItem[] }> = 
       { label: "Pricing", to: "/pricing" },
       { label: "Insights", to: "/insights" },
       { label: "FAQ", to: "/faq" },
+      { label: "iOS Beta", to: "/beta" },
     ],
   },
   {

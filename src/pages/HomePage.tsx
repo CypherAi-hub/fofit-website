@@ -1,3 +1,4 @@
+import { BetaCalloutSection } from "../components/marketing/BetaCalloutSection";
 import { ContextMemorySection } from "../components/marketing/ContextMemorySection";
 import { CypherTranscript } from "../components/marketing/CypherTranscript";
 import { DailyLoopSection } from "../components/marketing/DailyLoopSection";
@@ -28,6 +29,7 @@ export function HomePage() {
       <FoFitScoreLandingSection />
       <LandingTeamsSection />
       <LandingPricingSection />
+      <BetaCalloutSection />
       <LandingFinalCTA />
     </>
   );

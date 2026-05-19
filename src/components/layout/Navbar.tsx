@@ -25,6 +25,7 @@ export function Navbar() {
                 className={({ isActive }) =>
                   `site-nav__link ${isActive ? "is-active" : ""}`
                 }
+                data-cta={link.to === "/beta" ? "join-ios-beta" : undefined}
                 key={link.to}
                 to={link.to}
               >

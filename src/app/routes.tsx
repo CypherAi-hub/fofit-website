@@ -7,6 +7,7 @@ import { InsightsPage } from "../pages/InsightsPage";
 import { AboutPage } from "../pages/AboutPage";
 import { CommunityPage } from "../pages/CommunityPage";
 import { FAQPage } from "../pages/FAQPage";
+import { BetaPage } from "../pages/BetaPage";
 import { UpdatesPage } from "../pages/UpdatesPage";
 import { CoachesPage } from "../pages/CoachesPage";
 import { StorePage } from "../pages/StorePage";
@@ -29,6 +30,7 @@ export function AppRoutes() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/community" element={<CommunityPage />} />
       <Route path="/faq" element={<FAQPage />} />
+      <Route path="/beta" element={<BetaPage />} />
       <Route path="/updates" element={<UpdatesPage />} />
       <Route path="/coaches" element={<CoachesPage />} />
       <Route path="/store" element={<StorePage />} />

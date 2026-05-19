@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { EarlyAccessButton } from "./EarlyAccessButton";
 import { Button } from "../ui/Button";
 import { Pill } from "../ui/Pill";
+import { Revealer } from "../motion/Revealer";
 
 type CTAAction = {
   label: string;
@@ -25,6 +26,10 @@ const defaultActions: CTAAction[] = [
   { label: "Explore the platform", to: "/product", variant: "secondary" },
 ];
 
+/**
+ * Closing call-to-action shared by every inner page. Rendered on the lp-*
+ * system as a contained panel. Props are unchanged — all callers keep working.
+ */
 export function CTASection({
   title,
   description,
@@ -34,9 +39,9 @@ export function CTASection({
   actions = defaultActions,
 }: CTASectionProps) {
   return (
-    <section className="cta-section">
-      <div className="container cta-section__inner">
-        <div className="cta-section__content">
+    <section className="lp-pagecta">
+      <Revealer className="container lp-pagecta__inner">
+        <div className="lp-pagecta__content">
           <h2>{title}</h2>
           <p>{description}</p>
           {pills.length ? (
@@ -46,9 +51,11 @@ export function CTASection({
               ))}
             </div>
           ) : null}
-          {note ? <div className={noteClassName ?? "cta-section__note"}>{note}</div> : null}
+          {note ? (
+            <div className={noteClassName ?? "lp-pagecta__note"}>{note}</div>
+          ) : null}
         </div>
-        <div className="button-row">
+        <div className="lp-pagecta__actions">
           {actions.map((action) =>
             action.intent === "waitlist" ? (
               <EarlyAccessButton
@@ -71,7 +78,7 @@ export function CTASection({
             ),
           )}
         </div>
-      </div>
+      </Revealer>
     </section>
   );
 }

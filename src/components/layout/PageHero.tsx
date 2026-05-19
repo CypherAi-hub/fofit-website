@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Button } from "../ui/Button";
 import { EarlyAccessButton } from "../marketing/EarlyAccessButton";
-import { Eyebrow } from "../ui/Eyebrow";
+import { Revealer } from "../motion/Revealer";
 
 type HeroAction = {
   label: string;
@@ -23,6 +23,12 @@ type PageHeroProps = {
   mediaClassName?: string;
 };
 
+/**
+ * Shared header for every routed page. Renders on the lp-* design system so
+ * inner pages match the homepage: lp-kicker eyebrow, display title, ambient
+ * grid, and Revealer entrance motion. Props are intentionally unchanged from
+ * the previous version — every page that imports PageHero keeps working.
+ */
 export function PageHero({
   eyebrow,
   title,
@@ -34,19 +40,26 @@ export function PageHero({
   className = "",
   mediaClassName = "",
 }: PageHeroProps) {
+  const sectionClass = [
+    "lp-pagehero",
+    compact ? "lp-pagehero--compact" : "",
+    media ? "lp-pagehero--split" : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <section className={`page-hero ${compact ? "page-hero--compact" : ""} ${className}`.trim()}>
-      <div className="hero-orb hero-orb--one" />
-      <div className="hero-orb hero-orb--two" />
-      <div className="hero-gridlines" />
-      <div className="container page-hero__inner">
-        <div className="page-hero__content reveal">
-          <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="page-hero__title">{title}</h1>
-          <p className="page-hero__description">{description}</p>
+    <section className={sectionClass}>
+      <div className="lp-pagehero__ambient" aria-hidden="true" />
+      <div className="container lp-pagehero__inner">
+        <Revealer className="lp-pagehero__copy">
+          <div className="lp-kicker">{eyebrow}</div>
+          <h1 className="lp-pagehero__title">{title}</h1>
+          <p className="lp-pagehero__lede">{description}</p>
           {actions.length ? (
-            <div className="button-row">
-              {actions.map((action) => (
+            <div className="lp-pagehero__actions">
+              {actions.map((action) =>
                 action.intent === "waitlist" ? (
                   <EarlyAccessButton
                     key={action.label}
@@ -65,16 +78,21 @@ export function PageHero({
                   >
                     {action.label}
                   </Button>
-                )
-              ))}
+                ),
+              )}
             </div>
           ) : null}
-        </div>
+        </Revealer>
         {media ? (
-          <div className={`page-hero__media reveal reveal--delay-2 ${mediaClassName}`.trim()}>
+          <Revealer
+            className={`lp-pagehero__media ${mediaClassName}`.trim()}
+            delay="1"
+          >
             {media}
-            {mediaCaption ? <div className="page-hero__media-caption">{mediaCaption}</div> : null}
-          </div>
+            {mediaCaption ? (
+              <div className="lp-pagehero__media-caption">{mediaCaption}</div>
+            ) : null}
+          </Revealer>
         ) : null}
       </div>
     </section>

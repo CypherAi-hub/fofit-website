@@ -7,7 +7,7 @@ export function LandingPricingSection() {
     <section className="lp-section lp-pricing" id="pricing">
       <div className="container lp-pricing__inner">
         <Revealer className="lp-section-heading lp-pricing__copy">
-          <span className="lp-kicker">Founding 250</span>
+          <span className="lp-kicker">Founding 500</span>
           <h2>$12.99/mo founding rate. Locked for early members.</h2>
           <p>
             Premium will grow as Cypher, Fuel, Teams, and progress systems deepen.

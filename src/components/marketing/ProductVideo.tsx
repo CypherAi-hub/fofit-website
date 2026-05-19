@@ -1,19 +1,43 @@
+import { useEffect, useState } from "react";
 import { ChapterIntro } from "./ChapterIntro";
 
 const weekRows = [
-  ["Mon", "Upper strength", "Bench +5 lb", "Ready"],
-  ["Tue", "Practice travel", "Volume reduced", "Protected"],
-  ["Wed", "Lower power", "Keep intensity", "On plan"],
-  ["Thu", "Class-heavy day", "35 min session", "Compressed"],
+  ["Mon", "Upper strength", "Bench +5 lb", "Ready", true],
+  ["Tue", "Practice travel", "Volume reduced", "Protected", false],
+  ["Wed", "Lower power", "Keep intensity", "On plan", false],
+  ["Thu", "Class-heavy day", "35 min session", "Compressed", false],
 ] as const;
 
-const watchStats = [
-  ["Set", "3 / 5"],
-  ["Rest", "01:10"],
-  ["RPE", "7"],
-] as const;
+const REST_SECONDS = 70;
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+
+function formatRestTime(seconds: number) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+}
 
 export function ProductVideo() {
+  const [restSeconds, setRestSeconds] = useState(REST_SECONDS);
+
+  useEffect(() => {
+    if (window.matchMedia(REDUCED_MOTION_QUERY).matches) {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setRestSeconds((current) => (current <= 0 ? REST_SECONDS : current - 1));
+    }, 1000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const watchStats = [
+    ["Set", "3 / 5"],
+    ["Rest", formatRestTime(restSeconds)],
+    ["RPE", "7"],
+  ] as const;
+
   return (
     <section className="page-section editorial-section editorial-section--walkthrough" id="walkthrough">
       <div className="container">
@@ -57,11 +81,11 @@ export function ProductVideo() {
                   </p>
                 </div>
                 <div className="product-proof__week">
-                  {weekRows.map(([day, title, change, status]) => (
+                  {weekRows.map(([day, title, change, status, cypherDriven]) => (
                     <div className="product-proof__row" key={day}>
                       <span>{day}</span>
                       <strong>{title}</strong>
-                      <em>{change}</em>
+                      <em className={cypherDriven ? "is-cypher-driven" : undefined}>{change}</em>
                       <small>{status}</small>
                     </div>
                   ))}
@@ -77,7 +101,10 @@ export function ProductVideo() {
               <div className="product-proof__set-card">
                 <span>Bench press</span>
                 <strong>155 lb · 5 reps</strong>
-                <p>Cypher raised load after two clean sets.</p>
+                <p>
+                  <span className="product-proof__cypher-word">Cypher</span>{" "}
+                  raised load after two clean sets.
+                </p>
               </div>
               <button type="button">Log set</button>
             </div>

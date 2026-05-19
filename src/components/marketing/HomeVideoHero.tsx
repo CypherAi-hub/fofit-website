@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { heroTrustItems } from "../../data/homepage";
 import { Button } from "../ui/Button";
 import { EarlyAccessButton } from "./EarlyAccessButton";
@@ -37,6 +38,13 @@ export function HomeVideoHero() {
 
           <div className="lp-hero__actions">
             <EarlyAccessButton size="lg">Join the founding waitlist</EarlyAccessButton>
+            <Link
+              className="button button--secondary button--lg"
+              data-cta="join-ios-beta"
+              to="/beta"
+            >
+              Join iOS Beta
+            </Link>
             <Button href="#cypher-system" size="lg" variant="secondary">
               Watch the system work
             </Button>
