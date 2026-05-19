@@ -149,38 +149,3 @@ export const teamsTiers: TeamsTier[] = [
   },
 ];
 
-export type CypherTokenPack = {
-  count: number;
-  label: string;
-  price: string;
-  perSession: string;
-  savings: string | null;
-  featured: boolean;
-};
-
-export const cypherTokenPacks: CypherTokenPack[] = [
-  {
-    count: 5,
-    label: "Try Pack",
-    price: "$1.99",
-    perSession: "$0.40 / session",
-    savings: null,
-    featured: false,
-  },
-  {
-    count: 25,
-    label: "Most Popular",
-    price: "$7.99",
-    perSession: "$0.32 / session",
-    savings: "save 20%",
-    featured: true,
-  },
-  {
-    count: 100,
-    label: "Power Pack",
-    price: "$24.99",
-    perSession: "$0.25 / session",
-    savings: "save 38%",
-    featured: false,
-  },
-];
