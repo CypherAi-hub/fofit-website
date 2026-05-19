@@ -57,17 +57,26 @@ export function CommunityPage() {
               {
                 caption: "Challenges",
                 title: "Goal-based challenges that fit real training blocks",
-                stats: [],
+                stats: [
+                  { value: "Premium", label: "Access" },
+                  { value: "8-week", label: "Block length" },
+                ],
               },
               {
                 caption: "Groups",
                 title: "Private circles for teams, crews, and accountability pods",
-                stats: [],
+                stats: [
+                  { value: "Private", label: "Visibility" },
+                  { value: "Premium", label: "Access" },
+                ],
               },
               {
                 caption: "Coach-ready",
                 title: "A community layer that supports higher-accountability guidance",
-                stats: [],
+                stats: [
+                  { value: "Spring 2026", label: "Launch" },
+                  { value: "FoFit Teams", label: "Tied to" },
+                ],
               },
             ]}
             title="Community is the engine for consistency."

@@ -19,6 +19,7 @@ import { SignupPage } from "../pages/SignupPage";
 import { LoginPage } from "../pages/LoginPage";
 import { WelcomePage } from "../pages/WelcomePage";
 import { DashboardPage } from "../pages/DashboardPage";
+import { NotFoundPage } from "../pages/NotFoundPage";
 
 export function AppRoutes() {
   return (
@@ -44,7 +45,7 @@ export function AppRoutes() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/welcome" element={<WelcomePage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
-      <Route path="*" element={<HomePage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
