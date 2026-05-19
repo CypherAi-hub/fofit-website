@@ -25,11 +25,11 @@ export function HomePage() {
       <CypherTranscript />
       <DailyLoopSection />
       <ProductSurfacesSection />
+      <BetaCalloutSection />
       <FuelSystemSection />
       <FoFitScoreLandingSection />
       <LandingTeamsSection />
       <LandingPricingSection />
-      <BetaCalloutSection />
       <LandingFinalCTA />
     </>
   );
