@@ -12,8 +12,8 @@ export function ArticleCard({ article }: { article: InsightArticle }) {
         <span>FoFit Editorial</span>
         <span>{article.readTime}</span>
       </div>
-      <Link className="article-card__link" to="/insights">
-        Explore insight
+      <Link className="article-card__link" to={`/insights/${article.slug}`}>
+        Read this insight
       </Link>
     </Card>
   );

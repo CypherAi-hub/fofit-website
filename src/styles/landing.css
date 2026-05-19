@@ -1692,3 +1692,18 @@
     width: 100%;
   }
 }
+
+/* --- /insights/:slug article reader (Phase 3 — Insights) --- */
+.article-detail {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 60ch;
+  margin: 0 auto;
+  color: var(--text);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.article-detail p {
+  margin: 0;
+}

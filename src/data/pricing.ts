@@ -20,7 +20,7 @@ export const pricingPlans: PricingPlan[] = [
     annualNote: "Always free",
     cta: "Start free",
     description:
-      "For people who want a cleaner way to log workouts, stay consistent, and get into a repeatable rhythm.",
+      "For lifters who want clean logging, structured starter plans, and an intro to Cypher — five AI sessions a month included, with token packs to top up.",
     features: [
       "Workout logging and session history",
       "Structured starter plans",
@@ -39,7 +39,7 @@ export const pricingPlans: PricingPlan[] = [
     featured: true,
     cta: "Join the founding 500",
     description:
-      "For athletes and committed lifters who want adaptive planning, deeper feedback, and a more connected training system.",
+      "For athletes and committed lifters who want unlimited Cypher coaching, plans that adjust to a real week, training-linked nutrition direction, and deeper progress analytics.",
     features: [
       "Adaptive AI guidance from Cypher",
       "Personalized program generation",

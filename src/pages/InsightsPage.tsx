@@ -1,4 +1,5 @@
 import { startTransition, useState } from "react";
+import { Link } from "react-router-dom";
 import { ArticleGrid } from "../components/marketing/ArticleGrid";
 import { CTASection } from "../components/marketing/CTASection";
 import { PageHero } from "../components/layout/PageHero";
@@ -52,6 +53,9 @@ export function InsightsPage() {
               <span>FoFit Editorial</span>
               <span>{featured.readTime}</span>
             </div>
+            <Link className="article-card__link" to={`/insights/${featured.slug}`}>
+              Read this insight
+            </Link>
           </Card>
         </div>
       </section>

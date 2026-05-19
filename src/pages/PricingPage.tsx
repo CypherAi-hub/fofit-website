@@ -3,7 +3,6 @@ import { CTASection } from "../components/marketing/CTASection";
 import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { PricingTable } from "../components/marketing/PricingTable";
 import { VerifiedDiscounts } from "../components/marketing/VerifiedDiscounts";
-import { CypherTokens } from "../components/marketing/CypherTokens";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { EditorialHeading } from "../components/ui/EditorialHeading";
@@ -68,7 +67,6 @@ export function PricingPage() {
           </div>
           <PricingTable />
           <VerifiedDiscounts />
-          <CypherTokens />
         </div>
       </section>
 
