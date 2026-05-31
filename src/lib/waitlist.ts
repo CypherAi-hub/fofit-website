@@ -3,7 +3,7 @@ import type { WaitlistRole } from '../app/waitlist-context';
 const ENDPOINT = import.meta.env.VITE_WAITLIST_ENDPOINT;
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-export const FOUNDING_LIMIT = 500;
+export const FOUNDING_LIMIT = 250;
 
 export type WaitlistPayload = {
   name: string;
@@ -11,6 +11,8 @@ export type WaitlistPayload = {
   role: WaitlistRole | null;
   goal: string;
   profile: string;
+  school?: string;
+  source?: string;
 };
 
 export type WaitlistResult =
@@ -80,9 +82,12 @@ export async function joinWaitlist(payload: WaitlistPayload): Promise<WaitlistRe
   const body = {
     name: payload.name,
     email: payload.email,
-    role: payload.role,
+    role: normalizeBackendRole(payload.role),
+    audience: payload.role,
     goal: payload.goal,
     profile: payload.profile,
+    school: payload.school?.trim() || null,
+    sourceDetail: payload.source?.trim() || null,
   };
 
   try {
@@ -127,4 +132,16 @@ export async function joinWaitlist(payload: WaitlistPayload): Promise<WaitlistRe
       message: 'Network issue. Check your connection and retry.',
     };
   }
+}
+
+function normalizeBackendRole(role: WaitlistRole | null) {
+  if (role === "athlete" || role === "coach") {
+    return role;
+  }
+
+  if (role === "student") {
+    return "athlete";
+  }
+
+  return role ? "lifter" : null;
 }

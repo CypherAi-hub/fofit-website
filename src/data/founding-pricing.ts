@@ -3,7 +3,7 @@
 //   2. Real signup count reaches a meaningful threshold (>50)
 //   3. A scheduled job or edge function exposes the count safely
 // Until then, the Founding tier is framed as scarcity-by-tier
-// (there ARE only 500 spots), not scarcity-by-progress.
+// (there ARE only 250 spots), not scarcity-by-progress.
 //
 // export const foundingClaimed = 0;
-// export const foundingLimit = 500;
+// export const foundingLimit = 250;

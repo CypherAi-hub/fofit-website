@@ -11,6 +11,9 @@ export type FooterLinkItem = {
 
 export const primaryNav: NavLinkItem[] = [
   { label: "Product", to: "/product" },
+  { label: "Training", to: "/features" },
+  { label: "Nutrition", to: "/nutrition" },
+  { label: "Community", to: "/community" },
   { label: "Pricing", to: "/pricing" },
   { label: "Insights", to: "/insights" },
   { label: "About", to: "/about" },
@@ -29,8 +32,18 @@ export const footerColumns: Array<{ title: string; links: FooterLinkItem[] }> = 
     title: "Product",
     links: [
       { label: "Product", to: "/product" },
+      { label: "Training", to: "/features" },
+      { label: "Nutrition", to: "/nutrition" },
+      { label: "Community", to: "/community" },
       { label: "Pricing", to: "/pricing" },
+    ],
+  },
+  {
+    title: "Content",
+    links: [
       { label: "Insights", to: "/insights" },
+      { label: "Training articles", to: "/insights" },
+      { label: "Nutrition articles", to: "/insights" },
       { label: "FAQ", to: "/faq" },
       { label: "iOS Beta", to: "/beta" },
     ],

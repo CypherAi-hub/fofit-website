@@ -1,8 +1,8 @@
 import type { WaitlistRole } from "../app/waitlist-context";
 
 export const heroTrustItems = [
-  "Founding 500",
-  "$12.99/mo founding rate",
+  "Founding 250",
+  "$14.99/mo Standard",
   "iOS + Android",
   "Lifter / Athlete / Coach",
 ] as const;
@@ -199,7 +199,7 @@ export const teamsSignals = [
 ] as const;
 
 export const foundingBenefits = [
-  "Locked founding rate for early members",
-  "Premium grows as Cypher, Fuel, Teams, and progress systems deepen",
+  "Founding rates locked while your subscription stays active",
+  "FoFit grows as Cypher, Fuel, Teams, and community systems deepen",
   "Built for lifters, athletes, and coaches from day one",
 ] as const;

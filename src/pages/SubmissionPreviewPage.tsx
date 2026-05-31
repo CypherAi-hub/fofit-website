@@ -41,7 +41,7 @@ export function SubmissionPreviewPage() {
           { label: "Open the home page", to: "/", variant: "secondary" },
         ]}
         className="page-hero--editorial"
-        description="A training platform for student athletes, written by one. Cypher is the AI layer — remembering the athlete, adapting the next session, keeping progress attached to the real week."
+        description="A Future of Fitness app for student athletes, written by one. Cypher is the AI layer — remembering the athlete, adapting the next session, and keeping progress attached to the real week."
         eyebrow="Submission preview · Handshake Codex Creator Challenge"
         media={<HeroDeviceMockups />}
         mediaClassName="page-hero__media--editorial"

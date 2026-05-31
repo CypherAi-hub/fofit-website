@@ -17,7 +17,7 @@ type WaitlistContextValue = {
   setJoinedEmail: (email: string | null) => void;
 };
 
-export type WaitlistRole = "lifter" | "athlete" | "coach";
+export type WaitlistRole = "beginner" | "lifter" | "athlete" | "coach" | "student";
 
 export type WaitlistOpenOptions = {
   initialRole?: WaitlistRole;

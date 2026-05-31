@@ -6,6 +6,7 @@ import {
   waitlistGoals,
   waitlistProfiles,
   waitlistRoles,
+  waitlistSources,
   waitlistSuccessPoints,
 } from "../../data/waitlist";
 import { joinWaitlist } from "../../lib/waitlist";
@@ -20,6 +21,8 @@ type WaitlistForm = {
   email: string;
   goal: string;
   profile: string;
+  school: string;
+  source: string;
 };
 
 const INITIAL_FORM: WaitlistForm = {
@@ -28,6 +31,8 @@ const INITIAL_FORM: WaitlistForm = {
   email: "",
   goal: waitlistGoals[0],
   profile: waitlistProfiles[0],
+  school: "",
+  source: waitlistSources[0],
 };
 
 const STORAGE_KEY = "fofit-waitlist-draft";
@@ -250,6 +255,8 @@ export function WaitlistModal() {
       role: form.role,
       goal: form.goal,
       profile: form.profile,
+      school: form.school,
+      source: form.source,
     });
 
     if (result.kind === "success" || result.kind === "already_joined") {
@@ -289,14 +296,14 @@ export function WaitlistModal() {
         </button>
         <div className="waitlist-modal__aside">
           <span className="eyebrow">FoFit early access</span>
-          <h3>A premium path into the platform.</h3>
+          <h3>Your path into the Future of Fitness.</h3>
           <p>
-            Claim a founding spot, keep the early Premium rate, and help shape
-            the first release for lifters, athletes, and coaches.
+            Claim a founding 250 spot and help shape the first release for
+            training, nutrition, Cypher, and community.
           </p>
           <div className="waitlist-aside__card">
             <span>Platform focus</span>
-            <strong>Structured training · Adaptive guidance · Premium membership</strong>
+            <strong>AI coaching · Training · Nutrition · Community</strong>
           </div>
         </div>
         <div
@@ -362,7 +369,7 @@ export function WaitlistModal() {
               <span className="eyebrow">Founding member access</span>
               <h2 id={WAITLIST_TITLE_IDS[1]}>Where should we send early access?</h2>
               <p id={WAITLIST_DESCRIPTION_IDS[1]}>
-                Claim the founding rate and help shape the first public release.
+                Join founding 250 and help shape the first public release.
               </p>
               <div className="waitlist-fields">
                 <label>
@@ -418,7 +425,7 @@ export function WaitlistModal() {
               <span className="eyebrow">Training profile</span>
               <h2 id={WAITLIST_TITLE_IDS[2]}>What should FoFit help with first?</h2>
               <p id={WAITLIST_DESCRIPTION_IDS[2]}>
-                One more detail so early access starts with the right context.
+                A little context helps us route your beta invite and campus access.
               </p>
               <div className="waitlist-choice-grid">
                 {waitlistGoals.map((goal) => (
@@ -432,6 +439,18 @@ export function WaitlistModal() {
                   </button>
                 ))}
               </div>
+              <div className="waitlist-fields waitlist-fields--optional">
+                <label>
+                  <span>School or organization optional</span>
+                  <input
+                    onChange={(event) =>
+                      setForm((current) => ({ ...current, school: event.target.value }))
+                    }
+                    placeholder="Maryville University"
+                    value={form.school}
+                  />
+                </label>
+              </div>
               <div className="waitlist-choice-grid waitlist-choice-grid--secondary">
                 {waitlistProfiles.map((profile) => (
                   <button
@@ -441,6 +460,18 @@ export function WaitlistModal() {
                     type="button"
                   >
                     {profile}
+                  </button>
+                ))}
+              </div>
+              <div className="waitlist-choice-grid waitlist-choice-grid--secondary">
+                {waitlistSources.map((source) => (
+                  <button
+                    className={`waitlist-choice ${form.source === source ? "is-selected" : ""}`}
+                    key={source}
+                    onClick={() => setForm((current) => ({ ...current, source }))}
+                    type="button"
+                  >
+                    {source}
                   </button>
                 ))}
               </div>

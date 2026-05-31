@@ -81,7 +81,7 @@ export function AboutPage() {
       </section>
 
       <CTASection
-        description="FoFit is building a focused training platform. Lifters, athletes, and teams can start from different paths without leaving the same system."
+        description="FoFit is building the Future of Fitness: AI coaching, personalized training, nutrition, and community in one app."
         pills={["Mission", "Three paths", "Long game"]}
         title={
           <>

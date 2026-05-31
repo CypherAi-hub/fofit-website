@@ -58,7 +58,7 @@ export function CommunityPage() {
                 caption: "Challenges",
                 title: "Goal-based challenges that fit real training blocks",
                 stats: [
-                  { value: "Premium", label: "Access" },
+                  { value: "Standard", label: "Access" },
                   { value: "8-week", label: "Block length" },
                 ],
               },
@@ -67,7 +67,7 @@ export function CommunityPage() {
                 title: "Private circles for teams, crews, and accountability pods",
                 stats: [
                   { value: "Private", label: "Visibility" },
-                  { value: "Premium", label: "Access" },
+                  { value: "Standard", label: "Access" },
                 ],
               },
               {
@@ -131,7 +131,7 @@ export function CommunityPage() {
 
       <CTASection
         description="Join early and be part of FoFit's founding community."
-        note="Premium athletes get the full community layer at launch. Founding members lock the rate."
+        note="Standard members get the full community layer at launch. Founding rates are locked while your subscription stays active."
         noteClassName="community-cta__premium-note"
         pills={["Challenges", "Groups", "Shared progress"]}
         title={

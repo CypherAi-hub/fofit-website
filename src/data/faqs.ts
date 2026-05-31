@@ -23,7 +23,7 @@ export const faqGroups: FAQGroup[] = [
       {
         question: "Is it free?",
         answer:
-          "Starter is always free — workout logging, structured starter plans, basic progress trends, and 5 Cypher sessions per month. Premium is $12.99/month ($99/yr, effective $8.25/mo), and founding members lock that rate for life.",
+          "Starter is always free for basic logging, starter plans, and limited Cypher. Student is $9.99/month and Standard is $14.99/month for the full FoFit system.",
       },
       {
         question: "Who is it for?",
@@ -38,7 +38,7 @@ export const faqGroups: FAQGroup[] = [
       {
         question: "What is FoFit, exactly?",
         answer:
-          "FoFit is a personalized fitness platform that brings training structure, adaptive guidance, progress tracking, and nutrition direction into one connected system.",
+          "FoFit combines AI coaching, personalized training, nutrition, and community in one connected fitness app.",
       },
       {
         question: "Is FoFit only for advanced lifters?",
@@ -63,12 +63,12 @@ export const faqGroups: FAQGroup[] = [
       {
         question: "Is there a free plan?",
         answer:
-          "Yes. Starter gives athletes a clean entry point for logging, structure, basic progress, and 5 Cypher sessions per month. Premium adds adaptive guidance, deeper analytics, and future ecosystem layers.",
+          "Yes. Starter gives people a clean entry point for logging, structure, and limited Cypher. Student and Standard add the full AI coaching, nutrition, and community system.",
       },
       {
         question: "Is there a discount for students or military?",
         answer:
-          "Yes. Premium · Student is $7.99/mo for verified .edu email holders. Premium · Hero is $9.99/mo for military, first responders, medical workers, and teachers, verified through SheerID. Both rates hold as long as eligibility is current.",
+          "Yes. Student is $9.99/mo for verified students. Additional verified pricing can be evaluated as the platform opens more broadly.",
       },
       {
         question: "What are Cypher Tokens?",
@@ -78,7 +78,7 @@ export const faqGroups: FAQGroup[] = [
       {
         question: "Do I get a free trial?",
         answer:
-          "Yes. Premium annual includes a 7-day free trial — full access to Cypher, adaptive plans, nutrition direction, and analytics. Cancel before day 7 and you're not charged.",
+          "Trial details will be finalized before public launch. Join the beta list to get early access and pricing updates first.",
       },
       {
         question: "Will there be team or school pricing?",

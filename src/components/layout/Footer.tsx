@@ -8,8 +8,8 @@ export function Footer() {
         <div className="footer-brand">
           <div className="brand-mark">FoFit</div>
           <p>
-            FoFit is the training platform for lifters, athletes, and teams
-            whose training needs more memory than a spreadsheet.
+            FoFit combines AI coaching, personalized training, nutrition, and
+            community in one fitness app.
           </p>
         </div>
         {footerColumns.map((column) => (
@@ -37,8 +37,8 @@ export function Footer() {
         ))}
       </div>
       <div className="container footer-bottom">
-        <span>© 2026 FoFit. Built for long-term training consistency.</span>
-        <span>St. Louis roots. Platform ambitions.</span>
+        <span>© 2026 FoFit. Built for the Future of Fitness.</span>
+        <span>St. Louis roots. Community ambitions.</span>
       </div>
     </footer>
   );

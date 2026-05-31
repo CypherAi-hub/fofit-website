@@ -30,9 +30,9 @@ export function HomeVideoHero() {
             <span>Cypher remembers the week your plan forgot.</span>
           </h1>
           <p className="lp-hero__subcopy">
-            FoFit is a training platform built around real life: soreness,
-            schedule changes, equipment, nutrition, progress, and team context.
-            Cypher keeps the plan moving without pretending your week was perfect.
+            FoFit combines AI coaching, training, nutrition, and community
+            around real life: soreness, schedule changes, equipment, progress,
+            and team context.
           </p>
 
           <div className="lp-hero__actions">
@@ -44,7 +44,7 @@ export function HomeVideoHero() {
               Join iOS Beta
             </Link>
             <EarlyAccessButton size="lg" variant="secondary">
-              Join the founding waitlist
+              Join founding 250
             </EarlyAccessButton>
           </div>
 

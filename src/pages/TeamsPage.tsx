@@ -28,7 +28,7 @@ export function TeamsPage() {
   return (
     <>
       <PageMeta
-        description="FoFit Teams — per-team pricing for schools, clubs, and training groups. Every athlete gets Premium. Coach view layered on top."
+        description="FoFit Teams — per-team pricing for schools, clubs, and training groups. Every athlete gets the full FoFit system with coach visibility layered on top."
         title="FoFit Teams | Schools, Clubs, and Group Training Systems"
       />
       <PageHero
@@ -68,7 +68,7 @@ export function TeamsPage() {
                 Inside <em>FoFit Teams</em>.
               </h2>
               <p className="teams-tiers__lede">
-                Per-team pricing, not per-seat. Every athlete on the roster gets Premium included. The coach view layered on top.
+                Per-team pricing, not per-seat. Every athlete on the roster gets the full FoFit system with the coach view layered on top.
               </p>
             </div>
 

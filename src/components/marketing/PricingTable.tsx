@@ -1,38 +1,13 @@
-import { useState } from "react";
 import { pricingAssurances, pricingComparison, pricingPlans } from "../../data/pricing";
 import { EarlyAccessButton } from "./EarlyAccessButton";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 
 export function PricingTable() {
-  const [annual, setAnnual] = useState(false);
-  const [starterPlan, premiumPlan] = pricingPlans;
-  const foundingPrice = annual ? "$99" : "$12.99";
-  const foundingUnit = annual ? "/yr" : "/mo";
-
   return (
     <div className="pricing-table">
-      <div className="pricing-toggle">
-        <button
-          aria-pressed={!annual}
-          className={!annual ? "is-active" : ""}
-          onClick={() => setAnnual(false)}
-          type="button"
-        >
-          Monthly
-        </button>
-        <button
-          aria-pressed={annual}
-          className={annual ? "is-active" : ""}
-          onClick={() => setAnnual(true)}
-          type="button"
-        >
-          Annual
-        </button>
-      </div>
-
       <div className="pricing-preview">
-        {[starterPlan, premiumPlan].map((plan) => (
+        {pricingPlans.map((plan) => (
           <Card
             className={`pricing-card reveal ${plan.featured ? "pricing-card--featured" : ""}`}
             key={plan.name}
@@ -40,10 +15,10 @@ export function PricingTable() {
             <div className="pricing-card__top">
               <span className="pricing-card__name">{plan.name}</span>
               <strong>
-                {plan.monthly === "$0" ? "Free" : (annual ? plan.annual : plan.monthly)}
-                {plan.monthly !== "$0" && <span className="pricing-card__unit">{annual ? "/yr" : "/mo"}</span>}
+                {plan.monthly === "$0" ? "Free" : plan.monthly}
+                {plan.monthly.startsWith("$") && <span className="pricing-card__unit">/mo</span>}
               </strong>
-              <p>{annual ? plan.annualNote : plan.tagline}</p>
+              <p>{plan.tagline}</p>
             </div>
             <p className="pricing-card__description">{plan.description}</p>
             <ul className="pricing-card__list">
@@ -55,50 +30,35 @@ export function PricingTable() {
               <EarlyAccessButton variant="primary">
                 {plan.cta}
               </EarlyAccessButton>
-            ) : (
+            ) : plan.name === "Coach / Teams" ? (
+              <Button
+                href="mailto:teams@fofit.app?subject=FoFit%20Coach%20and%20Teams%20access"
+                variant="secondary"
+              >
+                {plan.cta}
+              </Button>
+            ) : plan.name === "Starter" ? (
               <Button to="/signup" variant="secondary">
                 {plan.cta}
               </Button>
+            ) : (
+              <EarlyAccessButton variant="secondary">
+                {plan.cta}
+              </EarlyAccessButton>
             )}
           </Card>
         ))}
-        <Card className="pricing-card pricing-card--editorial reveal">
-          <div className="pricing-card__top">
-            <span className="pricing-card__name">Founding</span>
-            <strong>
-              {foundingPrice}
-              <span className="pricing-card__unit">{foundingUnit}</span>
-            </strong>
-            <p>The first 500 members lock the full Premium product at this rate for life.</p>
-          </div>
-          <p className="pricing-card__description">
-            Join before launch and the rate does not move as FoFit adds more coaching, team, and recovery depth.
-          </p>
-          <ul className="pricing-card__list">
-            <li>Everything in Premium</li>
-            <li>Price locked at the founding rate</li>
-            <li>Priority access as new layers open</li>
-            <li>Named as an early supporter inside the app</li>
-          </ul>
-          <div className="pricing-card__meta">
-            <span>{annual ? "$8.25/mo billed annually" : "Month to month"}</span>
-            <span>Rate holds for founding members</span>
-          </div>
-          <EarlyAccessButton>
-            Join the founding 500
-          </EarlyAccessButton>
-        </Card>
       </div>
 
       <p className="pricing-table__footer">
-        Cancel anytime · export your data in one tap
+        Maryville founding access is available for early campus testers at $6.99/mo.
       </p>
 
       <div className="comparison-table">
         <div className="comparison-table__head">
           <span>Capability</span>
           <span>Starter</span>
-          <span>Premium</span>
+          <span>Standard</span>
         </div>
         {pricingComparison.map((row) => (
           <div className="comparison-table__row" key={row.feature}>

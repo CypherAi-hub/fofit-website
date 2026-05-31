@@ -11,8 +11,8 @@ import { teamsTiers } from "../data/pricing";
 
 const pricingNotes = [
   "Starter stays free for logging, structure, and a clean place to begin.",
-  "Premium is the full individual system — Cypher, adaptive plans, nutrition direction, and deeper feedback.",
-  "Founding members keep the early individual rate as the platform gets deeper.",
+  "Standard is the full individual system — Cypher, adaptive training, nutrition, community, and coach discovery.",
+  "Founding rates are locked while your subscription stays active.",
 ] as const;
 
 export function PricingPage() {
@@ -23,20 +23,20 @@ export function PricingPage() {
   return (
     <>
       <PageMeta
-        description="FoFit stays simple for individuals. FoFit Teams gives coaches and groups a rollout path without changing the consumer membership."
-        title="FoFit Pricing | Clear Plans for a Growing Platform"
+        description="FoFit pricing for AI coaching, personalized training, nutrition, community, students, and coach or team access."
+        title="FoFit Pricing | Starter, Student, Standard, and Teams"
       />
       <PageHero
         actions={[
-          { label: "Join the founding 500", intent: "waitlist" },
+          { label: "Join founding 250", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
         compact
-        description="FoFit stays simple for individuals. FoFit Teams gives coaches and groups a rollout path without changing the consumer membership."
+        description="FoFit stays simple for individuals while giving students, coaches, and teams a clear path into the platform."
         eyebrow="007 / Membership"
         title={
           <EditorialHeading accent="early" as="span" className="editorial-heading--compact">
-            {"Clear today.\nLocked if you're {italic}."}
+            {"Simple pricing.\nBuilt for the {italic}."}
           </EditorialHeading>
         }
       />
@@ -50,12 +50,12 @@ export function PricingPage() {
         <div className="container">
           <div className="pricing-page__intro">
             <ChapterIntro
-              description="Starter stays free. Premium is the full individual training system with Cypher, adaptive planning, and deeper feedback."
+              description="Starter stays free. Standard is the full FoFit system with Cypher, adaptive training, nutrition, and community."
               index="01"
               label="FoFit"
               title={
                 <>
-                  FoFit for lifters and <em>athletes</em>.
+                  FoFit for members, students, and <em>athletes</em>.
                 </>
               }
             />
@@ -112,8 +112,8 @@ export function PricingPage() {
       </section>
 
       <CTASection
-        description="Join the founding 500. The rate never moves."
-        pills={["Starter", "Premium", "Teams"]}
+        description="Join founding 250. Founding rates are locked while your subscription stays active."
+        pills={["Starter", "Student", "Standard", "Teams"]}
         title={
           <>
             Clear today.

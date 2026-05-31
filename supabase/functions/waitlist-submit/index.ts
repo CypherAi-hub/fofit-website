@@ -1,6 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 
-const foundingLimit = 500;
+const foundingLimit = 250;
 const allowedRoles = new Set(["lifter", "athlete", "coach"]);
 
 const corsHeaders = {

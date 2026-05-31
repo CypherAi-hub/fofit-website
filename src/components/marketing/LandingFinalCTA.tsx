@@ -11,7 +11,7 @@ export function LandingFinalCTA() {
             <span>Start training the real week.</span>
           </h2>
           <p>FoFit is for the athletes who tell the truth and still do the work.</p>
-          <EarlyAccessButton size="lg">Join the founding waitlist</EarlyAccessButton>
+          <EarlyAccessButton size="lg">Join founding 250</EarlyAccessButton>
         </Revealer>
       </div>
     </section>

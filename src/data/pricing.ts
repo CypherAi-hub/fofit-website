@@ -14,41 +14,68 @@ export type PricingPlan = {
 export const pricingPlans: PricingPlan[] = [
   {
     name: "Starter",
-    tagline: "Train with structure",
+    tagline: "Basic logging and starter structure",
     monthly: "$0",
     annual: "$0",
     annualNote: "Always free",
     cta: "Start free",
     description:
-      "For lifters who want clean logging, structured starter plans, and an intro to Cypher — five AI sessions a month included, with token packs to top up.",
+      "For people who want clean logging, starter plans, and a first taste of Cypher without pressure.",
     features: [
       "Workout logging and session history",
       "Structured starter plans",
       "Basic progress trends",
-      "Exercise library access",
-      "5 Cypher sessions / month",
-      "Top up with token packs anytime",
+      "Limited Cypher access",
     ],
   },
   {
-    name: "Premium",
-    tagline: "The full FoFit system",
-    monthly: "$12.99",
+    name: "Student",
+    tagline: "Verified student access",
+    monthly: "$9.99",
     annual: "$99",
-    annualNote: "$8.25/mo billed annually · 7-day free trial",
-    featured: true,
-    cta: "Join the founding 500",
+    annualNote: "Student annual option planned",
+    cta: "Join as a student",
     description:
-      "For athletes and committed lifters who want unlimited Cypher coaching, plans that adjust to a real week, training-linked nutrition direction, and deeper progress analytics.",
+      "For students who want training, nutrition, Cypher, and community built around a real school schedule.",
+    features: [
+      "Full FoFit system",
+      "Student pricing path",
+      "Campus community access",
+      "Founding 250 updates",
+    ],
+  },
+  {
+    name: "Standard",
+    tagline: "The full FoFit system",
+    monthly: "$14.99",
+    annual: "$149",
+    annualNote: "Annual pricing planned",
+    featured: true,
+    cta: "Join founding 250",
+    description:
+      "For members who want AI coaching, personalized training, nutrition, community, reels, groups, and verified coach access.",
     features: [
       "Adaptive AI guidance from Cypher",
       "Personalized program generation",
-      "Advanced progress analytics",
-      "Training-linked nutrition direction",
-      "Recovery and readiness concepts",
-      "Priority access to future coaching layers",
+      "Training-linked nutrition",
+      "Feed, reels, groups, and verified coaches",
     ],
-    trial: "7-day free trial on annual",
+  },
+  {
+    name: "Coach / Teams",
+    tagline: "Verified coach and team path",
+    monthly: "Talk to us",
+    annual: "Talk to us",
+    annualNote: "Pilot pricing by group",
+    cta: "Request access",
+    description:
+      "For coaches, schools, clubs, and teams that need verified profiles, groups, programs, and visibility.",
+    features: [
+      "Verified coach path",
+      "Groups and programs",
+      "Team visibility",
+      "Pilot rollout support",
+    ],
   },
 ];
 
@@ -65,8 +92,8 @@ export const pricingComparison = [
   },
   {
     feature: "AI coaching",
-    starter: "5 sessions / month",
-    premium: "Unlimited",
+    starter: "Limited",
+    premium: "Included",
   },
   {
     feature: "Progress analytics",
@@ -75,20 +102,20 @@ export const pricingComparison = [
   },
   {
     feature: "Nutrition guidance",
-    starter: "Not included",
+    starter: "Limited",
     premium: "Training-aware support",
   },
   {
     feature: "Community features",
-    starter: "Read-only",
-    premium: "Challenges and group tools",
+    starter: "Preview",
+    premium: "Feed, reels, groups, and coaches",
   },
 ];
 
 export const pricingAssurances = [
   "Cancel anytime with no lock-in contract.",
-  "One platform for planning, execution, analytics, and future coaching.",
-  "Premium members get first access to new ecosystem modules as they launch.",
+  "One app for AI coaching, training, nutrition, and community.",
+  "Founding rates are locked while your subscription stays active.",
 ];
 
 export type VerifiedDiscount = {
@@ -102,15 +129,15 @@ export type VerifiedDiscount = {
 
 export const verifiedDiscounts: VerifiedDiscount[] = [
   {
-    name: "Premium · Student",
-    price: "$7.99/mo",
-    annual: "$69/yr",
+    name: "Standard · Student",
+    price: "$9.99/mo",
+    annual: "$99/yr planned",
     eligibility: "Verified .edu email or SheerID",
-    description: "For as long as you're enrolled.",
-    discountPct: 38,
+    description: "For verified students.",
+    discountPct: 33,
   },
   {
-    name: "Premium · Hero",
+    name: "Standard · Hero",
     price: "$9.99/mo",
     annual: "$89/yr",
     eligibility: "Military, first responders, medical workers, teachers (verified through SheerID)",
@@ -148,4 +175,3 @@ export const teamsTiers: TeamsTier[] = [
     description: "Unlimited athletes · SSO · priority support · white-label · scales by athlete count and division",
   },
 ];
-
