@@ -33,4 +33,7 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-display-serif: "Instrument Serif", serif;
   --font-label-mono: "IBM Plex Mono", monospace;
+  /* Alias so the 13 bare `var(--font-mono)` uses in global.css resolve to the mono stack instead
+     of silently inheriting the body font (the variable was never defined). */
+  --font-mono: var(--font-label-mono);
 }
