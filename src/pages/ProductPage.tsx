@@ -1,12 +1,23 @@
+import { Link, Navigate, useParams } from "react-router-dom";
+
 import { CTASection } from "../components/marketing/CTASection";
 import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { DeviceFigure } from "../components/marketing/DeviceFigure";
 import { ExerciseLibraryPreview } from "../components/marketing/ExerciseLibraryPreview";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
+import { Card } from "../components/ui/Card";
 import { EditorialHeading } from "../components/ui/EditorialHeading";
 import { heroFigure, planFigure, progressFigureAsset, transcriptFigure } from "../data/editorial";
+import {
+  MARKETPLACE_DISCLOSURE,
+  getWebProductById,
+  siblingsInCategory,
+  type WebMerchantLink,
+  type WebProduct,
+} from "../data/marketplace/web-catalog";
 import { workflowSteps } from "../data/platform";
+import "../styles/marketplace.css";
 
 const operatingLayers = [
   {
@@ -44,7 +55,96 @@ const productFigures = [
   },
 ] as const;
 
+function ProductShopButton({ link }: { link: WebMerchantLink }) {
+  return (
+    <a
+      className={`store-shop-btn store-shop-btn--${link.merchant.toLowerCase()}`}
+      href={link.url}
+      target="_blank"
+      rel="sponsored noopener noreferrer"
+    >
+      Shop on {link.merchant}
+      <span aria-hidden="true"> ↗</span>
+    </a>
+  );
+}
+
+function ProductDetail({ product }: { product: WebProduct }) {
+  const siblings = siblingsInCategory(product);
+
+  return (
+    <>
+      <PageMeta
+        description={`${product.title} — browse live listings on ${product.links
+          .map((link) => link.merchant)
+          .join(" and ")}. Affiliate links; FoFit may earn a commission at no extra cost to you.`}
+        title={`${product.title} | FoFit Store`}
+      />
+
+      <section className="page-section page-section--tight">
+        <div className="container">
+          <Link className="product-detail__back" to="/store">
+            ← Back to store
+          </Link>
+
+          <div className="product-detail">
+            <span className="eyebrow store-card-cat product-detail__cat">{product.categoryLabel}</span>
+            <h1 className="product-detail__title">{product.title}</h1>
+            <p className="product-detail__note">
+              We don’t list a price here. Each button opens the merchant’s live search — current
+              price, options, and reviews come straight from {product.links.map((l) => l.merchant).join(" or ")}.
+            </p>
+
+            <div className="product-detail__buy">
+              {product.links.map((link) => (
+                <div className="product-detail__buy-row" key={link.merchant}>
+                  <ProductShopButton link={link} />
+                  <p className="store-card-fineprint product-detail__fineprint">{link.disclosure}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="store-disclosure product-detail__disclosure">{MARKETPLACE_DISCLOSURE}</p>
+          </div>
+
+          {siblings.length > 0 ? (
+            <div className="product-detail__rail">
+              <h2 className="product-detail__rail-heading">More in {product.categoryLabel}</h2>
+              <div className="store-grid">
+                {siblings.map((sibling) => (
+                  <Card className="store-card reveal" key={sibling.id}>
+                    <span className="eyebrow store-card-cat">{sibling.categoryLabel}</span>
+                    <h3 className="store-card-title">{sibling.title}</h3>
+                    <p className="store-card-note">
+                      Browse live listings — current price, options, and reviews on the merchant.
+                    </p>
+                    <div className="store-card-actions">
+                      <Link className="store-details-btn" to={`/product/${sibling.id}`}>
+                        View details
+                      </Link>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </section>
+    </>
+  );
+}
+
 export function ProductPage() {
+  const { id } = useParams();
+
+  if (id) {
+    const product = getWebProductById(id);
+    if (!product) {
+      return <Navigate replace to="/store" />;
+    }
+    return <ProductDetail product={product} />;
+  }
+
   return (
     <>
       <PageMeta

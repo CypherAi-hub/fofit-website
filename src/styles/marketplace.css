@@ -95,6 +95,14 @@
   line-height: 1.25;
   color: var(--text-strong);
 }
+.store-card-title-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.store-card-title-link:hover {
+  color: var(--green);
+}
 .store-card-note {
   margin: 0;
   font-size: 0.8rem;
@@ -140,6 +148,19 @@
   opacity: 0.85;
 }
 
+.store-card-details {
+  align-self: flex-start;
+  font-family: var(--font-label-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.store-card-details:hover {
+  color: var(--green);
+}
+
 .store-empty {
   text-align: center;
   padding: 2.4rem 1.6rem;
@@ -150,4 +171,92 @@
 .store-empty p {
   margin: 0;
   color: var(--text-muted);
+}
+
+/* ── Product detail view (/product/:id) ─────────────────────────────────────── */
+.product-detail__back {
+  display: inline-block;
+  margin-bottom: 1.4rem;
+  font-family: var(--font-label-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.product-detail__back:hover {
+  color: var(--green);
+}
+
+.product-detail {
+  max-width: 640px;
+}
+.product-detail__cat {
+  display: inline-block;
+}
+.product-detail__title {
+  margin: 0.7rem 0 0;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  line-height: 1.12;
+  color: var(--text-strong);
+}
+.product-detail__note {
+  margin: 0.9rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.product-detail__buy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 1.6rem 0 0;
+}
+.product-detail__buy-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.product-detail__buy-row .store-shop-btn {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  min-width: 200px;
+}
+.product-detail__fineprint {
+  margin: 0;
+}
+
+.product-detail__disclosure {
+  margin: 1.6rem 0 0;
+}
+
+.product-detail__rail {
+  margin-top: 3rem;
+}
+.product-detail__rail-heading {
+  margin: 0 0 1.1rem;
+  font-size: 1.15rem;
+  color: var(--text-strong);
+}
+
+.store-details-btn {
+  flex: 1;
+  min-width: 110px;
+  text-align: center;
+  padding: 0.6rem 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.12s ease;
+}
+.store-details-btn:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
 }

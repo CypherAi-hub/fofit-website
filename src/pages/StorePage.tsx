@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
@@ -100,13 +101,20 @@ export function StorePage() {
               {results.map((product) => (
                 <Card className="store-card reveal" key={product.id}>
                   <span className="eyebrow store-card-cat">{product.categoryLabel}</span>
-                  <h3 className="store-card-title">{product.title}</h3>
+                  <h3 className="store-card-title">
+                    <Link className="store-card-title-link" to={`/product/${product.id}`}>
+                      {product.title}
+                    </Link>
+                  </h3>
                   <p className="store-card-note">Browse live listings — current price, options, and reviews on the merchant.</p>
                   <div className="store-card-actions">
                     {product.links.map((link) => (
                       <ShopButton key={link.merchant} link={link} />
                     ))}
                   </div>
+                  <Link className="store-card-details" to={`/product/${product.id}`}>
+                    View details →
+                  </Link>
                   <p className="store-card-fineprint">{product.links[0]?.disclosure}</p>
                 </Card>
               ))}

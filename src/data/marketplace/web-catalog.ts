@@ -86,6 +86,20 @@ const SEARCH_RECORDS: SearchableProduct[] = AFFILIATE_SEARCH_CATALOG.map((entry)
 
 const PRODUCTS_BY_ID = new Map(WEB_PRODUCTS.map((p) => [p.id, p]));
 
+/** Look up a single web product by its catalog id (e.g. "search-foam-roller"). */
+export function getWebProductById(id: string | undefined | null): WebProduct | undefined {
+  if (!id) return undefined;
+  return PRODUCTS_BY_ID.get(id);
+}
+
+/** Same-category products excluding the given one, in curated order, capped at `limit`. */
+export function siblingsInCategory(product: WebProduct, limit = 6): WebProduct[] {
+  return WEB_PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id).slice(
+    0,
+    limit,
+  );
+}
+
 /** Filter by department + relevance-rank via the SAME engine the app uses. Empty query →
  *  curated browse order; query → BM25-lite relevance gate + ranking. */
 export function searchWebProducts(query: string, category: string | "all"): WebProduct[] {
