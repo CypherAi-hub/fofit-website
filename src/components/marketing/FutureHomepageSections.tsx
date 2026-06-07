@@ -78,8 +78,9 @@ export function HeroFutureOfFitness() {
               src={futureAssets.app.nutritionDashboard.src}
             />
           </div>
-          <div className="future-hero__community-proof">
-            <img alt={futureAssets.community.overview.alt} src={futureAssets.community.overview.src} />
+          <div className="future-hero__community-proof" aria-label="FoFit community surfaces preview">
+            <img alt={futureAssets.app.discoverHome.alt} src={futureAssets.app.discoverHome.src} />
+            <img alt={futureAssets.app.profile.alt} src={futureAssets.app.profile.src} />
           </div>
         </Revealer>
       </div>
@@ -168,7 +169,7 @@ export function CommunityPreviewSection() {
       <div className="container future-community__inner">
         <Revealer className="future-community__copy">
           <span className="lp-kicker">Community</span>
-          <h2>Fitness gets less lonely.</h2>
+          <h2>Fitness feels less lonely.</h2>
           <p>
             Join groups, follow verified coaches, share progress, ask questions,
             and find people training for the same thing — without toxic
