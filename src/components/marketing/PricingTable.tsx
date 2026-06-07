@@ -97,20 +97,17 @@ export function PricingTable() {
         Cancel anytime · export your data in one tap
       </p>
 
-      {/* ARIA table semantics over the existing CSS-grid layout: a native <table> would fight
-          the grid + responsive CSS, so role="table"/row/columnheader/rowheader/cell gives screen
-          readers the header→value association (WCAG 4.1.2) without restyling. */}
-      <div className="comparison-table" role="table" aria-label="Starter vs Premium plan comparison">
-        <div className="comparison-table__head" role="row">
-          <span role="columnheader">Capability</span>
-          <span role="columnheader">Starter</span>
-          <span role="columnheader">Premium</span>
+      <div className="comparison-table">
+        <div className="comparison-table__head">
+          <span>Capability</span>
+          <span>Starter</span>
+          <span>Premium</span>
         </div>
         {pricingComparison.map((row) => (
-          <div className="comparison-table__row" key={row.feature} role="row">
-            <span role="rowheader">{row.feature}</span>
-            <span role="cell">{row.starter}</span>
-            <span role="cell">{row.premium}</span>
+          <div className="comparison-table__row" key={row.feature}>
+            <span>{row.feature}</span>
+            <span>{row.starter}</span>
+            <span>{row.premium}</span>
           </div>
         ))}
       </div>

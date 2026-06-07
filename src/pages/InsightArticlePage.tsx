@@ -2,9 +2,17 @@ import { Fragment } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { CTASection } from "../components/marketing/CTASection";
 import { PageMeta } from "../components/layout/PageMeta";
-import { insightArticles, isInsightPublished, publishedInsightArticles } from "../data/insights";
+import { insightArticles } from "../data/insights";
 
 function renderMarkdownBody(body: string) {
+  if (body === "CONTENT_PLACEHOLDER") {
+    return (
+      <p className="insight-article__placeholder">
+        CONTENT_PLACEHOLDER
+      </p>
+    );
+  }
+
   return body.split(/\n{2,}/).map((block) => {
     const trimmed = block.trim();
 
@@ -41,19 +49,17 @@ export function InsightArticlePage() {
   const { slug } = useParams();
   const article = insightArticles.find((item) => item.slug === slug);
 
-  // Unknown slug, or an article that isn't written yet (placeholder body), redirects to the hub —
-  // never render the unpublished/placeholder state to a user.
-  if (!article || !isInsightPublished(article)) {
+  if (!article) {
     return <Navigate replace to="/insights" />;
   }
 
   const related = Array.from(
     new Map(
       [
-        ...publishedInsightArticles.filter(
+        ...insightArticles.filter(
           (item) => item.slug !== article.slug && item.category === article.category,
         ),
-        ...publishedInsightArticles.filter((item) => item.slug !== article.slug),
+        ...insightArticles.filter((item) => item.slug !== article.slug),
       ].map((item) => [item.slug, item]),
     ).values(),
   ).slice(0, 3);
@@ -87,22 +93,20 @@ export function InsightArticlePage() {
           {renderMarkdownBody(article.body)}
         </div>
 
-        {related.length > 0 ? (
-          <footer className="insight-article__footer container">
-            <div>
-              <span className="insight-article__category">Related reading</span>
-              <h2>Keep the work connected.</h2>
-            </div>
-            <div className="insight-article__related">
-              {related.map((item) => (
-                <Link key={item.slug} to={`/insights/${item.slug}`}>
-                  <span>{item.category}</span>
-                  {item.title}
-                </Link>
-              ))}
-            </div>
-          </footer>
-        ) : null}
+        <footer className="insight-article__footer container">
+          <div>
+            <span className="insight-article__category">Related reading</span>
+            <h2>Keep the work connected.</h2>
+          </div>
+          <div className="insight-article__related">
+            {related.map((item) => (
+              <Link key={item.slug} to={`/insights/${item.slug}`}>
+                <span>{item.category}</span>
+                {item.title}
+              </Link>
+            ))}
+          </div>
+        </footer>
       </article>
 
       <CTASection

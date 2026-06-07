@@ -12,12 +12,15 @@ export type FooterLinkItem = {
 export const primaryNav: NavLinkItem[] = [
   { label: "Product", to: "/product" },
   { label: "Pricing", to: "/pricing" },
-  // /store is a live affiliate-revenue surface; it lives in the global nav (header + mobile both
-  // map primaryNav) so it's discoverable. (It was previously only linked from a never-mounted
-  // EcosystemTeaser, now deleted, leaving it reachable only by typing the URL.)
-  { label: "Store", to: "/store" },
   { label: "Insights", to: "/insights" },
   { label: "About", to: "/about" },
+];
+
+export const ecosystemLinks: NavLinkItem[] = [
+  { label: "Updates", to: "/updates" },
+  { label: "Coaches", to: "/coaches" },
+  { label: "Store", to: "/store" },
+  { label: "Teams", to: "/teams" },
 ];
 
 export const footerColumns: Array<{ title: string; links: FooterLinkItem[] }> = [
@@ -26,7 +29,6 @@ export const footerColumns: Array<{ title: string; links: FooterLinkItem[] }> = 
     links: [
       { label: "Product", to: "/product" },
       { label: "Pricing", to: "/pricing" },
-      { label: "Store", to: "/store" },
       { label: "Insights", to: "/insights" },
       { label: "FAQ", to: "/faq" },
     ],

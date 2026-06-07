@@ -5,11 +5,7 @@ import { CTASection } from "../components/marketing/CTASection";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Card } from "../components/ui/Card";
-import {
-  insightCategories,
-  publishedInsightArticles,
-  publishedInsightCategories,
-} from "../data/insights";
+import { insightArticles, insightCategories } from "../data/insights";
 
 type ActiveCategory = "All" | (typeof insightCategories)[number];
 
@@ -18,11 +14,11 @@ export function InsightsPage() {
 
   const visibleArticles =
     activeCategory === "All"
-      ? publishedInsightArticles
-      : publishedInsightArticles.filter((article) => article.category === activeCategory);
+      ? insightArticles
+      : insightArticles.filter((article) => article.category === activeCategory);
 
   const featured =
-    publishedInsightArticles.find((article) => article.featured) ?? publishedInsightArticles[0];
+    insightArticles.find((article) => article.featured) ?? insightArticles[0];
 
   return (
     <>
@@ -74,7 +70,7 @@ export function InsightsPage() {
             >
               All
             </button>
-            {publishedInsightCategories.map((category) => (
+            {insightCategories.map((category) => (
               <button
                 className={activeCategory === category ? "is-active" : ""}
                 key={category}

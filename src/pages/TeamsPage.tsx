@@ -26,7 +26,7 @@ const teamsSections = [
     title: "Built for head coaches, assistants, and AD visibility.",
     // TODO: Replace placeholder org copy with real FoFit Teams product detail.
     description:
-      "Role-aware access can support head coach oversight, assistant workflows, and department-level visibility.",
+      "Role-aware access can support head coach oversight, assistant workflows, and FERPA-aware department visibility.",
   },
 ] as const;
 
@@ -70,7 +70,7 @@ export function TeamsPage() {
   return (
     <>
       <PageMeta
-        description="FoFit Teams gives S&C coaches a dashboard and athlete logging without changing the athlete mobile experience."
+        description="FoFit Teams gives S&C coaches a dashboard, athlete logging, and compliance visibility without changing the athlete mobile experience."
         title="FoFit Teams | Built for Coaches Who Build"
       />
       <PageHero

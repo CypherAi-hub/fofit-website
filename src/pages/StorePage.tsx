@@ -45,7 +45,7 @@ export function StorePage() {
           { label: "See coaches", to: "/coaches", variant: "secondary" },
         ]}
         compact
-        description={`Curated equipment, recovery, supplements, and apparel — aligned with how FoFit trains you. ${WEB_PRODUCT_COUNT} products across ${WEB_DEPARTMENTS.length} categories, real listings on eBay and Amazon.`}
+        description={`Curated equipment, recovery, supplements, and apparel — aligned with how FoFit trains you. ${WEB_PRODUCT_COUNT} categories, real listings on eBay and Amazon.`}
         eyebrow="Store"
         title={
           <>
@@ -68,12 +68,8 @@ export function StorePage() {
               type="search"
               value={query}
             />
-            {/* Single-select filter toggles, NOT a tab/tabpanel widget — role="group" +
-                aria-pressed is the correct pattern (a role="tablist" with no role="tab"
-                children and no tabpanel is invalid ARIA). */}
-            <div className="store-chips" role="group" aria-label="Filter by category">
+            <div className="store-chips" role="tablist" aria-label="Categories">
               <button
-                aria-pressed={category === "all"}
                 className={`store-chip${category === "all" ? " store-chip--active" : ""}`}
                 onClick={() => setCategory("all")}
                 type="button"
@@ -82,7 +78,6 @@ export function StorePage() {
               </button>
               {WEB_DEPARTMENTS.map((dept) => (
                 <button
-                  aria-pressed={category === dept.id}
                   className={`store-chip${category === dept.id ? " store-chip--active" : ""}`}
                   key={dept.id}
                   onClick={() => setCategory(dept.id)}

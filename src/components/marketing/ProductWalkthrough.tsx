@@ -22,7 +22,7 @@ function Scene({ active, index, kind }: SceneProps) {
 
   if (kind === "splash") {
     return (
-      <div aria-hidden={!active} inert={!active} className={className} data-scene={index}>
+      <div aria-hidden={!active} className={className} data-scene={index}>
         <div className="scene-splash__glow" />
         <div className="scene-splash__mark">FoFit</div>
         <div className="scene-splash__line">Train honestly.</div>
@@ -32,7 +32,7 @@ function Scene({ active, index, kind }: SceneProps) {
 
   if (kind === "discover") {
     return (
-      <div aria-hidden={!active} inert={!active} className={className} data-scene={index}>
+      <div aria-hidden={!active} className={className} data-scene={index}>
         <div className="scene-status">
           <span>8:24</span>
           <span>LTE 98%</span>
@@ -57,7 +57,7 @@ function Scene({ active, index, kind }: SceneProps) {
 
   if (kind === "cypher") {
     return (
-      <div aria-hidden={!active} inert={!active} className={className} data-scene={index}>
+      <div aria-hidden={!active} className={className} data-scene={index}>
         <div className="scene-cypher__header">
           <div>
             <span className="scene-cypher__title">
@@ -88,7 +88,7 @@ function Scene({ active, index, kind }: SceneProps) {
 
   if (kind === "logging") {
     return (
-      <div aria-hidden={!active} inert={!active} className={className} data-scene={index}>
+      <div aria-hidden={!active} className={className} data-scene={index}>
         <div className="scene-logging__top">
           <span>Incline Press</span>
           <strong>Set 3</strong>
@@ -120,7 +120,7 @@ function Scene({ active, index, kind }: SceneProps) {
   }
 
   return (
-    <div aria-hidden={!active} inert={!active} className={className} data-scene={index}>
+    <div aria-hidden={!active} className={className} data-scene={index}>
       <div className="scene-journey__header">
         <span className="scene-kicker">Journey</span>
         <h3>Week 12</h3>

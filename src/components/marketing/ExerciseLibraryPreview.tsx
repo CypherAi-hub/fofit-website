@@ -45,8 +45,8 @@ export function ExerciseLibraryPreview({
             See every move, <em>in action</em>.
           </h2>
           <p className="exercise-library__subhead">
-            Every exercise in the FoFit library — AI-generated, dark cinematic demos.
-            Built for athletes who need to see the movement, not just read it.
+            Every exercise in the FoFit library — AI-generated, dark cinematic, male and female
+            variants. Built for athletes who need to see the movement, not just read it.
           </p>
         </header>
 
@@ -72,7 +72,7 @@ export function ExerciseLibraryPreview({
         </div>
 
         <p className="exercise-library__footnote">
-          FIG 03.1 — 11 exercises · AI-generated demos · library expanding in v1
+          FIG 03.1 — 11 exercises · male &amp; female variants · 60+ total clips shipping in v1
         </p>
       </div>
     </section>

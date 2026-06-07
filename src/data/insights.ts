@@ -194,21 +194,3 @@ export const insightArticles: InsightArticle[] = [
     body: "CONTENT_PLACEHOLDER",
   },
 ];
-
-// An article whose body is empty or still the "CONTENT_PLACEHOLDER" sentinel is NOT written yet.
-// It must never be surfaced — the detail page would otherwise render the literal token to users.
-// Every consumer (home Field Notes, Insights grid/featured/filters, related-reading, the article
-// route) reads the published views below so an unwritten article is invisible until it has real
-// body copy. Authoring the remaining articles is the only step to bring them back.
-export function isInsightPublished(article: InsightArticle): boolean {
-  const body = article.body?.trim() ?? "";
-  return body.length > 0 && body !== "CONTENT_PLACEHOLDER";
-}
-
-export const publishedInsightArticles: InsightArticle[] = insightArticles.filter(isInsightPublished);
-
-// Only categories with at least one published article — so a filter chip never resolves to an
-// empty grid.
-export const publishedInsightCategories = insightCategories.filter((category) =>
-  publishedInsightArticles.some((article) => article.category === category),
-);

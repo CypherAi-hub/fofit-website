@@ -23,9 +23,9 @@ export function FoFitTeamsSection() {
           <div className="v3-section-kicker">04 / FOFIT TEAMS</div>
           <h2>For the coaches building the next program.</h2>
           <p>
-            FoFit Teams gives S&amp;C coaches the dashboard and athlete logging
-            their program actually needs — without forcing athletes off the
-            FoFit they already use.
+            FoFit Teams gives S&amp;C coaches the dashboard, athlete logging,
+            and compliance visibility their program actually needs — without
+            forcing athletes off the FoFit they already use.
           </p>
           <div className="button-row">
             <Button to="/teams">See FoFit Teams</Button>

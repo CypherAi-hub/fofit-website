@@ -9,7 +9,7 @@ import { PricingPreview } from "../components/marketing/PricingPreview";
 import { ProductVideo } from "../components/marketing/ProductVideo";
 import { ThreePathsSection } from "../components/marketing/ThreePathsSection";
 import { PageMeta } from "../components/layout/PageMeta";
-import { publishedInsightArticles } from "../data/insights";
+import { insightArticles } from "../data/insights";
 
 const operatingCards = [
   {
@@ -148,7 +148,7 @@ export function HomePage() {
               that keep a block moving.
             </p>
           </div>
-          <ArticleGrid articles={publishedInsightArticles.slice(0, 3)} />
+          <ArticleGrid articles={insightArticles.slice(0, 3)} />
         </div>
       </section>
 
