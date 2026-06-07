@@ -45,7 +45,7 @@ export function StorePage() {
           { label: "See coaches", to: "/coaches", variant: "secondary" },
         ]}
         compact
-        description={`Curated equipment, recovery, supplements, and apparel — aligned with how FoFit trains you. ${WEB_PRODUCT_COUNT} categories, real listings on eBay and Amazon.`}
+        description={`Curated equipment, recovery, supplements, and apparel — aligned with how FoFit trains you. ${WEB_PRODUCT_COUNT} products across ${WEB_DEPARTMENTS.length} categories, real listings on eBay and Amazon.`}
         eyebrow="Store"
         title={
           <>
