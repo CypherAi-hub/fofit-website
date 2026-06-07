@@ -68,8 +68,12 @@ export function StorePage() {
               type="search"
               value={query}
             />
-            <div className="store-chips" role="tablist" aria-label="Categories">
+            {/* Single-select filter toggles, NOT a tab/tabpanel widget — role="group" +
+                aria-pressed is the correct pattern (a role="tablist" with no role="tab"
+                children and no tabpanel is invalid ARIA). */}
+            <div className="store-chips" role="group" aria-label="Filter by category">
               <button
+                aria-pressed={category === "all"}
                 className={`store-chip${category === "all" ? " store-chip--active" : ""}`}
                 onClick={() => setCategory("all")}
                 type="button"
@@ -78,6 +82,7 @@ export function StorePage() {
               </button>
               {WEB_DEPARTMENTS.map((dept) => (
                 <button
+                  aria-pressed={category === dept.id}
                   className={`store-chip${category === dept.id ? " store-chip--active" : ""}`}
                   key={dept.id}
                   onClick={() => setCategory(dept.id)}
