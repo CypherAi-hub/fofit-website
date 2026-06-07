@@ -15,7 +15,6 @@ export const primaryNav: NavLinkItem[] = [
   { label: "Nutrition", to: "/nutrition" },
   { label: "Community", to: "/community" },
   { label: "Pricing", to: "/pricing" },
-  { label: "Insights", to: "/insights" },
   { label: "About", to: "/about" },
   { label: "iOS Beta", to: "/beta" },
 ];

@@ -5,7 +5,6 @@ import {
   FounderStorySection,
   FutureThreePathsSection,
   HeroFutureOfFitness,
-  InsightsHubSection,
   NutritionPreview,
   PricingSection,
   ProductPillars,
@@ -27,7 +26,6 @@ export function HomePage() {
       <CypherMemorySection />
       <NutritionPreview />
       <FutureThreePathsSection />
-      <InsightsHubSection />
       <PricingSection />
       <FounderStorySection />
       <FinalCTA />

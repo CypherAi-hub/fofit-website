@@ -45,7 +45,7 @@ export function HeroFutureOfFitness() {
           <div className="future-hero__actions">
             <EarlyAccessButton size="lg">Join founding 250</EarlyAccessButton>
             <a className="button button--secondary button--lg" href="#system-in-motion">
-              Watch the vision
+              Explore the product
             </a>
           </div>
           <div className="future-hero__mobile-proof" aria-label="FoFit mobile app proof">
@@ -474,7 +474,7 @@ export function FinalCTA() {
         <div className="future-final-cta__actions">
           <EarlyAccessButton size="lg">Join founding 250</EarlyAccessButton>
           <a className="button button--secondary button--lg" href="#system-in-motion">
-            Watch the vision
+            Explore the product
           </a>
         </div>
       </Revealer>
