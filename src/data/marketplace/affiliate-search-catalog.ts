@@ -87,7 +87,10 @@ function row(
   category: CatalogCategory,
   ebayQuery: string,
   ebayCustomId: string,
-  amazon = false,
+  // Amazon Associates (tag shopfofit-20) is now live for ALL categories — tagged search works
+  // for any term — so every entry is dual-network (eBay + Amazon) by default. The few rows that
+  // pass an explicit amazonQuery (different Amazon search term) still override.
+  amazon = true,
   amazonQuery?: string,
 ): AffiliateSearchEntry {
   return { id: `search-${id}`, name, category, ebayQuery, ebayCustomId: normalizeCustomId(ebayCustomId), amazon, amazonQuery };
