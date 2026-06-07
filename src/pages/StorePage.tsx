@@ -1,90 +1,119 @@
-import { CTASection } from "../components/marketing/CTASection";
+import { useMemo, useState } from "react";
+
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Card } from "../components/ui/Card";
+import {
+  MARKETPLACE_DISCLOSURE,
+  WEB_DEPARTMENTS,
+  WEB_PRODUCT_COUNT,
+  searchWebProducts,
+  type WebMerchantLink,
+} from "../data/marketplace/web-catalog";
+import "../styles/marketplace.css";
 
-const storeModules = [
-  {
-    title: "Programs and templates",
-    description:
-      "Specialized training blocks and focused goal packages built on top of the FoFit system.",
-  },
-  {
-    title: "Guides and education",
-    description:
-      "Practical resources around training structure, nutrition direction, and progress management.",
-  },
-  {
-    title: "Gear and partner kits",
-    description:
-      "A future layer for curated equipment, recovery essentials, and ecosystem-aligned partner offers.",
-  },
-  {
-    title: "Member bundles",
-    description:
-      "Combined digital and physical experiences that feel aligned with the platform instead of randomly merch-driven.",
-  },
-];
+function ShopButton({ link }: { link: WebMerchantLink }) {
+  return (
+    <a
+      className={`store-shop-btn store-shop-btn--${link.merchant.toLowerCase()}`}
+      href={link.url}
+      target="_blank"
+      rel="sponsored noopener noreferrer"
+    >
+      Shop on {link.merchant}
+      <span aria-hidden="true"> ↗</span>
+    </a>
+  );
+}
 
 export function StorePage() {
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState<string>("all");
+
+  const results = useMemo(() => searchWebProducts(query, category), [query, category]);
+
   return (
     <>
       <PageMeta
-        description="FoFit Store previews a future marketplace for programs, guides, partner offers, and ecosystem-aligned product bundles."
-        title="FoFit Store | Marketplace and Ecosystem Expansion Preview"
+        description="FoFit Store — curated training gear, recovery tools, supplements, and apparel. Browse live listings on eBay and Amazon. Affiliate links; we earn a commission at no extra cost to you."
+        title="FoFit Store | Curated Training Gear & Recovery Marketplace"
       />
       <PageHero
         actions={[
-          { label: "Join the waitlist", intent: "waitlist" },
+          { label: "Get the app", intent: "waitlist" },
           { label: "See coaches", to: "/coaches", variant: "secondary" },
         ]}
         compact
-        description="Programs, guides, gear, and bundles — aligned with how FoFit trains you. Not open yet."
+        description={`Curated equipment, recovery, supplements, and apparel — aligned with how FoFit trains you. ${WEB_PRODUCT_COUNT} categories, real listings on eBay and Amazon.`}
         eyebrow="Store"
         title={
           <>
-            A marketplace layer
+            Gear that matches
             <br />
-            with platform logic behind it.
+            how you train.
           </>
         }
       />
-
-      <section className="page-section">
-        <div className="container detail-grid">
-          {storeModules.map((module) => (
-            <Card className="detail-card reveal" key={module.title}>
-              <h3>{module.title}</h3>
-              <p>{module.description}</p>
-            </Card>
-          ))}
-        </div>
-      </section>
 
       <section className="page-section page-section--tight">
         <div className="container">
-          <Card className="spotlight-card reveal">
-            <span className="eyebrow">Why it fits</span>
-            <h3>Buy tools that match how you train.</h3>
-            <p>
-              Programs, guides, and bundles should support the same training
-              system you already use instead of reading like random add-ons.
-            </p>
-          </Card>
+          <div className="store-controls">
+            <input
+              aria-label="Search the FoFit store"
+              className="store-search"
+              inputMode="search"
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search gear, recovery, supplements…"
+              type="search"
+              value={query}
+            />
+            <div className="store-chips" role="tablist" aria-label="Categories">
+              <button
+                className={`store-chip${category === "all" ? " store-chip--active" : ""}`}
+                onClick={() => setCategory("all")}
+                type="button"
+              >
+                All <span className="store-chip-count">{WEB_PRODUCT_COUNT}</span>
+              </button>
+              {WEB_DEPARTMENTS.map((dept) => (
+                <button
+                  className={`store-chip${category === dept.id ? " store-chip--active" : ""}`}
+                  key={dept.id}
+                  onClick={() => setCategory(dept.id)}
+                  type="button"
+                >
+                  {dept.label} <span className="store-chip-count">{dept.count}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <p className="store-disclosure">{MARKETPLACE_DISCLOSURE}</p>
+
+          {results.length === 0 ? (
+            <Card className="store-empty">
+              <h3>No matches</h3>
+              <p>Try a broader term — like “dumbbell”, “recovery”, or “protein”.</p>
+            </Card>
+          ) : (
+            <div className="store-grid">
+              {results.map((product) => (
+                <Card className="store-card reveal" key={product.id}>
+                  <span className="eyebrow store-card-cat">{product.categoryLabel}</span>
+                  <h3 className="store-card-title">{product.title}</h3>
+                  <p className="store-card-note">Browse live listings — current price, options, and reviews on the merchant.</p>
+                  <div className="store-card-actions">
+                    {product.links.map((link) => (
+                      <ShopButton key={link.merchant} link={link} />
+                    ))}
+                  </div>
+                  <p className="store-card-fineprint">{product.links[0]?.disclosure}</p>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
       </section>
-
-      <CTASection
-        description="The store opens with the platform. No generic merch — every item should earn its place in the training loop."
-        pills={["Programs", "Guides", "Bundles"]}
-        title={
-          <>
-            Curated programs. Proven guides.
-            <br />
-            Partner-level gear.
-          </>
-        }
-      />
     </>
   );
 }
