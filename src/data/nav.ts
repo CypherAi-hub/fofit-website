@@ -11,8 +11,8 @@ export type FooterLinkItem = {
 
 export const primaryNav: NavLinkItem[] = [
   { label: "Product", to: "/product" },
+  { label: "Teams", to: "/teams" },
   { label: "Pricing", to: "/pricing" },
-  { label: "Insights", to: "/insights" },
   { label: "About", to: "/about" },
 ];
 
@@ -45,7 +45,7 @@ export const footerColumns: Array<{ title: string; links: FooterLinkItem[] }> = 
   {
     title: "For Teams",
     links: [
-      { label: "Coming Spring 2026", to: "/teams" },
+      { label: "Teams pilot", to: "/teams" },
       { label: "Request team access", href: "mailto:teams@fofit.app?subject=FoFit%20Teams%20access" },
     ],
   },
