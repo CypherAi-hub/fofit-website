@@ -560,3 +560,32 @@
   padding: 0.35rem 0.6rem;
   font-size: 0.82rem;
 }
+
+/* Goal control */
+.bodylab-goal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--border);
+}
+.bodylab-goal__text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.bodylab-goal__text strong {
+  color: var(--text);
+}
+.bodylab-goal__input {
+  width: 92px;
+}
+.bodylab-goal__error {
+  font-size: 0.78rem;
+  color: #ff8585;
+  flex-basis: 100%;
+}

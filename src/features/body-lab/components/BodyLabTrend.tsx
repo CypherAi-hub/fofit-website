@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 
 import type { BodyCheckIn } from "../types";
 import { BODY_MEASUREMENTS } from "../measurements";
+import { useBodyLabGoals } from "../useBodyLabGoals";
 
 type Point = { t: number; v: number };
 type Metric = { key: string; label: string; unit: string; digits: number; points: Point[] };
@@ -14,12 +15,14 @@ function buildPoints(checkIns: BodyCheckIn[], get: (c: BodyCheckIn) => number | 
 }
 
 /**
- * A trend over ANY logged body metric — weight, body fat, or any measurement (waist, chest…).
- * Dependency-free SVG sparkline. Only metrics with ≥2 real points appear in the selector; the
- * whole card hides when nothing has ≥2 points. Deltas are neutral (no good/bad — depends on goal).
- * Never fabricates: only real logged values are plotted.
+ * A trend over ANY logged body metric (weight, body fat, or a measurement), with an optional
+ * GOAL line + progress-to-goal. Dependency-free SVG sparkline. Only metrics with ≥2 real points
+ * appear; the card hides when nothing qualifies. Deltas + distance-to-goal are neutral (no
+ * good/bad — depends on the user's goal). Never fabricates: only real logged values.
  */
 export function BodyLabTrend({ checkIns }: { checkIns: BodyCheckIn[] }) {
+  const { goals, setGoal, clearGoal } = useBodyLabGoals();
+
   const metrics = useMemo<Metric[]>(() => {
     const list: Metric[] = [];
     const weight = buildPoints(checkIns, (c) => c.weightKg);
@@ -39,10 +42,12 @@ export function BodyLabTrend({ checkIns }: { checkIns: BodyCheckIn[] }) {
 
   const active = metrics.find((m) => m.key === selectedKey) ?? metrics[0];
   const { points, unit, digits, label } = active;
+  const goal = goals[active.key];
 
   const values = points.map((p) => p.v);
-  const min = Math.min(...values);
-  const max = Math.max(...values);
+  const rangeVals = goal != null && goal > 0 ? [...values, goal] : values;
+  const min = Math.min(...rangeVals);
+  const max = Math.max(...rangeVals);
   const range = max - min || 1;
   const W = 280;
   const H = 56;
@@ -76,6 +81,17 @@ export function BodyLabTrend({ checkIns }: { checkIns: BodyCheckIn[] }) {
       </div>
       <div className="bodylab-trend__row">
         <svg viewBox={`0 0 ${W} ${H}`} className="bodylab-trend__spark" preserveAspectRatio="none" aria-hidden>
+          {goal != null && goal > 0 && (
+            <line
+              x1={pad}
+              x2={W - pad}
+              y1={y(goal)}
+              y2={y(goal)}
+              stroke="var(--green)"
+              strokeWidth={1.5}
+              strokeDasharray="4 3"
+            />
+          )}
           <path d={path} fill="none" stroke="var(--blue)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
           <circle cx={x(points.length - 1)} cy={y(last)} r={3} fill="var(--blue)" />
         </svg>
@@ -89,6 +105,114 @@ export function BodyLabTrend({ checkIns }: { checkIns: BodyCheckIn[] }) {
           </span>
         </div>
       </div>
+      <GoalControl
+        key={active.key}
+        unit={unit}
+        digits={digits}
+        last={last}
+        goal={goal}
+        onSet={(target) => setGoal(active.key, target)}
+        onClear={() => clearGoal(active.key)}
+      />
     </section>
+  );
+}
+
+function GoalControl({
+  unit,
+  digits,
+  last,
+  goal,
+  onSet,
+  onClear,
+}: {
+  unit: string;
+  digits: number;
+  last: number;
+  goal: number | undefined;
+  onSet: (target: number) => Promise<void>;
+  onClear: () => Promise<void>;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [input, setInput] = useState(goal != null ? String(goal) : "");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function save() {
+    const target = parseFloat(input);
+    if (!Number.isFinite(target) || target <= 0) {
+      setError("Enter a valid target.");
+      return;
+    }
+    setBusy(true);
+    setError(null);
+    try {
+      await onSet(target);
+      setEditing(false);
+    } catch {
+      setError("Couldn't save your goal.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  if (goal != null && !editing) {
+    const remaining = goal - last;
+    const reached = Math.abs(remaining) < (unit === "%" ? 0.5 : 0.5);
+    const distance = `${Math.abs(remaining).toFixed(digits).replace(/\.0$/, "")}${unit}`;
+    return (
+      <div className="bodylab-goal">
+        <span className="bodylab-goal__text">
+          Goal <strong>{goal}{unit}</strong> · {reached ? "reached 🎯" : `${distance} to go`}
+        </span>
+        <div className="bodylab-row">
+          <button
+            type="button"
+            className="bodylab-seg__btn"
+            onClick={() => {
+              setInput(String(goal));
+              setEditing(true);
+            }}
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            className="bodylab-seg__btn"
+            onClick={() => onClear().catch(() => {})}
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bodylab-goal">
+      <label className="bodylab-goal__text">
+        Set a goal:
+        <input
+          className="bodylab-input bodylab-goal__input"
+          inputMode="decimal"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder={`target${unit}`}
+          aria-label={`Target${unit}`}
+          disabled={busy}
+        />
+      </label>
+      <div className="bodylab-row">
+        <button type="button" className="bodylab-btn bodylab-btn--primary" onClick={save} disabled={busy}>
+          {busy ? "Saving…" : "Save"}
+        </button>
+        {goal != null && (
+          <button type="button" className="bodylab-seg__btn" onClick={() => setEditing(false)} disabled={busy}>
+            Cancel
+          </button>
+        )}
+      </div>
+      {error && <span className="bodylab-goal__error">{error}</span>}
+    </div>
   );
 }
