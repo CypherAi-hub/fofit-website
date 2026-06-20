@@ -68,6 +68,24 @@ async function requireUser(supabase: SupabaseClient) {
   return user;
 }
 
+async function clearDraftAssets(supabase: SupabaseClient, checkInId: string): Promise<void> {
+  const { data: assets } = await supabase
+    .from("body_media_assets")
+    .select("storage_path")
+    .eq("check_in_id", checkInId);
+  const paths = (assets ?? [])
+    .map((a) => String((a as Record<string, unknown>).storage_path))
+    .filter(Boolean);
+  if (paths.length > 0) {
+    await supabase.storage.from(BODY_MEDIA_BUCKET).remove(paths);
+  }
+  await supabase.from("body_media_assets").delete().eq("check_in_id", checkInId);
+  await supabase
+    .from("body_check_ins")
+    .update({ status: "uploading", failure_reason: null })
+    .eq("id", checkInId);
+}
+
 async function createOrReuseDraft(
   supabase: SupabaseClient,
   userId: string,
@@ -81,7 +99,15 @@ async function createOrReuseDraft(
     .maybeSingle();
 
   if (existingError) throw existingError;
-  if (existing) return existing as Record<string, unknown>;
+  if (existing) {
+    // Already-complete (a verify-fail retry, or a duplicate request): return as-is so the caller
+    // short-circuits to the ready check-in. NEVER clear a ready check-in's media.
+    if (existing.status === "ready") return existing as Record<string, unknown>;
+    // Otherwise it's a partial/failed attempt: clear partial assets (storage + rows) + reset so
+    // the re-upload starts clean (otherwise finalize's media-count check never matches — review).
+    await clearDraftAssets(supabase, String(existing.id));
+    return { ...(existing as Record<string, unknown>), status: "uploading" };
+  }
 
   const { data, error } = await supabase
     .from('body_check_ins')
@@ -251,16 +277,19 @@ export async function saveBodyCheckInWeb(input: {
       p_check_in_id: checkInId,
     });
     if (finalizeError) throw finalizeError;
-
-    const persisted = await getBodyCheckIn(config.supabase, checkInId);
-    if (persisted.status !== 'ready' || persisted.media.length !== media.length) {
-      throw new Error('The check-in could not be verified after upload.');
-    }
-    return persisted;
   } catch (error) {
     await markFailed(config.supabase, checkInId, error);
     throw error;
   }
+
+  // Finalize committed → the check-in IS ready. The verify below is a read-only sanity check; a
+  // transient refetch failure must NOT downgrade a committed-ready check-in to failed (review).
+  // On a verify error the caller can retry — createOrReuseDraft short-circuits the now-ready draft.
+  const persisted = await getBodyCheckIn(config.supabase, checkInId);
+  if (persisted.status !== 'ready' || persisted.media.length !== media.length) {
+    throw new Error('The check-in could not be verified after upload.');
+  }
+  return persisted;
 }
 
 export async function getBodyCheckIn(

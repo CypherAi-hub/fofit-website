@@ -34,6 +34,11 @@ export function useBodyLab() {
   const [uploadError, setUploadError] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
   const mountedRef = useRef(true);
+  const uploadingRef = useRef(false); // synchronous double-submit guard (review)
+  // Stable across retries of the same submission (cleared on success) so a retry REUSES the
+  // draft instead of minting a fresh client_request_id + orphaning the failed one (review).
+  const requestIdRef = useRef<string | null>(null);
+  const lastLoadRef = useRef(0);
 
   useEffect(() => {
     mountedRef.current = true;
@@ -57,7 +62,9 @@ export function useBodyLab() {
             checkIn.media.find((m) => m.mediaType === "photo") ?? checkIn.media[0];
           if (!photo) return null;
           try {
-            const url = await getSignedBodyMediaUrl(supabase, photo.storagePath);
+            // 1h TTL (vs the 10min default) so thumbnails don't 403 while the tab sits open;
+            // a window-focus listener (below) re-signs after a long absence (review).
+            const url = await getSignedBodyMediaUrl(supabase, photo.storagePath, 3600);
             return [checkIn.id, url] as const;
           } catch {
             return null;
@@ -68,6 +75,7 @@ export function useBodyLab() {
       const map: Record<string, string> = {};
       for (const entry of entries) if (entry) map[entry[0]] = entry[1];
       setThumbUrls(map);
+      lastLoadRef.current = Date.now();
     } catch (e) {
       if (!mountedRef.current) return;
       setTimeline({
@@ -81,8 +89,19 @@ export function useBodyLab() {
     void refresh();
   }, [refresh]);
 
+  // Re-sign thumbnails when the tab regains focus after a long absence (signed URLs expire).
+  useEffect(() => {
+    function onFocus() {
+      if (Date.now() - lastLoadRef.current > 5 * 60 * 1000) void refresh();
+    }
+    window.addEventListener("focus", onFocus);
+    return () => window.removeEventListener("focus", onFocus);
+  }, [refresh]);
+
   const upload = useCallback(
     async (draft: BodyCheckInDraft, media: BrowserBodyMedia[]): Promise<boolean> => {
+      if (uploadingRef.current) return false; // reject a concurrent double-submit synchronously
+      uploadingRef.current = true;
       setUploadError(null);
       setUploadProgress({
         assetIndex: 0,
@@ -93,7 +112,8 @@ export function useBodyLab() {
       });
       const controller = new AbortController();
       abortRef.current = controller;
-      const clientRequestId = crypto.randomUUID();
+      if (!requestIdRef.current) requestIdRef.current = crypto.randomUUID();
+      const clientRequestId = requestIdRef.current;
       try {
         await saveBodyCheckInWeb({
           config: { supabase, supabaseUrl: SUPABASE_URL },
@@ -105,6 +125,7 @@ export function useBodyLab() {
             if (mountedRef.current) setUploadProgress(p);
           },
         });
+        requestIdRef.current = null; // success → the next submission gets a fresh id
         if (mountedRef.current) setUploadProgress(null);
         await refresh();
         return true;
@@ -119,6 +140,7 @@ export function useBodyLab() {
         return false;
       } finally {
         abortRef.current = null;
+        uploadingRef.current = false;
       }
     },
     [refresh],

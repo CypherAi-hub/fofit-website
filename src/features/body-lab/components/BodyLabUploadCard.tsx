@@ -57,12 +57,16 @@ export function BodyLabUploadCard({
   const [localError, setLocalError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Revoke object URLs on unmount to avoid leaks.
+  // Revoke object URLs on UNMOUNT only (via a ref). With [items] deps the cleanup ran on
+  // every add and revoked a preview that was still on screen (review). Per-item revoke on
+  // remove + on successful submit already handles in-session cleanup.
+  const itemsRef = useRef(items);
+  itemsRef.current = items;
   useEffect(
     () => () => {
-      items.forEach((i) => URL.revokeObjectURL(i.previewUrl));
+      itemsRef.current.forEach((i) => URL.revokeObjectURL(i.previewUrl));
     },
-    [items],
+    [],
   );
 
   const uploading = uploadProgress != null;
