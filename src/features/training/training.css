@@ -107,3 +107,38 @@
   border-left: 2px solid var(--border-strong);
   padding-left: 0.6rem;
 }
+
+/* Personal records */
+.training-prs {
+  display: grid;
+  gap: 0.8rem;
+}
+.training-pr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.6rem;
+}
+.training-pr {
+  display: grid;
+  gap: 2px;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+}
+.training-pr__name {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.training-pr__value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--green);
+}
+.training-pr__x {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
