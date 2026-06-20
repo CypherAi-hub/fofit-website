@@ -55,9 +55,6 @@ export function DashboardPage() {
             <Button to="/dashboard/body-lab" size="lg">
               Open Body Lab
             </Button>
-            <Button to="/dashboard/progress" size="lg">
-              Your Progress
-            </Button>
             <Button to="/" size="lg" variant="secondary">
               Back to FoFit
             </Button>
