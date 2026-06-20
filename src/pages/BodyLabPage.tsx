@@ -87,6 +87,12 @@ export function BodyLabPage() {
     };
   }, [poseFilter, filteredCheckIns, bodyLab.signMediaUrl]);
 
+  // Compare selection is scoped to the visible (filtered) set — changing the pose filter clears
+  // it so you never end up "comparing" check-ins the new filter hid from view.
+  useEffect(() => {
+    setSelectedIds([]);
+  }, [poseFilter]);
+
   function toggleSelect(c: BodyCheckIn) {
     setSelectedIds((cur) =>
       cur.includes(c.id) ? cur.filter((id) => id !== c.id) : [...cur, c.id].slice(-2),
