@@ -51,6 +51,9 @@ export function DashboardPage() {
             <strong>{user?.email}</strong>
           </div>
           <div className="button-row auth-welcome__actions">
+            <Button to="/dashboard/body-lab" size="lg">
+              Open Body Lab
+            </Button>
             <Button to="/" size="lg" variant="secondary">
               Back to FoFit
             </Button>
