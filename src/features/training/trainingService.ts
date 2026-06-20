@@ -1,7 +1,10 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-import { toDetail, toSummary } from "./adapter";
-import type { WorkoutSessionDetail, WorkoutSessionSummary } from "./models";
+import { normalizeExercises, toDetail, toSummary } from "./adapter";
+import type { ExercisePerformance, WorkoutSessionDetail, WorkoutSessionSummary } from "./models";
+
+/** A summary plus its normalized exercises — what the Progress overview needs for frequency + PRs. */
+export type OverviewSession = WorkoutSessionSummary & { exercises: ExercisePerformance[] };
 
 // Columns the list view needs (summary). Detail adds notes/check_in/rpe/feel.
 const LIST_COLUMNS =
@@ -49,6 +52,35 @@ export async function listSessionsPage(
   // Cursor = the oldest date in this page (only when more pages exist).
   const nextBefore = hasMore && page.length > 0 ? page[page.length - 1].date : null;
   return { sessions: page, nextBefore };
+}
+
+/**
+ * A BOUNDED window of recent sessions for the Progress overview's aggregates (stats, trends, PRs).
+ * Capped (default 300) so it never fetches a user's entire history — the overview is "recent", and
+ * the cap is surfaced to the UI so it can say so honestly. RLS-scoped.
+ */
+export async function listRecentSessions(
+  supabase: SupabaseClient,
+  cap = 300,
+): Promise<{ sessions: OverviewSession[]; capped: boolean }> {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { sessions: [], capped: false };
+  const { data, error } = await supabase
+    .from("workout_sessions")
+    .select(LIST_COLUMNS)
+    .eq("user_id", user.id)
+    .order("date", { ascending: false })
+    .limit(cap + 1);
+  if (error || !data) return { sessions: [], capped: false };
+  const rows = data as Record<string, unknown>[];
+  const capped = rows.length > cap;
+  const sessions = rows.slice(0, cap).map((r) => ({
+    ...toSummary(r),
+    exercises: normalizeExercises(r.exercises),
+  }));
+  return { sessions, capped };
 }
 
 /** Full detail for one session (exercises/sets/notes/check-in/rpe/feel). RLS-scoped; null if absent. */

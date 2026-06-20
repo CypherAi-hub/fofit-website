@@ -55,6 +55,9 @@ export function DashboardPage() {
             <Button to="/dashboard/body-lab" size="lg">
               Open Body Lab
             </Button>
+            <Button to="/dashboard/progress" size="lg">
+              Your Progress
+            </Button>
             <Button to="/dashboard/history" size="lg">
               Workout History
             </Button>

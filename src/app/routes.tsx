@@ -22,6 +22,7 @@ import { DashboardPage } from "../pages/DashboardPage";
 import { BodyLabPage } from "../pages/BodyLabPage";
 import { WorkoutHistoryPage } from "../pages/WorkoutHistoryPage";
 import { SessionDetailPage } from "../pages/SessionDetailPage";
+import { ProgressOverviewPage } from "../pages/ProgressOverviewPage";
 import { useAuth } from "../lib/auth-context";
 
 // Auth-gated wrapper for dashboard sub-pages (mirrors the dashboard's own gating).
@@ -63,6 +64,7 @@ export function AppRoutes() {
       <Route path="/welcome" element={<WelcomePage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/dashboard/body-lab" element={<RequireAuth><BodyLabPage /></RequireAuth>} />
+      <Route path="/dashboard/progress" element={<RequireAuth><ProgressOverviewPage /></RequireAuth>} />
       <Route path="/dashboard/history" element={<RequireAuth><WorkoutHistoryPage /></RequireAuth>} />
       <Route path="/dashboard/history/:sessionId" element={<RequireAuth><SessionDetailPage /></RequireAuth>} />
       <Route path="*" element={<HomePage />} />
