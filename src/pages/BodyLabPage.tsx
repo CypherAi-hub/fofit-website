@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-import type { BodyCheckIn } from "../features/body-lab";
+import type { BodyCheckIn, BodyPose } from "../features/body-lab";
 import { useBodyLab } from "../features/body-lab";
 import { BodyLabUploadCard } from "../features/body-lab/components/BodyLabUploadCard";
 import { BodyLabTimelineGrid } from "../features/body-lab/components/BodyLabTimelineGrid";
 import { BodyLabMediaViewer } from "../features/body-lab/components/BodyLabMediaViewer";
 import { BodyLabCompare } from "../features/body-lab/components/BodyLabCompare";
 import { BodyLabTrend } from "../features/body-lab/components/BodyLabTrend";
+import { BodyLabPoseFilter } from "../features/body-lab/components/BodyLabPoseFilter";
 import { BodyLabEmptyState } from "../features/body-lab/components/BodyLabEmptyState";
 import { BodyLabErrorState } from "../features/body-lab/components/BodyLabErrorState";
 import { PageMeta } from "../components/layout/PageMeta";
@@ -29,6 +30,62 @@ export function BodyLabPage() {
       setSelectedIds([]);
     }
   }, [checkIns.length]);
+
+  const [poseFilter, setPoseFilter] = useState<"all" | BodyPose>("all");
+  const [poseThumbs, setPoseThumbs] = useState<Record<string, string>>({});
+
+  const availablePoses = useMemo<BodyPose[]>(() => {
+    const seen = new Set<BodyPose>();
+    checkIns.forEach((c) =>
+      c.media.forEach((m) => {
+        if (m.mediaType === "photo") seen.add(m.pose);
+      }),
+    );
+    return Array.from(seen);
+  }, [checkIns]);
+
+  const filteredCheckIns = useMemo(
+    () =>
+      poseFilter === "all"
+        ? checkIns
+        : checkIns.filter((c) =>
+            c.media.some((m) => m.mediaType === "photo" && m.pose === poseFilter),
+          ),
+    [checkIns, poseFilter],
+  );
+
+  // If the active pose filter no longer exists in the data (e.g. after a delete), reset to All.
+  useEffect(() => {
+    if (poseFilter !== "all" && !availablePoses.includes(poseFilter)) setPoseFilter("all");
+  }, [availablePoses, poseFilter]);
+
+  // Sign the pose-specific thumbnail per filtered check-in, so a "Front" filter shows the FRONT
+  // photo rather than the default first-photo thumbnail. Only runs while actively filtering.
+  useEffect(() => {
+    if (poseFilter === "all") return;
+    let alive = true;
+    setPoseThumbs({}); // clear stale previous-pose thumbs so no wrong-pose flash while re-signing
+    void Promise.all(
+      filteredCheckIns.map(async (c) => {
+        const photo = c.media.find((m) => m.mediaType === "photo" && m.pose === poseFilter);
+        if (!photo) return null;
+        try {
+          const url = await bodyLab.signMediaUrl(photo.storagePath);
+          return [c.id, url] as const;
+        } catch {
+          return null;
+        }
+      }),
+    ).then((entries) => {
+      if (!alive) return;
+      const map: Record<string, string> = {};
+      for (const e of entries) if (e) map[e[0]] = e[1];
+      setPoseThumbs(map);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [poseFilter, filteredCheckIns, bodyLab.signMediaUrl]);
 
   function toggleSelect(c: BodyCheckIn) {
     setSelectedIds((cur) =>
@@ -124,16 +181,23 @@ export function BodyLabPage() {
             (bodyLab.timeline.checkIns.length === 0 ? (
               <BodyLabEmptyState />
             ) : (
-              <BodyLabTimelineGrid
-                checkIns={bodyLab.timeline.checkIns}
-                thumbUrls={bodyLab.thumbUrls}
-                onOpen={setActive}
-                selection={
-                  compareMode
-                    ? { active: true, selectedIds, onToggle: toggleSelect }
-                    : undefined
-                }
-              />
+              <div className="bodylab-timeline-wrap">
+                <BodyLabPoseFilter
+                  available={availablePoses}
+                  value={poseFilter}
+                  onChange={setPoseFilter}
+                />
+                <BodyLabTimelineGrid
+                  checkIns={filteredCheckIns}
+                  thumbUrls={poseFilter === "all" ? bodyLab.thumbUrls : poseThumbs}
+                  onOpen={setActive}
+                  selection={
+                    compareMode
+                      ? { active: true, selectedIds, onToggle: toggleSelect }
+                      : undefined
+                  }
+                />
+              </div>
             ))}
         </section>
       </div>

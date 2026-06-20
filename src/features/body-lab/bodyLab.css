@@ -522,3 +522,9 @@
   font-size: 0.78rem;
   color: var(--text-soft);
 }
+
+/* Pose-filtered timeline wrapper */
+.bodylab-timeline-wrap {
+  display: grid;
+  gap: 0.9rem;
+}
