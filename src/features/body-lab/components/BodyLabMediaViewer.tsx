@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import type { BodyCheckIn } from "../types";
+import { BODY_MEASUREMENTS } from "../measurements";
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -161,6 +162,13 @@ export function BodyLabMediaViewer({
             )}
           </div>
         </div>
+        {checkIn.measurements && Object.keys(checkIn.measurements).length > 0 && (
+          <p style={{ color: "var(--text-soft)", margin: 0, fontSize: "0.82rem" }}>
+            {BODY_MEASUREMENTS.filter((m) => checkIn.measurements?.[m.key] != null)
+              .map((m) => `${m.label} ${checkIn.measurements![m.key]}cm`)
+              .join(" · ")}
+          </p>
+        )}
         {checkIn.note && <p style={{ color: "var(--text-muted)", margin: 0 }}>{checkIn.note}</p>}
       </div>
     </div>
