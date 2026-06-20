@@ -59,18 +59,22 @@ export function BodyLabCompare({
   const earlierAsset = comparePhoto(earlier, sharedPose);
   const laterAsset = comparePhoto(later, sharedPose);
 
-  const [urls, setUrls] = useState<{ earlier: string | null; later: string | null }>({
+  // `loaded` distinguishes "still signing" from "signed and failed" — without it a sign error
+  // collapses to the same null as loading and shows a permanent spinner (review).
+  const [signed, setSigned] = useState<{ loaded: boolean; earlier: string | null; later: string | null }>({
+    loaded: false,
     earlier: null,
     later: null,
   });
 
   useEffect(() => {
     let alive = true;
+    setSigned({ loaded: false, earlier: null, later: null });
     void Promise.all([
       earlierAsset ? signMediaUrl(earlierAsset.storagePath).catch(() => null) : Promise.resolve(null),
       laterAsset ? signMediaUrl(laterAsset.storagePath).catch(() => null) : Promise.resolve(null),
     ]).then(([e, l]) => {
-      if (alive) setUrls({ earlier: e, later: l });
+      if (alive) setSigned({ loaded: true, earlier: e, later: l });
     });
     return () => {
       alive = false;
@@ -107,8 +111,8 @@ export function BodyLabCompare({
         </div>
 
         <div className="bodylab-compare__cols">
-          <CompareColumn tag="Before" checkIn={earlier} url={urls.earlier} hasPhoto={Boolean(earlierAsset)} />
-          <CompareColumn tag="After" checkIn={later} url={urls.later} hasPhoto={Boolean(laterAsset)} />
+          <CompareColumn tag="Before" checkIn={earlier} url={signed.earlier} loaded={signed.loaded} hasPhoto={Boolean(earlierAsset)} />
+          <CompareColumn tag="After" checkIn={later} url={signed.later} loaded={signed.loaded} hasPhoto={Boolean(laterAsset)} />
         </div>
 
         <button type="button" className="bodylab-btn" onClick={onClose}>
@@ -132,11 +136,13 @@ function CompareColumn({
   tag,
   checkIn,
   url,
+  loaded,
   hasPhoto,
 }: {
   tag: string;
   checkIn: BodyCheckIn;
   url: string | null;
+  loaded: boolean;
   hasPhoto: boolean;
 }) {
   return (
@@ -144,12 +150,14 @@ function CompareColumn({
       <div className="bodylab-compare__media">
         {!hasPhoto ? (
           <div className="bodylab-tile__fallback">No photo</div>
-        ) : url ? (
-          <img src={url} alt={`${tag} — ${formatDate(checkIn.capturedAt)}`} />
-        ) : (
+        ) : !loaded ? (
           <div className="bodylab-state">
             <div className="bodylab-spinner" />
           </div>
+        ) : url ? (
+          <img src={url} alt={`${tag} — ${formatDate(checkIn.capturedAt)}`} />
+        ) : (
+          <div className="bodylab-tile__fallback">Couldn&apos;t load</div>
         )}
         <span className="bodylab-compare__tag">{tag}</span>
       </div>

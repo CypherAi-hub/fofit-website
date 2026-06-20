@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { BodyCheckIn } from "../features/body-lab";
 import { useBodyLab } from "../features/body-lab";
@@ -20,6 +20,15 @@ export function BodyLabPage() {
   const [comparing, setComparing] = useState<[BodyCheckIn, BodyCheckIn] | null>(null);
 
   const checkIns = bodyLab.timeline.status === "ready" ? bodyLab.timeline.checkIns : [];
+
+  // If the timeline drops below 2 (e.g. an external delete + the focus refresh), leave compare
+  // mode — its toggle is gated on >=2, so the user would otherwise be stuck in it (review).
+  useEffect(() => {
+    if (checkIns.length < 2) {
+      setCompareMode(false);
+      setSelectedIds([]);
+    }
+  }, [checkIns.length]);
 
   function toggleSelect(c: BodyCheckIn) {
     setSelectedIds((cur) =>
