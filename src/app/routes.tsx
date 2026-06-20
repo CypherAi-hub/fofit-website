@@ -21,6 +21,7 @@ import { WelcomePage } from "../pages/WelcomePage";
 import { DashboardPage } from "../pages/DashboardPage";
 import { BodyLabPage } from "../pages/BodyLabPage";
 import { TrainingProgressPage } from "../pages/TrainingProgressPage";
+import { CypherPanelPage } from "../pages/CypherPanelPage";
 import { useAuth } from "../lib/auth-context";
 
 // Auth-gated wrapper for dashboard sub-pages (mirrors the dashboard's own gating).
