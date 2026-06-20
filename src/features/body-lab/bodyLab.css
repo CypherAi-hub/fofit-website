@@ -554,3 +554,9 @@
   text-transform: uppercase;
   color: var(--text-soft);
 }
+
+.bodylab-trend__select {
+  width: auto;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.82rem;
+}
