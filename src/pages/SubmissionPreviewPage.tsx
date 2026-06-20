@@ -1,14 +1,16 @@
 import { ChapterIntro } from "../components/marketing/ChapterIntro";
 import { CypherTranscript } from "../components/marketing/CypherTranscript";
 import { FounderNote } from "../components/marketing/FounderNote";
-import { HeroDeviceMockups } from "../components/marketing/HeroDeviceMockups";
 import { ProductVideo } from "../components/marketing/ProductVideo";
 import { QuietFinalCTA } from "../components/marketing/QuietFinalCTA";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { EditorialHeading } from "../components/ui/EditorialHeading";
-import { DeviceFigure } from "../components/marketing/DeviceFigure";
-import { dailyLoopFigures } from "../data/editorial";
+import {
+  RouteCardGrid,
+  RouteFeatureLedger,
+  RoutePhoneCluster,
+} from "../components/marketing/RouteProofSections";
+import { futureAssets } from "../data/future-homepage";
 
 const proofPoints = [
   {
@@ -28,6 +30,51 @@ const proofPoints = [
   },
 ];
 
+const submissionRows = [
+  {
+    label: "Morning",
+    title: "The plan reads the week first.",
+    detail:
+      "FoFit opens with readiness, recovery context, and the training day in view before asking the athlete to work.",
+  },
+  {
+    label: "Session",
+    title: "The workout is close enough to act on.",
+    detail:
+      "Set logging, exercise detail, and Cypher guidance stay connected instead of living in separate tools.",
+  },
+  {
+    label: "Close",
+    title: "Progress rolls forward.",
+    detail:
+      "Training, food, recovery, and community context become inputs for the next decision, not stale recap data.",
+  },
+] as const;
+
+const submissionMomentCards = [
+  {
+    label: "Morning",
+    title: "Read the day before you train.",
+    detail:
+      "The Train surface shows the session, recovery context, quick log paths, and the next useful action.",
+    image: futureAssets.app.simTrain,
+  },
+  {
+    label: "Session",
+    title: "Ask Cypher before the plan drifts.",
+    detail:
+      "Cypher keeps athlete context visible while it explains why a block, adjustment, or recovery move makes sense.",
+    image: futureAssets.app.simCypher,
+  },
+  {
+    label: "Close",
+    title: "Fuel and community stay in the loop.",
+    detail:
+      "Nutrition and community are not separate posters; they give the next training decision better context.",
+    image: futureAssets.app.simNutrition,
+  },
+] as const;
+
 export function SubmissionPreviewPage() {
   return (
     <>
@@ -42,15 +89,30 @@ export function SubmissionPreviewPage() {
         ]}
         className="page-hero--editorial"
         description="A Future of Fitness app for student athletes, written by one. Cypher is the AI layer — remembering the athlete, adapting the next session, and keeping progress attached to the real week."
-        eyebrow="Submission preview · Handshake Codex Creator Challenge"
-        media={<HeroDeviceMockups />}
-        mediaClassName="page-hero__media--editorial"
-        title={
-          <EditorialHeading as="span" className="editorial-heading--hero">
-            <span>Train <em>honestly</em>.</span>
-            <span>Measure <em>everything</em>.</span>
-          </EditorialHeading>
+        eyebrow="Submission preview"
+        media={
+          <RoutePhoneCluster
+            images={[
+              {
+                image: futureAssets.app.simTrain,
+                label: "Train",
+                treatment: "phone",
+              },
+              {
+                image: futureAssets.app.simCypher,
+                label: "Cypher",
+                treatment: "phone",
+              },
+              {
+                image: futureAssets.app.simNutrition,
+                label: "Nutrition",
+                treatment: "phone",
+              },
+            ]}
+            label="FoFit submission preview app surfaces"
+          />
         }
+        title={<>Train honestly. Measure everything.</>}
       />
 
       <ProductVideo />
@@ -59,7 +121,7 @@ export function SubmissionPreviewPage() {
         <div className="container">
           <ChapterIntro
             centered
-            description="Three screens, three moments of the day. Morning read, live session, evening close. All shipping now."
+            description="Three moments of the day. Morning read, live session, evening close. The route still exists for the creator challenge, but the proof is the same real FoFit product system."
             index="01"
             label="How it works"
             title={
@@ -68,18 +130,8 @@ export function SubmissionPreviewPage() {
               </>
             }
           />
-          <div className="daily-loop">
-            {dailyLoopFigures.map((entry) => (
-              <article className="daily-loop__row reveal" key={entry.time}>
-                <div className="daily-loop__content">
-                  <span className="daily-loop__time">{entry.time}</span>
-                  <h3>{entry.title}</h3>
-                  <p>{entry.description}</p>
-                </div>
-                <DeviceFigure asset={entry.asset} className="daily-loop__figure" />
-              </article>
-            ))}
-          </div>
+          <RouteFeatureLedger rows={submissionRows} />
+          <RouteCardGrid cards={submissionMomentCards} />
         </div>
       </section>
 
@@ -97,15 +149,19 @@ export function SubmissionPreviewPage() {
               </>
             }
           />
-          <div className="submission-proof reveal">
-            {proofPoints.map((point) => (
-              <article className="submission-proof__card" key={point.label}>
-                <span className="submission-proof__label">{point.label}</span>
-                <h3 className="submission-proof__value">{point.value}</h3>
-                <p className="submission-proof__body">{point.body}</p>
-              </article>
-            ))}
-          </div>
+          <RouteCardGrid
+            cards={proofPoints.map((point, index) => ({
+              detail: point.body,
+              image:
+                index === 0
+                  ? futureAssets.app.simTrain
+                  : index === 1
+                    ? futureAssets.lifestyle.athlete
+                    : futureAssets.app.simCypher,
+              label: point.label,
+              title: point.value,
+            }))}
+          />
         </div>
       </section>
 
