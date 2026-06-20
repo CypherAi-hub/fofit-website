@@ -589,3 +589,47 @@
   color: #ff8585;
   flex-basis: 100%;
 }
+
+/* Dashboard preview */
+.bodylab-dash {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  text-align: left;
+  text-decoration: none;
+}
+.bodylab-dash--link {
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.bodylab-dash--link:hover {
+  border-color: var(--blue);
+}
+.bodylab-dash__thumb {
+  width: 56px;
+  height: 72px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex: 0 0 auto;
+}
+.bodylab-dash__body {
+  display: grid;
+  gap: 2px;
+  flex: 1 1 auto;
+}
+.bodylab-dash__count {
+  color: var(--text-strong);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.bodylab-dash__sub {
+  color: var(--text-soft);
+  font-size: 0.82rem;
+}
+.bodylab-dash__arrow {
+  color: var(--blue);
+  font-size: 1.1rem;
+  flex: 0 0 auto;
+}
