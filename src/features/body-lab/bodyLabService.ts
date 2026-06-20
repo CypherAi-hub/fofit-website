@@ -343,6 +343,22 @@ export async function listBodyTimeline(
   return (data ?? []).map((row) => mapCheckIn(row as Record<string, unknown>));
 }
 
+/** Body Lab check-ins linked to a workout session (for the web session-detail page). RLS-scoped to
+ *  the user; returns [] when none are linked. Reuses the same ready-status + media mapping. */
+export async function listBodyCheckInsForSession(
+  supabase: SupabaseClient,
+  workoutSessionId: string,
+): Promise<BodyCheckIn[]> {
+  const { data, error } = await supabase
+    .from('body_check_ins')
+    .select('*, body_media_assets(*)')
+    .eq('status', 'ready')
+    .eq('workout_session_id', workoutSessionId)
+    .order('captured_at', { ascending: false });
+  if (error || !data) return [];
+  return data.map((row) => mapCheckIn(row as Record<string, unknown>));
+}
+
 export async function getSignedBodyMediaUrl(
   supabase: SupabaseClient,
   storagePath: string,
