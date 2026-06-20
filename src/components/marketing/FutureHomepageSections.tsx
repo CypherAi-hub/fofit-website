@@ -4,16 +4,20 @@ import {
   communityPreviewCards,
   communitySurfaceRows,
   cypherMemorySignals,
+  founderTrustPoints,
   futureAssets,
   futureHeroTrust,
   futurePathCards,
   futurePricingPlans,
   nutritionCountryRows,
+  nutritionFilterPreviewRows,
   nutritionLibraryStats,
   nutritionSignals,
   nutritionWorkflowRows,
   productPillars,
+  realWeekSteps,
   systemTabs,
+  testerPathSteps,
 } from "../../data/future-homepage";
 import { insightArticles } from "../../data/insights";
 import { usePointerGlow } from "../../lib/usePointerGlow";
@@ -43,28 +47,28 @@ const liveMediaCards = [
     title: "People make consistency easier.",
     detail: "The product belongs around real training lives.",
     type: "image",
-    image: futureAssets.generated.friendlyTrainingCrew,
+    image: futureAssets.generated.betaTestersReview,
   },
   {
     label: "Shared fuel",
     title: "Nutrition has to feel livable.",
     detail: "Food support works better when it looks practical, social, and familiar.",
     type: "image",
-    image: futureAssets.generated.groupMealPrep,
+    image: futureAssets.generated.globalMealPrepTable,
   },
   {
     label: "Recovery",
     title: "Progress needs recovery and support.",
     detail: "The loop makes room for cooldowns, questions, and real people.",
     type: "image",
-    image: futureAssets.generated.recoveryCommunity,
+    image: futureAssets.generated.communityCheckinCircle,
   },
   {
-    label: "Coach review",
-    title: "Trust needs a human layer.",
-    detail: "Coaches make AI guidance feel accountable, not anonymous.",
+    label: "Built in public",
+    title: "Trust needs a visible process.",
+    detail: "Product notes, tester feedback, and training context stay close to the build.",
     type: "image",
-    image: futureAssets.generated.coachTabletReview,
+    image: futureAssets.generated.founderProductWorkSession,
   },
 ] as const;
 
@@ -229,6 +233,58 @@ export function ProductPillars() {
   );
 }
 
+export function RealWeekSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = realWeekSteps[activeIndex];
+
+  return (
+    <section className="future-section future-real-week" id="real-week">
+      <div className="container future-real-week__inner">
+        <Revealer className="future-real-week__copy">
+          <span className="lp-kicker">FoFit in a real week</span>
+          <h2>A system people can picture using before Friday.</h2>
+          <p>
+            The promise gets stronger when the site shows the actual loop:
+            training, recovery, food, Cypher, and community passing context
+            forward through an ordinary week.
+          </p>
+          <a className="button button--secondary button--lg" href="#system-in-motion">
+            See the product loop
+          </a>
+        </Revealer>
+
+        <Revealer className="future-real-week__stage" delay="1">
+          <div className="future-real-week__timeline" aria-label="FoFit week walkthrough">
+            {realWeekSteps.map((step, index) => (
+              <button
+                aria-pressed={index === activeIndex}
+                className={index === activeIndex ? "is-active" : ""}
+                key={`${step.day}-${step.label}`}
+                onClick={() => setActiveIndex(index)}
+                type="button"
+              >
+                <span>{step.day}</span>
+                <strong>{step.label}</strong>
+              </button>
+            ))}
+          </div>
+
+          <div className="future-real-week__proof">
+            <div className={`future-real-week__media future-real-week__media--${active.treatment}`} key={active.title}>
+              <img alt={active.image.alt} src={active.image.src} />
+            </div>
+            <div className="future-real-week__caption">
+              <span>{active.day} / {active.label}</span>
+              <h3>{active.title}</h3>
+              <p>{active.detail}</p>
+            </div>
+          </div>
+        </Revealer>
+      </div>
+    </section>
+  );
+}
+
 export function SystemInMotion() {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = systemTabs[activeIndex];
@@ -387,6 +443,14 @@ export function CypherMemorySection() {
 }
 
 export function NutritionPreview() {
+  const [activeFilter, setActiveFilter] = useState("All");
+  const activeFilterMeta =
+    nutritionFilterPreviewRows.find((row) => row.label === activeFilter) ?? nutritionFilterPreviewRows[0];
+  const visibleRecipes =
+    activeFilter === "All" || activeFilter === "More filters"
+      ? nutritionCountryRows
+      : nutritionCountryRows.filter((recipe) => recipe.country === activeFilter);
+
   return (
     <section className="future-section future-nutrition" id="nutrition">
       <div className="container future-nutrition__inner">
@@ -395,7 +459,8 @@ export function NutritionPreview() {
           <h2>Fuel the plan, not just the tracker.</h2>
           <p>
             Food logging, targets, body metrics, and Cypher nutrition insights
-            keep fuel attached to the work you are actually doing.
+            keep fuel attached to the work you are actually doing. The current
+            seed catalog is shown as a library preview, not a finished promise.
           </p>
           <div className="future-signal-list">
             {nutritionSignals.map((signal) => (
@@ -428,10 +493,27 @@ export function NutritionPreview() {
           <span className="lp-kicker">Fuel Library</span>
           <h3>Food is not just a macro box.</h3>
           <p>
-            The nutrition system has a real recipe catalog, country filters,
+            The nutrition system has a current seed catalog, country filters,
             staple food search, photo logging, repeat meals, and grocery flow.
             The point is to help people find food they will actually eat.
           </p>
+        </Revealer>
+
+        <Revealer className="future-nutrition-filters" delay="1">
+          <div className="future-nutrition-filters__buttons" aria-label="Nutrition library preview filters">
+            {nutritionFilterPreviewRows.map((row) => (
+              <button
+                aria-pressed={row.label === activeFilter}
+                className={row.label === activeFilter ? "is-active" : ""}
+                key={row.label}
+                onClick={() => setActiveFilter(row.label)}
+                type="button"
+              >
+                {row.label}
+              </button>
+            ))}
+          </div>
+          <p>{activeFilterMeta.detail}</p>
         </Revealer>
 
         <Revealer className="future-nutrition-stats" delay="1">
@@ -446,7 +528,7 @@ export function NutritionPreview() {
 
         <div className="future-nutrition-depth">
           <Revealer className="future-recipe-grid" delay="1">
-            {nutritionCountryRows.map((recipe) => (
+            {visibleRecipes.map((recipe) => (
               <article className="future-recipe-card" key={`${recipe.country}-${recipe.title}`}>
                 <img alt={recipe.image.alt} src={recipe.image.src} />
                 <div>
@@ -605,7 +687,7 @@ export function FounderStorySection() {
     <section className="future-section future-founder">
       <div className="container future-founder__inner">
         <Revealer className="future-founder__visual">
-          <img alt={futureAssets.generated.coachTabletReview.alt} src={futureAssets.generated.coachTabletReview.src} />
+          <img alt={futureAssets.generated.founderProductWorkSession.alt} src={futureAssets.generated.founderProductWorkSession.src} />
           <div className="future-founder__mark">
             <img alt={futureAssets.mark.alt} src={futureAssets.mark.src} />
           </div>
@@ -614,15 +696,67 @@ export function FounderStorySection() {
           <span className="lp-kicker">Built in public</span>
           <h2>Built close to the people using it.</h2>
           <p>
-            FoFit is being built with real testers, athletes, coaches, and
-            students. Join early and help shape the product while the feedback
-            loop is still close enough to matter.
+            FoFit is being built with testers, athletes, coaches, and students
+            close to the product. The early Maryville and St. Louis rollout
+            keeps feedback close enough to change the app before the story gets
+            loud.
           </p>
+          <div className="future-founder__note">
+            <strong>The founder standard</strong>
+            <span>
+              FoFit has to help someone know what to do next: train, eat,
+              recover, ask, or check in. If the app cannot make that clearer,
+              the website does not pretend it can.
+            </span>
+          </div>
+          <div className="future-founder__trust-grid">
+            {founderTrustPoints.map((point) => (
+              <article key={point.label}>
+                <span>{point.label}</span>
+                <strong>{point.title}</strong>
+                <p>{point.detail}</p>
+              </article>
+            ))}
+          </div>
           <div className="future-founder__facts">
             <span>Maryville roots</span>
             <span>Real app screens</span>
+            <span>AI-assisted build</span>
             <span>Tester-led rollout</span>
           </div>
+        </Revealer>
+      </div>
+    </section>
+  );
+}
+
+export function TesterPathSection() {
+  return (
+    <section className="future-section future-tester-path" id="tester-path">
+      <div className="container future-tester-path__inner">
+        <Revealer className="future-tester-path__copy">
+          <span className="lp-kicker">After you join</span>
+          <h2>Early access has a real path.</h2>
+          <p>
+            Founding access is not just a form. It routes people into the right
+            beta path, keeps device reality clear, and turns useful feedback
+            into product work.
+          </p>
+          <div className="future-tester-path__actions">
+            <EarlyAccessButton size="lg">Join founding 250</EarlyAccessButton>
+            <Button to="/beta" variant="secondary">See iOS beta</Button>
+            <Button to="/signup" variant="ghost">Create account</Button>
+          </div>
+        </Revealer>
+
+        <Revealer className="future-tester-path__steps" delay="1">
+          {testerPathSteps.map((step) => (
+            <article className="future-card" key={step.label}>
+              <span>{step.label}</span>
+              <h3>{step.title}</h3>
+              <p>{step.detail}</p>
+            </article>
+          ))}
         </Revealer>
       </div>
     </section>

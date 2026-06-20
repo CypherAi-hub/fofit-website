@@ -129,6 +129,22 @@ export const futureAssets = {
       alt: "FoFit coach reviewing training progress on a tablet with two members after a workout.",
       src: "/images/generated/coach-tablet-review.webp",
     },
+    betaTestersReview: {
+      alt: "FoFit beta testers reviewing the app together after a bright strength workout.",
+      src: "/images/generated/beta-testers-review.webp",
+    },
+    globalMealPrepTable: {
+      alt: "FoFit members preparing a diverse table of high-protein meals together.",
+      src: "/images/generated/global-meal-prep-table.webp",
+    },
+    founderProductWorkSession: {
+      alt: "FoFit product work session with laptop, tablet, notes, and gym equipment, without an identifiable founder portrait.",
+      src: "/images/generated/founder-product-work-session.webp",
+    },
+    communityCheckinCircle: {
+      alt: "FoFit members sitting together in a recovery area for a supportive post-workout check-in.",
+      src: "/images/generated/community-checkin-circle.webp",
+    },
   },
   lifestyle: {
     deadlift: {
@@ -317,6 +333,49 @@ export const systemTabs = [
   },
 ] as const;
 
+export const realWeekSteps = [
+  {
+    day: "Monday",
+    label: "Plan",
+    title: "The week starts with a real session.",
+    detail: "FoFit opens with today's training, recovery context, and a clear place to start instead of another blank workout builder.",
+    image: futureAssets.app.simTrain,
+    treatment: "phone",
+  },
+  {
+    day: "Tuesday",
+    label: "Soreness",
+    title: "Recovery changes the next move.",
+    detail: "Soreness and readiness stay attached to the plan so volume and exercise choices can adjust without losing the goal.",
+    image: futureAssets.generated.communityCheckinCircle,
+    treatment: "scene",
+  },
+  {
+    day: "Wednesday",
+    label: "Fuel",
+    title: "Food context stops being separate.",
+    detail: "Photo Fuel, targets, repeat meals, and the current seed catalog help nutrition support the work instead of living in a different app.",
+    image: futureAssets.app.simNutrition,
+    treatment: "phone",
+  },
+  {
+    day: "Thursday",
+    label: "Cypher",
+    title: "Cypher explains the adjustment.",
+    detail: "When class, practice, missed meals, or fatigue change the week, Cypher gives the plan a reason instead of a random swap.",
+    image: futureAssets.app.simCypher,
+    treatment: "phone",
+  },
+  {
+    day: "Friday",
+    label: "Check-in",
+    title: "Progress has somewhere to land.",
+    detail: "Community, groups, and coach discovery give people a place to ask, share, and keep the week moving without toxic pressure.",
+    image: futureAssets.app.simDiscoverCommunity,
+    treatment: "phone",
+  },
+] as const;
+
 export const cypherMemorySignals = [
   "Soreness from last week",
   "Class, work, and travel windows",
@@ -391,6 +450,37 @@ export const nutritionCountryRows = [
     title: "Brazilian Black Bean Chicken Bowl",
     detail: "Chicken, black beans, rice, corn, tomato salsa, greens, and avocado.",
     image: futureAssets.nutrition.brazilianChicken,
+  },
+] as const;
+
+export const nutritionFilterPreviewRows = [
+  {
+    label: "All",
+    detail: "A library preview across recipes, staples, photo logging, repeat meals, and grocery flow.",
+  },
+  {
+    label: "India",
+    detail: "Tandoori chicken, rajma rice, yogurt support, and rice-bowl staples from the current seed catalog.",
+  },
+  {
+    label: "Japan",
+    detail: "Miso salmon, rice plates, and practical protein-forward meals that still feel familiar.",
+  },
+  {
+    label: "South Korea",
+    detail: "Korean-inspired beef bowls, peppers, rice, greens, and easy macro visibility.",
+  },
+  {
+    label: "West Africa",
+    detail: "Suya-inspired bowls, beans, tomatoes, greens, and athlete-friendly portions.",
+  },
+  {
+    label: "Brazil",
+    detail: "Black bean chicken bowls and balanced plate ideas from the current library preview.",
+  },
+  {
+    label: "More filters",
+    detail: "USA, Mexico, Caribbean, Mediterranean, Middle East, Thailand, and Global are represented in the country-filter model.",
   },
 ] as const;
 
@@ -513,5 +603,51 @@ export const futurePricingPlans = [
     features: ["Verified coach path", "Groups and programs", "Team visibility"],
     cta: "Request access",
     featured: false,
+  },
+] as const;
+
+export const founderTrustPoints = [
+  {
+    label: "Built close",
+    title: "The first users are part of the product loop.",
+    detail: "FoFit is being shaped with testers, athletes, coaches, and students before the story gets louder.",
+  },
+  {
+    label: "St. Louis roots",
+    title: "Local proof before broad claims.",
+    detail: "The Maryville and St. Louis rollout keeps feedback close enough to become product decisions.",
+  },
+  {
+    label: "Real screens",
+    title: "The app has to earn the brand.",
+    detail: "The website keeps showing Train, Nutrition, Cypher, and Community surfaces instead of hiding behind vague AI language.",
+  },
+  {
+    label: "AI as a tool",
+    title: "Agents help ship the system, people shape it.",
+    detail: "FoFit uses AI in the build process and in the product, but the standard is still real training usefulness.",
+  },
+] as const;
+
+export const testerPathSteps = [
+  {
+    label: "01",
+    title: "Join founding 250",
+    detail: "Choose your path so FoFit can route you as a member, athlete, student, coach, or team contact.",
+  },
+  {
+    label: "02",
+    title: "Get routed by device and role",
+    detail: "iPhone testers move through TestFlight when seats are open. Android testers stay on the launch waitlist.",
+  },
+  {
+    label: "03",
+    title: "Test real workflows",
+    detail: "Train, log food, ask Cypher, explore community, and send feedback on what helped or got confusing.",
+  },
+  {
+    label: "04",
+    title: "Shape the launch",
+    detail: "Specific feedback feeds the roadmap while the loop is still close enough to change quickly.",
   },
 ] as const;

@@ -10,7 +10,7 @@ import {
   RouteSection,
 } from "../components/marketing/RouteProofSections";
 import { BETA_MODE, TESTFLIGHT_URL, deviceCanUseTestFlight } from "../data/beta";
-import { futureAssets } from "../data/future-homepage";
+import { futureAssets, testerPathSteps } from "../data/future-homepage";
 import type { BetaPayload } from "../lib/beta";
 
 /**
@@ -30,20 +30,20 @@ type Expectation = { title: string; body: string };
 // (spec: limited spots / feedback expected / Android→waitlist / rough edges).
 const EXPECTATIONS: Expectation[] = [
   {
-    title: "Spots are limited",
-    body: "Each beta cohort is kept small so we can act on what testers tell us. Requesting access reserves your place in line.",
+    title: "Founding cohorts stay small",
+    body: "Each tester group stays focused so feedback can turn into product changes while FoFit is still close to the build.",
   },
   {
-    title: "Feedback is the point",
-    body: "You'll train with the app and tell us what works and what doesn't. Honest, specific feedback shapes the first public release.",
+    title: "Test real workflows",
+    body: "The useful path is simple: train, log food, ask Cypher, explore community, and tell us where the loop got confusing.",
   },
   {
-    title: "iPhone now, Android next",
-    body: "TestFlight is Apple's iOS beta tool. Android testers join the launch waitlist and hear from us the moment that build is ready.",
+    title: "iPhone first, Android next",
+    body: "TestFlight is Apple's iOS beta tool. Android testers join the launch waitlist and hear from us when that build is ready.",
   },
   {
-    title: "Expect rough edges",
-    body: "This is pre-release software. It will change often and the occasional thing will break — that is normal for a beta.",
+    title: "Specific feedback matters most",
+    body: "Tell us what you expected, what happened, and what would have made the next step clearer.",
   },
 ];
 
@@ -122,11 +122,11 @@ export function BetaPage() {
   return (
     <>
       <PageMeta
-        description="Test FoFit on iOS through Apple TestFlight before launch. Beta spots are limited — train with Cypher and help shape the first release."
+        description="Test FoFit on iOS through Apple TestFlight before launch. Train, log food, ask Cypher, explore community, and help shape the first release."
         title="Join the FoFit iOS Beta | TestFlight Early Access"
       />
       <PageHero
-        description="Get FoFit on your iPhone before launch, train with Cypher, and tell us what to fix. Beta spots are limited and every piece of feedback gets read."
+        description="Get FoFit on your iPhone before launch, train with Cypher, log food, explore community, and send feedback that can still shape the first public release."
         eyebrow="iOS Beta"
         media={
           <RoutePhoneCluster
@@ -148,7 +148,7 @@ export function BetaPage() {
       />
 
       <RouteSection
-        description="The beta is an actual product trial: train, fuel, ask Cypher, and tell us what was confusing."
+        description="The beta is an actual product trial: train, fuel, ask Cypher, explore community, and tell us what made the next step clearer or more confusing."
         kicker="Beta Focus"
         title="What early testers are helping prove."
       >
@@ -178,6 +178,21 @@ export function BetaPage() {
         />
       </RouteSection>
 
+      <RouteSection
+        className="route-section--soft"
+        description="The tester path keeps device reality clear and gives each signup a concrete next step."
+        kicker="Access Path"
+        title="What happens after you request access."
+      >
+        <RouteFeatureLedger
+          rows={testerPathSteps.map((step) => ({
+            label: step.label,
+            title: step.title,
+            detail: step.detail,
+          }))}
+        />
+      </RouteSection>
+
       <section className="lp-section">
         <div className="container">
           {submitted ? (
@@ -201,9 +216,9 @@ export function BetaPage() {
                   ))}
                 </div>
                 <p className="waitlist-inline-note beta-disclaimer">
-                  FoFit is not yet on the App Store. Beta builds are distributed
-                  only through Apple TestFlight and remain in active
-                  development.
+                  FoFit is not yet on the App Store. iPhone beta builds are
+                  distributed through Apple TestFlight. Android testers stay on
+                  the launch list until that build is ready.
                 </p>
               </Revealer>
 

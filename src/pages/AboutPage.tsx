@@ -9,6 +9,7 @@ import {
   RouteSplitProof,
 } from "../components/marketing/RouteProofSections";
 import {
+  founderTrustPoints,
   futureAssets,
   futurePathCards,
   productPillars,
@@ -30,6 +31,11 @@ const companyRows = [
     title: "The claim has to match the app.",
     detail: "Training, nutrition, Cypher, and community show up as real product surfaces before the brand says they matter.",
   },
+  {
+    label: "AI-assisted build",
+    title: "Agents help ship. People shape the standard.",
+    detail: "FoFit can use AI to move faster, but testers decide whether the product actually makes training clearer.",
+  },
 ] as const;
 
 export function AboutPage() {
@@ -44,12 +50,12 @@ export function AboutPage() {
           { label: "Join founding 250", intent: "waitlist" },
           { label: "Read insights", to: "/insights", variant: "secondary" },
         ]}
-        description="FoFit exists because fitness progress still gets split across too many disconnected tools. The product brings the week back into one place."
+        description="FoFit exists because fitness progress still gets split across too many disconnected tools. The product brings the week back into one place while the first testers stay close to the build."
         eyebrow="About"
         media={
           <RoutePhoneCluster
             images={[
-              { image: futureAssets.generated.coachTabletReview, label: "Built with coaches", treatment: "scene" },
+              { image: futureAssets.generated.founderProductWorkSession, label: "Built in public", treatment: "scene" },
               { image: futureAssets.app.simCypher, label: "Cypher" },
               { image: futureAssets.mark, label: "FoFit", treatment: "mark" },
             ]}
@@ -69,6 +75,21 @@ export function AboutPage() {
         title="The product has to help real people before the story gets loud."
       >
         <RouteFeatureLedger rows={[...companyRows]} />
+      </RouteSection>
+
+      <RouteSection
+        className="route-section--soft"
+        description="FoFit is being shaped close to training rooms, campus testers, coaches, and the actual app surfaces people will use."
+        kicker="Trust Layer"
+        title="The build process is part of the brand."
+      >
+        <RouteCardGrid
+          cards={founderTrustPoints.map((point) => ({
+            label: point.label,
+            title: point.title,
+            detail: point.detail,
+          }))}
+        />
       </RouteSection>
 
       <RouteSplitProof
@@ -93,7 +114,6 @@ export function AboutPage() {
       />
 
       <RouteSection
-        className="route-section--soft"
         description="The product stays unified while the entry path changes by audience."
         kicker="Who FoFit Serves"
         title="Members, athletes, and coaches start from different needs."

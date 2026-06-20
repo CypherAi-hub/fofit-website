@@ -9,7 +9,9 @@ import {
   NutritionPreview,
   PricingSection,
   ProductPillars,
+  RealWeekSection,
   SystemInMotion,
+  TesterPathSection,
 } from "../components/marketing/FutureHomepageSections";
 import { PageMeta } from "../components/layout/PageMeta";
 
@@ -23,6 +25,7 @@ export function HomePage() {
       <HeroFutureOfFitness />
       <LiveMediaSection />
       <ProductPillars />
+      <RealWeekSection />
       <SystemInMotion />
       <CommunityPreviewSection />
       <CypherMemorySection />
@@ -30,6 +33,7 @@ export function HomePage() {
       <FutureThreePathsSection />
       <PricingSection />
       <FounderStorySection />
+      <TesterPathSection />
       <FinalCTA />
     </>
   );

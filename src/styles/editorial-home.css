@@ -717,8 +717,181 @@ body::before,
 .future-nutrition,
 .future-paths,
 .future-pricing,
-.future-founder {
+.future-founder,
+.future-real-week,
+.future-tester-path {
   border-top: 1px solid rgba(8, 10, 18, 0.08);
+}
+
+.future-real-week {
+  background:
+    linear-gradient(180deg, #f7faf6 0%, var(--bg) 100%);
+}
+
+.future-real-week__inner,
+.future-tester-path__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  gap: 4rem;
+  align-items: start;
+  max-width: 1040px;
+}
+
+.future-real-week__copy,
+.future-tester-path__copy {
+  position: sticky;
+  top: 6rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.future-real-week__copy h2,
+.future-tester-path__copy h2 {
+  margin: 0;
+  color: #050507;
+  font-size: var(--text-4xl);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.future-real-week__copy p,
+.future-tester-path__copy p {
+  margin: 0;
+  color: #626775;
+  font-size: 1.06rem;
+  line-height: 1.72;
+}
+
+.future-real-week__copy .button {
+  width: fit-content;
+}
+
+.future-real-week__stage {
+  display: grid;
+  gap: 1rem;
+}
+
+.future-real-week__timeline {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.future-real-week__timeline button,
+.future-nutrition-filters__buttons button {
+  min-height: 3.15rem;
+  border: 1px solid #d9dde6;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #4f5562;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.future-real-week__timeline button {
+  display: grid;
+  align-content: center;
+  gap: 0.1rem;
+  padding: 0.65rem;
+  text-align: left;
+}
+
+.future-real-week__timeline button span {
+  color: #8a909c;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.future-real-week__timeline button strong {
+  color: inherit;
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.future-real-week__timeline button:hover,
+.future-real-week__timeline button.is-active,
+.future-nutrition-filters__buttons button:hover,
+.future-nutrition-filters__buttons button.is-active {
+  border-color: rgba(112, 243, 165, 0.52);
+  background: #e5faed;
+  color: #097356;
+  transform: translateY(-1px);
+}
+
+.future-real-week__proof {
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(260px, 0.72fr);
+  gap: 1rem;
+  align-items: stretch;
+  padding: 1rem;
+  border: 1px solid #e3e6ed;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.future-real-week__media {
+  display: grid;
+  min-height: 29rem;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.future-real-week__media--phone img {
+  width: min(15.5rem, 100%);
+  border: 1px solid rgba(112, 243, 165, 0.24);
+  border-radius: 25px;
+  background: #05080c;
+  box-shadow: 0 24px 48px rgba(10, 12, 20, 0.16);
+}
+
+.future-real-week__media--scene img {
+  width: 100%;
+  height: 100%;
+  min-height: 29rem;
+  object-fit: cover;
+}
+
+.future-real-week__caption {
+  display: grid;
+  align-content: end;
+  gap: 0.7rem;
+  padding: 0.8rem;
+}
+
+.future-real-week__caption span,
+.future-tester-path__steps span,
+.future-founder__trust-grid span {
+  color: #108d68;
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.future-real-week__caption h3,
+.future-tester-path__steps h3 {
+  margin: 0;
+  color: #050507;
+  font-size: 1.55rem;
+  line-height: 1.15;
+}
+
+.future-real-week__caption p,
+.future-tester-path__steps p {
+  margin: 0;
+  color: #626775;
+  font-size: 0.98rem;
+  line-height: 1.62;
 }
 
 .future-community__inner,
@@ -863,6 +1036,32 @@ body::before,
   color: #626775;
   font-size: 1.02rem;
   line-height: 1.7;
+}
+
+.future-nutrition-filters {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.future-nutrition-filters__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.future-nutrition-filters__buttons button {
+  min-height: 2.5rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.future-nutrition-filters p {
+  margin: 0;
+  max-width: 58rem;
+  color: #626775;
+  font-size: 0.96rem;
+  line-height: 1.6;
 }
 
 .future-nutrition-stats {
@@ -1071,6 +1270,80 @@ body::before,
   filter: none;
 }
 
+.future-founder__note {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem;
+  border-left: 4px solid #70f3a5;
+  background: #eef4f0;
+}
+
+.future-founder__note strong {
+  color: #050507;
+}
+
+.future-founder__note span {
+  color: #626775;
+  line-height: 1.65;
+}
+
+.future-founder__trust-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.2rem;
+}
+
+.future-founder__trust-grid article,
+.future-tester-path__steps article {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem;
+}
+
+.future-founder__trust-grid strong {
+  color: #050507;
+  line-height: 1.25;
+}
+
+.future-founder__trust-grid p {
+  margin: 0;
+  color: #626775;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.future-tester-path {
+  background: #fbfcfa;
+}
+
+.future-tester-path__steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.future-tester-path__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .future-real-week__timeline button,
+  .future-nutrition-filters__buttons button,
+  .future-real-week__media {
+    transition: none;
+  }
+
+  .future-real-week__timeline button:hover,
+  .future-real-week__timeline button.is-active,
+  .future-nutrition-filters__buttons button:hover,
+  .future-nutrition-filters__buttons button.is-active {
+    transform: none;
+  }
+}
+
 .future-final-cta {
   padding-block: 5rem;
   border-top: 1px solid rgba(8, 10, 18, 0.08);
@@ -1122,11 +1395,15 @@ body::before,
   .future-cypher__inner,
   .future-nutrition__inner,
   .future-founder__inner,
+  .future-real-week__inner,
+  .future-tester-path__inner,
   .editorial-article-grid {
     grid-template-columns: 1fr;
   }
 
-  .future-live-media__copy {
+  .future-live-media__copy,
+  .future-real-week__copy,
+  .future-tester-path__copy {
     position: static;
   }
 
@@ -1145,6 +1422,15 @@ body::before,
 
   .future-nutrition-depth {
     grid-template-columns: 1fr;
+  }
+
+  .future-real-week__proof {
+    grid-template-columns: 1fr;
+  }
+
+  .future-real-week__media,
+  .future-real-week__media--scene img {
+    min-height: 24rem;
   }
 }
 
@@ -1323,6 +1609,51 @@ body::before,
     padding: 1rem;
   }
 
+  .future-real-week__inner,
+  .future-tester-path__inner {
+    gap: 1.5rem;
+  }
+
+  .future-real-week__copy h2,
+  .future-tester-path__copy h2 {
+    font-size: 2.2rem;
+  }
+
+  .future-real-week__copy .button {
+    width: 100%;
+  }
+
+  .future-real-week__timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .future-real-week__timeline button {
+    grid-template-columns: 5rem minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .future-real-week__proof {
+    padding: 0.7rem;
+  }
+
+  .future-real-week__media,
+  .future-real-week__media--scene img {
+    min-height: 21rem;
+  }
+
+  .future-real-week__media--phone img {
+    width: min(12.25rem, 70vw);
+    border-radius: 18px;
+  }
+
+  .future-real-week__caption {
+    padding: 0.55rem;
+  }
+
+  .future-real-week__caption h3 {
+    font-size: 1.28rem;
+  }
+
   .future-community-feature {
     grid-template-columns: 1fr;
   }
@@ -1363,6 +1694,17 @@ body::before,
     grid-template-columns: 1fr;
   }
 
+  .future-nutrition-filters__buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .future-nutrition-filters__buttons button {
+    min-height: 2.35rem;
+    padding-inline: 0.55rem;
+    font-size: 0.78rem;
+  }
+
   .future-nutrition-stat,
   .future-nutrition-workflow {
     padding: 0.9rem;
@@ -1376,5 +1718,18 @@ body::before,
   .future-device-pair img,
   .future-nutrition__phone {
     width: min(12rem, 48vw);
+  }
+
+  .future-founder__trust-grid,
+  .future-tester-path__steps {
+    grid-template-columns: 1fr;
+  }
+
+  .future-tester-path__actions {
+    display: grid;
+  }
+
+  .future-tester-path__actions .button {
+    width: 100%;
   }
 }

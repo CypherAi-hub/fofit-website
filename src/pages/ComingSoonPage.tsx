@@ -85,7 +85,7 @@ export function NutritionPage() {
             images={[
               { image: futureAssets.app.simNutrition, label: "Photo Fuel" },
               { image: futureAssets.app.fuelPlan, label: "Fuel Plan" },
-              { image: futureAssets.generated.groupMealPrep, label: "Food", treatment: "scene" },
+              { image: futureAssets.generated.globalMealPrepTable, label: "Food", treatment: "scene" },
             ]}
             label="FoFit nutrition surfaces"
           />
@@ -98,7 +98,7 @@ export function NutritionPage() {
       />
 
       <RouteSection
-        description="The app has a real seed catalog, country filters, staple search, photo logging, repeat meals, and grocery flow. The page says that plainly."
+        description="The app has a current seed catalog, country filters, staple search, photo logging, repeat meals, and grocery flow. The page says that plainly without overclaiming launch coverage."
         kicker="Fuel Library"
         title="A nutrition surface with food people actually eat."
       >
@@ -107,7 +107,7 @@ export function NutritionPage() {
 
       <RouteSection
         className="route-section--soft"
-        description="Country filters make the library feel less like generic fitness food and more like a catalog that can grow with real people."
+        description="Country filters make the library less generic and more like a catalog that can grow with real people."
         kicker="Country Filters"
         title="Recipes across cultures, not one bland meal-prep lane."
       >
