@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { HomePage } from "../pages/HomePage";
 import { ProductPage } from "../pages/ProductPage";
@@ -19,10 +20,12 @@ import { LoginPage } from "../pages/LoginPage";
 import { WelcomePage } from "../pages/WelcomePage";
 import { DashboardPage } from "../pages/DashboardPage";
 import { BodyLabPage } from "../pages/BodyLabPage";
+import { WorkoutHistoryPage } from "../pages/WorkoutHistoryPage";
+import { SessionDetailPage } from "../pages/SessionDetailPage";
 import { useAuth } from "../lib/auth-context";
 
-// Auth-gated wrapper for the dashboard Body Lab (mirrors the dashboard's own gating).
-function AuthedBodyLab() {
+// Auth-gated wrapper for dashboard sub-pages (mirrors the dashboard's own gating).
+function RequireAuth({ children }: { children: ReactNode }) {
   const { session, loading } = useAuth();
   if (loading) {
     return (
@@ -32,7 +35,7 @@ function AuthedBodyLab() {
     );
   }
   if (!session) return <Navigate to="/login" replace />;
-  return <BodyLabPage />;
+  return <>{children}</>;
 }
 
 export function AppRoutes() {
@@ -59,7 +62,9 @@ export function AppRoutes() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/welcome" element={<WelcomePage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
-      <Route path="/dashboard/body-lab" element={<AuthedBodyLab />} />
+      <Route path="/dashboard/body-lab" element={<RequireAuth><BodyLabPage /></RequireAuth>} />
+      <Route path="/dashboard/history" element={<RequireAuth><WorkoutHistoryPage /></RequireAuth>} />
+      <Route path="/dashboard/history/:sessionId" element={<RequireAuth><SessionDetailPage /></RequireAuth>} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
