@@ -28,7 +28,7 @@ const companyRows = [
   {
     label: "Product honesty",
     title: "The claim has to match the app.",
-    detail: "Training, nutrition, Cypher, and community should show up as real product surfaces before the brand says they matter.",
+    detail: "Training, nutrition, Cypher, and community show up as real product surfaces before the brand says they matter.",
   },
 ] as const;
 
@@ -64,7 +64,7 @@ export function AboutPage() {
       />
 
       <RouteSection
-        description="The About page should tell the truth behind the product: real testers, real app surfaces, and a system that earns the brand line."
+        description="The About page tells the truth behind the product: real testers, real app surfaces, and a system that earns the brand line."
         kicker="Company Standard"
         title="The product has to help real people before the story gets loud."
       >

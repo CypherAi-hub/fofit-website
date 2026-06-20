@@ -72,7 +72,7 @@ const trainingCards = [
   },
   {
     label: "Coach Check-in",
-    title: "Training should have a human feel.",
+    title: "Training has a human feel.",
     detail: "Support media gives the training page energy without pretending to be app UI.",
     image: futureAssets.generated.friendlyTrainingCrew,
   },
@@ -90,7 +90,7 @@ export function FeaturesPage() {
           { label: "Join founding 250", intent: "waitlist" },
           { label: "See Cypher", to: "/product", variant: "secondary" },
         ]}
-        description="Training should start from the day you actually have: the session, the soreness, the schedule, the equipment, and the goal."
+        description="Training starts from the day you actually have: the session, the soreness, the schedule, the equipment, and the goal."
         eyebrow="Training"
         media={
           <RoutePhoneCluster
@@ -143,7 +143,7 @@ export function FeaturesPage() {
           title: signal,
           detail: "This stays attached to the next training decision instead of becoming a forgotten note.",
         }))}
-        title="Training context should survive the week."
+        title="Training context survives the week."
       />
 
       <RouteSection

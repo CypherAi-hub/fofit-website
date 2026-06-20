@@ -86,7 +86,7 @@ export function ProductPage() {
       />
 
       <RouteSection
-        description="The product story should show the actual app surfaces. These are the pieces a member sees when the week changes."
+        description="The product story shows the actual app surfaces: the pieces a member sees when the week changes."
         kicker="System Proof"
         title="Training, food, coaching, and community inform the same next step."
       >

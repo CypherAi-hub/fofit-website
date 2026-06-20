@@ -38,13 +38,13 @@ export function UpdatesPage() {
           <>
             Product momentum
             <br />
-            should stay visible.
+            stays visible.
           </>
         }
       />
 
       <RouteSection
-        description="Updates should make the product feel like it is moving in public, with clear surfaces and visible priorities."
+        description="Updates make the product feel like it is moving in public, with clear surfaces and visible priorities."
         kicker="Shipping Notes"
         title="What has changed recently."
       >

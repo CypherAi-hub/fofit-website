@@ -63,7 +63,7 @@ export function TeamsPage() {
       />
 
       <RouteSection
-        description="Teams should read like a group-training product, not a pricing footnote."
+        description="Teams is a group-training product, not a pricing footnote."
         kicker="Use Cases"
         title="Schools, clubs, and coaches need different visibility."
       >
@@ -119,7 +119,7 @@ export function TeamsPage() {
       </RouteSection>
 
       <RouteSection
-        description="The team path should remain grounded in what FoFit already shows well: plans, food context, community proof, and coach trust."
+        description="The team path stays grounded in what FoFit already shows well: plans, food context, community proof, and coach trust."
         kicker="Team OS"
         title="What every rollout needs to connect."
       >

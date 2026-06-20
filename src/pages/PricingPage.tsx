@@ -58,7 +58,7 @@ export function PricingPage() {
       />
 
       <RouteSection
-        description="Pricing should make the product clear before the table: what is free, what becomes full-system access, and where teams fit."
+        description="Pricing makes the product clear before the table: what is free, what becomes full-system access, and where teams fit."
         kicker="Membership Proof"
         title="Every paid path is tied to real product surfaces."
       >

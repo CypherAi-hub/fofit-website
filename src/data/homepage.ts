@@ -27,7 +27,7 @@ export const contextSignals = [
     label: "Real week",
     title: "Schedule changes the plan.",
     description:
-      "Short lift window, class, work, travel, or practice load changes what should happen today.",
+      "Short lift window, class, work, travel, or practice load changes what makes sense today.",
   },
   {
     label: "Body feedback",

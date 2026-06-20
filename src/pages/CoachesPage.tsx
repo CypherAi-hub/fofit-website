@@ -23,7 +23,7 @@ const coachRows = [
   },
   {
     label: "Programs",
-    title: "Training should be deliverable.",
+    title: "Training becomes deliverable.",
     detail: "Programs and templates make coach guidance useful without forcing every adjustment into a spreadsheet.",
   },
   {
@@ -65,9 +65,9 @@ export function CoachesPage() {
       />
 
       <RouteSection
-        description="A coach page should make the trust layer clear: profile, group, program, and review loops."
+        description="The coach page makes the trust layer clear: profile, group, program, and review loops."
         kicker="Coach System"
-        title="Coaches should not need another spreadsheet."
+        title="Coaches do not need another spreadsheet."
       >
         <RouteFeatureLedger rows={[...coachRows]} />
       </RouteSection>

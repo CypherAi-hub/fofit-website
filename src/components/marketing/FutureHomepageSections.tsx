@@ -55,7 +55,7 @@ const liveMediaCards = [
   {
     label: "Recovery",
     title: "Progress needs recovery and support.",
-    detail: "The loop should make room for cooldowns, questions, and real people.",
+    detail: "The loop makes room for cooldowns, questions, and real people.",
     type: "image",
     image: futureAssets.generated.recoveryCommunity,
   },
@@ -211,15 +211,15 @@ export function ProductPillars() {
             <li>
               <strong>Adaptive loop</strong>
               <span>
-                The next recommendation should reflect logged work, food,
+                The next recommendation reflects logged work, food,
                 soreness, schedule, preferences, and what changed this week.
               </span>
             </li>
             <li>
               <strong>Human layer</strong>
               <span>
-                The technology should make training feel clearer and more
-                supported, not colder or more isolated.
+                The technology makes training clearer and more
+                supported while people, coaches, and community still matter.
               </span>
             </li>
           </ul>
@@ -239,7 +239,7 @@ export function SystemInMotion() {
         <Revealer className="future-system-motion__copy editorial-toc">
           <h2>Inside the FoFit loop</h2>
           <p>
-            FoFit should read like a complete coaching system, with each
+            FoFit works as a complete coaching system, with each
             surface explaining how the next decision gets better.
           </p>
           <ol className="future-system-tabs" aria-label="FoFit product surfaces">

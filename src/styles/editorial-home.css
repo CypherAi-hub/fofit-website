@@ -1,12 +1,12 @@
 /* Fitbod-inspired FoFit editorial reset. Imported last on purpose. */
 
 :root {
-  --bg: #f8faf7;
-  --bg-elevated: #eef4f0;
+  --bg: #f3f7f3;
+  --bg-elevated: #eaf2ed;
   --surface: rgba(255, 255, 255, 0.96);
   --surface-strong: #ffffff;
-  --surface-soft: #eff4ef;
-  --surface-muted: #f4f7f4;
+  --surface-soft: #edf4ef;
+  --surface-muted: #f5f8f4;
   --border: rgba(8, 10, 18, 0.13);
   --border-strong: rgba(112, 243, 165, 0.34);
   --text: #101116;
@@ -176,7 +176,7 @@ body::before,
   padding-block: 0 4.5rem;
   overflow: visible;
   background:
-    linear-gradient(180deg, #f7faf6 0%, #fbfcfa 50%, var(--bg) 100%);
+    linear-gradient(180deg, #eef5ef 0%, #f8faf4 48%, var(--bg) 100%);
 }
 
 .editorial-goal-band {
@@ -186,7 +186,7 @@ body::before,
   max-width: 1040px;
   margin-top: 0;
   padding: 1.15rem 6.2rem;
-  background: #edf3ef;
+  background: #e8f1ec;
 }
 
 .editorial-goal-band span {
@@ -236,13 +236,13 @@ body::before,
 .editorial-hero__inner {
   grid-template-columns: minmax(0, 760px);
   justify-content: center;
-  gap: 3rem;
-  padding-top: 2rem;
+  gap: 2.2rem;
+  padding-top: 1.55rem;
 }
 
 .future-hero__copy {
   max-width: 760px;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .future-hero__copy h1,
@@ -258,9 +258,9 @@ body::before,
 }
 
 .future-hero__copy h1 {
-  max-width: 14ch;
-  font-size: var(--text-6xl);
-  line-height: 1.08;
+  max-width: 18ch;
+  font-size: 4rem;
+  line-height: 1.04;
 }
 
 .editorial-hero__meta {
@@ -289,7 +289,7 @@ body::before,
 .future-hero__copy p {
   max-width: 64ch;
   font-size: 1.08rem;
-  line-height: 1.7;
+  line-height: 1.62;
 }
 
 .future-hero__trust span,
@@ -1212,6 +1212,7 @@ body::before,
 
   .future-hero__copy h1 {
     max-width: 10.5ch;
+    font-size: var(--text-6xl);
     line-height: 1.03;
   }
 

@@ -162,12 +162,12 @@ export function BetaPage() {
             {
               label: "Nutrition",
               title: "Does food logging stay connected?",
-              detail: "Photo Fuel, targets, repeat meals, and fuel plans should support training without becoming chores.",
+              detail: "Photo Fuel, targets, repeat meals, and fuel plans support training without becoming chores.",
             },
             {
               label: "Cypher",
               title: "Does the coach remember useful context?",
-              detail: "Soreness, missed days, practice, class, and meals should show up in better next decisions.",
+              detail: "Soreness, missed days, practice, class, and meals show up in better next decisions.",
             },
             {
               label: "Community",

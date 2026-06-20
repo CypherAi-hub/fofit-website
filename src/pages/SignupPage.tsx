@@ -24,7 +24,7 @@ const signupProofRows = [
   },
   {
     label: "No reset",
-    title: "The launch path should not make you start over.",
+    title: "The launch path keeps your progress with you.",
     detail:
       "FoFit keeps early access, waitlist claims, and account history together so the next invite wave has context.",
   },

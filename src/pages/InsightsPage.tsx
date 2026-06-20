@@ -59,7 +59,7 @@ export function InsightsPage() {
       />
 
       <RouteSection
-        description="FoFit content should build trust around the product areas people actually use."
+        description="FoFit content builds trust around the product areas people actually use."
         kicker="Editorial System"
         title="Articles that support the training loop."
       >
@@ -68,19 +68,19 @@ export function InsightsPage() {
             {
               label: "Training",
               title: "Progressive overload, exercise selection, and execution.",
-              detail: "Training content should help people understand why the next session looks the way it does.",
+              detail: "Training content helps people understand why the next session looks the way it does.",
               image: futureAssets.app.simTrain,
             },
             {
               label: "Nutrition",
               title: "Protein, meal planning, fuel timing, and real food.",
-              detail: "Nutrition content should connect back to targets, recipes, and logged meals.",
+              detail: "Nutrition content connects back to targets, recipes, and logged meals.",
               image: futureAssets.app.simNutrition,
             },
             {
               label: "Recovery",
               title: "Rest, soreness, readiness, and adaptation.",
-              detail: "Recovery writing should explain when training hard makes sense and when the plan should adjust.",
+              detail: "Recovery writing explains when training hard makes sense and when the plan adjusts.",
               image: futureAssets.generated.recoveryCommunity,
             },
           ]}

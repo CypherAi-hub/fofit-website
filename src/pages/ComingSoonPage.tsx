@@ -98,7 +98,7 @@ export function NutritionPage() {
       />
 
       <RouteSection
-        description="The app has a real seed catalog, country filters, staple search, photo logging, repeat meals, and grocery flow. The page should say that plainly."
+        description="The app has a real seed catalog, country filters, staple search, photo logging, repeat meals, and grocery flow. The page says that plainly."
         kicker="Fuel Library"
         title="A nutrition surface with food people actually eat."
       >
@@ -141,7 +141,7 @@ export function NutritionPage() {
       />
 
       <RouteSection
-        description="The Nutrition page should make the product behavior obvious before anyone reaches the form."
+        description="The Nutrition page makes the product behavior obvious before anyone reaches the form."
         kicker="Cypher Context"
         title="Fuel data gives Cypher better decisions."
       >
@@ -159,7 +159,7 @@ export function NutritionPage() {
         pills={["Photo Fuel", "Recipes", "Repeat meals", "Grocery"]}
         title={
           <>
-            Food should support the work.
+            Food supports the work.
             <br />
             FoFit keeps both connected.
           </>

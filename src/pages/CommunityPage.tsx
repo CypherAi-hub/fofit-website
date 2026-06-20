@@ -70,7 +70,7 @@ export function CommunityPage() {
       />
 
       <RouteSection
-        description="The Community page should prove what the product can show: feed, groups, coach discovery, replies, and profile context."
+        description="The Community page proves what the product can show: feed, groups, coach discovery, replies, and profile context."
         kicker="Community Surfaces"
         title="The social layer has practical product jobs."
       >
@@ -120,12 +120,12 @@ export function CommunityPage() {
           rows={[
             {
               label: "Post",
-              title: "Progress should have context.",
+              title: "Progress has context.",
               detail: "Posts make room for the workout, meal, question, recovery note, or update behind the photo.",
             },
             {
               label: "Reply",
-              title: "The conversation should be useful.",
+              title: "The conversation stays useful.",
               detail: "Replies and reactions are product context, not empty engagement counters.",
             },
             {
@@ -149,7 +149,7 @@ export function CommunityPage() {
           <>
             Training together
             <br />
-            should still feel focused.
+            stays focused.
           </>
         }
       />

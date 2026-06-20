@@ -14,7 +14,7 @@ export function FuelSystemSection() {
         <div className="lp-fuel__intro">
           <Revealer className="lp-section-heading">
             <span className="lp-kicker">FoFit Fuel</span>
-            <h2>Nutrition should not live in a separate universe.</h2>
+            <h2>Nutrition belongs in the same fitness loop.</h2>
             <p>
               FoFit Fuel connects meals, macros, and training context, from food
               photo scans to athlete-friendly meal ideas.

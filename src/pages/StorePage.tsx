@@ -67,7 +67,7 @@ export function StorePage() {
       />
 
       <RouteSection
-        description="The store should not feel like random merch. Every item should earn its place in the training loop."
+        description="The store is not random merch. Every item earns its place in the training loop."
         kicker="Marketplace Logic"
         title="Programs, guides, gear, and bundles need product context."
       >
@@ -95,18 +95,18 @@ export function StorePage() {
         rows={[
           {
             label: "Programs",
-            title: "Digital products should match the plan.",
+            title: "Digital products match the plan.",
             detail: "Specialized blocks and coach-built templates belong close to training history.",
           },
           {
             label: "Guides",
-            title: "Education should be actionable.",
-            detail: "Guides should explain the decision someone is about to make in the app.",
+            title: "Education stays actionable.",
+            detail: "Guides explain the decision someone is about to make in the app.",
           },
           {
             label: "Kits",
-            title: "Physical products should have a job.",
-            detail: "Recovery, equipment, and partner kits should support the system instead of distracting from it.",
+            title: "Physical products have a job.",
+            detail: "Recovery, equipment, and partner kits support the system instead of distracting from it.",
           },
         ]}
         title="Buy tools that match how you train."
@@ -123,19 +123,19 @@ export function StorePage() {
             {
               label: "Program",
               title: "Attached to training context.",
-              detail: "The product should know what the program changes about your week.",
+              detail: "The product knows what the program changes about your week.",
               image: futureAssets.app.simTrain,
             },
             {
               label: "Guide",
               title: "Useful before the next decision.",
-              detail: "Education should clarify training, fuel, or recovery at the moment it matters.",
+              detail: "Education clarifies training, fuel, or recovery at the moment it matters.",
               image: futureAssets.generated.groupMealPrep,
             },
             {
               label: "Coach",
               title: "Backed by trusted humans.",
-              detail: "Coach-created resources should carry visible trust and product relevance.",
+              detail: "Coach-created resources carry visible trust and product relevance.",
               image: futureAssets.generated.coachTabletReview,
             },
           ]}
@@ -143,7 +143,7 @@ export function StorePage() {
       </RouteSection>
 
       <CTASection
-        description="The store opens with the platform. No generic merch — every item should earn its place in the training loop."
+        description="The store opens with the platform. No generic merch — every item earns its place in the training loop."
         pills={["Programs", "Guides", "Bundles"]}
         title={
           <>
