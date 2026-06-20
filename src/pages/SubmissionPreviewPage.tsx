@@ -156,7 +156,7 @@ export function SubmissionPreviewPage() {
                 index === 0
                   ? futureAssets.app.simTrain
                   : index === 1
-                    ? futureAssets.lifestyle.athlete
+                    ? futureAssets.generated.communityCircuitLive
                     : futureAssets.app.simCypher,
               label: point.label,
               title: point.value,

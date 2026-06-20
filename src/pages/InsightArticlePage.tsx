@@ -26,7 +26,7 @@ export function InsightArticlePage() {
     article.category === "Nutrition"
       ? futureAssets.app.simNutrition
       : article.category === "Recovery"
-        ? futureAssets.lifestyle.recoveryLunge
+        ? futureAssets.generated.communityCircuitLive
         : futureAssets.app.simTrain;
 
   return (

@@ -85,7 +85,7 @@ export function NutritionPage() {
             images={[
               { image: futureAssets.app.simNutrition, label: "Photo Fuel" },
               { image: futureAssets.app.fuelPlan, label: "Fuel Plan" },
-              { image: futureAssets.lifestyle.nutrition, label: "Food", treatment: "scene" },
+              { image: futureAssets.generated.fuelPrepGlobal, label: "Food", treatment: "scene" },
             ]}
             label="FoFit nutrition surfaces"
           />

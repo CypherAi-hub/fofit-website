@@ -65,16 +65,16 @@ const trainingCards = [
     image: futureAssets.app.simTrain,
   },
   {
-    label: "Workout Detail",
-    title: "The workout has enough context to trust.",
-    detail: "Blocks and intent make the workout easier to start and easier to adjust.",
-    image: futureAssets.app.workoutDetail,
+    label: "Cypher Context",
+    title: "The coach sees why the day changed.",
+    detail: "Real Cypher screens show the plan context and the reasoning before the adjustment.",
+    image: futureAssets.app.simCypher,
   },
   {
-    label: "Active Workout",
-    title: "Logging stays practical during the set.",
-    detail: "The active session is built for doing the work, not managing a spreadsheet.",
-    image: futureAssets.app.activeWorkout,
+    label: "Coach Check-in",
+    title: "Training should have a human feel.",
+    detail: "Support media gives the training page energy without pretending to be app UI.",
+    image: futureAssets.generated.coachAthleteCheckin,
   },
 ] as const;
 
@@ -96,8 +96,8 @@ export function FeaturesPage() {
           <RoutePhoneCluster
             images={[
               { image: futureAssets.app.simTrain, label: "Today" },
-              { image: futureAssets.app.workoutDetail, label: "Workout" },
-              { image: futureAssets.app.activeWorkout, label: "Log" },
+              { image: futureAssets.app.simCypher, label: "Cypher" },
+              { image: futureAssets.generated.coachAthleteCheckin, label: "Coach", treatment: "scene" },
             ]}
             label="FoFit training screens"
           />
@@ -133,7 +133,7 @@ export function FeaturesPage() {
           <RoutePhoneCluster
             images={[
               { image: futureAssets.app.simCypher, label: "Cypher" },
-              { image: futureAssets.lifestyle.athlete, label: "Athlete load", treatment: "scene" },
+              { image: futureAssets.generated.communityCircuitLive, label: "Athlete load", treatment: "scene" },
             ]}
             label="Cypher training context"
           />

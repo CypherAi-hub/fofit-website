@@ -49,7 +49,7 @@ export function AboutPage() {
         media={
           <RoutePhoneCluster
             images={[
-              { image: futureAssets.lifestyle.trainer, label: "Built with coaches", treatment: "scene" },
+              { image: futureAssets.generated.coachAthleteCheckin, label: "Built with coaches", treatment: "scene" },
               { image: futureAssets.app.simCypher, label: "Cypher" },
               { image: futureAssets.mark, label: "FoFit", treatment: "mark" },
             ]}

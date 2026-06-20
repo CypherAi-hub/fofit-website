@@ -57,7 +57,7 @@ export function CommunityPage() {
             images={[
               { image: futureAssets.app.simDiscoverCommunity, label: "Discover" },
               { image: futureAssets.app.simCommunity, label: "Feed" },
-              { image: futureAssets.community.support.verifiedCoach, label: "Coach", treatment: "scene" },
+              { image: futureAssets.generated.coachAthleteCheckin, label: "Coach", treatment: "scene" },
             ]}
             label="FoFit community surfaces"
           />
@@ -84,7 +84,7 @@ export function CommunityPage() {
           <RoutePhoneCluster
             images={[
               { image: futureAssets.app.simCommunity, label: "Proof Feed" },
-              { image: futureAssets.app.profile, label: "Profile" },
+              { image: futureAssets.app.simDiscoverCommunity, label: "Discover" },
             ]}
             label="FoFit feed and profile"
           />

@@ -21,6 +21,39 @@ import { Revealer } from "../motion/Revealer";
 import { Button } from "../ui/Button";
 import { EarlyAccessButton } from "./EarlyAccessButton";
 
+const liveMediaCards = [
+  {
+    label: "Training atmosphere",
+    title: "The work should move.",
+    detail: "Video carries sweat, pace, and the reason the product exists.",
+    type: "video",
+    src: "/hero.mp4",
+    poster: "/hero-poster.jpg",
+  },
+  {
+    label: "Real app UI",
+    title: "Show the product, not a promise.",
+    detail: "The app-device film keeps the actual FoFit surfaces in motion.",
+    type: "video",
+    src: "/product-devices.mp4",
+    poster: "/product-devices-poster.jpg",
+  },
+  {
+    label: "Fuel prep",
+    title: "Nutrition needs texture.",
+    detail: "Food stays cultural, practical, and connected to training.",
+    type: "image",
+    image: futureAssets.generated.fuelPrepGlobal,
+  },
+  {
+    label: "Coach check-in",
+    title: "Trust needs a human moment.",
+    detail: "The coach path feels stronger when the site shows actual guidance energy.",
+    type: "image",
+    image: futureAssets.generated.coachAthleteCheckin,
+  },
+] as const;
+
 export function HeroFutureOfFitness() {
   return (
     <section className="future-hero editorial-hero">
@@ -76,9 +109,9 @@ export function HeroFutureOfFitness() {
               <source src="/hero.mp4" type="video/mp4" />
             </video>
             <img
-              alt={futureAssets.lifestyle.deadlift.alt}
+              alt={futureAssets.generated.communityCircuitLive.alt}
               className="editorial-product-hero__photo"
-              src={futureAssets.lifestyle.deadlift.src}
+              src={futureAssets.generated.communityCircuitLive.src}
             />
           </div>
           <div className="editorial-product-hero__screens" aria-label="FoFit app preview">
@@ -86,6 +119,56 @@ export function HeroFutureOfFitness() {
             <img alt={futureAssets.app.simCypher.alt} src={futureAssets.app.simCypher.src} />
             <img alt={futureAssets.app.simNutrition.alt} src={futureAssets.app.simNutrition.src} />
           </div>
+        </Revealer>
+      </div>
+    </section>
+  );
+}
+
+export function LiveMediaSection() {
+  return (
+    <section className="future-section future-live-media" aria-label="FoFit media system">
+      <div className="container future-live-media__inner">
+        <Revealer className="future-live-media__copy">
+          <span className="lp-kicker">Media System</span>
+          <h2>FoFit comes alive before anyone taps download.</h2>
+          <p>
+            Real app screenshots stay the proof. Motion and original support
+            media give the brand pace, sweat, food, and human coaching energy.
+          </p>
+        </Revealer>
+
+        <Revealer className="future-live-media__grid" delay="1">
+          {liveMediaCards.map((card, index) => (
+            <article
+              className={`future-live-card future-live-card--${card.type} ${
+                index === 0 ? "future-live-card--wide" : ""
+              }`}
+              key={card.label}
+            >
+              <div className="future-live-card__media">
+                {card.type === "video" ? (
+                  <video
+                    aria-label={card.title}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster={card.poster}
+                    preload="metadata"
+                    src={card.src}
+                  />
+                ) : (
+                  <img alt={card.image.alt} src={card.image.src} />
+                )}
+              </div>
+              <div className="future-live-card__caption">
+                <span>{card.label}</span>
+                <h3>{card.title}</h3>
+                <p>{card.detail}</p>
+              </div>
+            </article>
+          ))}
         </Revealer>
       </div>
     </section>
@@ -207,7 +290,7 @@ export function CommunityPreviewSection() {
         <Revealer className="future-community__gallery" delay="1">
           <article className="future-community-feature future-card">
             <div className="future-community-feature__backdrop" aria-hidden="true">
-              <img alt="" src={futureAssets.community.support.groupCircuit.src} />
+              <img alt="" src={futureAssets.generated.communityCircuitLive.src} />
             </div>
             <div className="future-community-feature__intro">
               <span>Featured community proof</span>
@@ -254,9 +337,9 @@ export function CypherMemorySection() {
       <div className="container future-cypher__inner">
         <Revealer className="future-device-pair future-device-pair--with-scene">
           <img
-            alt={futureAssets.lifestyle.cypherOrb.alt}
+            alt={futureAssets.generated.coachAthleteCheckin.alt}
             className="future-device-pair__scene"
-            src={futureAssets.lifestyle.cypherOrb.src}
+            src={futureAssets.generated.coachAthleteCheckin.src}
           />
           <img
             alt={futureAssets.app.simTrain.alt}
@@ -309,9 +392,9 @@ export function NutritionPreview() {
 
         <Revealer className="future-nutrition__visual" delay="1">
           <img
-            alt={futureAssets.lifestyle.nutrition.alt}
+            alt={futureAssets.generated.fuelPrepGlobal.alt}
             className="future-nutrition__scene"
-            src={futureAssets.lifestyle.nutrition.src}
+            src={futureAssets.generated.fuelPrepGlobal.src}
           />
           <img
             alt={futureAssets.app.simNutrition.alt}
@@ -508,7 +591,7 @@ export function FounderStorySection() {
     <section className="future-section future-founder">
       <div className="container future-founder__inner">
         <Revealer className="future-founder__visual">
-          <img alt={futureAssets.lifestyle.trainer.alt} src={futureAssets.lifestyle.trainer.src} />
+          <img alt={futureAssets.generated.coachAthleteCheckin.alt} src={futureAssets.generated.coachAthleteCheckin.src} />
           <div className="future-founder__mark">
             <img alt={futureAssets.mark.alt} src={futureAssets.mark.src} />
           </div>

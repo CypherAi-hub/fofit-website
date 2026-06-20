@@ -50,8 +50,8 @@ export function CoachesPage() {
         media={
           <RoutePhoneCluster
             images={[
-              { image: futureAssets.lifestyle.trainer, label: "Coach", treatment: "scene" },
-              { image: futureAssets.community.support.verifiedCoach, label: "Verified", treatment: "scene" },
+              { image: futureAssets.generated.coachAthleteCheckin, label: "Coach", treatment: "scene" },
+              { image: futureAssets.generated.communityCircuitLive, label: "Verified", treatment: "scene" },
               { image: futureAssets.app.simDiscoverCommunity, label: "Groups" },
             ]}
             label="FoFit coach surfaces"
@@ -79,7 +79,7 @@ export function CoachesPage() {
           <RoutePhoneCluster
             images={[
               { image: futureAssets.app.simDiscoverCommunity, label: "Discover" },
-              { image: futureAssets.app.profile, label: "Profile" },
+              { image: futureAssets.generated.coachAthleteCheckin, label: "Review", treatment: "scene" },
             ]}
             label="Coach discovery inside FoFit"
           />
@@ -116,7 +116,7 @@ export function CoachesPage() {
               label: "Verified Coach",
               title: "A human face behind the advice.",
               detail: "FoFit can show trusted coaches directly in the product ecosystem.",
-              image: futureAssets.community.support.verifiedCoach,
+              image: futureAssets.generated.coachAthleteCheckin,
             },
             {
               label: "Groups",

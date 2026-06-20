@@ -5,6 +5,7 @@ import {
   FounderStorySection,
   FutureThreePathsSection,
   HeroFutureOfFitness,
+  LiveMediaSection,
   NutritionPreview,
   PricingSection,
   ProductPillars,
@@ -20,6 +21,7 @@ export function HomePage() {
         title="FoFit — The Future of Fitness"
       />
       <HeroFutureOfFitness />
+      <LiveMediaSection />
       <ProductPillars />
       <SystemInMotion />
       <CommunityPreviewSection />

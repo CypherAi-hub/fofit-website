@@ -100,6 +100,20 @@ export const futureAssets = {
       },
     },
   },
+  generated: {
+    communityCircuitLive: {
+      alt: "FoFit athletes training together through a live gym circuit.",
+      src: "/images/generated/community-circuit-live.webp",
+    },
+    fuelPrepGlobal: {
+      alt: "FoFit performance meal prep with globally inspired bowls and training fuel.",
+      src: "/images/generated/fuel-prep-global.webp",
+    },
+    coachAthleteCheckin: {
+      alt: "FoFit coach and athlete reviewing training context after a workout.",
+      src: "/images/generated/coach-athlete-checkin.webp",
+    },
+  },
   lifestyle: {
     deadlift: {
       alt: "FoFit athlete preparing a deadlift in a dark training environment.",
@@ -185,13 +199,13 @@ export const communityPreviewCards: Array<{
   {
     label: "Reels",
     title: "Short-form movement that still feels premium.",
-    image: futureAssets.community.support.reelsMotion,
+    image: futureAssets.generated.communityCircuitLive,
     tone: "scene",
   },
   {
     label: "Profile",
     title: "Identity, streaks, and visible progress.",
-    image: futureAssets.app.profile,
+    image: futureAssets.app.simCommunity,
     tone: "phone",
   },
   {
@@ -203,7 +217,7 @@ export const communityPreviewCards: Array<{
   {
     label: "Verified Coach",
     title: "Real guidance with a human face behind it.",
-    image: futureAssets.community.support.verifiedCoach,
+    image: futureAssets.generated.coachAthleteCheckin,
     tone: "scene",
   },
 ] as const;
@@ -220,25 +234,25 @@ export const productPillars = [
     label: "Train",
     title: "Personalized plans and workout logging.",
     detail: "Plan the session, adjust the work, and keep progress attached to the real week.",
-    image: futureAssets.lifestyle.deadlift,
+    image: futureAssets.app.simTrain,
   },
   {
     label: "Nutrition",
     title: "Food logging, targets, and body metrics.",
     detail: "Track meals, calories, protein, and recovery fuel without separating food from training.",
-    image: futureAssets.lifestyle.nutrition,
+    image: futureAssets.generated.fuelPrepGlobal,
   },
   {
     label: "Cypher",
     title: "An AI coach that remembers your context.",
     detail: "Soreness, class, travel, practice, missed days, and goals stay part of the next decision.",
-    image: futureAssets.lifestyle.cypherOrb,
+    image: futureAssets.app.simCypher,
   },
   {
     label: "Community",
     title: "Feed, reels, groups, and verified coaches.",
     detail: "Find your people, follow trusted voices, join groups, and share progress without shame loops.",
-    image: futureAssets.lifestyle.groupCircuit,
+    image: futureAssets.generated.communityCircuitLive,
   },
 ] as const;
 
@@ -275,14 +289,14 @@ export const systemTabs = [
     label: "Reels",
     title: "Short-form content can become action.",
     detail: "Coach tips, saves, and try-workout moments turn inspiration into useful next steps.",
-    image: futureAssets.lifestyle.groupCircuit,
+    image: futureAssets.generated.communityCircuitLive,
     treatment: "scene",
   },
   {
     label: "Coach",
     title: "Verified coaches become trusted nodes.",
     detail: "Profiles, groups, Q&A, and programs give the community a real training backbone.",
-    image: futureAssets.lifestyle.trainer,
+    image: futureAssets.generated.coachAthleteCheckin,
     treatment: "scene",
   },
 ] as const;
@@ -427,7 +441,7 @@ export const futurePathCards: Array<{
       "A home base for people who want structure, progress, nutrition, and a community that keeps training moving.",
     bullets: ["Personal plan", "Food and body context", "Groups and feed"],
     cta: "Join as a member",
-    image: futureAssets.lifestyle.lifter,
+    image: futureAssets.generated.communityCircuitLive,
   },
   {
     role: "athlete",
@@ -437,7 +451,7 @@ export const futurePathCards: Array<{
       "FoFit keeps practice, soreness, class, and travel attached to the next training decision.",
     bullets: ["Sport context", "Readiness-aware sessions", "Performance profile"],
     cta: "Join as an athlete",
-    image: futureAssets.lifestyle.athlete,
+    image: futureAssets.app.simTrain,
   },
   {
     role: "coach",
@@ -447,7 +461,7 @@ export const futurePathCards: Array<{
       "A path for coaches to build trust, support communities, and deliver training without another spreadsheet.",
     bullets: ["Verified presence", "Programs and groups", "Coach/team path"],
     cta: "Join as a coach",
-    image: futureAssets.lifestyle.trainer,
+    image: futureAssets.generated.coachAthleteCheckin,
   },
 ];
 

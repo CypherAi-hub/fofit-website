@@ -108,9 +108,9 @@ export function ProductPage() {
         media={
           <RoutePhoneCluster
             images={[
-              { image: futureAssets.lifestyle.lifter, label: "Members", treatment: "scene" },
-              { image: futureAssets.lifestyle.athlete, label: "Athletes", treatment: "scene" },
-              { image: futureAssets.lifestyle.trainer, label: "Coaches", treatment: "scene" },
+              { image: futureAssets.generated.communityCircuitLive, label: "Members", treatment: "scene" },
+              { image: futureAssets.app.simTrain, label: "Athletes" },
+              { image: futureAssets.generated.coachAthleteCheckin, label: "Coaches", treatment: "scene" },
             ]}
             label="FoFit member, athlete, and coach paths"
           />

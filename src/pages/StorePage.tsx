@@ -50,9 +50,9 @@ export function StorePage() {
         media={
           <RoutePhoneCluster
             images={[
-              { image: futureAssets.app.workoutDetail, label: "Programs" },
-              { image: futureAssets.community.support.verifiedCoach, label: "Coach", treatment: "scene" },
-              { image: futureAssets.lifestyle.nutrition, label: "Fuel", treatment: "scene" },
+              { image: futureAssets.app.simTrain, label: "Programs" },
+              { image: futureAssets.generated.coachAthleteCheckin, label: "Coach", treatment: "scene" },
+              { image: futureAssets.generated.fuelPrepGlobal, label: "Fuel", treatment: "scene" },
             ]}
             label="FoFit store product logic"
           />
@@ -124,19 +124,19 @@ export function StorePage() {
               label: "Program",
               title: "Attached to training context.",
               detail: "The product should know what the program changes about your week.",
-              image: futureAssets.app.workoutDetail,
+              image: futureAssets.app.simTrain,
             },
             {
               label: "Guide",
               title: "Useful before the next decision.",
               detail: "Education should clarify training, fuel, or recovery at the moment it matters.",
-              image: futureAssets.lifestyle.recoveryLunge,
+              image: futureAssets.generated.fuelPrepGlobal,
             },
             {
               label: "Coach",
               title: "Backed by trusted humans.",
               detail: "Coach-created resources should carry visible trust and product relevance.",
-              image: futureAssets.community.support.verifiedCoach,
+              image: futureAssets.generated.coachAthleteCheckin,
             },
           ]}
         />
