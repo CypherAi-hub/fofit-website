@@ -279,3 +279,55 @@
   border: 1px solid var(--border);
   color: var(--text);
 }
+
+/* Linked Body Lab media (session detail) */
+.session-media {
+  display: grid;
+  gap: 0.5rem;
+}
+.session-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.5rem;
+}
+.session-media-thumb {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  display: grid;
+  place-items: center;
+}
+.session-media-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.session-media-fallback {
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+.session-media-play {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: #fff;
+  font-size: 0.9rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive polish */
+@media (max-width: 560px) {
+  .history-row {
+    flex-wrap: wrap;
+  }
+  .history-row__meta {
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+  .history-row__chevron {
+    display: none;
+  }
+}

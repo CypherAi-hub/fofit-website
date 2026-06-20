@@ -5,8 +5,11 @@ import { supabase } from "../lib/supabase";
 import { getSessionDetail } from "../features/training/trainingService";
 import { formatDateOnly } from "../features/training/adapter";
 import type { SetPerformance, WorkoutSessionDetail } from "../features/training/models";
+import { getSignedBodyMediaUrl, listBodyCheckInsForSession } from "../features/body-lab/bodyLabService";
 import { PageMeta } from "../components/layout/PageMeta";
 import "../features/training/history.css";
+
+type LinkedMedia = { id: string; url: string | null; hasVideo: boolean; date: string };
 
 const FEEL_LABEL: Record<string, string> = {
   too_easy: "Felt easy",
@@ -26,6 +29,7 @@ export function SessionDetailPage() {
   const { sessionId } = useParams<{ sessionId: string }>();
   const [state, setState] = useState<"loading" | "error" | "missing" | "ready">("loading");
   const [session, setSession] = useState<WorkoutSessionDetail | null>(null);
+  const [media, setMedia] = useState<LinkedMedia[]>([]);
 
   useEffect(() => {
     let alive = true;
@@ -45,6 +49,42 @@ export function SessionDetailPage() {
       })
       .catch(() => {
         if (alive) setState("error");
+      });
+    return () => {
+      alive = false;
+    };
+  }, [sessionId]);
+
+  // Linked Body Lab media (progress photos/videos captured with this session). Signed private URLs
+  // only — never raw storage paths; only the user's own media (RLS + the signed-URL owner check).
+  useEffect(() => {
+    let alive = true;
+    if (!sessionId) return;
+    void listBodyCheckInsForSession(supabase, sessionId)
+      .then(async (checkIns) => {
+        const items = await Promise.all(
+          checkIns.map(async (ci): Promise<LinkedMedia> => {
+            const photo = ci.media.find((m) => m.mediaType === "photo") ?? ci.media[0];
+            let url: string | null = null;
+            if (photo) {
+              try {
+                url = await getSignedBodyMediaUrl(supabase, photo.storagePath, 600);
+              } catch {
+                url = null;
+              }
+            }
+            return {
+              id: ci.id,
+              url,
+              hasVideo: ci.media.some((m) => m.mediaType === "video"),
+              date: ci.capturedAt,
+            };
+          }),
+        );
+        if (alive) setMedia(items);
+      })
+      .catch(() => {
+        if (alive) setMedia([]);
       });
     return () => {
       alive = false;
@@ -107,6 +147,24 @@ export function SessionDetailPage() {
               <section className="session-notes">
                 <span className="bodylab-field__label">Note</span>
                 <p>{session.notes}</p>
+              </section>
+            )}
+
+            {media.length > 0 && (
+              <section className="session-media">
+                <span className="bodylab-field__label">Progress media from this session</span>
+                <div className="session-media-grid">
+                  {media.map((m) => (
+                    <div key={m.id} className="session-media-thumb">
+                      {m.url ? (
+                        <img src={m.url} alt={`Progress media — ${formatDateOnly(m.date)}`} loading="lazy" />
+                      ) : (
+                        <span className="session-media-fallback">{m.hasVideo ? "Video" : "—"}</span>
+                      )}
+                      {m.hasVideo && <span className="session-media-play" aria-hidden>▶</span>}
+                    </div>
+                  ))}
+                </div>
               </section>
             )}
 
