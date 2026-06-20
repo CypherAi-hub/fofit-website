@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import type { BodyCheckIn, BodyMediaAsset } from "../types";
+import { BODY_MEASUREMENTS } from "../measurements";
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -97,6 +98,14 @@ export function BodyLabCompare({
       ? later.bodyFatMin - earlier.bodyFatMin
       : null;
 
+  // Measurement deltas, only for measurements present in BOTH check-ins (never fabricated).
+  const measurementDeltas = BODY_MEASUREMENTS.flatMap(({ key, label }) => {
+    const a = earlier.measurements?.[key];
+    const b = later.measurements?.[key];
+    if (a == null || b == null) return [];
+    return [{ label, value: fmtDelta(b - a, " cm") }];
+  });
+
   return (
     <div className="bodylab-viewer" role="dialog" aria-modal="true" onClick={onClose}>
       <div className="bodylab-compare" onClick={(e) => e.stopPropagation()}>
@@ -107,6 +116,9 @@ export function BodyLabCompare({
             {dWeight != null && <Delta label="Weight" value={fmtDelta(dWeight, " kg")} />}
             {dBodyFat != null && <Delta label="Body fat" value={fmtDelta(dBodyFat, "%", 0)} />}
             {sharedPose && <Delta label="Pose" value={sharedPose} />}
+            {measurementDeltas.map((d) => (
+              <Delta key={d.label} label={d.label} value={d.value} />
+            ))}
           </div>
         </div>
 

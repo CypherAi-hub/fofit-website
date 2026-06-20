@@ -7,6 +7,7 @@ import type {
   BrowserBodyMedia,
   UploadProgress,
 } from "../types";
+import { BODY_MEASUREMENTS, parseMeasurements } from "../measurements";
 
 const ACCEPTED = [
   "image/jpeg",
@@ -54,6 +55,7 @@ export function BodyLabUploadCard({
   const [bodyFat, setBodyFat] = useState("");
   const [note, setNote] = useState("");
   const [consent, setConsent] = useState(false);
+  const [measurements, setMeasurements] = useState<Record<string, string>>({});
   const [localError, setLocalError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -130,6 +132,7 @@ export function BodyLabUploadCard({
       bodyFatMax: bf.max,
       note: note.trim() || null,
       cypherAnalysisConsent: consent,
+      measurements: parseMeasurements(measurements),
     };
     const media: BrowserBodyMedia[] = items.map((i) => ({
       file: i.file,
@@ -144,6 +147,7 @@ export function BodyLabUploadCard({
       setBodyFat("");
       setNote("");
       setConsent(false);
+      setMeasurements({});
       if (inputRef.current) inputRef.current.value = "";
     }
   }
@@ -272,6 +276,28 @@ export function BodyLabUploadCard({
           disabled={uploading}
         />
       </label>
+
+      <div className="bodylab-field">
+        <span className="bodylab-field__label">Measurements (cm) — optional</span>
+        <div className="bodylab-measure-grid">
+          {BODY_MEASUREMENTS.map((m) => (
+            <label key={m.key} className="bodylab-measure">
+              <span>{m.label}</span>
+              <input
+                className="bodylab-input"
+                inputMode="decimal"
+                value={measurements[m.key] ?? ""}
+                onChange={(e) =>
+                  setMeasurements((cur) => ({ ...cur, [m.key]: e.target.value }))
+                }
+                placeholder="–"
+                disabled={uploading}
+                aria-label={`${m.label} in centimeters`}
+              />
+            </label>
+          ))}
+        </div>
+      </div>
 
       <label className="bodylab-consent">
         <input

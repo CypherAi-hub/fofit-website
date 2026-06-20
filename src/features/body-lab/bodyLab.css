@@ -536,3 +536,21 @@
   gap: 0.8rem;
   flex-wrap: wrap;
 }
+
+/* Measurements input grid */
+.bodylab-measure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(82px, 1fr));
+  gap: 0.5rem;
+}
+.bodylab-measure {
+  display: grid;
+  gap: 3px;
+}
+.bodylab-measure > span {
+  font-family: var(--font-label-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
