@@ -633,3 +633,28 @@
   font-size: 1.1rem;
   flex: 0 0 auto;
 }
+
+/* Empty-state tips */
+.bodylab-empty__tips {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+  text-align: left;
+  max-width: 30rem;
+}
+.bodylab-empty__tips li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+.bodylab-empty__tips li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  color: var(--blue);
+  font-size: 0.6rem;
+}
