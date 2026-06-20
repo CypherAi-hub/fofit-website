@@ -528,3 +528,11 @@
   display: grid;
   gap: 0.9rem;
 }
+
+.bodylab-trend__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
