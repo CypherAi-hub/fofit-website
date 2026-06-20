@@ -19,6 +19,26 @@ export const futureAssets = {
       alt: "FoFit Discover screen with workouts, meals, gyms, and recovery modules.",
       src: "/images/app/discover-home.webp",
     },
+    simDiscoverCommunity: {
+      alt: "Real FoFit simulator screenshot showing Discover community, training support, coaches, and bottom navigation.",
+      src: "/images/app/sim-discover-community.jpg",
+    },
+    simTrain: {
+      alt: "Real FoFit simulator screenshot showing the Train tab with today's training and workout actions.",
+      src: "/images/app/sim-train.jpg",
+    },
+    simCypher: {
+      alt: "Real FoFit simulator screenshot showing Cypher with athlete context and plan guidance.",
+      src: "/images/app/sim-cypher.jpg",
+    },
+    simNutrition: {
+      alt: "Real FoFit simulator screenshot showing the Nutrition surface with photo fuel and meal tracking.",
+      src: "/images/app/sim-nutrition.jpg",
+    },
+    simCommunity: {
+      alt: "Real FoFit simulator screenshot showing the Community surface inside the app.",
+      src: "/images/app/sim-community.jpg",
+    },
     cypherProposal: {
       alt: "FoFit Cypher proposal screen adapting a basketball guard plan.",
       src: "/images/app/cypher-proposal.webp",
@@ -122,6 +142,32 @@ export const futureAssets = {
       src: "/images/lifestyle/rest-bench.png",
     },
   },
+  nutrition: {
+    tandooriChicken: {
+      alt: "FoFit recipe image for Tandoori Chicken Rice Bowl.",
+      src: "/images/nutrition/tandoori-chicken-rice-bowl.jpg",
+    },
+    rajmaRice: {
+      alt: "FoFit recipe image for Rajma Rice Protein Bowl.",
+      src: "/images/nutrition/rajma-rice-protein-bowl.jpg",
+    },
+    misoSalmon: {
+      alt: "FoFit recipe image for Miso Salmon Rice Plate.",
+      src: "/images/nutrition/miso-salmon-rice-plate.jpg",
+    },
+    koreanBeef: {
+      alt: "FoFit recipe image for Korean-inspired beef rice bowl.",
+      src: "/images/nutrition/korean-beef-rice-bowl.jpg",
+    },
+    suyaBeef: {
+      alt: "FoFit recipe image for Suya-inspired beef rice bowl.",
+      src: "/images/nutrition/suya-beef-rice-bowl.jpg",
+    },
+    brazilianChicken: {
+      alt: "FoFit recipe image for Brazilian black bean chicken bowl.",
+      src: "/images/nutrition/brazilian-black-bean-chicken-bowl.jpg",
+    },
+  },
 } as const;
 
 export const communityPreviewCards: Array<{
@@ -133,7 +179,7 @@ export const communityPreviewCards: Array<{
   {
     label: "Feed",
     title: "Progress, replies, and daily momentum.",
-    image: futureAssets.app.trainHome,
+    image: futureAssets.app.simCommunity,
     tone: "phone",
   },
   {
@@ -150,9 +196,9 @@ export const communityPreviewCards: Array<{
   },
   {
     label: "Groups",
-    title: "Local energy and shared training context.",
-    image: futureAssets.community.support.groupCircuit,
-    tone: "scene",
+    title: "Discovery, groups, and coach paths.",
+    image: futureAssets.app.simDiscoverCommunity,
+    tone: "phone",
   },
   {
     label: "Verified Coach",
@@ -201,28 +247,28 @@ export const systemTabs = [
     label: "Train",
     title: "The plan starts with the day you actually have.",
     detail: "Workout detail, session flow, and set logging stay close enough to act on.",
-    image: futureAssets.app.workoutDetail,
+    image: futureAssets.app.simTrain,
     treatment: "phone",
   },
   {
     label: "Nutrition",
     title: "Fuel is connected to the work.",
     detail: "Photo meals, targets, and meal plans give Cypher better context for recovery.",
-    image: futureAssets.app.nutritionDashboard,
+    image: futureAssets.app.simNutrition,
     treatment: "phone",
   },
   {
     label: "Cypher",
     title: "Cypher adapts without erasing the goal.",
     detail: "When the week changes, Cypher explains the adjustment before the plan moves.",
-    image: futureAssets.app.cypherProposal,
+    image: futureAssets.app.simCypher,
     treatment: "phone",
   },
   {
     label: "Community",
     title: "People and groups live beside the plan.",
     detail: "Discover coaches, groups, challenges, events, and people training for the same thing.",
-    image: futureAssets.app.discoverHome,
+    image: futureAssets.app.simDiscoverCommunity,
     treatment: "phone",
   },
   {
@@ -254,6 +300,114 @@ export const nutritionSignals = [
   "Meal logging without losing context",
   "Targets that can adjust around training",
   "Cypher insight when fuel is behind",
+] as const;
+
+export const nutritionLibraryStats = [
+  {
+    value: "36",
+    label: "Bundled recipes",
+    detail: "The current loggable seed catalog ships locally with athlete-portion macros.",
+  },
+  {
+    value: "11",
+    label: "Recipe categories",
+    detail: "High-protein, breakfast, meal prep, smoothies, budget meals, athlete fuel, and more.",
+  },
+  {
+    value: "12",
+    label: "Country filters",
+    detail: "India, USA, Mexico, Japan, Mediterranean, South Korea, Caribbean, West Africa, Middle East, Thailand, Brazil, and Global.",
+  },
+  {
+    value: "45",
+    label: "Staple foods",
+    detail: "Offline food search covers common proteins, carbs, fruits, vegetables, dairy, and fats.",
+  },
+] as const;
+
+export const nutritionCountryRows = [
+  {
+    country: "India",
+    title: "Tandoori Chicken Rice Bowl",
+    detail: "Basmati rice, yogurt, cucumber tomato salad, cilantro, and 48g protein.",
+    image: futureAssets.nutrition.tandooriChicken,
+  },
+  {
+    country: "India",
+    title: "Rajma Rice Protein Bowl",
+    detail: "A budget-friendly kidney bean and rice plate with raita-style protein support.",
+    image: futureAssets.nutrition.rajmaRice,
+  },
+  {
+    country: "Japan",
+    title: "Miso Salmon Rice Plate",
+    detail: "Salmon, brown rice, broccoli, lemon, and a quick miso glaze.",
+    image: futureAssets.nutrition.misoSalmon,
+  },
+  {
+    country: "South Korea",
+    title: "Korean-Inspired Beef Rice Bowl",
+    detail: "Gochujang-style beef, rice, peppers, avocado, and greens.",
+    image: futureAssets.nutrition.koreanBeef,
+  },
+  {
+    country: "West Africa",
+    title: "Suya-Inspired Beef Rice Bowl",
+    detail: "Spiced beef, rice, beans, tomatoes, greens, and a peanut-lime finish.",
+    image: futureAssets.nutrition.suyaBeef,
+  },
+  {
+    country: "Brazil",
+    title: "Brazilian Black Bean Chicken Bowl",
+    detail: "Chicken, black beans, rice, corn, tomato salsa, greens, and avocado.",
+    image: futureAssets.nutrition.brazilianChicken,
+  },
+] as const;
+
+export const nutritionWorkflowRows = [
+  {
+    label: "Photo Fuel",
+    detail: "Snap or upload a plate, review the estimate, then log it without rebuilding the meal by hand.",
+  },
+  {
+    label: "Fuel Library",
+    detail: "Browse recipes by category, country filter, goal, macros, prep time, ingredients, and instructions.",
+  },
+  {
+    label: "Search + barcode",
+    detail: "Use the local staple search or barcode lookup when the food is not a FoFit recipe.",
+  },
+  {
+    label: "Repeat meals",
+    detail: "Save meals after logging so tomorrow's tracking is a tap instead of another full entry.",
+  },
+  {
+    label: "Plan + grocery",
+    detail: "Meal plans can feed a grocery list, so nutrition becomes a weekly system instead of a daily reset.",
+  },
+] as const;
+
+export const communitySurfaceRows = [
+  {
+    label: "Proof Feed",
+    detail: "Post progress, questions, strength work, meal prep, and recovery notes from the real Community surface.",
+  },
+  {
+    label: "For You / Following / Spaces",
+    detail: "The feed can separate broad discovery from people you follow and group-first community spaces.",
+  },
+  {
+    label: "People + groups",
+    detail: "Find regular fitness users, verified coaches, and interest groups like Beginner Strength or Meal Prep Ideas.",
+  },
+  {
+    label: "Replies + reactions",
+    detail: "Posts carry comments, reaction counts, and profile context so community feels like a product, not a poster.",
+  },
+  {
+    label: "Real-row standard",
+    detail: "Production community code keeps real rows first; demo seed content only fills empty development previews.",
+  },
 ] as const;
 
 export const futurePathCards: Array<{
@@ -308,7 +462,7 @@ export const futurePricingPlans = [
   },
   {
     name: "Student",
-    price: "$9.99/mo",
+    price: "$7.99/mo",
     audience: "Verified students building consistency around a real schedule.",
     features: ["Full FoFit system", "Student pricing", "Community access"],
     cta: "Join as a student",

@@ -1,17 +1,14 @@
-import workoutHome from "../assets/app-screens/workout-home.png";
-import cypherBrief from "../assets/app-screens/cypher-brief.png";
 import discoverPick from "../assets/app-screens/discover-pick.png";
-import discoverPlan from "../assets/app-screens/discover-plan.png";
 import nutritionTracking from "../assets/app-screens/nutrition-tracking.png";
 import nutritionScanning from "../assets/app-screens/nutrition-scanning.png";
 
 export const realAppScreens = {
   workoutHome: {
-    src: workoutHome,
+    src: "/images/app/train-home.webp",
     alt: "FoFit workout home showing today's protocol and Home Upper Push session.",
   },
   cypherBrief: {
-    src: cypherBrief,
+    src: "/images/app/cypher-chat.webp",
     alt: "FoFit workout home with a Cypher AI morning brief above the session card.",
   },
   discoverPick: {
@@ -19,7 +16,7 @@ export const realAppScreens = {
     alt: "FoFit discover screen with today's pick — Glutes & Core — and muscle group tags.",
   },
   discoverPlan: {
-    src: discoverPlan,
+    src: "/images/app/workout-detail.webp",
     alt: "FoFit discover screen showing plan-based session cards: Chest & Tris and Back & Shoulders.",
   },
   nutritionTracking: {

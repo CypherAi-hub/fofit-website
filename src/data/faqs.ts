@@ -23,7 +23,7 @@ export const faqGroups: FAQGroup[] = [
       {
         question: "Is it free?",
         answer:
-          "Starter is always free for basic logging, starter plans, and limited Cypher. Student is $9.99/month and Standard is $14.99/month for the full FoFit system.",
+          "Starter is always free for basic logging, starter plans, and limited Cypher. Student is $7.99/month and Standard is $14.99/month for the full FoFit system.",
       },
       {
         question: "Who is it for?",
@@ -68,7 +68,7 @@ export const faqGroups: FAQGroup[] = [
       {
         question: "Is there a discount for students or military?",
         answer:
-          "Yes. Student is $9.99/mo for verified students. Additional verified pricing can be evaluated as the platform opens more broadly.",
+          "Yes. Student is $7.99/mo for verified students. Additional verified pricing can be evaluated as the platform opens more broadly.",
       },
       {
         question: "What are Cypher Tokens?",

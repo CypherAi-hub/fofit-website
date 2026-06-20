@@ -31,7 +31,7 @@ export const pricingPlans: PricingPlan[] = [
   {
     name: "Student",
     tagline: "Verified student access",
-    monthly: "$9.99",
+    monthly: "$7.99",
     annual: "$99",
     annualNote: "Student annual option planned",
     cta: "Join as a student",
@@ -130,11 +130,11 @@ export type VerifiedDiscount = {
 export const verifiedDiscounts: VerifiedDiscount[] = [
   {
     name: "Standard · Student",
-    price: "$9.99/mo",
+    price: "$7.99/mo",
     annual: "$99/yr planned",
     eligibility: "Verified .edu email or SheerID",
     description: "For verified students.",
-    discountPct: 33,
+    discountPct: 47,
   },
   {
     name: "Standard · Hero",

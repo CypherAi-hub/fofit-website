@@ -29,7 +29,15 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
     >
       <aside aria-label="Mobile menu" className="mobile-nav__panel">
         <div className="mobile-nav__header">
-          <div className="brand-mark">FoFit</div>
+          <div className="brand">
+            <img
+              alt=""
+              aria-hidden="true"
+              className="brand-logo"
+              src="/images/marketing/fofit-mark.webp"
+            />
+            <div className="brand-mark">FoFit</div>
+          </div>
           <button
             aria-label="Close menu"
             className="nav-toggle"

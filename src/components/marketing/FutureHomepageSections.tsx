@@ -2,12 +2,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   communityPreviewCards,
+  communitySurfaceRows,
   cypherMemorySignals,
   futureAssets,
   futureHeroTrust,
   futurePathCards,
   futurePricingPlans,
+  nutritionCountryRows,
+  nutritionLibraryStats,
   nutritionSignals,
+  nutritionWorkflowRows,
   productPillars,
   systemTabs,
 } from "../../data/future-homepage";
@@ -19,39 +23,36 @@ import { EarlyAccessButton } from "./EarlyAccessButton";
 
 export function HeroFutureOfFitness() {
   return (
-    <section className="future-hero">
-      <video
-        aria-hidden="true"
-        autoPlay
-        className="future-hero__video"
-        loop
-        muted
-        playsInline
-        poster="/hero-poster.jpg"
-        preload="metadata"
-      >
-        <source src="/hero.av1.mp4" type='video/mp4; codecs="av01.0.05M.08"' />
-        <source src="/hero.mp4" type="video/mp4" />
-      </video>
-      <div className="future-hero__scrim" aria-hidden="true" />
+    <section className="future-hero editorial-hero">
+      <div className="container editorial-goal-band" aria-label="FoFit goals">
+        <div>
+          <span>START WHERE YOU ARE</span>
+          <h2>Pick the lane FoFit should personalize first.</h2>
+          <p>Training, food, Cypher, and community stay connected after that.</p>
+        </div>
+        <div className="editorial-goal-band__choices">
+          <a href="#training">Build strength</a>
+          <a href="#nutrition">Eat smarter</a>
+          <a href="#cypher">Ask Cypher</a>
+          <a href="#community">Find community</a>
+        </div>
+      </div>
 
-      <div className="container future-hero__inner">
+      <div className="container future-hero__inner editorial-hero__inner">
         <Revealer className="future-hero__copy">
-          <h1>The future of fitness is personal.</h1>
+          <h1>Training, food, Cypher, and community in one loop.</h1>
+          <div className="editorial-hero__meta">
+            FoFit founding access <span aria-hidden="true">•</span> Real product surfaces
+          </div>
           <p>
-            FoFit brings AI coaching, training, nutrition, and community into
-            one app — so you always know what to do next.
+            FoFit keeps the week connected: what you trained, what you ate,
+            what changed, what Cypher remembers, and who is moving with you.
           </p>
           <div className="future-hero__actions">
             <EarlyAccessButton size="lg">Join founding 250</EarlyAccessButton>
             <a className="button button--secondary button--lg" href="#system-in-motion">
               Explore the product
             </a>
-          </div>
-          <div className="future-hero__mobile-proof" aria-label="FoFit mobile app proof">
-            <img alt={futureAssets.app.trainHome.alt} src={futureAssets.app.trainHome.src} />
-            <img alt={futureAssets.app.cypherChat.alt} src={futureAssets.app.cypherChat.src} />
-            <img alt={futureAssets.app.nutritionDashboard.alt} src={futureAssets.app.nutritionDashboard.src} />
           </div>
           <div className="future-hero__trust" aria-label="FoFit launch focus">
             {futureHeroTrust.map((item) => (
@@ -60,27 +61,30 @@ export function HeroFutureOfFitness() {
           </div>
         </Revealer>
 
-        <Revealer className="future-hero__visual" delay="1">
-          <div className="future-phone-stack" aria-label="FoFit app preview">
+        <Revealer className="future-hero__visual editorial-product-hero" delay="1">
+          <div className="editorial-product-hero__media-row">
+            <video
+              aria-label="FoFit training atmosphere video"
+              autoPlay
+              className="editorial-product-hero__video"
+              loop
+              muted
+              playsInline
+              poster="/hero-poster.jpg"
+              preload="metadata"
+            >
+              <source src="/hero.mp4" type="video/mp4" />
+            </video>
             <img
-              alt={futureAssets.app.trainHome.alt}
-              className="future-phone-stack__phone future-phone-stack__phone--left"
-              src={futureAssets.app.trainHome.src}
-            />
-            <img
-              alt={futureAssets.app.cypherChat.alt}
-              className="future-phone-stack__phone future-phone-stack__phone--center"
-              src={futureAssets.app.cypherChat.src}
-            />
-            <img
-              alt={futureAssets.app.nutritionDashboard.alt}
-              className="future-phone-stack__phone future-phone-stack__phone--right"
-              src={futureAssets.app.nutritionDashboard.src}
+              alt={futureAssets.lifestyle.deadlift.alt}
+              className="editorial-product-hero__photo"
+              src={futureAssets.lifestyle.deadlift.src}
             />
           </div>
-          <div className="future-hero__community-proof" aria-label="FoFit community surfaces preview">
-            <img alt={futureAssets.app.discoverHome.alt} src={futureAssets.app.discoverHome.src} />
-            <img alt={futureAssets.app.profile.alt} src={futureAssets.app.profile.src} />
+          <div className="editorial-product-hero__screens" aria-label="FoFit app preview">
+            <img alt={futureAssets.app.simTrain.alt} src={futureAssets.app.simTrain.src} />
+            <img alt={futureAssets.app.simCypher.alt} src={futureAssets.app.simCypher.src} />
+            <img alt={futureAssets.app.simNutrition.alt} src={futureAssets.app.simNutrition.src} />
           </div>
         </Revealer>
       </div>
@@ -89,31 +93,40 @@ export function HeroFutureOfFitness() {
 }
 
 export function ProductPillars() {
-  const handlePointerMove = usePointerGlow();
-
   return (
-    <section className="future-section future-pillars">
-      <div className="container">
+    <section className="future-section future-pillars editorial-takeaways" id="training">
+      <div className="container editorial-article-grid">
         <Revealer className="future-section__heading">
-          <span className="lp-kicker">The FoFit OS</span>
-          <h2>Your coach, your plan, your food, and your people.</h2>
+          <h2>What FoFit is actually built around.</h2>
           <p>
-            FoFit is not just a workout tracker. It is the fitness system that
-            keeps the next move connected to the life around it.
+            The product should show its own spine: real app screens, real media,
+            and a loop that connects the decisions people make every day.
           </p>
         </Revealer>
-        <div className="future-pillars__grid">
-          {productPillars.map((pillar, index) => (
-            <Revealer delay={String(Math.min(index, 3)) as "0" | "1" | "2" | "3"} key={pillar.label}>
-              <article className="future-card future-pillar-card" onPointerMove={handlePointerMove}>
-                <img alt={pillar.image.alt} src={pillar.image.src} />
-                <span>{pillar.label}</span>
-                <h3>{pillar.title}</h3>
-                <p>{pillar.detail}</p>
-              </article>
-            </Revealer>
-          ))}
-        </div>
+        <Revealer className="editorial-takeaways__list" delay="1">
+          <ul>
+            {productPillars.map((pillar) => (
+              <li key={pillar.label}>
+                <strong>{pillar.label}</strong>
+                <span>{pillar.detail}</span>
+              </li>
+            ))}
+            <li>
+              <strong>Adaptive loop</strong>
+              <span>
+                The next recommendation should reflect the user&apos;s logged
+                work, food, soreness, schedule, and preferences.
+              </span>
+            </li>
+            <li>
+              <strong>Product proof</strong>
+              <span>
+                FoFit needs to show real app surfaces first, with polished
+                imagery supporting the product instead of replacing it.
+              </span>
+            </li>
+          </ul>
+        </Revealer>
       </div>
     </section>
   );
@@ -124,28 +137,28 @@ export function SystemInMotion() {
   const active = systemTabs[activeIndex];
 
   return (
-    <section className="future-section future-system-motion" id="system-in-motion">
+    <section className="future-section future-system-motion editorial-toc-section" id="system-in-motion">
       <div className="container future-system-motion__inner">
-        <Revealer className="future-system-motion__copy">
-          <span className="lp-kicker">Product in motion</span>
-          <h2>One system. Six surfaces that keep feeding each other.</h2>
+        <Revealer className="future-system-motion__copy editorial-toc">
+          <h2>Inside the FoFit loop</h2>
           <p>
-            The public story has to show the actual app: training, nutrition,
-            Cypher, community, reels, and coach trust all working as one.
+            FoFit should read like a complete coaching system, with each
+            surface explaining how the next decision gets better.
           </p>
-          <div className="future-system-tabs" aria-label="FoFit product surfaces">
+          <ol className="future-system-tabs" aria-label="FoFit product surfaces">
             {systemTabs.map((tab, index) => (
-              <button
-                aria-pressed={index === activeIndex}
-                className={index === activeIndex ? "is-active" : ""}
-                key={tab.label}
-                onClick={() => setActiveIndex(index)}
-                type="button"
-              >
-                {tab.label}
-              </button>
+              <li key={tab.label}>
+                <button
+                  aria-pressed={index === activeIndex}
+                  className={index === activeIndex ? "is-active" : ""}
+                  onClick={() => setActiveIndex(index)}
+                  type="button"
+                >
+                  {tab.title}
+                </button>
+              </li>
             ))}
-          </div>
+          </ol>
         </Revealer>
 
         <Revealer className="future-system-preview" delay="1">
@@ -181,6 +194,14 @@ export function CommunityPreviewSection() {
             <span>Reels</span>
             <span>Verified coaches</span>
           </div>
+          <div className="future-community__feature-list" aria-label="Real FoFit community features">
+            {communitySurfaceRows.map((row) => (
+              <article key={row.label}>
+                <strong>{row.label}</strong>
+                <p>{row.detail}</p>
+              </article>
+            ))}
+          </div>
         </Revealer>
 
         <Revealer className="future-community__gallery" delay="1">
@@ -199,10 +220,10 @@ export function CommunityPreviewSection() {
             </div>
             <div className="future-community-feature__media">
               <figure className="future-community-shot future-community-shot--primary">
-                <img alt={futureAssets.app.discoverHome.alt} src={futureAssets.app.discoverHome.src} />
+                <img alt={futureAssets.app.simDiscoverCommunity.alt} src={futureAssets.app.simDiscoverCommunity.src} />
               </figure>
               <figure className="future-community-shot future-community-shot--secondary">
-                <img alt={futureAssets.app.profile.alt} src={futureAssets.app.profile.src} />
+                <img alt={futureAssets.app.simCommunity.alt} src={futureAssets.app.simCommunity.src} />
               </figure>
             </div>
           </article>
@@ -229,7 +250,7 @@ export function CommunityPreviewSection() {
 
 export function CypherMemorySection() {
   return (
-    <section className="future-section future-cypher">
+    <section className="future-section future-cypher" id="cypher">
       <div className="container future-cypher__inner">
         <Revealer className="future-device-pair future-device-pair--with-scene">
           <img
@@ -238,14 +259,14 @@ export function CypherMemorySection() {
             src={futureAssets.lifestyle.cypherOrb.src}
           />
           <img
-            alt={futureAssets.app.cypherProposal.alt}
+            alt={futureAssets.app.simTrain.alt}
             className="future-device-pair__phone future-device-pair__phone--back"
-            src={futureAssets.app.cypherProposal.src}
+            src={futureAssets.app.simTrain.src}
           />
           <img
-            alt={futureAssets.app.cypherChat.alt}
+            alt={futureAssets.app.simCypher.alt}
             className="future-device-pair__phone future-device-pair__phone--front"
-            src={futureAssets.app.cypherChat.src}
+            src={futureAssets.app.simCypher.src}
           />
         </Revealer>
 
@@ -270,7 +291,7 @@ export function CypherMemorySection() {
 
 export function NutritionPreview() {
   return (
-    <section className="future-section future-nutrition">
+    <section className="future-section future-nutrition" id="nutrition">
       <div className="container future-nutrition__inner">
         <Revealer className="future-nutrition__copy">
           <span className="lp-kicker">Nutrition</span>
@@ -293,9 +314,9 @@ export function NutritionPreview() {
             src={futureAssets.lifestyle.nutrition.src}
           />
           <img
-            alt={futureAssets.app.nutritionDashboard.alt}
+            alt={futureAssets.app.simNutrition.alt}
             className="future-nutrition__phone future-nutrition__phone--front"
-            src={futureAssets.app.nutritionDashboard.src}
+            src={futureAssets.app.simNutrition.src}
           />
           <img
             alt={futureAssets.app.fuelPlan.alt}
@@ -303,6 +324,55 @@ export function NutritionPreview() {
             src={futureAssets.app.fuelPlan.src}
           />
         </Revealer>
+      </div>
+
+      <div className="container future-nutrition-library">
+        <Revealer className="future-nutrition-library__intro">
+          <span className="lp-kicker">Fuel Library</span>
+          <h3>Food is not just a macro box.</h3>
+          <p>
+            The nutrition system has a real recipe catalog, country filters,
+            staple food search, photo logging, repeat meals, and grocery flow.
+            The point is to help people find food they will actually eat.
+          </p>
+        </Revealer>
+
+        <Revealer className="future-nutrition-stats" delay="1">
+          {nutritionLibraryStats.map((stat) => (
+            <article className="future-card future-nutrition-stat" key={stat.label}>
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+              <p>{stat.detail}</p>
+            </article>
+          ))}
+        </Revealer>
+
+        <div className="future-nutrition-depth">
+          <Revealer className="future-recipe-grid" delay="1">
+            {nutritionCountryRows.map((recipe) => (
+              <article className="future-recipe-card" key={`${recipe.country}-${recipe.title}`}>
+                <img alt={recipe.image.alt} src={recipe.image.src} />
+                <div>
+                  <span>{recipe.country}</span>
+                  <h4>{recipe.title}</h4>
+                  <p>{recipe.detail}</p>
+                </div>
+              </article>
+            ))}
+          </Revealer>
+
+          <Revealer className="future-nutrition-workflow" delay="2">
+            <h4>How logging turns into coaching context</h4>
+            <ul>
+              {nutritionWorkflowRows.map((row) => (
+                <li key={row.label}>
+                  <strong>{row.label}</strong>
+                  <span>{row.detail}</span>
+                </li>
+              ))}
+            </ul>
+          </Revealer>
+        </div>
       </div>
     </section>
   );

@@ -17,6 +17,12 @@ export function Navbar() {
       <header className="site-header">
         <div className="container site-header__inner">
           <NavLink aria-label="FoFit home" className="brand" to="/">
+            <img
+              alt=""
+              aria-hidden="true"
+              className="brand-logo"
+              src="/images/marketing/fofit-mark.webp"
+            />
             <span className="brand-mark">FoFit</span>
           </NavLink>
           <nav aria-label="Main" className="site-nav">
