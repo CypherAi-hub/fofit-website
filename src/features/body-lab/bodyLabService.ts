@@ -68,22 +68,27 @@ async function requireUser(supabase: SupabaseClient) {
   return user;
 }
 
+// Clears a draft's partial media (storage + rows) so a retry re-uploads clean. Propagates
+// errors (review): swallowing a failed row-delete leaves stale rows → media.length doubles →
+// duplicate media reported as success. The check-in row reset happens in the reuse branch.
 async function clearDraftAssets(supabase: SupabaseClient, checkInId: string): Promise<void> {
-  const { data: assets } = await supabase
+  const { data: assets, error: selErr } = await supabase
     .from("body_media_assets")
     .select("storage_path")
     .eq("check_in_id", checkInId);
+  if (selErr) throw selErr;
   const paths = (assets ?? [])
     .map((a) => String((a as Record<string, unknown>).storage_path))
     .filter(Boolean);
   if (paths.length > 0) {
-    await supabase.storage.from(BODY_MEDIA_BUCKET).remove(paths);
+    const { error: rmErr } = await supabase.storage.from(BODY_MEDIA_BUCKET).remove(paths);
+    if (rmErr) throw rmErr;
   }
-  await supabase.from("body_media_assets").delete().eq("check_in_id", checkInId);
-  await supabase
-    .from("body_check_ins")
-    .update({ status: "uploading", failure_reason: null })
-    .eq("id", checkInId);
+  const { error: delErr } = await supabase
+    .from("body_media_assets")
+    .delete()
+    .eq("check_in_id", checkInId);
+  if (delErr) throw delErr;
 }
 
 async function createOrReuseDraft(
@@ -103,10 +108,29 @@ async function createOrReuseDraft(
     // Already-complete (a verify-fail retry, or a duplicate request): return as-is so the caller
     // short-circuits to the ready check-in. NEVER clear a ready check-in's media.
     if (existing.status === "ready") return existing as Record<string, unknown>;
-    // Otherwise it's a partial/failed attempt: clear partial assets (storage + rows) + reset so
-    // the re-upload starts clean (otherwise finalize's media-count check never matches — review).
+    // Partial/failed attempt: clear partial assets, then REFRESH the scalar fields from the
+    // (possibly edited) draft — an edit-then-retry must persist the NEW weight/note/kind, not the
+    // first attempt's (review) — and reset status so the re-upload starts clean.
     await clearDraftAssets(supabase, String(existing.id));
-    return { ...(existing as Record<string, unknown>), status: "uploading" };
+    const { data: reused, error: reuseError } = await supabase
+      .from("body_check_ins")
+      .update({
+        kind: draft.kind,
+        workout_session_id: draft.workoutSessionId ?? null,
+        weight_kg: draft.weightKg ?? null,
+        body_fat_min: draft.bodyFatMin ?? null,
+        body_fat_max: draft.bodyFatMax ?? null,
+        measurements: draft.measurements ?? null,
+        note: draft.note?.trim() || null,
+        cypher_analysis_consent: draft.cypherAnalysisConsent ?? false,
+        status: "uploading",
+        failure_reason: null,
+      })
+      .eq("id", String(existing.id))
+      .select("*")
+      .single();
+    if (reuseError) throw reuseError;
+    return reused as Record<string, unknown>;
   }
 
   const { data, error } = await supabase
