@@ -1,130 +1,167 @@
 import { CTASection } from "../components/marketing/CTASection";
-import { ChapterIntro } from "../components/marketing/ChapterIntro";
-import { DeviceFigure } from "../components/marketing/DeviceFigure";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { EditorialHeading } from "../components/ui/EditorialHeading";
-import { Card } from "../components/ui/Card";
-import { nutritionFigure, progressFigureAsset, transcriptFigure } from "../data/editorial";
-import { coreFeatures } from "../data/platform";
+import {
+  RouteCardGrid,
+  RouteFeatureLedger,
+  RoutePhoneCluster,
+  RouteSection,
+  RouteSplitProof,
+  RouteStatGrid,
+} from "../components/marketing/RouteProofSections";
+import { futureAssets, cypherMemorySignals } from "../data/future-homepage";
+
+const trainingStats = [
+  {
+    value: "Plan",
+    label: "Today's work",
+    detail: "The Train surface starts with the day, readiness, and next session context.",
+  },
+  {
+    value: "Log",
+    label: "Session flow",
+    detail: "Workout detail and set logging stay close enough to act on during training.",
+  },
+  {
+    value: "Adapt",
+    label: "Cypher adjustments",
+    detail: "The coach can explain changes around soreness, missed days, or sport load.",
+  },
+  {
+    value: "Review",
+    label: "Progress context",
+    detail: "Volume, streaks, performance, and notes become inputs for the next plan.",
+  },
+] as const;
+
+const trainingRows = [
+  {
+    label: "Workout detail",
+    title: "The session is concrete before it starts.",
+    detail: "Exercise order, block intent, time demand, and workout context are visible before the first set.",
+  },
+  {
+    label: "Active logging",
+    title: "Set work stays inside the flow.",
+    detail: "Active workout screens keep logging, rest, substitutions, and notes in the same training moment.",
+  },
+  {
+    label: "Recovery-aware",
+    title: "The next lift respects the last one.",
+    detail: "Soreness and recovery context are treated as planning inputs, not post-workout trivia.",
+  },
+  {
+    label: "Athlete context",
+    title: "Practice and conditioning matter.",
+    detail: "Sport, class, travel, and conditioning load can change what makes sense today.",
+  },
+] as const;
+
+const trainingCards = [
+  {
+    label: "Train Home",
+    title: "Today starts with the actual plan.",
+    detail: "The top-level training surface shows the session, readiness, and next action.",
+    image: futureAssets.app.simTrain,
+  },
+  {
+    label: "Workout Detail",
+    title: "The workout has enough context to trust.",
+    detail: "Blocks and intent make the workout easier to start and easier to adjust.",
+    image: futureAssets.app.workoutDetail,
+  },
+  {
+    label: "Active Workout",
+    title: "Logging stays practical during the set.",
+    detail: "The active session is built for doing the work, not managing a spreadsheet.",
+    image: futureAssets.app.activeWorkout,
+  },
+] as const;
 
 export function FeaturesPage() {
   return (
     <>
       <PageMeta
-        description="Explore planning, guidance, progress, exercise support, recovery logic, and nutrition as connected FoFit modules instead of disconnected features."
-        title="FoFit Features | Platform Depth Across Training and Guidance"
+        description="FoFit Training connects plans, workout logging, recovery-aware progression, and Cypher coaching around the real training week."
+        title="FoFit Training | Personalized Plans, Logging, and Recovery"
       />
       <PageHero
         actions={[
-          { label: "Join the waitlist", intent: "waitlist" },
-          { label: "Read the product story", to: "/product", variant: "secondary" },
+          { label: "Join founding 250", intent: "waitlist" },
+          { label: "See Cypher", to: "/product", variant: "secondary" },
         ]}
-        compact
-        description="Every module earns its place by making another one sharper."
-        eyebrow="Features"
+        description="Training should start from the day you actually have: the session, the soreness, the schedule, the equipment, and the goal."
+        eyebrow="Training"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simTrain, label: "Today" },
+              { image: futureAssets.app.workoutDetail, label: "Workout" },
+              { image: futureAssets.app.activeWorkout, label: "Log" },
+            ]}
+            label="FoFit training screens"
+          />
+        }
         title={
-          <EditorialHeading accent="clutter" as="span" className="editorial-heading--compact">
-            {"Modular depth.\nNo feature {italic}."}
-          </EditorialHeading>
+          <>
+            The plan starts with the day you actually have.
+          </>
         }
       />
 
-      <section className="page-section editorial-section">
-        <div className="container">
-          <ChapterIntro
-            description="Planning, guidance, progress, execution, recovery, nutrition. Six responsibilities, each with a specific job."
-            index="01"
-            label="Modules"
-            title={
-              <>
-                Every module sharpens the <em>next</em> decision.
-              </>
-            }
+      <RouteSection
+        description="This route now shows the real training surface instead of generic feature promises."
+        kicker="Training System"
+        title="Plan, log, adapt, and review."
+      >
+        <RouteStatGrid stats={[...trainingStats]} />
+      </RouteSection>
+
+      <RouteSection
+        className="route-section--soft"
+        description="A training page needs product proof: the home plan, workout detail, and active logging surfaces."
+        kicker="Real UI"
+        title="What the training loop looks like."
+      >
+        <RouteCardGrid cards={[...trainingCards]} />
+      </RouteSection>
+
+      <RouteSplitProof
+        description="Cypher is strongest when it remembers the parts of the week that usually disappear from a workout tracker."
+        kicker="Cypher Context"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simCypher, label: "Cypher" },
+              { image: futureAssets.lifestyle.athlete, label: "Athlete load", treatment: "scene" },
+            ]}
+            label="Cypher training context"
           />
-          <div className="feature-ledger">
-            {coreFeatures.map((feature, index) => (
-              <article className="feature-ledger__item reveal" key={feature.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <p>{feature.kicker}</p>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+        }
+        rows={cypherMemorySignals.map((signal) => ({
+          label: "Signal",
+          title: signal,
+          detail: "This stays attached to the next training decision instead of becoming a forgotten note.",
+        }))}
+        title="Training context should survive the week."
+      />
 
-      <section className="page-section editorial-section editorial-section--tight">
-        <div className="container split-layout split-layout--editorial">
-          <div className="content-stack reveal">
-            <span className="eyebrow">Recovery and readiness</span>
-            <h2 className="section-title">Recovery logic should change the next call, not just decorate a dashboard.</h2>
-            <p className="section-description">
-              Readiness, training stress, and recovery quality belong in the same conversation. Cypher reads all three before the next session is set.
-            </p>
-          </div>
-          <DeviceFigure asset={progressFigureAsset} className="split-layout__figure" />
-        </div>
-      </section>
-
-      <section className="page-section editorial-section editorial-section--tight">
-        <div className="container split-layout split-layout--editorial">
-          <DeviceFigure asset={transcriptFigure} className="split-layout__figure" />
-          <Card className="spotlight-card reveal editorial-card">
-            <h3>What recovery logic actually does</h3>
-            <ul className="check-list">
-              <li>Translate recovery context into practical training decisions</li>
-              <li>Protect session quality when fatigue is higher than expected</li>
-              <li>Keep progression moving without pushing blindly</li>
-            </ul>
-          </Card>
-        </div>
-      </section>
-
-      <section className="page-section editorial-section editorial-section--tight">
-        <div className="container split-layout split-layout--editorial">
-          <Card className="spotlight-card reveal editorial-card">
-            <h3>Nutrition as part of the system</h3>
-            <ul className="check-list">
-              <li>Direction tied to training demand, not generic macro rules</li>
-              <li>Enough structure to support goals without making the app heavier</li>
-              <li>A clear bridge between daily behavior and long-term progress</li>
-            </ul>
-          </Card>
-          <div className="content-stack reveal">
-            <span className="eyebrow">Nutrition</span>
-            <h2 className="section-title">Nutrition belongs inside the training loop.</h2>
-            <p className="section-description">
-              Cypher reads training demand and points at the macro adjustments that keep the block moving.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="page-section editorial-section editorial-section--tight">
-        <div className="container split-layout split-layout--editorial">
-          <div className="content-stack reveal">
-            <span className="eyebrow">Guidance</span>
-            <h2 className="section-title">The conversation should stay inside the product.</h2>
-            <p className="section-description">
-              Cypher is not a separate chatbot garnish. It is part of the workout, the plan, and the review loop.
-            </p>
-          </div>
-          <DeviceFigure asset={nutritionFigure} className="split-layout__figure" />
-        </div>
-      </section>
+      <RouteSection
+        description="These are the jobs the Training surface needs to do every day for the product to feel useful."
+        kicker="Feature Depth"
+        title="Real features, not feature labels."
+      >
+        <RouteFeatureLedger rows={[...trainingRows]} />
+      </RouteSection>
 
       <CTASection
-        description="Join the waitlist. Every module points back to the same training system."
-        pills={["Planning", "Tracking", "Recovery", "Nutrition"]}
+        description="Join founding 250 and help tune FoFit around real training weeks."
+        pills={["Plan", "Log", "Adapt", "Review"]}
         title={
           <>
-            A platform built for
+            Train the day.
             <br />
-            the full picture of training.
+            Keep the week connected.
           </>
         }
       />

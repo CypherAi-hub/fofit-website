@@ -4,7 +4,13 @@ import { PageMeta } from "../components/layout/PageMeta";
 import { Button } from "../components/ui/Button";
 import { Revealer } from "../components/motion/Revealer";
 import { BetaAccessForm } from "../components/marketing/BetaAccessForm";
+import {
+  RouteFeatureLedger,
+  RoutePhoneCluster,
+  RouteSection,
+} from "../components/marketing/RouteProofSections";
 import { BETA_MODE, TESTFLIGHT_URL, deviceCanUseTestFlight } from "../data/beta";
+import { futureAssets } from "../data/future-homepage";
 import type { BetaPayload } from "../lib/beta";
 
 /**
@@ -120,9 +126,18 @@ export function BetaPage() {
         title="Join the FoFit iOS Beta | TestFlight Early Access"
       />
       <PageHero
-        compact
         description="Get FoFit on your iPhone before launch, train with Cypher, and tell us what to fix. Beta spots are limited and every piece of feedback gets read."
         eyebrow="iOS Beta"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simTrain, label: "Train" },
+              { image: futureAssets.app.simCypher, label: "Cypher" },
+              { image: futureAssets.app.simNutrition, label: "Nutrition" },
+            ]}
+            label="FoFit beta app surfaces"
+          />
+        }
         title={
           <>
             Test FoFit
@@ -131,6 +146,37 @@ export function BetaPage() {
           </>
         }
       />
+
+      <RouteSection
+        description="The beta is an actual product trial: train, fuel, ask Cypher, and tell us what was confusing."
+        kicker="Beta Focus"
+        title="What early testers are helping prove."
+      >
+        <RouteFeatureLedger
+          rows={[
+            {
+              label: "Train",
+              title: "Does the plan make sense on a real day?",
+              detail: "We need feedback on session clarity, workout flow, and whether the next action is obvious.",
+            },
+            {
+              label: "Nutrition",
+              title: "Does food logging stay connected?",
+              detail: "Photo Fuel, targets, repeat meals, and fuel plans should support training without becoming chores.",
+            },
+            {
+              label: "Cypher",
+              title: "Does the coach remember useful context?",
+              detail: "Soreness, missed days, practice, class, and meals should show up in better next decisions.",
+            },
+            {
+              label: "Community",
+              title: "Does the product feel less lonely?",
+              detail: "Feed, groups, replies, and coach trust need to feel focused rather than noisy.",
+            },
+          ]}
+        />
+      </RouteSection>
 
       <section className="lp-section">
         <div className="container">

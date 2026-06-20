@@ -1,124 +1,164 @@
 import { CTASection } from "../components/marketing/CTASection";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { Card } from "../components/ui/Card";
+import {
+  RouteCardGrid,
+  RouteFeatureLedger,
+  RoutePhoneCluster,
+  RouteSection,
+  RouteSplitProof,
+} from "../components/marketing/RouteProofSections";
+import { futureAssets } from "../data/future-homepage";
 import { teamsTiers } from "../data/pricing";
 
 const TEAMS_DEMO_MAILTO = "mailto:teams@fofit.app?subject=FoFit%20Teams%20demo";
 
-const teamUseCases = [
+const teamRows = [
   {
-    title: "Schools and athletic programs",
-    description:
-      "A cleaner system for consistent training structures, group momentum, and broader performance visibility.",
+    label: "Schools",
+    title: "Programs need shared structure.",
+    detail: "Athletic departments and campus groups need visibility without flattening every athlete into the same plan.",
   },
   {
-    title: "Clubs and communities",
-    description:
-      "Shared challenges, progress loops, and accountability structures for people training toward common goals.",
+    label: "Clubs",
+    title: "Groups need momentum.",
+    detail: "Shared goals, training blocks, and accountability can stay connected to real individual logs.",
   },
   {
-    title: "Coaches and performance groups",
-    description:
-      "A scalable layer where structured training, member context, and coach oversight can work together.",
+    label: "Coaches",
+    title: "Guidance needs context.",
+    detail: "Coach review becomes sharper when training, recovery, food, and adherence already sit in the system.",
   },
-];
+] as const;
 
 export function TeamsPage() {
   return (
     <>
       <PageMeta
-        description="FoFit Teams — per-team pricing for schools, clubs, and training groups. Every athlete gets the full FoFit system with coach visibility layered on top."
-        title="FoFit Teams | Schools, Clubs, and Group Training Systems"
+        description="FoFit Teams brings training structure, community, coach visibility, and group pricing to schools, clubs, and training groups."
+        title="FoFit Teams | Schools, Clubs, Coaches, and Group Training"
       />
       <PageHero
         actions={[
           { label: "Book a demo", href: TEAMS_DEMO_MAILTO },
-          { label: "Join the waitlist", intent: "waitlist", variant: "secondary" },
+          { label: "See pricing", to: "/pricing", variant: "secondary" },
         ]}
-        compact
-        description="Per-team pricing for schools, clubs, and training groups that need structure, visibility, and consistency."
+        description="FoFit Teams is the group layer: full member product for athletes, plus visibility and structure for the people responsible for the room."
         eyebrow="Teams"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.lifestyle.groupCircuit, label: "Group", treatment: "scene" },
+              { image: futureAssets.app.simDiscoverCommunity, label: "Community" },
+              { image: futureAssets.community.support.verifiedCoach, label: "Coach", treatment: "scene" },
+            ]}
+            label="FoFit teams surfaces"
+          />
+        }
         title={
           <>
-            Bring structure to
-            <br />
-            the people you train with.
+            Structure for the people you train with.
           </>
         }
       />
 
-      <section className="page-section">
-        <div className="container detail-grid">
-          {teamUseCases.map((useCase) => (
-            <Card className="detail-card reveal" key={useCase.title}>
-              <h3>{useCase.title}</h3>
-              <p>{useCase.description}</p>
-            </Card>
-          ))}
-        </div>
-      </section>
+      <RouteSection
+        description="Teams should read like a group-training product, not a pricing footnote."
+        kicker="Use Cases"
+        title="Schools, clubs, and coaches need different visibility."
+      >
+        <RouteFeatureLedger rows={[...teamRows]} />
+      </RouteSection>
 
-      <section className="page-section">
-        <div className="container">
-          <div className="teams-tiers">
-            <div className="teams-tiers__header">
-              <span className="teams-tiers__eyebrow">FIG 02 — TEAMS PRICING</span>
-              <h2 className="teams-tiers__title">
-                Inside <em>FoFit Teams</em>.
-              </h2>
-              <p className="teams-tiers__lede">
-                Per-team pricing, not per-seat. Every athlete on the roster gets the full FoFit system with the coach view layered on top.
-              </p>
-            </div>
+      <RouteSplitProof
+        description="The individual product still matters. Teams works because each member has a training, nutrition, Cypher, and community loop underneath the group view."
+        kicker="Product Base"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simTrain, label: "Train" },
+              { image: futureAssets.app.simNutrition, label: "Fuel" },
+              { image: futureAssets.app.simCommunity, label: "Proof" },
+            ]}
+            label="FoFit member product inside Teams"
+          />
+        }
+        rows={[
+          {
+            label: "Member",
+            title: "Every person keeps the full FoFit system.",
+            detail: "Training, nutrition, Cypher, and community stay personal even when the group needs visibility.",
+          },
+          {
+            label: "Coach",
+            title: "Coaches get signal, not noise.",
+            detail: "Completion, adherence, and readiness context make review loops easier to trust.",
+          },
+          {
+            label: "Group",
+            title: "Shared momentum stays organized.",
+            detail: "Groups and programs can support accountability without becoming a separate social tool.",
+          },
+        ]}
+        title="Teams sits on top of the real product."
+      />
 
-            <div className="teams-tiers__grid">
-              {teamsTiers.map((tier) => (
-                <article
-                  className={`teams-tier-card${tier.featured ? " teams-tier-card--featured" : ""}`}
-                  key={tier.name}
-                >
-                  <div className="teams-tier-card__name">{tier.name}</div>
-                  <div className="teams-tier-card__price">{tier.price}</div>
-                  <p className="teams-tier-card__fit">{tier.fit}</p>
-                  <div className="teams-tier-card__desc">{tier.description}</div>
-                </article>
-              ))}
-            </div>
+      <RouteSection
+        className="route-section--soft"
+        description="Per-team pricing keeps the page simple while the product matures."
+        kicker="Team Pricing"
+        title="Founding team paths."
+      >
+        <RouteCardGrid
+          cards={teamsTiers.map((tier) => ({
+            label: tier.name,
+            title: tier.price,
+            detail: `${tier.fit} ${tier.description}`,
+          }))}
+        />
+      </RouteSection>
 
-            <div className="teams-tiers__footnote">
-              Founding school partner pilots available for the first cohort of athletic departments. Email teams@fofit.app for terms.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="page-section page-section--tight">
-        <div className="container">
-          <div className="content-stack reveal">
-            <span className="eyebrow">Why teams need this</span>
-            <h2 className="section-title">Training groups need more than a shared spreadsheet.</h2>
-            <p className="section-description">
-              Coaches, captains, and group leaders need visibility into
-              completion, progress, and readiness without losing the individual
-              training experience.
-            </p>
-          </div>
-        </div>
-      </section>
+      <RouteSection
+        description="The team path should remain grounded in what FoFit already shows well: plans, food context, community proof, and coach trust."
+        kicker="Team OS"
+        title="What every rollout needs to connect."
+      >
+        <RouteCardGrid
+          cards={[
+            {
+              label: "Training",
+              title: "Shared blocks with personal context.",
+              detail: "The group can move together without forcing the same day onto every body.",
+              image: futureAssets.app.simTrain,
+            },
+            {
+              label: "Nutrition",
+              title: "Fuel context that does not vanish.",
+              detail: "Food and recovery signals help explain why the training plan changes.",
+              image: futureAssets.app.simNutrition,
+            },
+            {
+              label: "Community",
+              title: "A place for proof and support.",
+              detail: "Posts, groups, and coach paths make team momentum visible.",
+              image: futureAssets.app.simDiscoverCommunity,
+            },
+          ]}
+        />
+      </RouteSection>
 
       <CTASection
         actions={[
           { label: "Book a demo", href: TEAMS_DEMO_MAILTO },
-          { label: "Join the waitlist", intent: "waitlist", variant: "secondary" },
+          { label: "Join founding 250", intent: "waitlist", variant: "secondary" },
         ]}
-        description="Book a demo if you run a team. Join the waitlist if you train on one."
-        pills={["Schools", "Clubs", "Coach-ready groups"]}
+        description="Book a demo if you run a team. Join founding 250 if you train on one."
+        pills={["Schools", "Clubs", "Coach groups"]}
         title={
           <>
-            Train together
+            Group training,
             <br />
-            without losing structure.
+            without losing the individual.
           </>
         }
       />

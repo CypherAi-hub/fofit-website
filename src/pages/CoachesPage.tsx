@@ -1,92 +1,147 @@
 import { CTASection } from "../components/marketing/CTASection";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { Card } from "../components/ui/Card";
+import {
+  RouteCardGrid,
+  RouteFeatureLedger,
+  RoutePhoneCluster,
+  RouteSection,
+  RouteSplitProof,
+} from "../components/marketing/RouteProofSections";
+import { futureAssets } from "../data/future-homepage";
 
-const coachRoles = [
+const coachRows = [
   {
-    title: "Program review",
-    description:
-      "Human coaches can validate planning, adjust priorities, and add context where members want a deeper layer than software alone.",
+    label: "Verified presence",
+    title: "Trust starts with a real coach profile.",
+    detail: "Coach identity, specialties, groups, and programs can live beside the member experience.",
   },
   {
-    title: "Accountability",
-    description:
-      "Check-ins and review loops can turn a good training system into a higher-accountability environment for serious members.",
+    label: "Groups",
+    title: "Coaches can support communities, not just individuals.",
+    detail: "Groups let coaches answer patterns, guide people, and build trust without another scattered chat.",
   },
   {
-    title: "Specialized support",
-    description:
-      "Recovery, performance, body composition, and team contexts all become stronger when the product can connect to expert guidance.",
+    label: "Programs",
+    title: "Training should be deliverable.",
+    detail: "Programs and templates make coach guidance useful without forcing every adjustment into a spreadsheet.",
   },
-];
+  {
+    label: "Context",
+    title: "FoFit gives coaches the week, not a blank check-in.",
+    detail: "Training, nutrition, adherence, and recovery context make reviews sharper from the first conversation.",
+  },
+] as const;
 
 export function CoachesPage() {
   return (
     <>
       <PageMeta
-        description="FoFit Coaches previews how expert accountability and coaching reviews can plug into the broader product ecosystem."
-        title="FoFit Coaches | Future Expert Guidance and Accountability Layers"
+        description="FoFit Coaches shows how verified coach profiles, groups, programs, and team visibility fit into the FoFit product."
+        title="FoFit Coaches | Verified Profiles, Groups, Programs, and Trust"
       />
       <PageHero
         actions={[
-          { label: "Join the waitlist", intent: "waitlist" },
+          { label: "Request coach access", href: "mailto:teams@fofit.app?subject=FoFit%20Coach%20access" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
-        compact
-        description="See how coaching, accountability, and expert review can fit around structured training when you want a deeper layer of support."
+        description="FoFit starts with the product loop. Coaches add trust, review, programs, groups, and higher-accountability guidance around it."
         eyebrow="Coaches"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.lifestyle.trainer, label: "Coach", treatment: "scene" },
+              { image: futureAssets.community.support.verifiedCoach, label: "Verified", treatment: "scene" },
+              { image: futureAssets.app.simDiscoverCommunity, label: "Groups" },
+            ]}
+            label="FoFit coach surfaces"
+          />
+        }
         title={
           <>
-            Expert guidance
-            <br />
-            when you want more support.
+            Verified coaches with real product context.
           </>
         }
       />
 
-      <section className="page-section">
-        <div className="container detail-grid">
-          {coachRoles.map((role) => (
-            <Card className="detail-card reveal" key={role.title}>
-              <h3>{role.title}</h3>
-              <p>{role.description}</p>
-            </Card>
-          ))}
-        </div>
-      </section>
+      <RouteSection
+        description="A coach page should make the trust layer clear: profile, group, program, and review loops."
+        kicker="Coach System"
+        title="Coaches should not need another spreadsheet."
+      >
+        <RouteFeatureLedger rows={[...coachRows]} />
+      </RouteSection>
 
-      <section className="page-section page-section--tight">
-        <div className="container split-layout">
-          <Card className="spotlight-card reveal">
-            <span className="eyebrow">Coach flow</span>
-            <h3>How coaches can fit into FoFit</h3>
-            <ul className="check-list">
-              <li>Member context enters through the core training system</li>
-              <li>Coach review focuses on higher-value adjustments</li>
-              <li>Accountability and progression loops become more consistent</li>
-            </ul>
-          </Card>
-          <Card className="spotlight-card reveal">
-            <span className="eyebrow">Why it matters</span>
-            <h3>Accountability works better with context.</h3>
-            <p>
-              Training history, recovery patterns, and plan context give coaches
-              more to work with from day one. That makes feedback sharper and
-              check-ins more useful.
-            </p>
-          </Card>
-        </div>
-      </section>
+      <RouteSplitProof
+        description="The community surface gives coaches a place to be discovered and trusted before the Teams layer opens."
+        kicker="Coach Discovery"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simDiscoverCommunity, label: "Discover" },
+              { image: futureAssets.app.profile, label: "Profile" },
+            ]}
+            label="Coach discovery inside FoFit"
+          />
+        }
+        rows={[
+          {
+            label: "Profile",
+            title: "Identity and proof stay visible.",
+            detail: "Profiles can carry training highlights, specialties, and trust signals.",
+          },
+          {
+            label: "Groups",
+            title: "Community gives coaches leverage.",
+            detail: "Group support helps coaches answer common questions and keep people moving.",
+          },
+          {
+            label: "Teams",
+            title: "Programs can scale when the group is ready.",
+            detail: "Teams turns coach visibility into a structured group-training system.",
+          },
+        ]}
+        title="Coach trust starts inside the app."
+      />
+
+      <RouteSection
+        className="route-section--soft"
+        description="The route uses real FoFit imagery and surfaces so it works as a product path, not a someday promise."
+        kicker="Proof Points"
+        title="What coach access can contain."
+      >
+        <RouteCardGrid
+          cards={[
+            {
+              label: "Verified Coach",
+              title: "A human face behind the advice.",
+              detail: "FoFit can show trusted coaches directly in the product ecosystem.",
+              image: futureAssets.community.support.verifiedCoach,
+            },
+            {
+              label: "Groups",
+              title: "A place to support more than one member.",
+              detail: "Discovery, groups, and community prompts help coaches scale support.",
+              image: futureAssets.app.simDiscoverCommunity,
+            },
+            {
+              label: "Program Context",
+              title: "Training history before the check-in.",
+              detail: "Coach review is stronger when plan, fuel, and consistency context already exists.",
+              image: futureAssets.app.simTrain,
+            },
+          ]}
+        />
+      </RouteSection>
 
       <CTASection
-        description="Join the waitlist if you want structured training now and coach-supported guidance when it opens."
-        pills={["Reviews", "Accountability", "Expert support"]}
+        description="Request early coach access or join the FoFit founding member list."
+        pills={["Profiles", "Groups", "Programs", "Teams"]}
         title={
           <>
-            Start with the system.
+            Human guidance works better
             <br />
-            Add coaching when you want more support.
+            with product memory.
           </>
         }
       />

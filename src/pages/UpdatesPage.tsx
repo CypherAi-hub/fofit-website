@@ -1,7 +1,13 @@
 import { CTASection } from "../components/marketing/CTASection";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { Card } from "../components/ui/Card";
+import {
+  RouteCardGrid,
+  RouteFeatureLedger,
+  RoutePhoneCluster,
+  RouteSection,
+} from "../components/marketing/RouteProofSections";
+import { futureAssets } from "../data/future-homepage";
 import { roadmapThemes, updateItems } from "../data/updates";
 
 export function UpdatesPage() {
@@ -16,9 +22,18 @@ export function UpdatesPage() {
           { label: "Join the waitlist", intent: "waitlist" },
           { label: "See community", to: "/community", variant: "secondary" },
         ]}
-        compact
         description="See what FoFit is building, what has shipped, and what the team is sharpening next."
         eyebrow="Updates"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simTrain, label: "Train" },
+              { image: futureAssets.app.simCypher, label: "Cypher" },
+              { image: futureAssets.app.simDiscoverCommunity, label: "Community" },
+            ]}
+            label="FoFit update surfaces"
+          />
+        }
         title={
           <>
             Product momentum
@@ -28,33 +43,34 @@ export function UpdatesPage() {
         }
       />
 
-      <section className="page-section">
-        <div className="container">
-          <div className="detail-grid">
-            {updateItems.map((item) => (
-              <Card className="detail-card reveal" key={item.version}>
-                <span className="feature-card__kicker">{item.version}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <RouteSection
+        description="Updates should make the product feel like it is moving in public, with clear surfaces and visible priorities."
+        kicker="Shipping Notes"
+        title="What has changed recently."
+      >
+        <RouteCardGrid
+          cards={updateItems.map((item) => ({
+            label: item.version,
+            title: item.title,
+            detail: item.description,
+          }))}
+        />
+      </RouteSection>
 
-      <section className="page-section page-section--tight">
-        <div className="container">
-          <Card className="spotlight-card reveal">
-            <span className="eyebrow">Roadmap themes</span>
-            <h3>What we are building next.</h3>
-            <ul className="roadmap-list">
-              {roadmapThemes.map((theme) => (
-                <li key={theme}>{theme}</li>
-              ))}
-            </ul>
-          </Card>
-        </div>
-      </section>
+      <RouteSection
+        className="route-section--soft"
+        description="These themes keep the public story connected to what the app has to prove."
+        kicker="Roadmap Themes"
+        title="What we are sharpening next."
+      >
+        <RouteFeatureLedger
+          rows={roadmapThemes.map((theme, index) => ({
+            label: String(index + 1).padStart(2, "0"),
+            title: theme,
+            detail: "This is a product direction, not a loose marketing promise.",
+          }))}
+        />
+      </RouteSection>
 
       <CTASection
         description="Join the waitlist to get product updates and early access as new features roll out."

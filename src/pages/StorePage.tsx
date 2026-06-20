@@ -1,7 +1,14 @@
 import { CTASection } from "../components/marketing/CTASection";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { Card } from "../components/ui/Card";
+import {
+  RouteCardGrid,
+  RouteFeatureLedger,
+  RoutePhoneCluster,
+  RouteSection,
+  RouteSplitProof,
+} from "../components/marketing/RouteProofSections";
+import { futureAssets } from "../data/future-homepage";
 
 const storeModules = [
   {
@@ -38,9 +45,18 @@ export function StorePage() {
           { label: "Join the waitlist", intent: "waitlist" },
           { label: "See coaches", to: "/coaches", variant: "secondary" },
         ]}
-        compact
         description="Programs, guides, gear, and bundles — aligned with how FoFit trains you. Not open yet."
         eyebrow="Store"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.workoutDetail, label: "Programs" },
+              { image: futureAssets.community.support.verifiedCoach, label: "Coach", treatment: "scene" },
+              { image: futureAssets.lifestyle.nutrition, label: "Fuel", treatment: "scene" },
+            ]}
+            label="FoFit store product logic"
+          />
+        }
         title={
           <>
             A marketplace layer
@@ -50,29 +66,81 @@ export function StorePage() {
         }
       />
 
-      <section className="page-section">
-        <div className="container detail-grid">
-          {storeModules.map((module) => (
-            <Card className="detail-card reveal" key={module.title}>
-              <h3>{module.title}</h3>
-              <p>{module.description}</p>
-            </Card>
-          ))}
-        </div>
-      </section>
+      <RouteSection
+        description="The store should not feel like random merch. Every item should earn its place in the training loop."
+        kicker="Marketplace Logic"
+        title="Programs, guides, gear, and bundles need product context."
+      >
+        <RouteFeatureLedger
+          rows={storeModules.map((module) => ({
+            label: "Store",
+            title: module.title,
+            detail: module.description,
+          }))}
+        />
+      </RouteSection>
 
-      <section className="page-section page-section--tight">
-        <div className="container">
-          <Card className="spotlight-card reveal">
-            <span className="eyebrow">Why it fits</span>
-            <h3>Buy tools that match how you train.</h3>
-            <p>
-              Programs, guides, and bundles should support the same training
-              system you already use instead of reading like random add-ons.
-            </p>
-          </Card>
-        </div>
-      </section>
+      <RouteSplitProof
+        description="A store layer only makes sense when it can connect to training blocks, nutrition behavior, and coach trust."
+        kicker="Why It Fits"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simTrain, label: "Training" },
+              { image: futureAssets.app.simNutrition, label: "Nutrition" },
+            ]}
+            label="Store connected to the FoFit loop"
+          />
+        }
+        rows={[
+          {
+            label: "Programs",
+            title: "Digital products should match the plan.",
+            detail: "Specialized blocks and coach-built templates belong close to training history.",
+          },
+          {
+            label: "Guides",
+            title: "Education should be actionable.",
+            detail: "Guides should explain the decision someone is about to make in the app.",
+          },
+          {
+            label: "Kits",
+            title: "Physical products should have a job.",
+            detail: "Recovery, equipment, and partner kits should support the system instead of distracting from it.",
+          },
+        ]}
+        title="Buy tools that match how you train."
+      />
+
+      <RouteSection
+        className="route-section--soft"
+        description="This is the standard for any future store item."
+        kicker="Store Standard"
+        title="Every item needs a reason to exist."
+      >
+        <RouteCardGrid
+          cards={[
+            {
+              label: "Program",
+              title: "Attached to training context.",
+              detail: "The product should know what the program changes about your week.",
+              image: futureAssets.app.workoutDetail,
+            },
+            {
+              label: "Guide",
+              title: "Useful before the next decision.",
+              detail: "Education should clarify training, fuel, or recovery at the moment it matters.",
+              image: futureAssets.lifestyle.recoveryLunge,
+            },
+            {
+              label: "Coach",
+              title: "Backed by trusted humans.",
+              detail: "Coach-created resources should carry visible trust and product relevance.",
+              image: futureAssets.community.support.verifiedCoach,
+            },
+          ]}
+        />
+      </RouteSection>
 
       <CTASection
         description="The store opens with the platform. No generic merch — every item should earn its place in the training loop."

@@ -8,6 +8,7 @@ import "./styles/global.css";
 import "./styles/landing.css";
 import "./styles/utilities.css";
 import "./styles/editorial-home.css";
+import "./styles/editorial-routes.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

@@ -1,93 +1,121 @@
 import { CTASection } from "../components/marketing/CTASection";
-import { AIWorkforce } from "../components/marketing/AIWorkforce";
-import { ChapterIntro } from "../components/marketing/ChapterIntro";
-import { DeviceFigure } from "../components/marketing/DeviceFigure";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { Card } from "../components/ui/Card";
-import { EditorialHeading } from "../components/ui/EditorialHeading";
-import { heroFigure } from "../data/editorial";
-import { roadmapThemes } from "../data/updates";
+import {
+  RouteCardGrid,
+  RouteFeatureLedger,
+  RoutePhoneCluster,
+  RouteSection,
+  RouteSplitProof,
+} from "../components/marketing/RouteProofSections";
+import {
+  futureAssets,
+  futurePathCards,
+  productPillars,
+} from "../data/future-homepage";
 
+const companyRows = [
+  {
+    label: "Built in public",
+    title: "Real testers shape the product.",
+    detail: "FoFit is being built with people training, logging, questioning, and correcting what does not feel useful.",
+  },
+  {
+    label: "St. Louis roots",
+    title: "Local first, broader ambition.",
+    detail: "The early rollout starts close enough to learn from real behavior before scaling the product story.",
+  },
+  {
+    label: "Product honesty",
+    title: "The claim has to match the app.",
+    detail: "Training, nutrition, Cypher, and community should show up as real product surfaces before the brand says they matter.",
+  },
+] as const;
 
 export function AboutPage() {
   return (
     <>
       <PageMeta
-        description="FoFit started from a simple frustration: too many disconnected tools, not enough clarity. The company exists to build a more useful training system."
-        title="About FoFit | Mission, Product Vision, and Platform Direction"
+        description="FoFit is building an AI fitness system around training, nutrition, Cypher coaching, and community with real product surfaces and St. Louis roots."
+        title="About FoFit | Built in Public from St. Louis"
       />
       <PageHero
         actions={[
-          { label: "Join the waitlist", intent: "waitlist" },
-          { label: "Explore updates", to: "/updates", variant: "secondary" },
+          { label: "Join founding 250", intent: "waitlist" },
+          { label: "Read insights", to: "/insights", variant: "secondary" },
         ]}
-        compact
-        description="FoFit brings planning, guidance, and progress into one system for lifters, athletes, and teams."
+        description="FoFit exists because fitness progress still gets split across too many disconnected tools. The product brings the week back into one place."
         eyebrow="About"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.lifestyle.trainer, label: "Built with coaches", treatment: "scene" },
+              { image: futureAssets.app.simCypher, label: "Cypher" },
+              { image: futureAssets.mark, label: "FoFit", treatment: "mark" },
+            ]}
+            label="FoFit company story"
+          />
+        }
         title={
-          <EditorialHeading accent="concept" as="span" className="editorial-heading--compact">
-            {"A training company.\nNot a launch {italic}."}
-          </EditorialHeading>
+          <>
+            Built in public from St. Louis.
+          </>
         }
       />
 
-      <section className="page-section editorial-section editorial-section--tight">
-        <div className="container split-layout split-layout--editorial">
-          <div className="content-stack reveal">
-            <ChapterIntro
-              description="The paths are different because training context is different. The product stays unified: Cypher, structure, progress, and memory."
-              index="01"
-              label="Why FoFit exists"
-              title={
-                <>
-                  One product. Three paths into <em>it</em>.
-                </>
-              }
-            />
-            <p className="section-description">
-              FoFit exists because most people still train across too many
-              disconnected tools and too much guesswork.
-            </p>
-          </div>
-          <DeviceFigure asset={heroFigure} className="split-layout__figure about-hero-figure" />
-        </div>
-      </section>
+      <RouteSection
+        description="The About page should tell the truth behind the product: real testers, real app surfaces, and a system that earns the brand line."
+        kicker="Company Standard"
+        title="The product has to be real before the story gets loud."
+      >
+        <RouteFeatureLedger rows={[...companyRows]} />
+      </RouteSection>
 
-      <AIWorkforce />
+      <RouteSplitProof
+        description="FoFit is not trying to be one more tracker. The brand is built around the same four surfaces the app needs to connect."
+        kicker="FoFit OS"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simTrain, label: "Train" },
+              { image: futureAssets.app.simNutrition, label: "Fuel" },
+              { image: futureAssets.app.simCommunity, label: "Community" },
+            ]}
+            label="FoFit OS surfaces"
+          />
+        }
+        rows={productPillars.map((pillar) => ({
+          label: pillar.label,
+          title: pillar.title,
+          detail: pillar.detail,
+        }))}
+        title="Training, nutrition, Cypher, and community are the company."
+      />
 
-      <section className="page-section editorial-section editorial-section--tight">
-        <div className="container split-layout">
-          <Card className="founder-note reveal editorial-card">
-            <span className="eyebrow">Founder perspective</span>
-            <h3>Built from the problem, not just the market category.</h3>
-            <p>
-              FoFit started from a simple frustration: too much fitness progress
-              still depends on juggling disconnected tools and making hard calls
-              without enough context. The goal is a training system that feels
-              clear, durable, and worth returning to.
-            </p>
-          </Card>
-          <div className="content-stack reveal">
-            <span className="eyebrow">Vision</span>
-            <h2 className="section-title">Cypher first. Coaches and teams after that.</h2>
-            <ul className="roadmap-list">
-              {roadmapThemes.map((theme) => (
-                <li key={theme}>{theme}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+      <RouteSection
+        className="route-section--soft"
+        description="The product stays unified while the entry path changes by audience."
+        kicker="Who FoFit Serves"
+        title="Members, athletes, and coaches start from different needs."
+      >
+        <RouteCardGrid
+          cards={futurePathCards.map((card) => ({
+            label: card.label,
+            title: card.title,
+            detail: card.description,
+            image: card.image,
+          }))}
+        />
+      </RouteSection>
 
       <CTASection
-        description="FoFit is building the Future of Fitness: AI coaching, personalized training, nutrition, and community in one app."
-        pills={["Mission", "Three paths", "Long game"]}
+        description="Join founding 250 and help shape FoFit before launch."
+        pills={["St. Louis roots", "Tester-led", "Real app screens"]}
         title={
           <>
-            A company,
+            Help build the Future
             <br />
-            not a launch concept.
+            of Fitness while it is still close.
           </>
         }
       />

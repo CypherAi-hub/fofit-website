@@ -4,7 +4,13 @@ import { ArticleGrid } from "../components/marketing/ArticleGrid";
 import { CTASection } from "../components/marketing/CTASection";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
+import {
+  RouteCardGrid,
+  RoutePhoneCluster,
+  RouteSection,
+} from "../components/marketing/RouteProofSections";
 import { Card } from "../components/ui/Card";
+import { futureAssets } from "../data/future-homepage";
 import { insightArticles, insightCategories } from "../data/insights";
 
 type ActiveCategory = "All" | (typeof insightCategories)[number];
@@ -31,9 +37,18 @@ export function InsightsPage() {
           { label: "Explore product", to: "/product" },
           { label: "See FAQ", to: "/faq", variant: "secondary" },
         ]}
-        compact
         description="Read practical training, nutrition, recovery, and performance notes for lifters, athletes, and coaches building better decisions."
         eyebrow="Insights"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simTrain, label: "Train" },
+              { image: futureAssets.app.simNutrition, label: "Fuel" },
+              { image: futureAssets.lifestyle.recoveryLunge, label: "Recovery", treatment: "scene" },
+            ]}
+            label="FoFit insights product context"
+          />
+        }
         title={
           <>
             Training insight
@@ -42,6 +57,35 @@ export function InsightsPage() {
           </>
         }
       />
+
+      <RouteSection
+        description="FoFit content should build trust around the product areas people actually use."
+        kicker="Editorial System"
+        title="Articles that support the training loop."
+      >
+        <RouteCardGrid
+          cards={[
+            {
+              label: "Training",
+              title: "Progressive overload, exercise selection, and execution.",
+              detail: "Training content should help people understand why the next session looks the way it does.",
+              image: futureAssets.app.simTrain,
+            },
+            {
+              label: "Nutrition",
+              title: "Protein, meal planning, fuel timing, and real food.",
+              detail: "Nutrition content should connect back to targets, recipes, and logged meals.",
+              image: futureAssets.app.simNutrition,
+            },
+            {
+              label: "Recovery",
+              title: "Rest, soreness, readiness, and adaptation.",
+              detail: "Recovery writing should explain when training hard makes sense and when the plan should adjust.",
+              image: futureAssets.lifestyle.recoveryLunge,
+            },
+          ]}
+        />
+      </RouteSection>
 
       <section className="page-section page-section--tight">
         <div className="container">

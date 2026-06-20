@@ -5,8 +5,13 @@ import { PricingTable } from "../components/marketing/PricingTable";
 import { VerifiedDiscounts } from "../components/marketing/VerifiedDiscounts";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { EditorialHeading } from "../components/ui/EditorialHeading";
+import {
+  RoutePhoneCluster,
+  RouteSection,
+  RouteStatGrid,
+} from "../components/marketing/RouteProofSections";
 import { faqGroups } from "../data/faqs";
+import { futureAssets } from "../data/future-homepage";
 import { teamsTiers } from "../data/pricing";
 
 const pricingNotes = [
@@ -31,15 +36,57 @@ export function PricingPage() {
           { label: "Join founding 250", intent: "waitlist" },
           { label: "See teams", to: "/teams", variant: "secondary" },
         ]}
-        compact
         description="FoFit stays simple for individuals while giving students, coaches, and teams a clear path into the platform."
         eyebrow="007 / Membership"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simTrain, label: "Training" },
+              { image: futureAssets.app.simNutrition, label: "Nutrition" },
+              { image: futureAssets.app.simCommunity, label: "Community" },
+            ]}
+            label="FoFit pricing product surfaces"
+          />
+        }
         title={
-          <EditorialHeading accent="early" as="span" className="editorial-heading--compact">
-            {"Simple pricing.\nBuilt for the {italic}."}
-          </EditorialHeading>
+          <>
+            Simple pricing.
+            <br />
+            Campus access stays clear.
+          </>
         }
       />
+
+      <RouteSection
+        description="Pricing should make the product clear before the table: what is free, what becomes full-system access, and where teams fit."
+        kicker="Membership Proof"
+        title="Every paid path is tied to real product surfaces."
+      >
+        <RouteStatGrid
+          stats={[
+            {
+              value: "Free",
+              label: "Starter",
+              detail: "Basic logging, starter plans, and limited Cypher give people a real place to begin.",
+            },
+            {
+              value: "$7.99",
+              label: "Student",
+              detail: "Verified students get the full system at a lower monthly rate.",
+            },
+            {
+              value: "$14.99",
+              label: "Standard",
+              detail: "Training, nutrition, Cypher, community, and coach discovery in one member plan.",
+            },
+            {
+              value: "Teams",
+              label: "Coach path",
+              detail: "Schools, clubs, coaches, and groups can request structured team access.",
+            },
+          ]}
+        />
+      </RouteSection>
 
       <nav className="pricing-section-nav" aria-label="Pricing sections">
         <a href="#fofit-consumer">FoFit</a>

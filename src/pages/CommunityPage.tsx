@@ -1,144 +1,155 @@
 import { CTASection } from "../components/marketing/CTASection";
-import { CommunityPreview } from "../components/marketing/CommunityPreview";
-import { PlatformShowcase } from "../components/marketing/PlatformShowcase";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
-import { Card } from "../components/ui/Card";
-import { SectionHeader } from "../components/ui/SectionHeader";
+import {
+  RouteCardGrid,
+  RouteFeatureLedger,
+  RoutePhoneCluster,
+  RouteSection,
+  RouteSplitProof,
+  RouteStatGrid,
+} from "../components/marketing/RouteProofSections";
+import {
+  communityPreviewCards,
+  communitySurfaceRows,
+  futureAssets,
+} from "../data/future-homepage";
 
-const communityBlocks = [
+const communityStats = [
   {
-    title: "Accountability",
-    description:
-      "Shared check-ins and visible progress loops can reinforce consistency without turning the product into a noisy social feed.",
+    value: "Feed",
+    label: "Proof posts",
+    detail: "Training, meal prep, questions, replies, and recovery notes have a real surface.",
   },
   {
-    title: "Challenges",
-    description:
-      "Training-aware challenges worth joining — not empty engagement mechanics.",
+    value: "Spaces",
+    label: "Group context",
+    detail: "Community can separate broad discovery from smaller interest or accountability groups.",
   },
   {
-    title: "Groups",
-    description:
-      "Private groups create a bridge between solo training, coach oversight, and team accountability.",
+    value: "People",
+    label: "Discovery",
+    detail: "Regular users, verified coaches, and group paths sit in the same community layer.",
   },
-];
+  {
+    value: "Coach",
+    label: "Trust layer",
+    detail: "Verified coach content gives the feed a human training backbone.",
+  },
+] as const;
 
 export function CommunityPage() {
   return (
     <>
       <PageMeta
-        description="See how FoFit can expand into accountability, challenges, shared progress, groups, and coach-ready community structures."
-        title="FoFit Community | Accountability, Challenges, and Shared Progress"
+        description="FoFit Community shows the real product surfaces for proof posts, For You, Following, Spaces, groups, replies, reactions, and verified coaches."
+        title="FoFit Community | Feed, Spaces, Groups, and Verified Coaches"
       />
       <PageHero
         actions={[
-          { label: "Join the waitlist", intent: "waitlist" },
-          { label: "See teams", to: "/teams", variant: "secondary" },
+          { label: "Join founding 250", intent: "waitlist" },
+          { label: "See coaches", to: "/coaches", variant: "secondary" },
         ]}
-        compact
-        description="Consistency gets easier when your progress is shared with people working toward the same things."
+        description="Fitness feels less lonely when progress, questions, groups, and trusted coaches sit beside the plan instead of becoming a noisy social app."
         eyebrow="Community"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simDiscoverCommunity, label: "Discover" },
+              { image: futureAssets.app.simCommunity, label: "Feed" },
+              { image: futureAssets.community.support.verifiedCoach, label: "Coach", treatment: "scene" },
+            ]}
+            label="FoFit community surfaces"
+          />
+        }
         title={
           <>
-            Built for accountability,
-            <br />
-            not empty social noise.
+            Real community, not empty social noise.
           </>
         }
       />
 
-      <section className="page-section">
-        <div className="container">
-          <PlatformShowcase
-            description="Accountability, challenges, and group structure — built into the platform, not bolted on."
-            eyebrow="Momentum systems"
-            panels={[
-              {
-                caption: "Challenges",
-                title: "Goal-based challenges that fit real training blocks",
-                stats: [
-                  { value: "Standard", label: "Access" },
-                  { value: "8-week", label: "Block length" },
-                ],
-              },
-              {
-                caption: "Groups",
-                title: "Private circles for teams, crews, and accountability pods",
-                stats: [
-                  { value: "Private", label: "Visibility" },
-                  { value: "Standard", label: "Access" },
-                ],
-              },
-              {
-                caption: "Coach-ready",
-                title: "A community layer that supports higher-accountability guidance",
-                stats: [
-                  { value: "Spring 2026", label: "Launch" },
-                  { value: "FoFit Teams", label: "Tied to" },
-                ],
-              },
+      <RouteSection
+        description="The Community page should prove what the product can show: feed, groups, coach discovery, replies, and profile context."
+        kicker="Community Surfaces"
+        title="The social layer has actual product jobs."
+      >
+        <RouteStatGrid stats={[...communityStats]} />
+      </RouteSection>
+
+      <RouteSplitProof
+        description="FoFit community is built around progress and context. That means the product needs posts, people, groups, comments, reactions, and coach trust to appear as real surfaces."
+        kicker="Real Rows"
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: futureAssets.app.simCommunity, label: "Proof Feed" },
+              { image: futureAssets.app.profile, label: "Profile" },
             ]}
-            title="Community is the engine for consistency."
+            label="FoFit feed and profile"
           />
-        </div>
-      </section>
+        }
+        rows={communitySurfaceRows.map((row) => ({
+          label: row.label,
+          detail: row.detail,
+        }))}
+        title="What community actually contains."
+      />
 
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            description="A structured community layer designed around training progress, not social noise."
-            eyebrow="Community preview"
-            title="A structured community layer"
-          />
-          <CommunityPreview />
-        </div>
-      </section>
+      <RouteSection
+        className="route-section--soft"
+        description="A real community route needs the product proof cards first, then the atmosphere around them."
+        kicker="Community Proof"
+        title="Feed, reels, profile, groups, and verified coach paths."
+      >
+        <RouteCardGrid
+          cards={communityPreviewCards.map((card) => ({
+            label: card.label,
+            title: card.title,
+            image: card.image,
+          }))}
+        />
+      </RouteSection>
 
-      <section className="page-section page-section--tight">
-        <div className="container">
-          <div className="detail-grid">
-            {communityBlocks.map((block) => (
-              <Card className="detail-card reveal" key={block.title}>
-                <h3>{block.title}</h3>
-                <p>{block.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="page-section page-section--tight">
-        <div className="container split-layout">
-          <Card className="spotlight-card reveal">
-            <span className="eyebrow">Shared progress</span>
-            <h3>Community should amplify momentum.</h3>
-            <p>
-              Shared progress works when it connects people around a training
-              goal, challenge block, or team context.
-            </p>
-          </Card>
-          <Card className="spotlight-card reveal">
-            <span className="eyebrow">Built with purpose</span>
-            <h3>Keep the signal, skip the noise.</h3>
-            <p>
-              FoFit&apos;s community layer supports consistency, shared progress,
-              and accountability without turning training into a distraction.
-            </p>
-          </Card>
-        </div>
-      </section>
+      <RouteSection
+        description="The point is not a leaderboard. It is a place where the training loop has people around it."
+        kicker="Community Rules"
+        title="Keep the signal, skip the shame loop."
+      >
+        <RouteFeatureLedger
+          rows={[
+            {
+              label: "Post",
+              title: "Progress should have context.",
+              detail: "Posts make room for the workout, meal, question, recovery note, or update behind the photo.",
+            },
+            {
+              label: "Reply",
+              title: "The conversation should be useful.",
+              detail: "Replies and reactions are product context, not empty engagement counters.",
+            },
+            {
+              label: "Group",
+              title: "People need smaller rooms.",
+              detail: "Beginner strength, meal prep, athletes, campus testers, and coach-led groups can each have a clearer lane.",
+            },
+            {
+              label: "Coach",
+              title: "Trust needs a human face.",
+              detail: "Verified coaches can support the product without turning FoFit into another spreadsheet portal.",
+            },
+          ]}
+        />
+      </RouteSection>
 
       <CTASection
-        description="Join early and be part of FoFit's founding community."
-        note="Standard members get the full community layer at launch. Founding rates are locked while your subscription stays active."
-        noteClassName="community-cta__premium-note"
-        pills={["Challenges", "Groups", "Shared progress"]}
+        description="Join founding 250 and help shape FoFit community before it opens broadly."
+        pills={["Feed", "Groups", "Reels", "Verified coaches"]}
         title={
           <>
             Training together
             <br />
-            compounds faster than training alone.
+            should still feel focused.
           </>
         }
       />

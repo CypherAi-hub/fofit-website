@@ -2,6 +2,8 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { CTASection } from "../components/marketing/CTASection";
 import { PageHero } from "../components/layout/PageHero";
 import { PageMeta } from "../components/layout/PageMeta";
+import { RoutePhoneCluster } from "../components/marketing/RouteProofSections";
+import { futureAssets } from "../data/future-homepage";
 import { insightArticles } from "../data/insights";
 
 /**
@@ -20,6 +22,13 @@ export function InsightArticlePage() {
     return <Navigate replace to="/insights" />;
   }
 
+  const categoryImage =
+    article.category === "Nutrition"
+      ? futureAssets.app.simNutrition
+      : article.category === "Recovery"
+        ? futureAssets.lifestyle.recoveryLunge
+        : futureAssets.app.simTrain;
+
   return (
     <>
       <PageMeta
@@ -30,9 +39,17 @@ export function InsightArticlePage() {
         actions={[
           { label: "All insights", to: "/insights", variant: "secondary" },
         ]}
-        compact
         description={article.excerpt}
         eyebrow={`${article.category} · ${article.readTime}`}
+        media={
+          <RoutePhoneCluster
+            images={[
+              { image: categoryImage, label: article.category, treatment: article.category === "Recovery" ? "scene" : "phone" },
+              { image: futureAssets.app.simCypher, label: "Cypher" },
+            ]}
+            label="FoFit insight context"
+          />
+        }
         title={<>{article.title}</>}
       />
 
