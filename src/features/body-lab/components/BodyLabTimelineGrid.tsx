@@ -10,10 +10,16 @@ export function BodyLabTimelineGrid({
   checkIns,
   thumbUrls,
   onOpen,
+  selection,
 }: {
   checkIns: BodyCheckIn[];
   thumbUrls: Record<string, string>;
   onOpen: (checkIn: BodyCheckIn) => void;
+  selection?: {
+    active: boolean;
+    selectedIds: string[];
+    onToggle: (checkIn: BodyCheckIn) => void;
+  };
 }) {
   return (
     <div className="bodylab-timeline">
@@ -21,14 +27,27 @@ export function BodyLabTimelineGrid({
         const url = thumbUrls[checkIn.id];
         const hasVideo = checkIn.media.some((m) => m.mediaType === "video");
         const onlyVideo = checkIn.media.length > 0 && !checkIn.media.some((m) => m.mediaType === "photo");
+        const selecting = selection?.active ?? false;
+        const selIndex = selecting ? selection!.selectedIds.indexOf(checkIn.id) : -1;
+        const isSelected = selIndex >= 0;
         return (
           <button
             key={checkIn.id}
             type="button"
-            className="bodylab-tile"
-            onClick={() => onOpen(checkIn)}
-            aria-label={`Open check-in from ${formatDate(checkIn.capturedAt)}`}
+            className={`bodylab-tile${isSelected ? " bodylab-tile--selected" : ""}`}
+            onClick={() => (selecting ? selection!.onToggle(checkIn) : onOpen(checkIn))}
+            aria-pressed={selecting ? isSelected : undefined}
+            aria-label={
+              selecting
+                ? `${isSelected ? "Deselect" : "Select"} check-in from ${formatDate(checkIn.capturedAt)}`
+                : `Open check-in from ${formatDate(checkIn.capturedAt)}`
+            }
           >
+            {selecting && (
+              <span className={`bodylab-tile__select${isSelected ? " bodylab-tile__select--on" : ""}`}>
+                {isSelected ? selIndex + 1 : ""}
+              </span>
+            )}
             {url ? (
               <img src={url} alt="" loading="lazy" />
             ) : (

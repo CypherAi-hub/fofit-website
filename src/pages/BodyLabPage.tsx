@@ -5,6 +5,7 @@ import { useBodyLab } from "../features/body-lab";
 import { BodyLabUploadCard } from "../features/body-lab/components/BodyLabUploadCard";
 import { BodyLabTimelineGrid } from "../features/body-lab/components/BodyLabTimelineGrid";
 import { BodyLabMediaViewer } from "../features/body-lab/components/BodyLabMediaViewer";
+import { BodyLabCompare } from "../features/body-lab/components/BodyLabCompare";
 import { BodyLabEmptyState } from "../features/body-lab/components/BodyLabEmptyState";
 import { BodyLabErrorState } from "../features/body-lab/components/BodyLabErrorState";
 import { PageMeta } from "../components/layout/PageMeta";
@@ -13,6 +14,40 @@ import "../features/body-lab/bodyLab.css";
 export function BodyLabPage() {
   const bodyLab = useBodyLab();
   const [active, setActive] = useState<BodyCheckIn | null>(null);
+  const [compareMode, setCompareMode] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [comparing, setComparing] = useState<[BodyCheckIn, BodyCheckIn] | null>(null);
+
+  const checkIns = bodyLab.timeline.status === "ready" ? bodyLab.timeline.checkIns : [];
+
+  function toggleSelect(c: BodyCheckIn) {
+    setSelectedIds((cur) =>
+      cur.includes(c.id) ? cur.filter((id) => id !== c.id) : [...cur, c.id].slice(-2),
+    );
+  }
+
+  function exitCompareMode() {
+    setCompareMode(false);
+    setSelectedIds([]);
+  }
+
+  function openCompare() {
+    const picked = selectedIds
+      .map((id) => checkIns.find((c) => c.id === id))
+      .filter((c): c is BodyCheckIn => Boolean(c));
+    if (picked.length !== 2) return;
+    const [earlier, later] = [...picked].sort(
+      (a, b) => new Date(a.capturedAt).getTime() - new Date(b.capturedAt).getTime(),
+    );
+    setComparing([earlier, later]);
+  }
+
+  const selectHint =
+    selectedIds.length === 0
+      ? "Select two check-ins to compare."
+      : selectedIds.length === 1
+        ? "Select one more."
+        : "Two selected — compare them.";
 
   return (
     <>
@@ -25,15 +60,41 @@ export function BodyLabPage() {
             Capture progress and pump photos or video and watch your body change over time.
             Everything here is private to your account — only you can see it.
           </p>
+          {checkIns.length >= 2 && (
+            <button
+              type="button"
+              className="bodylab-btn"
+              style={{ justifySelf: "start" }}
+              onClick={() => (compareMode ? exitCompareMode() : setCompareMode(true))}
+            >
+              {compareMode ? "Cancel compare" : "Compare progress"}
+            </button>
+          )}
         </header>
 
-        <BodyLabUploadCard
-          uploadProgress={bodyLab.uploadProgress}
-          uploadError={bodyLab.uploadError}
-          onUpload={bodyLab.upload}
-          onCancel={bodyLab.cancelUpload}
-          onClearError={bodyLab.clearUploadError}
-        />
+        {!compareMode && (
+          <BodyLabUploadCard
+            uploadProgress={bodyLab.uploadProgress}
+            uploadError={bodyLab.uploadError}
+            onUpload={bodyLab.upload}
+            onCancel={bodyLab.cancelUpload}
+            onClearError={bodyLab.clearUploadError}
+          />
+        )}
+
+        {compareMode && (
+          <div className="bodylab-compare-bar" role="status" aria-live="polite">
+            <span>{selectHint}</span>
+            <button
+              type="button"
+              className="bodylab-btn bodylab-btn--primary"
+              disabled={selectedIds.length !== 2}
+              onClick={openCompare}
+            >
+              Compare
+            </button>
+          </div>
+        )}
 
         <section aria-label="Your check-in timeline">
           {bodyLab.timeline.status === "loading" && (
@@ -53,6 +114,11 @@ export function BodyLabPage() {
                 checkIns={bodyLab.timeline.checkIns}
                 thumbUrls={bodyLab.thumbUrls}
                 onOpen={setActive}
+                selection={
+                  compareMode
+                    ? { active: true, selectedIds, onToggle: toggleSelect }
+                    : undefined
+                }
               />
             ))}
         </section>
@@ -64,6 +130,18 @@ export function BodyLabPage() {
           signMediaUrl={bodyLab.signMediaUrl}
           onClose={() => setActive(null)}
           onDelete={bodyLab.remove}
+        />
+      )}
+
+      {comparing && (
+        <BodyLabCompare
+          earlier={comparing[0]}
+          later={comparing[1]}
+          signMediaUrl={bodyLab.signMediaUrl}
+          onClose={() => {
+            setComparing(null);
+            exitCompareMode();
+          }}
         />
       )}
     </>
