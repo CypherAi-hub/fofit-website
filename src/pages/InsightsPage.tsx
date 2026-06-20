@@ -44,7 +44,7 @@ export function InsightsPage() {
             images={[
               { image: futureAssets.app.simTrain, label: "Train" },
               { image: futureAssets.app.simNutrition, label: "Fuel" },
-              { image: futureAssets.generated.communityCircuitLive, label: "Recovery", treatment: "scene" },
+              { image: futureAssets.generated.recoveryCommunity, label: "Recovery", treatment: "scene" },
             ]}
             label="FoFit insights product context"
           />
@@ -81,7 +81,7 @@ export function InsightsPage() {
               label: "Recovery",
               title: "Rest, soreness, readiness, and adaptation.",
               detail: "Recovery writing should explain when training hard makes sense and when the plan should adjust.",
-              image: futureAssets.generated.communityCircuitLive,
+              image: futureAssets.generated.recoveryCommunity,
             },
           ]}
         />

@@ -113,6 +113,22 @@ export const futureAssets = {
       alt: "FoFit coach and athlete reviewing training context after a workout.",
       src: "/images/generated/coach-athlete-checkin.webp",
     },
+    friendlyTrainingCrew: {
+      alt: "FoFit members smiling together after a group strength session in a bright training studio.",
+      src: "/images/generated/friendly-training-crew.webp",
+    },
+    groupMealPrep: {
+      alt: "FoFit members preparing high-protein meals together in a bright kitchen.",
+      src: "/images/generated/group-meal-prep.webp",
+    },
+    recoveryCommunity: {
+      alt: "FoFit members cooling down together in a bright recovery space after training.",
+      src: "/images/generated/recovery-community.webp",
+    },
+    coachTabletReview: {
+      alt: "FoFit coach reviewing training progress on a tablet with two members after a workout.",
+      src: "/images/generated/coach-tablet-review.webp",
+    },
   },
   lifestyle: {
     deadlift: {
@@ -198,8 +214,8 @@ export const communityPreviewCards: Array<{
   },
   {
     label: "Reels",
-    title: "Short-form movement that still feels premium.",
-    image: futureAssets.generated.communityCircuitLive,
+    title: "Short-form movement with real people in it.",
+    image: futureAssets.generated.friendlyTrainingCrew,
     tone: "scene",
   },
   {
@@ -216,43 +232,43 @@ export const communityPreviewCards: Array<{
   },
   {
     label: "Verified Coach",
-    title: "Real guidance with a human face behind it.",
-    image: futureAssets.generated.coachAthleteCheckin,
+    title: "Guidance with a human face behind it.",
+    image: futureAssets.generated.coachTabletReview,
     tone: "scene",
   },
 ] as const;
 
 export const futureHeroTrust = [
-  "Founding 250",
-  "AI coach",
-  "Training + nutrition",
-  "Community beta",
+  "Personalized plans",
+  "Nutrition context",
+  "Progress memory",
+  "Community support",
 ] as const;
 
 export const productPillars = [
   {
     label: "Train",
-    title: "Personalized plans and workout logging.",
+    title: "Personalized training without the spreadsheet.",
     detail: "Plan the session, adjust the work, and keep progress attached to the real week.",
     image: futureAssets.app.simTrain,
   },
   {
     label: "Nutrition",
-    title: "Food logging, targets, and body metrics.",
-    detail: "Track meals, calories, protein, and recovery fuel without separating food from training.",
-    image: futureAssets.generated.fuelPrepGlobal,
+    title: "Nutrition that supports the plan.",
+    detail: "Track meals, calories, protein, recipes, and recovery fuel without separating food from training.",
+    image: futureAssets.generated.groupMealPrep,
   },
   {
     label: "Cypher",
-    title: "An AI coach that remembers your context.",
+    title: "Coaching that remembers the context.",
     detail: "Soreness, class, travel, practice, missed days, and goals stay part of the next decision.",
     image: futureAssets.app.simCypher,
   },
   {
     label: "Community",
-    title: "Feed, reels, groups, and verified coaches.",
-    detail: "Find your people, follow trusted voices, join groups, and share progress without shame loops.",
-    image: futureAssets.generated.communityCircuitLive,
+    title: "Accountability without the shame loop.",
+    detail: "Find your people, follow trusted voices, join groups, and share progress without performative pressure.",
+    image: futureAssets.generated.recoveryCommunity,
   },
 ] as const;
 
@@ -287,16 +303,16 @@ export const systemTabs = [
   },
   {
     label: "Reels",
-    title: "Short-form content can become action.",
+    title: "Useful content can become action.",
     detail: "Coach tips, saves, and try-workout moments turn inspiration into useful next steps.",
-    image: futureAssets.generated.communityCircuitLive,
+    image: futureAssets.generated.friendlyTrainingCrew,
     treatment: "scene",
   },
   {
     label: "Coach",
-    title: "Verified coaches become trusted nodes.",
+    title: "Verified coaches make trust visible.",
     detail: "Profiles, groups, Q&A, and programs give the community a real training backbone.",
-    image: futureAssets.generated.coachAthleteCheckin,
+    image: futureAssets.generated.coachTabletReview,
     treatment: "scene",
   },
 ] as const;
@@ -441,7 +457,7 @@ export const futurePathCards: Array<{
       "A home base for people who want structure, progress, nutrition, and a community that keeps training moving.",
     bullets: ["Personal plan", "Food and body context", "Groups and feed"],
     cta: "Join as a member",
-    image: futureAssets.generated.communityCircuitLive,
+    image: futureAssets.generated.friendlyTrainingCrew,
   },
   {
     role: "athlete",
@@ -461,7 +477,7 @@ export const futurePathCards: Array<{
       "A path for coaches to build trust, support communities, and deliver training without another spreadsheet.",
     bullets: ["Verified presence", "Programs and groups", "Coach/team path"],
     cta: "Join as a coach",
-    image: futureAssets.generated.coachAthleteCheckin,
+    image: futureAssets.generated.coachTabletReview,
   },
 ];
 

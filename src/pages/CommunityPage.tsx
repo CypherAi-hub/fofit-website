@@ -50,21 +50,21 @@ export function CommunityPage() {
           { label: "Join founding 250", intent: "waitlist" },
           { label: "See coaches", to: "/coaches", variant: "secondary" },
         ]}
-        description="Fitness feels less lonely when progress, questions, groups, and trusted coaches sit beside the plan instead of becoming a noisy social app."
+        description="Fitness feels more sustainable when progress, questions, groups, and trusted coaches sit beside the plan instead of becoming a noisy social app."
         eyebrow="Community"
         media={
           <RoutePhoneCluster
             images={[
               { image: futureAssets.app.simDiscoverCommunity, label: "Discover" },
               { image: futureAssets.app.simCommunity, label: "Feed" },
-              { image: futureAssets.generated.coachAthleteCheckin, label: "Coach", treatment: "scene" },
+              { image: futureAssets.generated.recoveryCommunity, label: "People", treatment: "scene" },
             ]}
             label="FoFit community surfaces"
           />
         }
         title={
           <>
-            Real community, not empty social noise.
+            Community that supports the work.
           </>
         }
       />
@@ -72,7 +72,7 @@ export function CommunityPage() {
       <RouteSection
         description="The Community page should prove what the product can show: feed, groups, coach discovery, replies, and profile context."
         kicker="Community Surfaces"
-        title="The social layer has actual product jobs."
+        title="The social layer has practical product jobs."
       >
         <RouteStatGrid stats={[...communityStats]} />
       </RouteSection>
@@ -100,7 +100,7 @@ export function CommunityPage() {
         className="route-section--soft"
         description="A real community route needs the product proof cards first, then the atmosphere around them."
         kicker="Community Proof"
-        title="Feed, reels, profile, groups, and verified coach paths."
+        title="Feed, reels, groups, and verified coach paths."
       >
         <RouteCardGrid
           cards={communityPreviewCards.map((card) => ({

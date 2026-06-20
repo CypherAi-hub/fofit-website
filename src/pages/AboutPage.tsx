@@ -49,7 +49,7 @@ export function AboutPage() {
         media={
           <RoutePhoneCluster
             images={[
-              { image: futureAssets.generated.coachAthleteCheckin, label: "Built with coaches", treatment: "scene" },
+              { image: futureAssets.generated.coachTabletReview, label: "Built with coaches", treatment: "scene" },
               { image: futureAssets.app.simCypher, label: "Cypher" },
               { image: futureAssets.mark, label: "FoFit", treatment: "mark" },
             ]}
@@ -58,7 +58,7 @@ export function AboutPage() {
         }
         title={
           <>
-            Built in public from St. Louis.
+            Built with real people close to the product.
           </>
         }
       />
@@ -66,7 +66,7 @@ export function AboutPage() {
       <RouteSection
         description="The About page should tell the truth behind the product: real testers, real app surfaces, and a system that earns the brand line."
         kicker="Company Standard"
-        title="The product has to be real before the story gets loud."
+        title="The product has to help real people before the story gets loud."
       >
         <RouteFeatureLedger rows={[...companyRows]} />
       </RouteSection>
@@ -113,9 +113,9 @@ export function AboutPage() {
         pills={["St. Louis roots", "Tester-led", "Real app screens"]}
         title={
           <>
-            Help build the Future
+            Help shape FoFit
             <br />
-            of Fitness while it is still close.
+            while the loop is still close.
           </>
         }
       />

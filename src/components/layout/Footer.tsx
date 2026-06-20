@@ -37,7 +37,7 @@ export function Footer() {
         ))}
       </div>
       <div className="container footer-bottom">
-        <span>© 2026 FoFit. Built for the Future of Fitness.</span>
+        <span>© 2026 FoFit. Built for personalized fitness intelligence.</span>
         <span>St. Louis roots. Community ambitions.</span>
       </div>
     </footer>

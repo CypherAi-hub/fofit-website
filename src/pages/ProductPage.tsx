@@ -64,7 +64,7 @@ export function ProductPage() {
           { label: "Join founding 250", intent: "waitlist" },
           { label: "See pricing", to: "/pricing", variant: "secondary" },
         ]}
-        description="FoFit is the operating system around the week: what you train, what you eat, what changed, what Cypher remembers, and who is moving with you."
+        description="FoFit is the intelligent system around the week: what you train, what you eat, what changed, what Cypher remembers, and who is moving with you."
         eyebrow="Product"
         media={
           <RoutePhoneCluster
@@ -78,9 +78,9 @@ export function ProductPage() {
         }
         title={
           <>
-            One product loop.
+            One intelligent system
             <br />
-            No scattered fitness stack.
+            for the whole fitness week.
           </>
         }
       />
@@ -88,7 +88,7 @@ export function ProductPage() {
       <RouteSection
         description="The product story should show the actual app surfaces. These are the pieces a member sees when the week changes."
         kicker="System Proof"
-        title="Training, food, Cypher, and community feed the same decision."
+        title="Training, food, coaching, and community inform the same next step."
       >
         <RouteStatGrid stats={[...productStats]} />
       </RouteSection>
@@ -108,9 +108,9 @@ export function ProductPage() {
         media={
           <RoutePhoneCluster
             images={[
-              { image: futureAssets.generated.communityCircuitLive, label: "Members", treatment: "scene" },
+              { image: futureAssets.generated.friendlyTrainingCrew, label: "Members", treatment: "scene" },
               { image: futureAssets.app.simTrain, label: "Athletes" },
-              { image: futureAssets.generated.coachAthleteCheckin, label: "Coaches", treatment: "scene" },
+              { image: futureAssets.generated.coachTabletReview, label: "Coaches", treatment: "scene" },
             ]}
             label="FoFit member, athlete, and coach paths"
           />
@@ -120,7 +120,7 @@ export function ProductPage() {
           title: card.title,
           detail: card.description,
         }))}
-        title="Three paths, same FoFit system."
+        title="Different needs, one connected system."
       />
 
       <RouteSection
@@ -136,9 +136,9 @@ export function ProductPage() {
         pills={["Train", "Nutrition", "Cypher", "Community"]}
         title={
           <>
-            The product is the loop.
+            The product is the system.
             <br />
-            The loop is the advantage.
+            The system keeps the week clear.
           </>
         }
       />

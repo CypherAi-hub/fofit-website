@@ -48,9 +48,9 @@ export function TeamsPage() {
         media={
           <RoutePhoneCluster
             images={[
-              { image: futureAssets.generated.communityCircuitLive, label: "Group", treatment: "scene" },
+              { image: futureAssets.generated.friendlyTrainingCrew, label: "Group", treatment: "scene" },
               { image: futureAssets.app.simDiscoverCommunity, label: "Community" },
-              { image: futureAssets.generated.coachAthleteCheckin, label: "Coach", treatment: "scene" },
+              { image: futureAssets.generated.coachTabletReview, label: "Coach", treatment: "scene" },
             ]}
             label="FoFit teams surfaces"
           />

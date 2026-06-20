@@ -1,12 +1,12 @@
 /* Fitbod-inspired FoFit editorial reset. Imported last on purpose. */
 
 :root {
-  --bg: #ffffff;
-  --bg-elevated: #f5f5f7;
-  --surface: rgba(255, 255, 255, 0.94);
+  --bg: #f8faf7;
+  --bg-elevated: #eef4f0;
+  --surface: rgba(255, 255, 255, 0.96);
   --surface-strong: #ffffff;
-  --surface-soft: #f4f4f7;
-  --surface-muted: #fafafa;
+  --surface-soft: #eff4ef;
+  --surface-muted: #f4f7f4;
   --border: rgba(8, 10, 18, 0.13);
   --border-strong: rgba(112, 243, 165, 0.34);
   --text: #101116;
@@ -39,7 +39,7 @@
 }
 
 body {
-  background: #ffffff;
+  background: var(--bg);
   color: var(--text);
 }
 
@@ -51,7 +51,7 @@ body::before,
 }
 
 .site-frame {
-  background: #ffffff;
+  background: var(--bg);
 }
 
 .lp-reveal,
@@ -129,7 +129,7 @@ body::before,
 
 .button--secondary {
   border-color: rgba(8, 10, 18, 0.16);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.94);
   color: #101116;
 }
 
@@ -175,7 +175,8 @@ body::before,
   min-height: auto;
   padding-block: 0 4.5rem;
   overflow: visible;
-  background: #ffffff;
+  background:
+    linear-gradient(180deg, #f7faf6 0%, #fbfcfa 50%, var(--bg) 100%);
 }
 
 .editorial-goal-band {
@@ -185,7 +186,7 @@ body::before,
   max-width: 1040px;
   margin-top: 0;
   padding: 1.15rem 6.2rem;
-  background: #f2f2f6;
+  background: #edf3ef;
 }
 
 .editorial-goal-band span {
@@ -226,7 +227,7 @@ body::before,
   padding: 0.48rem 1rem;
   border: 1px solid #b8bdcc;
   border-radius: 999px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.92);
   color: #4b5060;
   font-size: 0.9rem;
   font-weight: 800;
@@ -298,7 +299,7 @@ body::before,
   min-height: 2rem;
   border-color: rgba(8, 10, 18, 0.13);
   border-radius: 999px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.9);
   color: #666b78;
   font-family: var(--font-body);
   font-size: 0.86rem;
@@ -372,14 +373,14 @@ body::before,
 
 .future-section {
   padding-block: 5.5rem;
-  background: #ffffff;
+  background: var(--bg);
 }
 
 .future-live-media {
   padding-block: 4.75rem 5.5rem;
-  border-top: 1px solid #eceef3;
+  border-top: 1px solid rgba(8, 10, 18, 0.08);
   background:
-    linear-gradient(180deg, #ffffff 0%, #f7f8fa 100%);
+    linear-gradient(180deg, #f7faf6 0%, #eef4f0 100%);
 }
 
 .future-live-media__inner {
@@ -423,7 +424,7 @@ body::before,
   position: relative;
   min-height: 100%;
   overflow: hidden;
-  border: 1px solid rgba(8, 10, 18, 0.11);
+  border: 1px solid rgba(8, 10, 18, 0.1);
   border-radius: 8px;
   background: #05080c;
   color: #ffffff;
@@ -548,7 +549,7 @@ body::before,
 }
 
 .editorial-takeaways {
-  border-top: 1px solid #eceef3;
+  border-top: 1px solid rgba(8, 10, 18, 0.08);
 }
 
 .editorial-takeaways__list ul {
@@ -581,8 +582,8 @@ body::before,
 }
 
 .editorial-toc-section {
-  border-top: 1px solid #eceef3;
-  background: #ffffff;
+  border-top: 1px solid rgba(8, 10, 18, 0.08);
+  background: #fbfcfa;
 }
 
 .future-system-motion__inner {
@@ -650,7 +651,7 @@ body::before,
   padding: 2rem;
   border: 1px solid #e3e6ed;
   border-radius: 8px;
-  background: #f5f5f7;
+  background: var(--bg-elevated);
 }
 
 .future-system-preview__media--phone img {
@@ -703,7 +704,7 @@ body::before,
 .future-card {
   border: 1px solid #e3e6ed;
   border-radius: 8px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.94);
   box-shadow: none;
 }
 
@@ -717,7 +718,7 @@ body::before,
 .future-paths,
 .future-pricing,
 .future-founder {
-  border-top: 1px solid #eceef3;
+  border-top: 1px solid rgba(8, 10, 18, 0.08);
 }
 
 .future-community__inner,
@@ -739,7 +740,7 @@ body::before,
   grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.38fr);
   min-height: auto;
   padding: 1rem;
-  background: #f7f7f9;
+  background: #eef4f0;
 }
 
 .future-community-feature__backdrop {
@@ -914,7 +915,7 @@ body::before,
   overflow: hidden;
   border: 1px solid #e3e6ed;
   border-radius: 8px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.96);
 }
 
 .future-recipe-card img {
@@ -955,7 +956,7 @@ body::before,
   padding: 1.05rem;
   border: 1px solid #e3e6ed;
   border-radius: 8px;
-  background: #f7f7f9;
+  background: #eef4f0;
 }
 
 .future-nutrition-workflow h4 {
@@ -1029,14 +1030,14 @@ body::before,
 
 .future-pricing-card--featured {
   border-color: rgba(112, 243, 165, 0.45);
-  background: #f4fff8;
+  background: #f1fff7;
 }
 
 .future-pricing__campus-note {
   max-width: 1040px;
   border-color: #e3e6ed;
   border-radius: 8px;
-  background: #f5f5f7;
+  background: #eef4f0;
 }
 
 .future-pricing__campus-note strong {
@@ -1047,7 +1048,7 @@ body::before,
   min-height: 26rem;
   border-color: #e3e6ed;
   border-radius: 8px;
-  background: #f5f5f7;
+  background: #eef4f0;
   box-shadow: none;
 }
 
@@ -1072,8 +1073,8 @@ body::before,
 
 .future-final-cta {
   padding-block: 5rem;
-  border-top: 1px solid #eceef3;
-  background: #f5f5f7;
+  border-top: 1px solid rgba(8, 10, 18, 0.08);
+  background: #eef4f0;
 }
 
 .future-final-cta::before,

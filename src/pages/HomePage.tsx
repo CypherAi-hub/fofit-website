@@ -17,8 +17,8 @@ export function HomePage() {
   return (
     <>
       <PageMeta
-        description="FoFit combines AI coaching, personalized training, nutrition, and community in one fitness app."
-        title="FoFit — The Future of Fitness"
+        description="FoFit combines personalized training, nutrition, Cypher coaching, progress memory, and community support in one fitness app."
+        title="FoFit — Personalized Fitness Intelligence"
       />
       <HeroFutureOfFitness />
       <LiveMediaSection />

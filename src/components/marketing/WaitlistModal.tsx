@@ -296,7 +296,7 @@ export function WaitlistModal() {
         </button>
         <div className="waitlist-modal__aside">
           <span className="eyebrow">FoFit early access</span>
-          <h3>Your path into the Future of Fitness.</h3>
+          <h3>Your path into personalized fitness intelligence.</h3>
           <p>
             Claim a founding 250 spot and help shape the first release for
             training, nutrition, Cypher, and community.

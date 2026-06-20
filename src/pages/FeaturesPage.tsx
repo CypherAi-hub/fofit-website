@@ -74,7 +74,7 @@ const trainingCards = [
     label: "Coach Check-in",
     title: "Training should have a human feel.",
     detail: "Support media gives the training page energy without pretending to be app UI.",
-    image: futureAssets.generated.coachAthleteCheckin,
+    image: futureAssets.generated.friendlyTrainingCrew,
   },
 ] as const;
 
@@ -97,7 +97,7 @@ export function FeaturesPage() {
             images={[
               { image: futureAssets.app.simTrain, label: "Today" },
               { image: futureAssets.app.simCypher, label: "Cypher" },
-              { image: futureAssets.generated.coachAthleteCheckin, label: "Coach", treatment: "scene" },
+              { image: futureAssets.generated.friendlyTrainingCrew, label: "Crew", treatment: "scene" },
             ]}
             label="FoFit training screens"
           />
@@ -133,7 +133,7 @@ export function FeaturesPage() {
           <RoutePhoneCluster
             images={[
               { image: futureAssets.app.simCypher, label: "Cypher" },
-              { image: futureAssets.generated.communityCircuitLive, label: "Athlete load", treatment: "scene" },
+              { image: futureAssets.generated.recoveryCommunity, label: "Recovery", treatment: "scene" },
             ]}
             label="Cypher training context"
           />

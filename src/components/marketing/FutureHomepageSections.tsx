@@ -24,33 +24,47 @@ import { EarlyAccessButton } from "./EarlyAccessButton";
 const liveMediaCards = [
   {
     label: "Training atmosphere",
-    title: "The work should move.",
-    detail: "Video carries sweat, pace, and the reason the product exists.",
+    title: "Movement gives the system a pulse.",
+    detail: "Video carries pace, effort, and the real reason the product exists.",
     type: "video",
     src: "/hero.mp4",
     poster: "/hero-poster.jpg",
   },
   {
     label: "Real app UI",
-    title: "Show the product, not a promise.",
+    title: "The product still has to be the proof.",
     detail: "The app-device film keeps the actual FoFit surfaces in motion.",
     type: "video",
     src: "/product-devices.mp4",
     poster: "/product-devices-poster.jpg",
   },
   {
-    label: "Fuel prep",
-    title: "Nutrition needs texture.",
-    detail: "Food stays cultural, practical, and connected to training.",
+    label: "Training crew",
+    title: "People make consistency easier.",
+    detail: "The product belongs around real training lives.",
     type: "image",
-    image: futureAssets.generated.fuelPrepGlobal,
+    image: futureAssets.generated.friendlyTrainingCrew,
   },
   {
-    label: "Coach check-in",
-    title: "Trust needs a human moment.",
-    detail: "The coach path feels stronger when the site shows actual guidance energy.",
+    label: "Shared fuel",
+    title: "Nutrition has to feel livable.",
+    detail: "Food support works better when it looks practical, social, and familiar.",
     type: "image",
-    image: futureAssets.generated.coachAthleteCheckin,
+    image: futureAssets.generated.groupMealPrep,
+  },
+  {
+    label: "Recovery",
+    title: "Progress needs recovery and support.",
+    detail: "The loop should make room for cooldowns, questions, and real people.",
+    type: "image",
+    image: futureAssets.generated.recoveryCommunity,
+  },
+  {
+    label: "Coach review",
+    title: "Trust needs a human layer.",
+    detail: "Coaches make AI guidance feel accountable, not anonymous.",
+    type: "image",
+    image: futureAssets.generated.coachTabletReview,
   },
 ] as const;
 
@@ -59,27 +73,27 @@ export function HeroFutureOfFitness() {
     <section className="future-hero editorial-hero">
       <div className="container editorial-goal-band" aria-label="FoFit goals">
         <div>
-          <span>START WHERE YOU ARE</span>
-          <h2>Pick the lane FoFit should personalize first.</h2>
-          <p>Training, food, Cypher, and community stay connected after that.</p>
+          <span>START WITH THE SUPPORT YOU NEED</span>
+          <h2>Choose the part of fitness that needs less guesswork.</h2>
+          <p>FoFit keeps the rest connected: training, food, recovery, people, and progress.</p>
         </div>
         <div className="editorial-goal-band__choices">
           <a href="#training">Build strength</a>
-          <a href="#nutrition">Eat smarter</a>
-          <a href="#cypher">Ask Cypher</a>
-          <a href="#community">Find community</a>
+          <a href="#nutrition">Improve nutrition</a>
+          <a href="#cypher">Get coached</a>
+          <a href="#community">Stay accountable</a>
         </div>
       </div>
 
       <div className="container future-hero__inner editorial-hero__inner">
         <Revealer className="future-hero__copy">
-          <h1>Training, food, Cypher, and community in one loop.</h1>
+          <h1>Personalized fitness intelligence for real life.</h1>
           <div className="editorial-hero__meta">
-            FoFit founding access <span aria-hidden="true">•</span> Real product surfaces
+            FoFit founding access <span aria-hidden="true">•</span> Real product surfaces <span aria-hidden="true">•</span> Human support
           </div>
           <p>
-            FoFit keeps the week connected: what you trained, what you ate,
-            what changed, what Cypher remembers, and who is moving with you.
+            FoFit connects training, nutrition, recovery, Cypher coaching, and
+            community so the next step is clear without another disconnected app.
           </p>
           <div className="future-hero__actions">
             <EarlyAccessButton size="lg">Join founding 250</EarlyAccessButton>
@@ -109,9 +123,9 @@ export function HeroFutureOfFitness() {
               <source src="/hero.mp4" type="video/mp4" />
             </video>
             <img
-              alt={futureAssets.generated.communityCircuitLive.alt}
+              alt={futureAssets.generated.friendlyTrainingCrew.alt}
               className="editorial-product-hero__photo"
-              src={futureAssets.generated.communityCircuitLive.src}
+              src={futureAssets.generated.friendlyTrainingCrew.src}
             />
           </div>
           <div className="editorial-product-hero__screens" aria-label="FoFit app preview">
@@ -131,10 +145,10 @@ export function LiveMediaSection() {
       <div className="container future-live-media__inner">
         <Revealer className="future-live-media__copy">
           <span className="lp-kicker">Media System</span>
-          <h2>FoFit comes alive before anyone taps download.</h2>
+          <h2>A fitness product earns trust by feeling human first.</h2>
           <p>
-            Real app screenshots stay the proof. Motion and original support
-            media give the brand pace, sweat, food, and human coaching energy.
+            Real app screenshots stay the proof. Warmer original media shows
+            the people, meals, recovery, and coach conversations around the product.
           </p>
         </Revealer>
 
@@ -180,10 +194,10 @@ export function ProductPillars() {
     <section className="future-section future-pillars editorial-takeaways" id="training">
       <div className="container editorial-article-grid">
         <Revealer className="future-section__heading">
-          <h2>What FoFit is actually built around.</h2>
+          <h2>What people actually need a fitness app to handle.</h2>
           <p>
-            The product should show its own spine: real app screens, real media,
-            and a loop that connects the decisions people make every day.
+            The pattern is clear: make the plan personal, reduce logging
+            friction, show progress, support food choices, and keep motivation social.
           </p>
         </Revealer>
         <Revealer className="editorial-takeaways__list" delay="1">
@@ -197,15 +211,15 @@ export function ProductPillars() {
             <li>
               <strong>Adaptive loop</strong>
               <span>
-                The next recommendation should reflect the user&apos;s logged
-                work, food, soreness, schedule, and preferences.
+                The next recommendation should reflect logged work, food,
+                soreness, schedule, preferences, and what changed this week.
               </span>
             </li>
             <li>
-              <strong>Product proof</strong>
+              <strong>Human layer</strong>
               <span>
-                FoFit needs to show real app surfaces first, with polished
-                imagery supporting the product instead of replacing it.
+                The technology should make training feel clearer and more
+                supported, not colder or more isolated.
               </span>
             </li>
           </ul>
@@ -290,7 +304,7 @@ export function CommunityPreviewSection() {
         <Revealer className="future-community__gallery" delay="1">
           <article className="future-community-feature future-card">
             <div className="future-community-feature__backdrop" aria-hidden="true">
-              <img alt="" src={futureAssets.generated.communityCircuitLive.src} />
+              <img alt="" src={futureAssets.generated.recoveryCommunity.src} />
             </div>
             <div className="future-community-feature__intro">
               <span>Featured community proof</span>
@@ -337,9 +351,9 @@ export function CypherMemorySection() {
       <div className="container future-cypher__inner">
         <Revealer className="future-device-pair future-device-pair--with-scene">
           <img
-            alt={futureAssets.generated.coachAthleteCheckin.alt}
+            alt={futureAssets.generated.coachTabletReview.alt}
             className="future-device-pair__scene"
-            src={futureAssets.generated.coachAthleteCheckin.src}
+            src={futureAssets.generated.coachTabletReview.src}
           />
           <img
             alt={futureAssets.app.simTrain.alt}
@@ -392,9 +406,9 @@ export function NutritionPreview() {
 
         <Revealer className="future-nutrition__visual" delay="1">
           <img
-            alt={futureAssets.generated.fuelPrepGlobal.alt}
+            alt={futureAssets.generated.groupMealPrep.alt}
             className="future-nutrition__scene"
-            src={futureAssets.generated.fuelPrepGlobal.src}
+            src={futureAssets.generated.groupMealPrep.src}
           />
           <img
             alt={futureAssets.app.simNutrition.alt}
@@ -469,7 +483,7 @@ export function FutureThreePathsSection() {
       <div className="container">
         <Revealer className="future-section__heading">
           <span className="lp-kicker">Members / Athletes / Coaches</span>
-          <h2>Three paths into the same fitness OS.</h2>
+          <h2>Three paths into one intelligent fitness system.</h2>
           <p>
             FoFit stays personal without becoming fragmented. Members,
             athletes, and coaches start from different needs and stay inside
@@ -591,18 +605,18 @@ export function FounderStorySection() {
     <section className="future-section future-founder">
       <div className="container future-founder__inner">
         <Revealer className="future-founder__visual">
-          <img alt={futureAssets.generated.coachAthleteCheckin.alt} src={futureAssets.generated.coachAthleteCheckin.src} />
+          <img alt={futureAssets.generated.coachTabletReview.alt} src={futureAssets.generated.coachTabletReview.src} />
           <div className="future-founder__mark">
             <img alt={futureAssets.mark.alt} src={futureAssets.mark.src} />
           </div>
         </Revealer>
         <Revealer className="future-founder__copy" delay="1">
           <span className="lp-kicker">Built in public</span>
-          <h2>Built in public from St. Louis.</h2>
+          <h2>Built close to the people using it.</h2>
           <p>
             FoFit is being built with real testers, athletes, coaches, and
-            students. Join early and help shape the Future of Fitness before it
-            becomes another app you hear about after the fact.
+            students. Join early and help shape the product while the feedback
+            loop is still close enough to matter.
           </p>
           <div className="future-founder__facts">
             <span>Maryville roots</span>
@@ -619,10 +633,10 @@ export function FinalCTA() {
   return (
     <section className="future-final-cta">
       <Revealer className="container future-final-cta__inner">
-        <h2>Get early access before launch.</h2>
+        <h2>Get early access to the system.</h2>
         <p>
-          Join founding 250 and help shape the app becoming your coach, your
-          plan, your food, and your people.
+          Join founding 250 and help shape the app becoming your plan, your
+          coach, your food system, and your training community.
         </p>
         <div className="future-final-cta__actions">
           <EarlyAccessButton size="lg">Join founding 250</EarlyAccessButton>

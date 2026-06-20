@@ -68,7 +68,7 @@ export function FAQPage() {
               label: "Teams",
               title: "Coaches, groups, schools, and clubs.",
               detail: "Where the coach/team layer fits around the member product.",
-              image: futureAssets.generated.coachAthleteCheckin,
+              image: futureAssets.generated.coachTabletReview,
             },
           ]}
         />
