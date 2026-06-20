@@ -6,6 +6,7 @@ import {
   cypherMemorySignals,
   founderTrustPoints,
   futureAssets,
+  futureHeroSystemProof,
   futureHeroTrust,
   futurePathCards,
   futurePricingPlans,
@@ -75,34 +76,30 @@ const liveMediaCards = [
 export function HeroFutureOfFitness() {
   return (
     <section className="future-hero editorial-hero">
-      <div className="container editorial-goal-band" aria-label="FoFit goals">
-        <div>
-          <span>START WITH THE SUPPORT YOU NEED</span>
-          <h2>Choose the part of fitness that needs less guesswork.</h2>
-          <p>FoFit keeps the rest connected: training, food, recovery, people, and progress.</p>
-        </div>
-        <div className="editorial-goal-band__choices">
-          <a href="#training">Build strength</a>
-          <a href="#nutrition">Improve nutrition</a>
-          <a href="#cypher">Get coached</a>
-          <a href="#community">Stay accountable</a>
-        </div>
-      </div>
+      <img
+        alt=""
+        aria-hidden="true"
+        className="editorial-hero__backdrop"
+        src={futureAssets.generated.systemHeroGym.src}
+      />
 
       <div className="container future-hero__inner editorial-hero__inner">
         <Revealer className="future-hero__copy">
-          <h1>Personalized fitness intelligence for real life.</h1>
+          <h1>
+            Stop using four fitness apps. <span>Use FoFit.</span>
+          </h1>
           <div className="editorial-hero__meta">
-            FoFit founding access <span aria-hidden="true">•</span> Real product surfaces <span aria-hidden="true">•</span> Human support
+            Train <span aria-hidden="true">•</span> Fuel <span aria-hidden="true">•</span> Cypher <span aria-hidden="true">•</span> Community
           </div>
           <p>
-            FoFit connects training, nutrition, recovery, Cypher coaching, and
-            community so the next step is clear without another disconnected app.
+            Stop bouncing between a workout planner, food tracker, AI chat, and
+            social app. FoFit keeps training, fuel, recovery context, and your
+            people in one system.
           </p>
           <div className="future-hero__actions">
             <EarlyAccessButton size="lg">Join founding 250</EarlyAccessButton>
-            <a className="button button--secondary button--lg" href="#system-in-motion">
-              Explore the product
+            <a className="button button--secondary button--lg" href="#real-week">
+              See the product loop
             </a>
           </div>
           <div className="future-hero__trust" aria-label="FoFit launch focus">
@@ -110,32 +107,22 @@ export function HeroFutureOfFitness() {
               <span key={item}>{item}</span>
             ))}
           </div>
+          <div className="editorial-hero__system-proof" aria-label="FoFit all-in-one system">
+            {futureHeroSystemProof.map((item) => (
+              <article key={item.label}>
+                <strong>{item.label}</strong>
+                <span>{item.detail}</span>
+              </article>
+            ))}
+          </div>
         </Revealer>
 
         <Revealer className="future-hero__visual editorial-product-hero" delay="1">
-          <div className="editorial-product-hero__media-row">
-            <video
-              aria-label="FoFit training atmosphere video"
-              autoPlay
-              className="editorial-product-hero__video"
-              loop
-              muted
-              playsInline
-              poster="/hero-poster.jpg"
-              preload="metadata"
-            >
-              <source src="/hero.mp4" type="video/mp4" />
-            </video>
-            <img
-              alt={futureAssets.generated.friendlyTrainingCrew.alt}
-              className="editorial-product-hero__photo"
-              src={futureAssets.generated.friendlyTrainingCrew.src}
-            />
-          </div>
           <div className="editorial-product-hero__screens" aria-label="FoFit app preview">
             <img alt={futureAssets.app.simTrain.alt} src={futureAssets.app.simTrain.src} />
-            <img alt={futureAssets.app.simCypher.alt} src={futureAssets.app.simCypher.src} />
             <img alt={futureAssets.app.simNutrition.alt} src={futureAssets.app.simNutrition.src} />
+            <img alt={futureAssets.app.simCypher.alt} src={futureAssets.app.simCypher.src} />
+            <img alt={futureAssets.app.simDiscoverCommunity.alt} src={futureAssets.app.simDiscoverCommunity.src} />
           </div>
         </Revealer>
       </div>

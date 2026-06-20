@@ -140,7 +140,7 @@ export function BetaPage() {
         }
         title={
           <>
-            Test FoFit
+            Test FoFit{" "}
             <br />
             before launch.
           </>

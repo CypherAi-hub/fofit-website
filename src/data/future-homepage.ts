@@ -129,6 +129,10 @@ export const futureAssets = {
       alt: "FoFit coach reviewing training progress on a tablet with two members after a workout.",
       src: "/images/generated/coach-tablet-review.webp",
     },
+    systemHeroGym: {
+      alt: "Original FoFit cinematic strength gym with teal lighting and a rack stage.",
+      src: "/images/generated/fofit-system-hero-gym.webp",
+    },
     betaTestersReview: {
       alt: "FoFit beta testers reviewing the app together after a bright strength workout.",
       src: "/images/generated/beta-testers-review.webp",
@@ -255,10 +259,30 @@ export const communityPreviewCards: Array<{
 ] as const;
 
 export const futureHeroTrust = [
-  "Personalized plans",
-  "Nutrition context",
+  "Training plan",
+  "Food context",
+  "Cypher coach",
+  "Community",
   "Progress memory",
-  "Community support",
+] as const;
+
+export const futureHeroSystemProof = [
+  {
+    label: "Train",
+    detail: "Plan and log the work.",
+  },
+  {
+    label: "Fuel",
+    detail: "Meals stay connected.",
+  },
+  {
+    label: "Cypher",
+    detail: "Adjust with context.",
+  },
+  {
+    label: "Community",
+    detail: "Find support and coaches.",
+  },
 ] as const;
 
 export const productPillars = [
