@@ -491,3 +491,34 @@
   color: var(--text-soft);
   font-size: 0.78rem;
 }
+
+/* Weight trend */
+.bodylab-trend {
+  display: grid;
+  gap: 0.7rem;
+}
+.bodylab-trend__row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.bodylab-trend__spark {
+  flex: 1 1 auto;
+  height: 56px;
+  min-width: 0;
+}
+.bodylab-trend__stat {
+  display: grid;
+  gap: 2px;
+  text-align: right;
+  flex: 0 0 auto;
+}
+.bodylab-trend__stat strong {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--text-strong);
+}
+.bodylab-trend__stat span {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}

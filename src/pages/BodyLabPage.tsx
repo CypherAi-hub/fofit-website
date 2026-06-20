@@ -6,6 +6,7 @@ import { BodyLabUploadCard } from "../features/body-lab/components/BodyLabUpload
 import { BodyLabTimelineGrid } from "../features/body-lab/components/BodyLabTimelineGrid";
 import { BodyLabMediaViewer } from "../features/body-lab/components/BodyLabMediaViewer";
 import { BodyLabCompare } from "../features/body-lab/components/BodyLabCompare";
+import { BodyLabTrend } from "../features/body-lab/components/BodyLabTrend";
 import { BodyLabEmptyState } from "../features/body-lab/components/BodyLabEmptyState";
 import { BodyLabErrorState } from "../features/body-lab/components/BodyLabErrorState";
 import { PageMeta } from "../components/layout/PageMeta";
@@ -94,6 +95,10 @@ export function BodyLabPage() {
               Compare
             </button>
           </div>
+        )}
+
+        {!compareMode && bodyLab.timeline.status === "ready" && (
+          <BodyLabTrend checkIns={checkIns} />
         )}
 
         <section aria-label="Your check-in timeline">
