@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { BodyCheckIn } from "../types";
 
@@ -27,6 +27,12 @@ export function BodyLabMediaViewer({
   const [active, setActive] = useState(0);
   const [confirming, setConfirming] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const innerRef = useRef<HTMLDivElement>(null);
+
+  // Move focus into the modal on open so keyboard + screen-reader users land inside it.
+  useEffect(() => {
+    innerRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     let alive = true;
@@ -81,7 +87,12 @@ export function BodyLabMediaViewer({
 
   return (
     <div className="bodylab-viewer" role="dialog" aria-modal="true" onClick={onClose}>
-      <div className="bodylab-viewer__inner" onClick={(e) => e.stopPropagation()}>
+      <div
+        ref={innerRef}
+        tabIndex={-1}
+        className="bodylab-viewer__inner"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="bodylab-viewer__media">
           {url ? (
             current?.mediaType === "video" ? (

@@ -287,7 +287,7 @@ export function BodyLabUploadCard({
       </label>
 
       {uploading ? (
-        <div className="bodylab-progress">
+        <div className="bodylab-progress" role="status" aria-live="polite">
           <div className="bodylab-progress__bar">
             <div
               className="bodylab-progress__fill"
