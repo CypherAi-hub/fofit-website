@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { supabase } from "../../lib/supabase";
-import { listSessionsPage } from "./trainingService";
+import { listSessionsPage, type HistoryCursor } from "./trainingService";
 import type { WorkoutSessionSummary } from "./models";
 
 type Status = "loading" | "error" | "ready";
@@ -11,7 +11,7 @@ const PAGE = 25;
 export function useWorkoutHistory() {
   const [status, setStatus] = useState<Status>("loading");
   const [sessions, setSessions] = useState<WorkoutSessionSummary[]>([]);
-  const [nextBefore, setNextBefore] = useState<string | null>(null);
+  const [nextCursor, setNextCursor] = useState<HistoryCursor | null>(null);
   const [loadingMore, setLoadingMore] = useState(false);
   const alive = useRef(true);
 
@@ -28,7 +28,7 @@ export function useWorkoutHistory() {
       .then((p) => {
         if (!alive.current) return;
         setSessions(p.sessions);
-        setNextBefore(p.nextBefore);
+        setNextCursor(p.nextCursor);
         setStatus("ready");
       })
       .catch(() => {
@@ -37,21 +37,21 @@ export function useWorkoutHistory() {
   }, []);
 
   const loadMore = useCallback(async () => {
-    if (!nextBefore || loadingMore) return;
+    if (!nextCursor || loadingMore) return;
     setLoadingMore(true);
     try {
-      const p = await listSessionsPage(supabase, { limit: PAGE, before: nextBefore });
+      const p = await listSessionsPage(supabase, { limit: PAGE, cursor: nextCursor });
       if (!alive.current) return;
-      // Guard against a duplicate id if a session shares the cursor date boundary.
+      // Belt-and-suspenders against a duplicate id at the cursor boundary.
       setSessions((cur) => {
         const seen = new Set(cur.map((s) => s.id));
         return [...cur, ...p.sessions.filter((s) => !seen.has(s.id))];
       });
-      setNextBefore(p.nextBefore);
+      setNextCursor(p.nextCursor);
     } finally {
       if (alive.current) setLoadingMore(false);
     }
-  }, [nextBefore, loadingMore]);
+  }, [nextCursor, loadingMore]);
 
-  return { status, sessions, hasMore: nextBefore != null, loadingMore, loadMore };
+  return { status, sessions, hasMore: nextCursor != null, loadingMore, loadMore };
 }
