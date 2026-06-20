@@ -60,32 +60,8 @@ function VolumeTrend({ sessions }: { sessions: WorkoutSession[] }) {
   );
 }
 
-/** Heaviest logged set per exercise across all sessions — a real strength record. */
-function personalRecords(sessions: WorkoutSession[]): { name: string; weight: number; reps: number }[] {
-  const best = new Map<string, { weight: number; reps: number }>();
-  for (const s of sessions) {
-    for (const ex of s.exercises) {
-      for (const set of ex.sets) {
-        const w = parseFloat(set.weight);
-        const r = parseFloat(set.reps);
-        if (!Number.isFinite(w) || w <= 0 || !Number.isFinite(r) || r <= 0) continue;
-        const cur = best.get(ex.name);
-        if (!cur || w > cur.weight) best.set(ex.name, { weight: w, reps: r });
-      }
-    }
-  }
-  return [...best.entries()]
-    .map(([name, v]) => ({ name, ...v }))
-    .sort((a, b) => b.weight - a.weight)
-    .slice(0, 12);
-}
-
 export function TrainingProgressPage() {
   const { state, stats } = useTrainingHistory();
-  const prs = useMemo(
-    () => (state.status === "ready" ? personalRecords(state.sessions) : []),
-    [state],
-  );
 
   return (
     <>
@@ -123,22 +99,6 @@ export function TrainingProgressPage() {
             </section>
 
             <VolumeTrend sessions={state.sessions} />
-
-            {prs.length > 0 && (
-              <section className="bodylab-card training-prs" aria-label="Personal records">
-                <span className="bodylab__eyebrow">◆ Personal records</span>
-                <div className="training-pr-grid">
-                  {prs.map((pr) => (
-                    <div key={pr.name} className="training-pr">
-                      <span className="training-pr__name">{pr.name}</span>
-                      <span className="training-pr__value">
-                        {pr.weight} <span className="training-pr__x">×</span> {pr.reps}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
 
             {state.sessions.length === 0 ? (
               <div className="bodylab-state">
