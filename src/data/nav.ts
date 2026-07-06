@@ -52,8 +52,10 @@ export const footerColumns: Array<{ title: string; links: FooterLinkItem[] }> = 
   {
     title: "Legal",
     links: [
-      { label: "Privacy questions", href: "mailto:hello@fofit.app?subject=FoFit%20privacy" },
-      { label: "Terms questions", href: "mailto:hello@fofit.app?subject=FoFit%20terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Support", href: "/support" },
+      { label: "Delete account", href: "/delete-account" },
     ],
   },
 ];

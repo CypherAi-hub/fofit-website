@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Delete Account | FoFit</title>
+  <meta name="description" content="FoFit includes an in-app account deletion path. This page explains how to start deletion and what is removed.">
+  <style>
+    :root { color-scheme: dark; --bg: #0D0F12; --card: #15171B; --text: #F3EFE6; --muted: rgba(243,239,230,.72); --line: rgba(243,239,230,.12); --accent: #22E69A; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: linear-gradient(180deg, var(--bg), #15171B); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { width: min(880px, calc(100% - 40px)); margin: 0 auto; padding: 64px 0 56px; }
+    .eyebrow { color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 12px 0; font-size: clamp(40px, 7vw, 68px); line-height: .95; }
+    .summary { color: var(--muted); font-size: 18px; line-height: 1.55; max-width: 760px; }
+    .updated { color: rgba(243,239,230,.54); font-size: 13px; margin-top: 12px; }
+    section { margin-top: 18px; padding: 22px; border: 1px solid var(--line); border-radius: 20px; background: rgba(21,23,27,.86); }
+    h2 { margin: 0 0 10px; font-size: 23px; }
+    p, li { color: var(--muted); font-size: 15px; line-height: 1.65; }
+    ul { margin: 10px 0 0; padding-left: 22px; }
+    a { color: var(--accent); }
+    footer { margin-top: 26px; color: rgba(243,239,230,.54); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">ACCOUNT DELETION</div>
+    <h1>Delete Account</h1>
+    <p class="summary">FoFit includes an in-app account deletion path. This page explains how to start deletion and what is removed.</p>
+    <p class="updated">Last updated July 5, 2026</p>
+    <section><h2>Delete in the app</h2><ul><li>Open FoFit and sign in to the account you want deleted.</li><li>Go to Settings &gt; Profile &amp; Account &gt; Delete account.</li><li>Read the warning, type DELETE, and confirm.</li><li>FoFit signs you out after the backend confirms deletion.</li></ul></section>
+<section><h2>If you cannot access the app</h2><p>Email support@fofit.app from the email address on your FoFit account with the subject &quot;Delete my FoFit account&quot;. Include the account email and any sign-in provider you used. We may ask for additional verification before deleting an account.</p></section>
+<section><h2>What deletion removes</h2><ul><li>Your FoFit auth account and user-scoped cloud data.</li><li>Workout plans, sessions, PRs, body metrics, goals, nutrition logs, saved foods, Cypher chat history, coach-memory notes, and community/profile data tied to your user id.</li><li>Uploaded media such as profile photos, progress photos, community post media, and reel media on a best-effort storage purge after account deletion.</li></ul></section>
+<section><h2>What may remain briefly</h2><ul><li>Rolling backups until they expire.</li><li>Security, abuse-prevention, and diagnostic records that are no longer linked to your account where retention is required or operationally necessary.</li><li>Content already exported, cached, screenshotted, or stored outside FoFit by other people or third-party services.</li></ul></section>
+<section><h2>App Review demo account</h2><p>The shared App Review demo account is preserved so reviewers can test FoFit repeatedly. Use Sign out when finished. A fresh test account can still exercise the destructive deletion path.</p></section>
+    <footer>FoFit support: <a href="mailto:support@fofit.app">support@fofit.app</a></footer>
+  </main>
+</body>
+</html>
