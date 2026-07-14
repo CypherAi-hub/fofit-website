@@ -1666,6 +1666,17 @@ main {
   gap: 0.8rem;
 }
 
+.footer-disclaimer {
+  margin: 0 auto 1.5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
 .footer-bottom {
   display: flex;
   justify-content: space-between;

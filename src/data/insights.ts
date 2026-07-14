@@ -104,7 +104,7 @@ A lifter who pushes load aggressively for years can outrun their connective tiss
 
 Volume and frequency manipulation, with controlled load, lets you keep training hard without forcing the connective tissue to keep up with the muscle every single week. That's not playing it safe. That's playing the long game.
 
-The other failure mode is neurological. Maximum-effort lifting is expensive for the central nervous system. Sustained high-percentage work, week after week, without periodized recovery, eventually drops your output. Sleep gets worse. Resting heart rate climbs. The bar feels heavier than it should. This is non-functional overreaching, and the cure isn't more grit — it's a lower-load week or two that lets the system recover and re-express the fitness underneath.
+The other failure mode is neurological. Maximum-effort lifting is expensive for the central nervous system. Sustained high-percentage work, week after week, without periodized recovery, eventually drops your output. Sleep gets worse. Resting heart rate climbs. The bar feels heavier than it should. This is non-functional overreaching, and the answer isn't more grit — it's a lower-load week or two that lets the system recover and re-express the fitness underneath.
 
 ## What this means for your training
 

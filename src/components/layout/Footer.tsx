@@ -29,6 +29,12 @@ export function Footer() {
           </div>
         ))}
       </div>
+      <p className="container footer-disclaimer">
+        FoFit is a general fitness and wellness app and does not provide medical
+        advice. Nutrition information is for general education and is not a
+        substitute for advice from a registered dietitian. Consult a qualified
+        healthcare professional before starting any new program.
+      </p>
       <div className="container footer-bottom">
         <span>© 2026 FoFit. Built for long-term training consistency.</span>
         <span>St. Louis roots. Platform ambitions.</span>
