@@ -3,12 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Button } from "../components/ui/Button";
 import { useAuth } from "../lib/auth-context";
+import { useCanonicalHandoff } from "../lib/canonical-handoff";
 import { useWaitlistClaim } from "../lib/waitlist-claim";
 
 export function DashboardPage() {
   const navigate = useNavigate();
   const { session, user, loading, signOut } = useAuth();
+  // Order matters: the claim runs first, and the handoff waits on the flag it
+  // stamps. Redirecting before that silently loses the waitlist conversion and,
+  // on an OAuth/magic-link landing, the session exchange itself.
   useWaitlistClaim();
+  useCanonicalHandoff("/dashboard");
 
   useEffect(() => {
     if (!loading && !session) {

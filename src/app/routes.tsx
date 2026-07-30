@@ -14,8 +14,7 @@ import { StorePage } from "../pages/StorePage";
 import { TeamsPage } from "../pages/TeamsPage";
 import { NutritionPage } from "../pages/ComingSoonPage";
 import { SubmissionPreviewPage } from "../pages/SubmissionPreviewPage";
-import { SignupPage } from "../pages/SignupPage";
-import { LoginPage } from "../pages/LoginPage";
+import { CanonicalAuthRedirect } from "../pages/CanonicalAuthRedirect";
 import { WelcomePage } from "../pages/WelcomePage";
 import { DashboardPage } from "../pages/DashboardPage";
 
@@ -39,8 +38,10 @@ export function AppRoutes() {
       <Route path="/shop" element={<Navigate replace to="/store" />} />
       <Route path="/nutrition" element={<NutritionPage />} />
       <Route path="/submission-preview" element={<SubmissionPreviewPage />} />
-      <Route path="/signup" element={<SignupPage />} />
-      <Route path="/login" element={<LoginPage />} />
+      {/* Kept mounted as redirects, not deleted: ads, waitlist emails and
+          bookmarks still point here. app.fofit.app owns canonical auth. */}
+      <Route path="/signup" element={<CanonicalAuthRedirect path="/signup" />} />
+      <Route path="/login" element={<CanonicalAuthRedirect path="/login" />} />
       <Route path="/welcome" element={<WelcomePage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="*" element={<HomePage />} />

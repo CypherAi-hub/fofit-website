@@ -2,13 +2,19 @@ import { Link } from "react-router-dom";
 import { PageMeta } from "../components/layout/PageMeta";
 import { Button } from "../components/ui/Button";
 import { useAuth } from "../lib/auth-context";
+import { useCanonicalHandoff } from "../lib/canonical-handoff";
 import { useWaitlistClaim } from "../lib/waitlist-claim";
 
 const FOUNDER_LINKEDIN_URL = "https://www.linkedin.com/in/kenan-larry-993350332";
 
 export function WelcomePage() {
   const { user } = useAuth();
+  // Order matters: the claim must be allowed to run before the handoff fires.
+  // useCanonicalHandoff waits on the flag this hook stamps, so a signed-in
+  // athlete lands on app.fofit.app only after their waitlist row is claimed and
+  // the OAuth/magic-link exchange has completed on this origin.
   useWaitlistClaim();
+  useCanonicalHandoff("/welcome");
   const name =
     (user?.user_metadata?.full_name as string | undefined) ||
     (user?.user_metadata?.name as string | undefined) ||
