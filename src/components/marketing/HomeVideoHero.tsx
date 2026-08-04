@@ -1,15 +1,26 @@
+import { heroFigure, planFigure, transcriptFigure } from "../../data/editorial";
 import { Button } from "../ui/Button";
+import { DeviceFigure } from "./DeviceFigure";
 import { EarlyAccessButton } from "./EarlyAccessButton";
 
-const ecosystemSignals = [
-  { label: "Phone", detail: "Cypher brief before practice" },
-  { label: "Watch", detail: "Log sets without carrying the phone" },
-  { label: "Teams", detail: "D2 / D3 rollout path" },
+const heroSignals = [
+  {
+    label: "Workout",
+    detail: "Adaptive sessions around time, soreness, equipment, and goals",
+  },
+  {
+    label: "Nutrition",
+    detail: "Food direction that stays tied to the training block",
+  },
+  {
+    label: "Teams",
+    detail: "Coach-ready workflow for groups, teams, and athletes",
+  },
 ] as const;
 
 export function HomeVideoHero() {
   return (
-    <section className="home-video-hero">
+    <section className="home-video-hero home-video-hero--product">
       <video
         aria-hidden="true"
         autoPlay
@@ -31,34 +42,49 @@ export function HomeVideoHero() {
       />
       <div className="home-video-hero__shade" />
 
-      <div className="container home-video-hero__inner">
+      <div className="container home-video-hero__inner home-video-hero__inner--product">
         <div className="home-video-hero__content reveal">
-          <span className="home-video-hero__eyebrow">TRAIN WITH STRUCTURE</span>
+          <span className="home-video-hero__eyebrow">FOFIT TRAINING OS</span>
           <h1>
-            The training platform that <em>remembers</em> you.
+            Your training, nutrition, and progress — finally in one place.
           </h1>
           <p>
-            For lifters, athletes, and coaches who want training that actually
-            fits the real week. Cypher remembers the context, adapts the next
-            session, and shows up before you do.
+            FoFit helps lifters, student-athletes, and coaches turn messy weeks
+            into clear training decisions. Cypher remembers the context, adjusts
+            the next session, and keeps the next move obvious.
           </p>
 
           <div className="button-row home-video-hero__actions">
             <EarlyAccessButton size="lg">Join the founding 250</EarlyAccessButton>
-            <Button href="#three-paths" size="lg" variant="secondary">
-              Choose your path
+            <Button href="#home-product-tour" size="lg" variant="secondary">
+              See the app
             </Button>
           </div>
 
-          <div className="home-video-hero__trust" aria-label="Founding membership terms">
+          <div className="home-video-hero__trust home-video-hero__trust--clean" aria-label="FoFit early access status">
             <span className="home-video-hero__pulse" aria-hidden="true" />
-            <span>Founding rate locked at $12.99/mo for life</span>
+            <span>Early access is open</span>
             <span className="home-video-hero__divider" aria-hidden="true" />
-            <span>250 spots total</span>
+            <span>$12.99/mo founding rate locked for early members</span>
           </div>
+        </div>
 
-          <div className="home-video-hero__ecosystem" aria-label="FoFit device and team surfaces">
-            {ecosystemSignals.map((signal) => (
+        <div className="home-hero-product reveal reveal--delay-2" aria-label="FoFit app preview">
+          <DeviceFigure
+            asset={planFigure}
+            className="home-hero-product__phone home-hero-product__phone--back"
+          />
+          <DeviceFigure
+            asset={heroFigure}
+            className="home-hero-product__phone home-hero-product__phone--main"
+          />
+          <DeviceFigure
+            asset={transcriptFigure}
+            className="home-hero-product__phone home-hero-product__phone--front"
+          />
+
+          <div className="home-hero-product__status" aria-label="FoFit core product areas">
+            {heroSignals.map((signal) => (
               <span key={signal.label}>
                 <strong>{signal.label}</strong>
                 {signal.detail}

@@ -1,161 +1,236 @@
-import { ArticleGrid } from "../components/marketing/ArticleGrid";
-import { CypherTranscript } from "../components/marketing/CypherTranscript";
-import { EarlyAccessButton } from "../components/marketing/EarlyAccessButton";
-import { ExerciseLibraryPreview } from "../components/marketing/ExerciseLibraryPreview";
-import { FoundingStatsBand } from "../components/marketing/FoundingStatsBand";
-import { FoFitTeamsSection } from "../components/marketing/FoFitTeamsSection";
 import { HomeVideoHero } from "../components/marketing/HomeVideoHero";
+import { DeviceFigure } from "../components/marketing/DeviceFigure";
+import { EarlyAccessButton } from "../components/marketing/EarlyAccessButton";
 import { PricingPreview } from "../components/marketing/PricingPreview";
-import { ProductVideo } from "../components/marketing/ProductVideo";
-import { ThreePathsSection } from "../components/marketing/ThreePathsSection";
+import { Button } from "../components/ui/Button";
 import { PageMeta } from "../components/layout/PageMeta";
-import { insightArticles } from "../data/insights";
+import { heroFigure, nutritionFigure, planFigure, transcriptFigure } from "../data/editorial";
 
-const operatingCards = [
+const productPillars = [
   {
-    label: "Before practice",
-    title: "Cypher reads the real week first.",
-    description: "Class blocks, travel, soreness, and practice load stay attached to the next training call.",
+    label: "01",
+    title: "Plan the week",
+    description:
+      "FoFit keeps the next session connected to your schedule, equipment, soreness, goals, and role.",
   },
   {
-    label: "During the lift",
-    title: "The plan can move without falling apart.",
-    description: "Miss a rep target, lose time, or feel beat up. Cypher adjusts the set, not the whole identity of the block.",
+    label: "02",
+    title: "Train with Cypher",
+    description:
+      "Cypher turns the plan into one clear decision at a time instead of dumping a giant workout wall on you.",
   },
   {
-    label: "After the session",
-    title: "Progress becomes memory.",
-    description: "The system keeps what changed, why it mattered, and what should happen next time.",
+    label: "03",
+    title: "Close the loop",
+    description:
+      "Workout notes, nutrition direction, and progress signals feed the next call instead of living in separate apps.",
   },
 ] as const;
 
-const weekSignals = [
-  "Workday lift moved into a shorter window",
-  "Protein target follows the meals you can actually get",
-  "Sleep debt changes volume, not standards",
-  "Travel day switches equipment automatically",
-  "Coach dashboard path for D2 / D3 teams",
+const productTour = [
+  {
+    eyebrow: "Today’s plan",
+    title: "Know what to do when you open the app.",
+    description:
+      "The home screen should answer the only question that matters before training: what am I doing today, and why?",
+    asset: planFigure,
+  },
+  {
+    eyebrow: "Live training",
+    title: "Log the workout without fighting the screen.",
+    description:
+      "Sets, swaps, and notes stay focused around the active session so the app feels like a training tool, not homework.",
+    asset: heroFigure,
+  },
+  {
+    eyebrow: "Cypher memory",
+    title: "Adjust when the week gets messy.",
+    description:
+      "When sleep, knee pain, class, work, or practice changes the day, Cypher helps adjust the call without throwing away the whole block.",
+    asset: transcriptFigure,
+  },
+  {
+    eyebrow: "Nutrition",
+    title: "Food guidance that actually belongs with training.",
+    description:
+      "Macros, meals, and food-photo analysis should support the training block instead of feeling like a disconnected calorie app.",
+    asset: nutritionFigure,
+  },
 ] as const;
 
-const comparisonRows = [
-  ["Legacy tracker", "Records what happened"],
-  ["Generic AI plan", "Writes a workout in isolation"],
-  ["FoFit with Cypher", "Remembers the athlete and the week"],
+const audienceCards = [
+  {
+    role: "Lifters",
+    copy: "A cleaner way to build sessions, track progress, and keep momentum without needing a coach every day.",
+    cta: "Join as lifter",
+    initialRole: "lifter" as const,
+  },
+  {
+    role: "Student-athletes",
+    copy: "Training that respects practice, class, soreness, travel, and the pressure of staying ready in-season.",
+    cta: "Join as athlete",
+    initialRole: "athlete" as const,
+  },
+  {
+    role: "Coaches",
+    copy: "A path toward programming, monitoring, and supporting athletes without spreadsheet chaos.",
+    cta: "Join as coach",
+    initialRole: "coach" as const,
+  },
+] as const;
+
+const cypherLoop = [
+  "Reads the week before it writes the workout",
+  "Suggests swaps when time, soreness, or equipment changes",
+  "Remembers what happened so the next session is smarter",
 ] as const;
 
 export function HomePage() {
   return (
     <>
       <PageMeta
-        description="FoFit is the training platform with Cypher — built for lifters, athletes, and coaches who need structure around the real week."
-        title="FoFit | Training platform for lifters, athletes, and coaches"
+        description="FoFit is a training operating system for lifters, student-athletes, and coaches. Plan workouts, train with Cypher, connect nutrition, and track progress in one place."
+        title="FoFit | Training, nutrition, and progress in one app"
       />
       <HomeVideoHero />
 
-      <FoundingStatsBand />
+      <section className="home-redesign-section home-redesign-section--tight">
+        <div className="container home-proof-strip reveal">
+          <span>Built for messy real weeks</span>
+          <span>Workout logging + Cypher guidance</span>
+          <span>Nutrition tied to training</span>
+          <span>Coach and team path</span>
+        </div>
+      </section>
 
-      <ThreePathsSection />
-
-      <ProductVideo />
-
-      <ExerciseLibraryPreview eyebrow="03 / DEMO LIBRARY" />
-
-      <CypherTranscript index="04" />
-
-      <FoFitTeamsSection />
-
-      <section className="v3-system">
-        <div className="container v3-system__inner">
-          <div className="v3-section-kicker">05 / OPERATING SYSTEM</div>
-          <div className="v3-system__header">
-            <h2>Built around the context most fitness apps drop.</h2>
+      <section className="home-redesign-section">
+        <div className="container home-product-pillars">
+          <div className="home-redesign-heading reveal">
+            <span>THE SIMPLE VERSION</span>
+            <h2>FoFit is the command center for the work around the workout.</h2>
             <p>
-              FoFit treats schedule, soreness, equipment, goals, and group
-              context as part of the plan instead of excuses outside it.
+              Most fitness apps only track what already happened. FoFit is being
+              built to help decide what should happen next — training, nutrition,
+              recovery, and coaching context in one loop.
             </p>
           </div>
-          <div className="v3-operating-grid">
-            {operatingCards.map((card) => (
-              <article className="v3-operating-card reveal" key={card.label}>
-                <span>{card.label}</span>
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
+
+          <div className="home-product-pillars__grid">
+            {productPillars.map((pillar) => (
+              <article className="home-product-pillar reveal" key={pillar.title}>
+                <span>{pillar.label}</span>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.description}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="v3-week">
-        <div className="container v3-week__inner">
-          <div className="v3-week__copy">
-            <div className="v3-section-kicker">06 / THE REAL WEEK, REMEMBERED</div>
-            <h2>Cypher remembers what the week tried to break.</h2>
-            <p>
-              Most apps record the lift after it happens. Cypher changes the
-              next call while the week is still moving, whether you are
-              rebuilding consistency, training in-season, or leading a group.
-            </p>
-          </div>
-          <div className="v3-week__rail" aria-label="Training week signals">
-            {weekSignals.map((signal, index) => (
-              <div className="v3-week__signal reveal" key={signal}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                {signal}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="v3-contrast">
-        <div className="container v3-contrast__inner">
-          <div className="v3-section-kicker">07 / POSITIONING</div>
-          <h2>Not a tracker with nicer charts. Not a prompt box with reps.</h2>
-          <div className="v3-contrast__rows">
-            {comparisonRows.map(([label, detail]) => (
-              <div className="v3-contrast__row reveal" key={label}>
-                <span>{label}</span>
-                <strong>{detail}</strong>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="v3-pricing">
+      <section className="home-redesign-section home-app-tour" id="home-product-tour">
         <div className="container">
-          <div className="v3-pricing__header">
-            <div className="v3-section-kicker">08 / MEMBERSHIP</div>
-            <h2>$12.99/mo. Forever, if you&apos;re early.</h2>
+          <div className="home-redesign-heading home-redesign-heading--center reveal">
+            <span>REAL APP SURFACES</span>
+            <h2>Show the product fast. Then let people choose their path.</h2>
             <p>
-              Start free. Move to Premium when you want the full FoFit system.
-              Founding members keep the rate forever as Cypher, recovery, teams,
-              and coaching get deeper.
+              The site should stop burying the app behind a long manifesto. Put
+              the core screens up front and explain the value in plain language.
             </p>
           </div>
-          <PricingPreview className="pricing-preview--editorial v3-pricing__cards" />
+
+          <div className="home-app-tour__grid">
+            {productTour.map((item, index) => (
+              <article className="home-app-card reveal" key={item.title}>
+                <div className="home-app-card__copy">
+                  <span>{item.eyebrow}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+                <DeviceFigure
+                  asset={item.asset}
+                  className={`home-app-card__figure home-app-card__figure--${index + 1}`}
+                />
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="v3-notes">
-        <div className="container v3-notes__inner">
-          <div className="v3-notes__header">
-            <div className="v3-section-kicker">09 / FIELD NOTES</div>
-            <h2>The publication side of the training system.</h2>
+      <section className="home-redesign-section home-cypher-panel">
+        <div className="container home-cypher-panel__inner">
+          <div className="home-redesign-heading reveal">
+            <span>CYPHER</span>
+            <h2>Not a random workout generator. A memory layer for training.</h2>
             <p>
-              Short reads on training, recovery, nutrition, and the decisions
-              that keep a block moving.
+              Cypher should feel like the person who already knows your block,
+              constraints, and last session — then gives you the next best move.
             </p>
+            <div className="button-row">
+              <EarlyAccessButton size="lg">Try Cypher early</EarlyAccessButton>
+              <Button to="/product" size="lg" variant="secondary">
+                Product details
+              </Button>
+            </div>
           </div>
-          <ArticleGrid articles={insightArticles.slice(0, 3)} />
+
+          <div className="home-cypher-loop reveal reveal--delay-2">
+            {cypherLoop.map((item, index) => (
+              <div className="home-cypher-loop__item" key={item}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item}</strong>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="v3-final">
-        <div className="container v3-final__inner">
-          <h2>Train honestly. Or keep tracking.</h2>
-          <p>250 founding spots. Founding rate locked at $12.99/mo for life.</p>
+      <section className="home-redesign-section home-audience">
+        <div className="container">
+          <div className="home-redesign-heading home-redesign-heading--center reveal">
+            <span>WHO IT IS FOR</span>
+            <h2>One system, three clear entry points.</h2>
+            <p>
+              The site should make the visitor see themselves quickly. No guessing,
+              no scrolling through five disconnected pages before joining.
+            </p>
+          </div>
+
+          <div className="home-audience__grid">
+            {audienceCards.map((card) => (
+              <article className="home-audience-card reveal" key={card.role}>
+                <h3>{card.role}</h3>
+                <p>{card.copy}</p>
+                <EarlyAccessButton initialRole={card.initialRole} variant="secondary">
+                  {card.cta}
+                </EarlyAccessButton>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-redesign-section home-pricing-redesign">
+        <div className="container home-pricing-redesign__inner">
+          <div className="home-redesign-heading reveal">
+            <span>EARLY ACCESS</span>
+            <h2>$12.99/mo founding rate for the people who get in early.</h2>
+            <p>
+              Start free, then move to Premium when you want Cypher, deeper
+              planning, training-linked nutrition, and the full FoFit system.
+            </p>
+          </div>
+          <PricingPreview className="pricing-preview--editorial home-pricing-redesign__cards" />
+        </div>
+      </section>
+
+      <section className="home-final-redesign">
+        <div className="container home-final-redesign__inner reveal">
+          <span>FOFIT</span>
+          <h2>Stop making people decode the product.</h2>
+          <p>
+            Join the founding 250 and help shape the training operating system
+            built for lifters, athletes, and coaches.
+          </p>
           <EarlyAccessButton size="lg">Join the founding 250 →</EarlyAccessButton>
         </div>
       </section>
