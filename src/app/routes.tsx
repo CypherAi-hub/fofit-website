@@ -18,6 +18,22 @@ import { SignupPage } from "../pages/SignupPage";
 import { LoginPage } from "../pages/LoginPage";
 import { WelcomePage } from "../pages/WelcomePage";
 import { DashboardPage } from "../pages/DashboardPage";
+import { BodyLabPage } from "../pages/BodyLabPage";
+import { useAuth } from "../lib/auth-context";
+
+// Auth-gated wrapper for the dashboard Body Lab (mirrors the dashboard's own gating).
+function AuthedBodyLab() {
+  const { session, loading } = useAuth();
+  if (loading) {
+    return (
+      <div style={{ padding: "4rem 1rem", textAlign: "center", color: "var(--text-muted)" }}>
+        Loading…
+      </div>
+    );
+  }
+  if (!session) return <Navigate to="/login" replace />;
+  return <BodyLabPage />;
+}
 
 export function AppRoutes() {
   return (
@@ -43,6 +59,7 @@ export function AppRoutes() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/welcome" element={<WelcomePage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/dashboard/body-lab" element={<AuthedBodyLab />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );

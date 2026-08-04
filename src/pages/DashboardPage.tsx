@@ -4,6 +4,7 @@ import { PageMeta } from "../components/layout/PageMeta";
 import { Button } from "../components/ui/Button";
 import { useAuth } from "../lib/auth-context";
 import { useWaitlistClaim } from "../lib/waitlist-claim";
+import { BodyLabDashboardPreview } from "../features/body-lab/components/BodyLabDashboardPreview";
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -51,6 +52,9 @@ export function DashboardPage() {
             <strong>{user?.email}</strong>
           </div>
           <div className="button-row auth-welcome__actions">
+            <Button to="/dashboard/body-lab" size="lg">
+              Open Body Lab
+            </Button>
             <Button to="/" size="lg" variant="secondary">
               Back to FoFit
             </Button>
@@ -58,6 +62,7 @@ export function DashboardPage() {
               Sign out
             </button>
           </div>
+          <BodyLabDashboardPreview />
         </div>
       </section>
     </>
