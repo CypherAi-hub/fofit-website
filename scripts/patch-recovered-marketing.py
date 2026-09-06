@@ -8,6 +8,7 @@ base=Path(args.base).resolve();destination=Path(args.output).resolve()
 if base==destination:raise SystemExit('Use a separate output directory to preserve the baseline.')
 shutil.copytree(base,destination,dirs_exist_ok=True)
 root=destination/'static'
+shutil.copytree(Path(__file__).resolve().parents[1]/'public/images/current-app',root/'images/current-app',dirs_exist_ok=True)
 # Retire synthetic UI videos from the deployed output; originals remain in the baseline.
 for retired in ['product-devices.mp4','cypher-loop.mp4']:
  (root/retired).unlink(missing_ok=True)
@@ -95,6 +96,8 @@ old='type:"video",src:"/product-devices.mp4",poster:"/product-devices-poster.jpg
 assert old in s
 s=s.replace(old,'type:"image",image:A.app.simTrain')
 features=[
+ ('Discover','Find your next session.','Browse workout plans, sport-specific training, recovery, and places to move near you.'),
+ ('Market','Find gear for your next session.','Explore gear, nutrition, and recovery tools. Market uses affiliate links; purchases happen on merchant websites.'),
  ('Outdoor','Take your training outside.','Explore places to move, plan a route, record a session, and come back to your history.'),
  ('Quick Hits','Make the small sessions count.','Create recurring movement commitments and keep your quick sessions together.'),
  ('Body Lab','See your progress over time.','Keep private photo check-ins and compare your own photos side by side.'),
@@ -103,7 +106,9 @@ features=[
  ('Start on the web','Set up once. Pick up on your phone.','Choose your goals, schedule, and equipment online, then use the same FoFit account in the app.'),
 ]
 feature_js='function FoFitCurrentFeatures(){return o.jsxs("section",{className:"current-features",id:"more-in-fofit",children:[o.jsx("span",{className:"lp-kicker",children:"MORE OF YOUR WEEK, TOGETHER"}),o.jsx("h2",{children:"Beyond your next workout."}),o.jsx("p",{children:"The gym is one part of it. FoFit also makes room for outdoor sessions, small daily commitments, private progress, and recovery."}),o.jsx("div",{className:"current-features__grid",children:'+json.dumps(features)+'.map(([name,title,body],index)=>o.jsxs("article",{children:[o.jsx("span",{className:"current-features__number",children:String(index+1).padStart(2,"0")}),o.jsx("p",{className:"lp-kicker",children:name}),o.jsx("h3",{children:title}),o.jsx("p",{children:body})]},name))}),o.jsx("a",{href:"https://app.fofit.app/onboarding",className:"button button--primary",children:"Set up your FoFit account"})]})}'
-s=s.replace('function e0(){',feature_js+'function e0(){',1)
+proof_js='function FoFitAppProof(){return o.jsxs("div",{className:"current-app-proof",children:[o.jsxs("figure",{children:[o.jsx("img",{src:"/images/current-app/discover.png",alt:"FoFit Discover showing a volleyball conditioning pick and workout categories",loading:"lazy",width:1080,height:2340}),o.jsx("figcaption",{children:"Discover · A session for your sport"})]}),o.jsxs("figure",{children:[o.jsx("img",{src:"/images/current-app/market.png",alt:"FoFit Market showing gear recommendations and its affiliate checkout notice",loading:"lazy",width:1080,height:2340}),o.jsx("figcaption",{children:"Market · Gear for the work ahead"})]})]})}'
+feature_js=feature_js.replace('o.jsx("div",{className:"current-features__grid"','o.jsx(FoFitAppProof,{}),o.jsx("div",{className:"current-features__grid"')
+s=s.replace('function e0(){',proof_js+feature_js+'function e0(){',1)
 needle='className:"container future-live-media__inner",children:['
 assert needle in s
 s=s.replace(needle,needle+'o.jsx(FoFitCurrentFeatures,{}),',1)
@@ -115,6 +120,7 @@ html=html.replace('</head>','<link rel="stylesheet" href="/website-fixes.css" />
 @media(max-width:1100px){.site-nav{display:none!important;}.nav-toggle{display:inline-flex!important;}}
 :focus-visible {outline:2px solid #72b85b;outline-offset:4px;}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important;}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+.current-app-proof{display:flex;justify-content:center;gap:clamp(1rem,5vw,4rem);margin:3rem 0}.current-app-proof figure{margin:0;min-width:0;width:min(38%,260px)}.current-app-proof img{display:block;width:100%;height:auto;border:1px solid rgba(114,184,91,.3);border-radius:30px;background:#090d13;box-shadow:0 18px 60px #0004}.current-app-proof figcaption{font-size:.85rem;line-height:1.5;margin-top:1rem;text-align:center}
 ''')
 config_path=destination/'config.json'
 config=json.loads(config_path.read_text())
