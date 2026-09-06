@@ -95,6 +95,11 @@ s=s.replace('$6.99/mo is available for early campus testers during the Maryville
 old='type:"video",src:"/product-devices.mp4",poster:"/product-devices-poster.jpg"'
 assert old in s
 s=s.replace(old,'type:"image",image:A.app.simTrain')
+# The same retired film also existed as an ambient layer on the product route.
+# Keep that route's approved UI proof, without a dead request for removed media.
+retired_ambient='o.jsx("video",{"aria-hidden":"true",autoPlay:!0,className:"product-proof__ambient",loop:!0,muted:!0,playsInline:!0,poster:"/product-devices-poster.jpg",preload:"metadata",src:"/product-devices.mp4"}),'
+assert retired_ambient in s
+s=s.replace(retired_ambient,'')
 features=[
  ('Discover','Find your next session.','Browse workout plans, sport-specific training, recovery, and places to move near you.'),
  ('Market','Find gear for your next session.','Explore gear, nutrition, and recovery tools. Market uses affiliate links; purchases happen on merchant websites.'),
@@ -112,8 +117,30 @@ s=s.replace('function e0(){',proof_js+feature_js+'function e0(){',1)
 needle='className:"container future-live-media__inner",children:['
 assert needle in s
 s=s.replace(needle,needle+'o.jsx(FoFitCurrentFeatures,{}),',1)
+# Client-side navigation does not reload the HTML handoff script. Route it through
+# the same canonical helper so header/footer account links cannot expose old forms.
+handoff_component='function FoFitCanonicalAccountHandoff(){R.useEffect(()=>{window.fofitCanonicalAccountHandoff()},[]);return o.jsx("p",{children:"Opening your FoFit account…"})}'
+s=handoff_component+s
+for route,component in [('login','kj'),('signup','Ej')]:
+ old='path:"/'+route+'",element:o.jsx('+component+',{})'
+ assert old in s
+ s=s.replace(old,'path:"/'+route+'",element:o.jsx(FoFitCanonicalAccountHandoff,{})')
+needle='o.jsx(ze,{path:"/login",element:o.jsx(FoFitCanonicalAccountHandoff,{})})'
+s=s.replace(needle,needle+',o.jsx(ze,{path:"/onboarding",element:o.jsx(FoFitCanonicalAccountHandoff,{})})')
+# Apply reviewed copy to the shared data, so Pricing and FAQ agree with Home.
+# Match complete JavaScript string literals; never rewrite executable identifiers.
+copy_path=Path(__file__).with_name('approved-marketing-copy.json')
+for old,new in json.loads(copy_path.read_text()).items():
+ old_literal=json.dumps(old,ensure_ascii=False)
+ if old_literal not in s:raise SystemExit('Missing reviewed marketing copy: '+old)
+ s=s.replace(old_literal,json.dumps(new,ensure_ascii=False))
+s=s.replace('i.monthly.startsWith("$")&&','i.monthly!=="$0"&&i.monthly.startsWith("$")&&')
+s=s.replace('children:["or ",i.annual]','children:[i.annual]')
 name='index-'+hashlib.sha256(s.encode()).hexdigest()[:10]+'.js';(root/'assets'/name).write_text(s)
+p.unlink() # Only the active transformed entry belongs in output; baseline stays intact.
 index=root/'index.html';html=(base/'static/index.html').read_text().replace('index-wXrNSfYp.js',name)
+html=html.replace('<script type="module"','<script src="/canonical-auth-handoff.js"></script>\n    <script type="module"',1)
+shutil.copy2(Path(__file__).with_name('canonical-auth-handoff.js'),root/'canonical-auth-handoff.js')
 html=html.replace('</head>','<link rel="stylesheet" href="/website-fixes.css" /></head>');index.write_text(html)
 (root/'website-fixes.css').write_text('''.release-page{max-width:1000px;margin:auto;min-height:70vh;padding:clamp(5rem,10vw,9rem) 1.5rem 5rem;}.release-page h1{font-size:clamp(2.6rem,6vw,5.4rem);line-height:1.05;letter-spacing:-.04em;max-width:850px;}.release-page p{max-width:620px;line-height:1.7;}.release-lede{font-size:1.3rem;}.release-actions{display:flex;flex-wrap:wrap;gap:1rem;margin:2rem 0;}.release-note{opacity:.7;font-size:.9rem;}
 .release-actions .button{padding:.85rem 1.2rem;}

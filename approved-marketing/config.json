@@ -1,0 +1,106 @@
+{
+  "version": 3,
+  "routes": [
+    {
+      "src": "^/privacy/$",
+      "headers": {
+        "Location": "/privacy"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/terms/$",
+      "headers": {
+        "Location": "/terms"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/support/$",
+      "headers": {
+        "Location": "/support"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/delete-account/$",
+      "headers": {
+        "Location": "/delete-account"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/privacy$",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/terms$",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/support$",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/delete-account$",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/privacy$",
+      "dest": "/privacy/index.html",
+      "check": true
+    },
+    {
+      "src": "^/terms$",
+      "dest": "/terms/index.html",
+      "check": true
+    },
+    {
+      "src": "^/support$",
+      "dest": "/support/index.html",
+      "check": true
+    },
+    {
+      "src": "^/delete-account$",
+      "dest": "/delete-account/index.html",
+      "check": true
+    },
+    {
+      "src": "^(?:/(.*))$",
+      "dest": "/index.html",
+      "check": true
+    },
+    {
+      "handle": "error"
+    },
+    {
+      "status": 404,
+      "src": "^(?!/api).*$",
+      "dest": "/404.html"
+    }
+  ],
+  "framework": {
+    "slug": "vite",
+    "version": "6.4.3"
+  },
+  "crons": []
+}

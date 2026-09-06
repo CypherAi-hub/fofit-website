@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 1,
+  "provenance": "Recovered original FoFit production design; public client configuration repaired in the existing September 6 baseline. No environment files or private credentials are included.",
+  "baselineDeployment": "dpl_H8aCN3qJhLQjTgVGycF5TKGdv6qM",
+  "files": [
+    {
+      "path": "builds.json",
+      "source": "snapshot",
+      "sha256": "abd350cd33c3fa3171e4e42977350b947e366871b4de22d0022fba5b7d5725c4"
+    },
+    {
+      "path": "config.json",
+      "source": "snapshot",
+      "sha256": "ec1e01d3dc3c5eda4b9d12828b64048d1780054321bab3e8b9fe34b83451b5fd"
+    },
+    {
+      "path": "diagnostics/cli_traces.json",
+      "source": "snapshot",
+      "sha256": "91a33fa92450c0725e0a3353c62b926f522538490c0051f5c8a1be7600640aaa"
+    },
+    {
+      "path": "static/app-icon.png",
+      "source": "public",
+      "sha256": "a75c2d27a2eef1182763983fc19406e2f369e45199a517ea0d38fbede575b8b8"
+    },
+    {
+      "path": "static/apple-touch-icon.png",
+      "source": "public",
+      "sha256": "ca0845c92cf1674cf06e4e99c44918703eb235876b3417e49b5a94185bf7f3b1"
+    },
+    {
+      "path": "static/assets/index-C5eIdvXa.css",
+      "source": "snapshot",
+      "sha256": "fda730e288342903e925f20c4f51f3dddd71015e86119d07ae725657a4ef0529"
+    },
+    {
+      "path": "static/assets/index-wXrNSfYp.js",
+      "source": "snapshot",
+      "sha256": "993807f0ec5117c340c88332d34952dba992724e471720036cf870a4fd6a21d1"
+    },
+    {
+      "path": "static/cypher-loop.mp4",
+      "source": "public",
+      "sha256": "530dea6e65118cef2fde50434c0c9e6856778bf79322353cfc48332d9ca1fb58"
+    },
+    {
+      "path": "static/cypher-poster.jpg",
+      "source": "public",
+      "sha256": "4a996c32c659ab6eb9dfad21ebe2eed779e19adedf87661248432c8aeb7d71e3"
+    },
+    {
+      "path": "static/delete-account/index.html",
+      "source": "public",
+      "sha256": "fc2ca8e7be13847c4a513bb000db32399e925a87451e90e7245e4c23cf37dd5c"
+    },
+    {
+      "path": "static/favicon-32.png",
+      "source": "public",
+      "sha256": "ba67c1746d7ebc6bacacf941a28c5910b4a305e92a613d164061032bac182a18"
+    },
+    {
+      "path": "static/favicon.png",
+      "source": "public",
+      "sha256": "a75c2d27a2eef1182763983fc19406e2f369e45199a517ea0d38fbede575b8b8"
+    },
+    {
+      "path": "static/favicon.svg",
+      "source": "public",
+      "sha256": "4d6a3c77efb401e161607c011c5ed7dba45472f62c3fe7860f6721519f5ce6ba"
+    },
+    {
+      "path": "static/hero-poster.jpg",
+      "source": "snapshot",
+      "sha256": "cc8012e8c3e4c215d9f828ed314a840d326926a6eb00706bd2bedb1a76a12ea5"
+    },
+    {
+      "path": "static/hero.av1.mp4",
+      "source": "snapshot",
+      "sha256": "01bb9b1af68b223d732c55f1e0a4f46239b4227c2564f975f7896623d4117d0f"
+    },
+    {
+      "path": "static/hero.mp4",
+      "source": "snapshot",
+      "sha256": "6268e439aa5994d4a56ffa2da3e6f86b6ce834f6352be63d33f071a4fdebc969"
+    },
+    {
+      "path": "static/images/app/active-workout.webp",
+      "source": "snapshot",
+      "sha256": "cfbc5c97731a180ff2eb847514a3beb1cb43cef1939764701f5de6d728249f95"
+    },
+    {
+      "path": "static/images/app/cypher-chat.webp",
+      "source": "snapshot",
+      "sha256": "2f72835522de9025f7d814e6eff91c3e9e48462fd265cc6c4418dcbc307bb481"
+    },
+    {
+      "path": "static/images/app/cypher-proposal.webp",
+      "source": "snapshot",
+      "sha256": "93ebe0b89a7c2644997830839f947cdcca9daf365501e7c779ef5bea8c5edace"
+    },
+    {
+      "path": "static/images/app/discover-home.webp",
+      "source": "snapshot",
+      "sha256": "622fea114b652b6a600d74012ecb2a5cc9ce5492688328f64ba438f47ab40afc"
+    },
+    {
+      "path": "static/images/app/fuel-plan.webp",
+      "source": "snapshot",
+      "sha256": "b182fa459a909c17fe80bab07acb6dc7a21d1c2ad3bbbcda0a69311728e879c0"
+    },
+    {
+      "path": "static/images/app/nutrition-dashboard.webp",
+      "source": "snapshot",
+      "sha256": "b88cb6f8524acdce4620fa6837168adcbef86a83d1a07e94f8da606c811c0bcb"
+    },
+    {
+      "path": "static/images/app/profile.webp",
+      "source": "snapshot",
+      "sha256": "102f8b0a5acfa2d2d0ebb0fe81f606afd054f48deacb95633597380d51dee7d9"
+    },
+    {
+      "path": "static/images/app/sim-community.jpg",
+      "source": "snapshot",
+      "sha256": "24afb2c481cb85936907d803f77cb6245cedd16ec371235608134dc1a4617a26"
+    },
+    {
+      "path": "static/images/app/sim-cypher.jpg",
+      "source": "snapshot",
+      "sha256": "1e0aafeabdf7673d318ddc8adb7ef7e24119a7a79a4271f8065d0974ded5eca0"
+    },
+    {
+      "path": "static/images/app/sim-discover-community.jpg",
+      "source": "snapshot",
+      "sha256": "5dd7b6bb11c920cee96c4c48d079c663137270013dc13217e3a784e6d49aaa48"
+    },
+    {
+      "path": "static/images/app/sim-nutrition.jpg",
+      "source": "snapshot",
+      "sha256": "83ed7f61528d50a2d462219fb45bd97933d834785ef0fb3f4e49d3d69745806c"
+    },
+    {
+      "path": "static/images/app/sim-train.jpg",
+      "source": "snapshot",
+      "sha256": "87e3a120dab2498200eef516d799456d5d36cf1cb0d73e9befd1354fb156e727"
+    },
+    {
+      "path": "static/images/app/train-home.webp",
+      "source": "snapshot",
+      "sha256": "8c7c07868c09083cb8ca825de399d55d5cdad27fb87d61a47f34741965074ab0"
+    },
+    {
+      "path": "static/images/app/workout-detail.webp",
+      "source": "snapshot",
+      "sha256": "c1c9d1dc6275cc555346e1c8a0bb4731e9aab382f26c56b3c2cd3af15e65273a"
+    },
+    {
+      "path": "static/images/community/community-overview.webp",
+      "source": "snapshot",
+      "sha256": "89dc28aa7da7d8aef5a0e986c5b3661636d894d37fc562ae1d3066bcda88ea15"
+    },
+    {
+      "path": "static/images/community/discover-people.webp",
+      "source": "snapshot",
+      "sha256": "473d2eb5cd3b2451d08d9cba015a7e30d425234ac00a075dd9a51adf478b6814"
+    },
+    {
+      "path": "static/images/community/feed-reels.webp",
+      "source": "snapshot",
+      "sha256": "7be86650d32a802bbf52eae48ba5beadbfd0422b828cfd5f2e518aa40f1bd83a"
+    },
+    {
+      "path": "static/images/community/profile-connection.webp",
+      "source": "snapshot",
+      "sha256": "a4c95057753805f54b77b2bc8508248c4f603c32474cfbc3eac273770fb35c7c"
+    },
+    {
+      "path": "static/images/community/support/group-circuit.png",
+      "source": "snapshot",
+      "sha256": "650e027ac4dcc7d9f7870cb4039cab8d51edeed28c0bf4a9d7004c7f481ee82a"
+    },
+    {
+      "path": "static/images/community/support/reels-motion.png",
+      "source": "snapshot",
+      "sha256": "8dc872a2625b4a26a49a649ae268faf6baef9e2dacbbaeb42757e7abb47e2aed"
+    },
+    {
+      "path": "static/images/community/support/verified-coach.jpg",
+      "source": "snapshot",
+      "sha256": "f23b517dc3ef36b5a2aaf82665ab9a8d40ffb3fad1c15b0bdc8a963a49b9faa2"
+    },
+    {
+      "path": "static/images/generated/beta-testers-review.webp",
+      "source": "snapshot",
+      "sha256": "748669493ad5ff897bf8d8dd702356c1fb4804a2ec9cbaf1c61667775ea434dd"
+    },
+    {
+      "path": "static/images/generated/coach-athlete-checkin.webp",
+      "source": "snapshot",
+      "sha256": "b0ae70d9e95a5acd3aef5bc9f7d76ff5ee59e2eb77c2fd50ae55d31c6a6f0cc4"
+    },
+    {
+      "path": "static/images/generated/coach-tablet-review.webp",
+      "source": "snapshot",
+      "sha256": "a3f7cfc4146a8899f05bfad84ca2b9c578f3331ae74d2ad69f39afa96f42477f"
+    },
+    {
+      "path": "static/images/generated/community-checkin-circle.webp",
+      "source": "snapshot",
+      "sha256": "562984b0c1c6987f9e4c6464d7d51e066f6d481d5f2d2e08a4c6c64fe60ed73d"
+    },
+    {
+      "path": "static/images/generated/community-circuit-live.webp",
+      "source": "snapshot",
+      "sha256": "4b4315cca6c900f2e65f57dde1ee2efabc5e160683a598729fbea19e084d730f"
+    },
+    {
+      "path": "static/images/generated/fofit-system-hero-gym.webp",
+      "source": "snapshot",
+      "sha256": "48ecb5ea62d730263c460d6894d702611455b5cbb1a4da3226adc9bd0226496f"
+    },
+    {
+      "path": "static/images/generated/founder-product-work-session.webp",
+      "source": "snapshot",
+      "sha256": "2ec1644613290e93dad4f96f50361f1a557b30f565cdf4146396b24878e01e6e"
+    },
+    {
+      "path": "static/images/generated/friendly-training-crew.webp",
+      "source": "snapshot",
+      "sha256": "1a21018c74e1edd8fe9e4658a13183e20b3859d5f8d48f1328fb160660edd4b3"
+    },
+    {
+      "path": "static/images/generated/fuel-prep-global.webp",
+      "source": "snapshot",
+      "sha256": "ca2ba587ca033e8ac638ad665b00ad7c095d73759f406645073c0dbc741d3f12"
+    },
+    {
+      "path": "static/images/generated/global-meal-prep-table.webp",
+      "source": "snapshot",
+      "sha256": "d396933e1021bc50f893ddec40843708a01bfc883aa15ea3eecd4a4dc0af8820"
+    },
+    {
+      "path": "static/images/generated/group-meal-prep.webp",
+      "source": "snapshot",
+      "sha256": "40ca70b51545b258d48b19816dda1a09c990f3f78f942d46e6a20f8d7a5099b3"
+    },
+    {
+      "path": "static/images/generated/recovery-community.webp",
+      "source": "snapshot",
+      "sha256": "f31069e131b197b5a8c19bf1f9d168b45b11c2da3e0b3cbb0e201add84b40e02"
+    },
+    {
+      "path": "static/images/lifestyle/athlete.jpg",
+      "source": "snapshot",
+      "sha256": "f05e4f364dd7d74caec85e3bb3d696228ae8d1314f7248f9d4af7ca377e1da81"
+    },
+    {
+      "path": "static/images/lifestyle/cypher-orb.png",
+      "source": "snapshot",
+      "sha256": "d05762fe9da850d9fca3863b446fb4e1c6b10b5b7d597fb6559702821ad6e04c"
+    },
+    {
+      "path": "static/images/lifestyle/deadlift.png",
+      "source": "snapshot",
+      "sha256": "8e18d6b0b0e691228f4ecc22a0b968dff6a20916b826d358145d1f41f003121d"
+    },
+    {
+      "path": "static/images/lifestyle/group-circuit.png",
+      "source": "snapshot",
+      "sha256": "650e027ac4dcc7d9f7870cb4039cab8d51edeed28c0bf4a9d7004c7f481ee82a"
+    },
+    {
+      "path": "static/images/lifestyle/lifter.jpg",
+      "source": "snapshot",
+      "sha256": "a4a64a6e4c843903f88e1282514a22c16acb34a511da602e2e75ee3619e39eef"
+    },
+    {
+      "path": "static/images/lifestyle/measurement.png",
+      "source": "snapshot",
+      "sha256": "5e4f4810a449e69b77dfe326bc8b63590b18184483c0af8efde7c765aa835ade"
+    },
+    {
+      "path": "static/images/lifestyle/nutrition.png",
+      "source": "snapshot",
+      "sha256": "31ef292824edfac43112db1b05d3495b15698a4a97c96d043773cac3ae0462d4"
+    },
+    {
+      "path": "static/images/lifestyle/recovery-lunge.png",
+      "source": "snapshot",
+      "sha256": "959e22a908c07bbf91c5eba0146623c3c6ee94ddf08ba8653b9869ee5085fdc5"
+    },
+    {
+      "path": "static/images/lifestyle/rest-bench.png",
+      "source": "snapshot",
+      "sha256": "51c3f72835bdbad704ebda8b00c2a946c82d8288d6db17363ae278450ac6bc79"
+    },
+    {
+      "path": "static/images/lifestyle/trainer.jpg",
+      "source": "snapshot",
+      "sha256": "f23b517dc3ef36b5a2aaf82665ab9a8d40ffb3fad1c15b0bdc8a963a49b9faa2"
+    },
+    {
+      "path": "static/images/marketing/fofit-mark.webp",
+      "source": "snapshot",
+      "sha256": "765562fc4e287de775a568210bdce8bfe27fa4e5325251c104ec8442b9e9bfd1"
+    },
+    {
+      "path": "static/images/nutrition/brazilian-black-bean-chicken-bowl.jpg",
+      "source": "snapshot",
+      "sha256": "cc287ecf31150265a2b853d9132ec7ef1dd6a159ed373ff45b191e8179984e10"
+    },
+    {
+      "path": "static/images/nutrition/korean-beef-rice-bowl.jpg",
+      "source": "snapshot",
+      "sha256": "e4053027b4adfad617a0e73d672db716359c658604598a752154537f1d37d108"
+    },
+    {
+      "path": "static/images/nutrition/miso-salmon-rice-plate.jpg",
+      "source": "snapshot",
+      "sha256": "7983a4e114c77a21ce7fcff5dd459a380364b46f2551c7fc7dc68f4fcc493310"
+    },
+    {
+      "path": "static/images/nutrition/rajma-rice-protein-bowl.jpg",
+      "source": "snapshot",
+      "sha256": "6cf4373dd992a7efc402d3b9c70730bca39c48edf5f5679a06c4a265fc261668"
+    },
+    {
+      "path": "static/images/nutrition/suya-beef-rice-bowl.jpg",
+      "source": "snapshot",
+      "sha256": "195734976f5d171481f7a2ca06de2e27e580716a5c0311f04009a4aa27da47be"
+    },
+    {
+      "path": "static/images/nutrition/tandoori-chicken-rice-bowl.jpg",
+      "source": "snapshot",
+      "sha256": "0c482d8ec2e24eb9ad9a5f5f8e2a608bcd20ffca1d3349f8d2a5aa4849129246"
+    },
+    {
+      "path": "static/index.html",
+      "source": "snapshot",
+      "sha256": "25d3e617561afa87850c2bae5fe253c389a31a8a579692d8a85395db268a195d"
+    },
+    {
+      "path": "static/og-image.png",
+      "source": "public",
+      "sha256": "1d1436b55dad97d6dba0541ee35588762d2aa95cdc3ffd3c42c96bc7907a3437"
+    },
+    {
+      "path": "static/og-image.svg",
+      "source": "public",
+      "sha256": "b32ad2a9355a0ab3f59b3f082d6d21cf01b518c397397996dcf1a99062928aec"
+    },
+    {
+      "path": "static/privacy/index.html",
+      "source": "public",
+      "sha256": "5ead04489450d4c2829aadcd69c5c0da0a23d27f131f0b812c73637ff17385a6"
+    },
+    {
+      "path": "static/product-devices-poster.jpg",
+      "source": "public",
+      "sha256": "1823df86319cc33e05532255b1c37ed19dae7dd6b306f07436bf1b80c6d76ff6"
+    },
+    {
+      "path": "static/product-devices.mp4",
+      "source": "public",
+      "sha256": "901751c43e20843f41b11aeacd6d5b3dc619fb64e9f40356a0793b35fb8ee902"
+    },
+    {
+      "path": "static/support/index.html",
+      "source": "public",
+      "sha256": "1826d2d9cb095b5de040e63b4ecc3d27592daa6d50cbb84bc96ecf9b9c6b2172"
+    },
+    {
+      "path": "static/terms/index.html",
+      "source": "public",
+      "sha256": "4565ab56c1385362ce78c630214b27b125a9ca27b795b538e11b0116eff836b5"
+    },
+    {
+      "path": "static/videos/exercises/2026-04-28 14:39:53.MP4",
+      "source": "public",
+      "sha256": "8144ec88374a45fb6f79b9fa40835456cd7ee74ca7d2de0095ea4059f2354064"
+    },
+    {
+      "path": "static/videos/exercises/barbell-back-squat.MP4",
+      "source": "public",
+      "sha256": "f57823c3644efd8a4335488bfa14a9eaa41164a1ecd4ca91a860772ad034d664"
+    },
+    {
+      "path": "static/videos/exercises/bent-over-dumbbell-row.MP4",
+      "source": "public",
+      "sha256": "f25e338f80e700fadec953025cf9d7d73e2987db3edcf4b0b32ba4efc2316c4b"
+    },
+    {
+      "path": "static/videos/exercises/dumbbell-bench-press.MP4",
+      "source": "public",
+      "sha256": "c8a9d2889cac8b27fff08c969915a2d2cf448add068d9bd0a7ad92534349cb31"
+    },
+    {
+      "path": "static/videos/exercises/dumbbell-bicep-curl.MP4",
+      "source": "public",
+      "sha256": "eb742282757673c987730fa28cfcb6fa5a2357c920905329a3fb8d46fce30b7b"
+    },
+    {
+      "path": "static/videos/exercises/dumbbell-shoulder-press.MP4",
+      "source": "public",
+      "sha256": "e72bcf587f5f0cafe75ad28ace50df58b328235bce36109988fe454f7275d7fe"
+    },
+    {
+      "path": "static/videos/exercises/forearm-plank.MP4",
+      "source": "public",
+      "sha256": "defcb096d6d0f470cf803c33b334577e05e8d04cf847e017063ab75c21498246"
+    },
+    {
+      "path": "static/videos/exercises/goblet-squat.MP4",
+      "source": "public",
+      "sha256": "e4267e1e05fdca19bc74acf488da1de5672ae463e5e65877c8c2d8e8041f9385"
+    },
+    {
+      "path": "static/videos/exercises/kettlebell-swing.MP4",
+      "source": "public",
+      "sha256": "f38e630c842d9f37b2c7da0d464e35aeae4d60ee0e388dead5c17a21ea2b2f84"
+    },
+    {
+      "path": "static/videos/exercises/lateral-raises.MP4",
+      "source": "public",
+      "sha256": "bc08b6a171b7e8f0fab10fefd7b6c18580baca101ee23d7f34ea4abc8562578e"
+    },
+    {
+      "path": "static/videos/exercises/overhead-tricep-extension.MP4",
+      "source": "public",
+      "sha256": "a3d7245051f0324a407b15980b166416d9660eff505ebbcc1b5aa196754e57c0"
+    },
+    {
+      "path": "static/videos/exercises/romanian-deadlift.MP4",
+      "source": "public",
+      "sha256": "4243afc3ae32a3de8b86f2e35b612dc297d1e8ad696b8d85868a7dc3d382826e"
+    }
+  ]
+}

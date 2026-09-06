@@ -4,12 +4,15 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "npm run build && vite preview --host 127.0.0.1 --port 4173",
+    "build": "python3 scripts/build-approved-marketing.py",
     "preview": "vite preview",
     "validate:copy": "node scripts/validate-copy.mjs",
     "validate:legal": "node scripts/validate-legal-pages.mjs",
-    "verify:legal-live": "node scripts/verify-live-legal-routes.mjs"
+    "verify:legal-live": "node scripts/verify-live-legal-routes.mjs",
+    "dev:legacy": "vite",
+    "build:legacy": "vite build --outDir legacy-dist",
+    "validate:approved": "node scripts/check-approved-marketing.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.104.1",

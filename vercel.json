@@ -19,6 +19,21 @@
       "source": "/delete-account/",
       "destination": "/delete-account",
       "permanent": true
+    },
+    {
+      "source": "/login",
+      "destination": "https://app.fofit.app/login",
+      "permanent": false
+    },
+    {
+      "source": "/signup",
+      "destination": "https://app.fofit.app/signup",
+      "permanent": false
+    },
+    {
+      "source": "/onboarding",
+      "destination": "https://app.fofit.app/onboarding",
+      "permanent": false
     }
   ],
   "headers": [
@@ -96,5 +111,7 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }
