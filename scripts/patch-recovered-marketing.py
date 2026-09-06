@@ -7,7 +7,10 @@ args=parser.parse_args()
 base=Path(args.base).resolve();destination=Path(args.output).resolve()
 if base==destination:raise SystemExit('Use a separate output directory to preserve the baseline.')
 shutil.copytree(base,destination,dirs_exist_ok=True)
-root=destination/'static' 
+root=destination/'static'
+# Retire synthetic UI videos from the deployed output; originals remain in the baseline.
+for retired in ['product-devices.mp4','cypher-loop.mp4']:
+ (root/retired).unlink(missing_ok=True)
 p=root/'assets/index-wXrNSfYp.js';s=p.read_text()
 changes={
 'Media System':'Life with FoFit',
@@ -83,6 +86,27 @@ for old,new in {
 "FoFit is showing the actual training, Cypher, nutrition, and community surfaces instead of hiding behind a generic waitlist.":"Explore training, Cypher, nutrition, and community previews before the iPhone release.",
 "FoFit can keep TestFlight access, waitlist claims, and future web account controls connected to this session.":"Your FoFit account keeps your profile and training history connected."
 }.items(): s=s.replace(old,new)
+# Student verification is currently disabled in the native feature flags.
+s=s.replace('name:"Student",price:"$7.99/mo",audience:"Verified students building consistency around a real schedule.",features:["Full FoFit system","Student pricing","Community access"]','name:"Student",price:"Planned",audience:"Student verification is not available yet. Check release information for eligibility and pricing when it opens.",features:["Verification pending","Availability to be announced"]')
+s=s.replace('Founding rates are locked while your subscription stays active. Maryville founding access is available for early campus testers.','Explore FoFit’s plans below. The app shows current purchase terms before you subscribe.')
+s=s.replace('$6.99/mo is available for early campus testers during the Maryville rollout.','Campus offers and eligibility will be confirmed before activation.')
+# September 6 product refresh: actual app captures replace synthetic UI film.
+old='type:"video",src:"/product-devices.mp4",poster:"/product-devices-poster.jpg"'
+assert old in s
+s=s.replace(old,'type:"image",image:A.app.simTrain')
+features=[
+ ('Outdoor','Take your training outside.','Explore places to move, plan a route, record a session, and come back to your history.'),
+ ('Quick Hits','Make the small sessions count.','Create recurring movement commitments and keep your quick sessions together.'),
+ ('Body Lab','See your progress over time.','Keep private photo check-ins and compare your own photos side by side.'),
+ ('Film Lab','Give your training a second look.','Upload a skill clip or session for a private film review and focused next steps.'),
+ ('Guided recovery','Make room to recover.','Follow yoga and mobility sequences, with timed steps and clear cues.'),
+ ('Start on the web','Set up once. Pick up on your phone.','Choose your goals, schedule, and equipment online, then use the same FoFit account in the app.'),
+]
+feature_js='function FoFitCurrentFeatures(){return o.jsxs("section",{className:"current-features",id:"more-in-fofit",children:[o.jsx("span",{className:"lp-kicker",children:"MORE OF YOUR WEEK, TOGETHER"}),o.jsx("h2",{children:"Beyond your next workout."}),o.jsx("p",{children:"The gym is one part of it. FoFit also makes room for outdoor sessions, small daily commitments, private progress, and recovery."}),o.jsx("div",{className:"current-features__grid",children:'+json.dumps(features)+'.map(([name,title,body],index)=>o.jsxs("article",{children:[o.jsx("span",{className:"current-features__number",children:String(index+1).padStart(2,"0")}),o.jsx("p",{className:"lp-kicker",children:name}),o.jsx("h3",{children:title}),o.jsx("p",{children:body})]},name))}),o.jsx("a",{href:"https://app.fofit.app/onboarding",className:"button button--primary",children:"Set up your FoFit account"})]})}'
+s=s.replace('function e0(){',feature_js+'function e0(){',1)
+needle='className:"container future-live-media__inner",children:['
+assert needle in s
+s=s.replace(needle,needle+'o.jsx(FoFitCurrentFeatures,{}),',1)
 name='index-'+hashlib.sha256(s.encode()).hexdigest()[:10]+'.js';(root/'assets'/name).write_text(s)
 index=root/'index.html';html=(base/'static/index.html').read_text().replace('index-wXrNSfYp.js',name)
 html=html.replace('</head>','<link rel="stylesheet" href="/website-fixes.css" /></head>');index.write_text(html)
@@ -97,5 +121,7 @@ config=json.loads(config_path.read_text())
 redirects=[{'src':'/'+route,'status':307,'headers':{'Location':'https://app.fofit.app/'+route}} for route in ['onboarding','login','signup']]
 config['routes']=redirects+config.get('routes',[])
 config_path.write_text(json.dumps(config,indent=2))
+with (root/'website-fixes.css').open('a') as css:
+ css.write("\n.current-features{grid-column:1/-1;padding:1rem 0 5rem}.current-features>p{max-width:700px;line-height:1.7}.current-features h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.1}.current-features__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2.5rem 0}.current-features__grid article{position:relative;padding:1.5rem;border:1px solid rgba(114,184,91,.25);border-radius:20px;background:rgba(114,184,91,.035)}.current-features__grid h3{font-size:1.35rem;line-height:1.2}.current-features__grid p{line-height:1.6}.current-features__number{display:block;color:#72b85b;font:13px monospace;margin-bottom:1.5rem}.future-live-card__media:has(img[src*=sim-train]){background:#090d13}.future-live-card__media img[src*=sim-train]{object-fit:contain;padding:1rem}@media(max-width:850px){.current-features__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.current-features__grid{grid-template-columns:1fr}}\n")
 (destination/'marketing-fix-manifest.json').write_text(json.dumps({'bundle':name,'copyChanges':changes,'fixes':['waitlist and beta request forms removed','release status page','responsive navigation','visitor copy cleanup']},indent=2))
 print('Patched',len(changes),'copy strings; new asset',name)
