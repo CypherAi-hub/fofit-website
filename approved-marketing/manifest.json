@@ -4,19 +4,9 @@
   "baselineDeployment": "dpl_H8aCN3qJhLQjTgVGycF5TKGdv6qM",
   "files": [
     {
-      "path": "builds.json",
-      "source": "snapshot",
-      "sha256": "abd350cd33c3fa3171e4e42977350b947e366871b4de22d0022fba5b7d5725c4"
-    },
-    {
       "path": "config.json",
       "source": "snapshot",
       "sha256": "ec1e01d3dc3c5eda4b9d12828b64048d1780054321bab3e8b9fe34b83451b5fd"
-    },
-    {
-      "path": "diagnostics/cli_traces.json",
-      "source": "snapshot",
-      "sha256": "91a33fa92450c0725e0a3353c62b926f522538490c0051f5c8a1be7600640aaa"
     },
     {
       "path": "static/app-icon.png",
@@ -266,7 +256,8 @@
     {
       "path": "static/images/lifestyle/group-circuit.png",
       "source": "snapshot",
-      "sha256": "650e027ac4dcc7d9f7870cb4039cab8d51edeed28c0bf4a9d7004c7f481ee82a"
+      "sha256": "650e027ac4dcc7d9f7870cb4039cab8d51edeed28c0bf4a9d7004c7f481ee82a",
+      "sourcePath": "static/images/community/support/group-circuit.png"
     },
     {
       "path": "static/images/lifestyle/lifter.jpg",
@@ -296,7 +287,8 @@
     {
       "path": "static/images/lifestyle/trainer.jpg",
       "source": "snapshot",
-      "sha256": "f23b517dc3ef36b5a2aaf82665ab9a8d40ffb3fad1c15b0bdc8a963a49b9faa2"
+      "sha256": "f23b517dc3ef36b5a2aaf82665ab9a8d40ffb3fad1c15b0bdc8a963a49b9faa2",
+      "sourcePath": "static/images/community/support/verified-coach.jpg"
     },
     {
       "path": "static/images/marketing/fofit-mark.webp",
@@ -432,6 +424,18 @@
       "path": "static/videos/exercises/romanian-deadlift.MP4",
       "source": "public",
       "sha256": "4243afc3ae32a3de8b86f2e35b612dc297d1e8ad696b8d85868a7dc3d382826e"
+    }
+  ],
+  "excludedNonRuntimeFiles": [
+    {
+      "path": "builds.json",
+      "sha256": "abd350cd33c3fa3171e4e42977350b947e366871b4de22d0022fba5b7d5725c4",
+      "reason": "Deployment diagnostics are not required to reproduce static output."
+    },
+    {
+      "path": "diagnostics/cli_traces.json",
+      "sha256": "91a33fa92450c0725e0a3353c62b926f522538490c0051f5c8a1be7600640aaa",
+      "reason": "Deployment diagnostics are not required to reproduce static output."
     }
   ]
 }

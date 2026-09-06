@@ -1,0 +1,3 @@
+
+# Immutable recovered assets are reviewed by provenance and manifest hashes.
+/approved-marketing/static/assets/* -diff -text

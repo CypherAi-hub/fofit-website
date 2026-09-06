@@ -14,9 +14,9 @@ The build uses Python 3, Node, and the already installed project dependencies. I
 
 ## Provenance and retained source
 
-`approved-marketing/manifest.json` pins all 86 recovered baseline files by SHA-256. The baseline is the already recovered, repaired deployment `dpl_H8aCN3qJhLQjTgVGycF5TKGdv6qM`, documented in `RECOVERY-2026-09-06.md`. Its predecessor was `dpl_H2JNEWGybV3eTf4ChzXUigikXWE7`. The original baseline was read from the existing local recovery artifact; no new remote recovery or download was needed.
+`approved-marketing/manifest.json` pins all 84 required recovered baseline files by SHA-256. The baseline is the already recovered, repaired deployment `dpl_H8aCN3qJhLQjTgVGycF5TKGdv6qM`, documented in `RECOVERY-2026-09-06.md`. Its predecessor was `dpl_H2JNEWGybV3eTf4ChzXUigikXWE7`. The original baseline was read from the existing local recovery artifact; no new remote recovery or download was needed.
 
-The snapshot reuses 27 byte-identical files already in `public/` instead of copying them. Snapshot files total 21,732,305 bytes. The original hero video, poster, and core stylesheet remain byte-identical to that approved baseline. Current Discover/Market captures come from the already tracked `public/images/current-app/` folder. Synthetic UI video files remain preserved in existing source/baseline storage but are excluded from deployment output; the leftover product-page video reference is also removed.
+The snapshot reuses 27 byte-identical files already in `public/` instead of copying them. Snapshot files total 19,739,828 bytes. Two repeated snapshot image paths share one source file. Build diagnostics are omitted, with their hashes retained in the manifest. The original hero video, poster, and core stylesheet remain byte-identical to that approved baseline. Current Discover/Market captures come from the already tracked `public/images/current-app/` folder. Synthetic UI video files remain preserved in existing source/baseline storage but are excluded from deployment output; the leftover product-page video reference is also removed.
 
 The recovered JavaScript includes the same public Supabase client configuration as that production baseline. Its bundled JWT was decoded locally and verified to have the `anon` role; no private key or environment file was added. Login, signup, and onboarding use the existing `https://app.fofit.app` application, including client-side navigation and static preview. The preview handoff only carries approved acquisition parameters and a relative `next` path. Legacy `/welcome` and `/dashboard` callback/account behavior remains preserved; this change does not redesign authentication.
 
@@ -39,6 +39,6 @@ The waitlist collection modal and beta collection route are unmounted; “Get Fo
 
 This verifies a local build and those browser paths. It does not establish deployment, subscription availability, completed onboarding persistence, provider functionality, mobile responsive coverage, or full-motion media quality. No production changes were made.
 
-Final baseline manifest SHA-256: `990f05e1fc4d3c493b42f4e14b11e371085d7d735e6fd2d72ca7d8cc757afad0`.
+Final baseline manifest SHA-256: `794fc275334705c07b4d5b442b6b7479e65e2055368e3505d940a6b2d962da1a`.
 
 Final compiled entry `index-31a7fefd44.js` SHA-256: `31a7fefd4400e14d0be89bd6c00636777c8ab5112095d9be11e5f8005b9f025c`. Build metadata is also written to `dist/approved-build.json`.
