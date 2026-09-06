@@ -41,6 +41,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
     let cancelled = false;
 
     supabase.auth.getSession().then(({ data }) => {
@@ -64,6 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signInWithGoogle = useCallback<AuthActions["signInWithGoogle"]>(
     async (redirectTo = "/welcome") => {
+      if (!supabase) return { error: "Sign-in is temporarily unavailable. Please try again later." };
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
@@ -77,6 +82,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signInWithMagicLink = useCallback<AuthActions["signInWithMagicLink"]>(
     async (email, redirectTo = "/welcome") => {
+      if (!supabase) return { error: "Sign-in is temporarily unavailable. Please try again later." };
       const trimmed = email.trim().toLowerCase();
       const { error } = await supabase.auth.signInWithOtp({
         email: trimmed,
@@ -91,7 +97,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   const signOut = useCallback<AuthActions["signOut"]>(async () => {
-    await supabase.auth.signOut();
+    await supabase?.auth.signOut();
   }, []);
 
   const value = useMemo<AuthContextValue>(

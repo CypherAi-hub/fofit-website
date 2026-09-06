@@ -10,6 +10,7 @@ type ClaimResult =
   | { error: string };
 
 async function claimWaitlistForCurrentUser(): Promise<ClaimResult | null> {
+  if (!supabase) return null;
   const { data: sessionData } = await supabase.auth.getSession();
   const accessToken = sessionData.session?.access_token;
   if (!accessToken) return null;
@@ -56,7 +57,7 @@ export function useWaitlistClaim() {
         patch.referral_code = result.referral_code;
       }
 
-      await supabase.auth.updateUser({ data: patch });
+      await supabase?.auth.updateUser({ data: patch });
     })();
 
     return () => {
