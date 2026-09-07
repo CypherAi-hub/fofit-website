@@ -12,6 +12,7 @@ const html = fs.readFileSync(path.join(output, 'index.html'), 'utf8');
 const entry = html.match(/<script type="module"[^>]+src="([^"]+)"/u)?.[1];
 assert.ok(entry?.startsWith('/assets/index-'), 'Approved compiled entry is missing');
 assert.ok(!html.includes('/src/main.tsx'), 'Rejected legacy source became the entry');
+assert.ok(html.includes('with public community in preview.'), 'Search/social description must disclose public community preview');
 const bundlePath = path.join(output, entry);
 const bundle = fs.readFileSync(bundlePath, 'utf8');
 const syntax = spawnSync(process.execPath, ['--check', bundlePath], { encoding: 'utf8' });
@@ -32,6 +33,24 @@ function validateBundle(source) {
   assert.ok(source.includes('path:"/pricing"') && source.includes('path:"/faq"'), 'Pricing/FAQ routes missing');
   assert.ok(source.includes('Paid plans are planned.'), 'Paid availability must be explicit');
   assert.ok(source.includes('Student verification is not available yet.'), 'Student availability must be explicit');
+  for (const required of [
+    'A preview of community around your training. Public discovery, public sharing, and in-app Reels video are not open yet.',
+    'FoFit public community preview',
+    'FoFit Product | Training, Nutrition, Cypher, and Community Preview',
+    'FoFit Community Preview | Public Feed and Coach Discovery',
+    'Existing crew and team paths are separate from public discovery.',
+  ]) {
+    assert.ok(source.includes(required), `Public community availability is unclear: ${required}`);
+  }
+  for (const unavailableClaim of [
+    'Join groups, follow verified coaches, share progress',
+    'Explore the feed, find a group, discover coaches',
+    'Real FoFit community features',
+    'Verified coaches make trust visible.',
+    'What community actually contains.',
+  ]) {
+    assert.ok(!source.includes(unavailableClaim), `Unavailable public feature advertised as open: ${unavailableClaim}`);
+  }
   for (const stale of ['$7.99', '$14.99', '$49/mo', '$99/mo', '$199/mo', '$6.99', 'SheerID',
     'Up to 10 athletes', 'Up to 30 athletes', 'Unlimited athletes', 'Team access opens Spring',
     'Founding rates are locked', 'top up with a token pack']) {
@@ -45,6 +64,11 @@ assert.throws(() => validateBundle(bundle.replaceAll('Stop using four fitness ap
 assert.throws(() => validateBundle(bundle.replace('function Ij(){return null}', 'function Ij(){return "form"}')));
 assert.throws(() => validateBundle(bundle.replaceAll('window.location.assign("/beta")', 'window.location.assign("/signup")')));
 assert.throws(() => validateBundle(bundle + '"Student $7.99/mo"'));
+assert.throws(() => validateBundle(bundle.replaceAll(
+  'Public discovery, public sharing, and in-app Reels video are not open yet.',
+  'Public community is available now.',
+)));
+assert.throws(() => validateBundle(bundle + '"Join groups, follow verified coaches, share progress"'));
 
 // An output check on actual assets: all referenced local pictures/video/posters
 // must exist. A renderer is still required to assess their appearance/motion.
@@ -85,4 +109,4 @@ for (const route of ['/login', '/signup', '/onboarding']) {
   assert.ok(config.redirects.some(item => item.source === route && item.destination === `https://app.fofit.app${route}`),
     `Hosting canonical redirect missing: ${route}`);
 }
-console.log('PASS approved built hero, media hashes, no waitlist UI, release route, canonical handoff, Pricing/FAQ availability, and negative controls.');
+console.log('PASS approved built hero, media hashes, no waitlist UI, release route, canonical handoff, Pricing/FAQ and public-community availability, and negative controls.');

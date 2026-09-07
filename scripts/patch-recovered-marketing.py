@@ -150,6 +150,7 @@ p.unlink() # Only the active transformed entry belongs in output; baseline stays
 index=root/'index.html';html=(base/'static/index.html').read_text().replace('index-wXrNSfYp.js',name)
 html=html.replace('<script type="module"','<script src="/canonical-auth-handoff.js"></script>\n    <script type="module"',1)
 shutil.copy2(Path(__file__).with_name('canonical-auth-handoff.js'),root/'canonical-auth-handoff.js')
+html=html.replace('FoFit combines AI coaching, personalized training, nutrition, and community in one fitness app.', 'FoFit combines AI coaching, personalized training, and nutrition, with public community in preview.')
 html=html.replace('</head>','<link rel="stylesheet" href="/website-fixes.css" /></head>');index.write_text(html)
 (root/'website-fixes.css').write_text('''.release-page{max-width:1000px;margin:auto;min-height:70vh;padding:clamp(5rem,10vw,9rem) 1.5rem 5rem;}.release-page h1{font-size:clamp(2.6rem,6vw,5.4rem);line-height:1.05;letter-spacing:-.04em;max-width:850px;}.release-page p{max-width:620px;line-height:1.7;}.release-lede{font-size:1.3rem;}.release-actions{display:flex;flex-wrap:wrap;gap:1rem;margin:2rem 0;}.release-note{opacity:.7;font-size:.9rem;}
 .release-actions .button{padding:.85rem 1.2rem;}
