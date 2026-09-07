@@ -1,6 +1,106 @@
 {
   "redirects": [
     {
+      "source": "/languages/",
+      "destination": "/languages",
+      "permanent": true
+    },
+    {
+      "source": "/beta/",
+      "destination": "/beta",
+      "permanent": true
+    },
+    {
+      "source": "/es/beta/",
+      "destination": "/es/beta",
+      "permanent": true
+    },
+    {
+      "source": "/pt-br/beta/",
+      "destination": "/pt-br/beta",
+      "permanent": true
+    },
+    {
+      "source": "/fr/beta/",
+      "destination": "/fr/beta",
+      "permanent": true
+    },
+    {
+      "source": "/de/beta/",
+      "destination": "/de/beta",
+      "permanent": true
+    },
+    {
+      "source": "/ja/beta/",
+      "destination": "/ja/beta",
+      "permanent": true
+    },
+    {
+      "source": "/ko/beta/",
+      "destination": "/ko/beta",
+      "permanent": true
+    },
+    {
+      "source": "/es",
+      "destination": "/es/beta",
+      "permanent": false
+    },
+    {
+      "source": "/es/",
+      "destination": "/es/beta",
+      "permanent": false
+    },
+    {
+      "source": "/pt-br",
+      "destination": "/pt-br/beta",
+      "permanent": false
+    },
+    {
+      "source": "/pt-br/",
+      "destination": "/pt-br/beta",
+      "permanent": false
+    },
+    {
+      "source": "/fr",
+      "destination": "/fr/beta",
+      "permanent": false
+    },
+    {
+      "source": "/fr/",
+      "destination": "/fr/beta",
+      "permanent": false
+    },
+    {
+      "source": "/de",
+      "destination": "/de/beta",
+      "permanent": false
+    },
+    {
+      "source": "/de/",
+      "destination": "/de/beta",
+      "permanent": false
+    },
+    {
+      "source": "/ja",
+      "destination": "/ja/beta",
+      "permanent": false
+    },
+    {
+      "source": "/ja/",
+      "destination": "/ja/beta",
+      "permanent": false
+    },
+    {
+      "source": "/ko",
+      "destination": "/ko/beta",
+      "permanent": false
+    },
+    {
+      "source": "/ko/",
+      "destination": "/ko/beta",
+      "permanent": false
+    },
+    {
       "source": "/privacy/",
       "destination": "/privacy",
       "permanent": true
@@ -91,6 +191,38 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/languages",
+      "destination": "/languages/index.html"
+    },
+    {
+      "source": "/beta",
+      "destination": "/beta/index.html"
+    },
+    {
+      "source": "/es/beta",
+      "destination": "/es/beta/index.html"
+    },
+    {
+      "source": "/pt-br/beta",
+      "destination": "/pt-br/beta/index.html"
+    },
+    {
+      "source": "/fr/beta",
+      "destination": "/fr/beta/index.html"
+    },
+    {
+      "source": "/de/beta",
+      "destination": "/de/beta/index.html"
+    },
+    {
+      "source": "/ja/beta",
+      "destination": "/ja/beta/index.html"
+    },
+    {
+      "source": "/ko/beta",
+      "destination": "/ko/beta/index.html"
+    },
     {
       "source": "/privacy",
       "destination": "/privacy/index.html"

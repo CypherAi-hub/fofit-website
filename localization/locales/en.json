@@ -1,0 +1,19 @@
+{
+  "meta.title": "FoFit for iPhone — Release information",
+  "meta.description": "Check FoFit iPhone release information and set up your existing FoFit account on the web.",
+  "nav.home": "FoFit home (English)",
+  "nav.languages": "Languages",
+  "release.kicker": "FOFIT FOR IPHONE",
+  "release.title": "Your training. Your fuel. One app.",
+  "release.lede": "The iPhone release is coming soon. We’re finishing the app before opening downloads.",
+  "release.account": "You can set up your FoFit account on the web now. Sign in with the same account in the iPhone app when it’s available.",
+  "release.accountCta": "Set up your FoFit account",
+  "release.supportCta": "Get support",
+  "release.availability": "iPhone first. Android availability has not been announced.",
+  "release.coverage": "This page covers release information only. App language coverage varies by feature. Account setup, support, and policy pages may be in English.",
+  "preview.title": "Translation preview",
+  "preview.description": "This translation is awaiting native-speaker review. It does not announce a launch in your country or a fully translated app.",
+  "footer.privacy": "Privacy policy",
+  "footer.terms": "Terms of service",
+  "footer.policyLanguage": "The linked support and policy pages are in English."
+}

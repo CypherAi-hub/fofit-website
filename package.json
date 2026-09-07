@@ -12,7 +12,9 @@
     "verify:legal-live": "node scripts/verify-live-legal-routes.mjs",
     "dev:legacy": "vite",
     "build:legacy": "vite build --outDir legacy-dist",
-    "validate:approved": "node scripts/check-approved-marketing.mjs"
+    "validate:approved": "node scripts/check-approved-marketing.mjs",
+    "test:globalization": "node --test scripts/globalization.test.mjs",
+    "validate:globalization": "node scripts/check-localized-marketing.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.104.1",

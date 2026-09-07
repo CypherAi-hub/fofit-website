@@ -29,8 +29,12 @@ with tempfile.TemporaryDirectory(prefix='fofit-approved-build-') as temporary:
         shutil.copy2(source, target)
     subprocess.run(['python3', str(repo / 'scripts/patch-recovered-marketing.py'),
                     '--base', str(base), '--output', str(output)], check=True, cwd=repo)
+    subprocess.run(['node', str(repo / 'scripts/build-localized-marketing.mjs'),
+                    str(output)], check=True, cwd=repo)
     # Validate the complete temporary result before replacing the last good build.
     subprocess.run(['node', str(repo / 'scripts/check-approved-marketing.mjs'),
+                    str(output / 'static')], check=True, cwd=repo)
+    subprocess.run(['node', str(repo / 'scripts/check-localized-marketing.mjs'),
                     str(output / 'static')], check=True, cwd=repo)
     destination = repo / 'dist'
     if destination.exists():
@@ -42,6 +46,8 @@ with tempfile.TemporaryDirectory(prefix='fofit-approved-build-') as temporary:
         'baselineManifestSha256': hashlib.sha256((snapshot / 'manifest.json').read_bytes()).hexdigest(),
         'patchSha256': hashlib.sha256((repo / 'scripts/patch-recovered-marketing.py').read_bytes()).hexdigest(),
         'copySha256': hashlib.sha256((repo / 'scripts/approved-marketing-copy.json').read_bytes()).hexdigest(),
+        'localizationBuilderSha256': hashlib.sha256((repo / 'scripts/build-localized-marketing.mjs').read_bytes()).hexdigest(),
+        'localizationSha256': hashlib.sha256(b''.join(str(p.relative_to(repo)).encode() + b'\0' + p.read_bytes() for p in sorted((repo / 'localization').rglob('*')) if p.is_file())).hexdigest(),
         'environmentFilesRead': False,
     }, indent=2) + '\n')
 print('Approved FoFit marketing built to dist; legacy React source was not compiled.')
