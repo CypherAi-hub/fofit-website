@@ -9,6 +9,15 @@ if base==destination:raise SystemExit('Use a separate output directory to preser
 shutil.copytree(base,destination,dirs_exist_ok=True)
 root=destination/'static'
 shutil.copytree(Path(__file__).resolve().parents[1]/'public/images/current-app',root/'images/current-app',dirs_exist_ok=True)
+# Turn the recovered support references into usable, keyboard-accessible links.
+support_path = root / 'support/index.html'
+support = support_path.read_text()
+for label, route in [('Privacy Policy', 'privacy'), ('Terms of Service', 'terms'),
+                     ('Delete account instructions', 'delete-account')]:
+ old = f'<li>{label}: https://fofit.app/{route}</li>'
+ assert old in support, f'Missing approved support reference: {route}'
+ support = support.replace(old, f'<li><a href="/{route}">{label}</a></li>')
+support_path.write_text(support)
 # Retire synthetic UI videos from the deployed output; originals remain in the baseline.
 for retired in ['product-devices.mp4','cypher-loop.mp4']:
  (root/retired).unlink(missing_ok=True)
