@@ -51,6 +51,34 @@ function validateBundle(source) {
   ]) {
     assert.ok(!source.includes(unavailableClaim), `Unavailable public feature advertised as open: ${unavailableClaim}`);
   }
+  for (const required of [
+    'Auto Tracking (Beta)',
+    'In the workout logger, auto tracking is in beta: review and correct counts before saving, or use manual logging.',
+    'Create recurring movement commitments and keep your quick sessions together.',
+    'Photo estimates are in beta. Review foods, portions, and nutrition before logging; search and manual logging remain available.',
+    'Film Lab (Beta)',
+    'private analysis when processing is available',
+    'submit free programs for review',
+    'add approved free releases when available',
+    'Paid sales and payouts are not open.',
+    'creators receive 85% and FoFit 15% of verified net proceeds after store fees',
+    'Taxes, refunds, and adjustments are reconciled before payout.',
+    'role:"lifter",label:"Fitness"',
+    'Sport-specific preparation stays in Athlete.',
+    'value:"13",label:"Country filters"',
+    'Public feed, Reels, and coach discovery preview',
+    'the merchant handles checkout, prices, and returns',
+  ]) {
+    assert.ok(source.includes(required), `Current feature boundary is missing: ${required}`);
+  }
+  for (const stale of [
+    'Feed, reels, groups, and verified coaches',
+    'premium:"Feed, reels, groups, and coaches"',
+    'Programs, guides, gear, and bundles — aligned with how FoFit trains you. Not open yet.',
+    'Curated programs. Proven guides.',
+  ]) {
+    assert.ok(!source.includes(stale), `Stale feature availability remains: ${stale}`);
+  }
   for (const stale of ['$7.99', '$14.99', '$49/mo', '$99/mo', '$199/mo', '$6.99', 'SheerID',
     'Up to 10 athletes', 'Up to 30 athletes', 'Unlimited athletes', 'Team access opens Spring',
     'Founding rates are locked', 'top up with a token pack']) {
@@ -69,6 +97,16 @@ assert.throws(() => validateBundle(bundle.replaceAll(
   'Public community is available now.',
 )));
 assert.throws(() => validateBundle(bundle + '"Join groups, follow verified coaches, share progress"'));
+
+// Meaningful negative controls for the feature states, not just their presence
+// somewhere in the repository: this validator inspects the built public bundle.
+assert.throws(() => validateBundle(bundle.replaceAll('auto tracking is in beta:', 'auto tracking is accurate:')));
+assert.throws(() => validateBundle(bundle.replaceAll('Photo estimates are in beta.', 'Photo estimates are exact.')));
+assert.throws(() => validateBundle(bundle.replaceAll('Film Lab (Beta)', 'Film Lab')));
+assert.throws(() => validateBundle(bundle.replaceAll('Paid sales and payouts are not open.', 'Paid sales and payouts are open.')));
+assert.throws(() => validateBundle(bundle.replaceAll('verified net proceeds after store fees', 'gross sales')));
+assert.throws(() => validateBundle(bundle.replace('value:"13",label:"Country filters"', 'value:"12",label:"Country filters"')));
+assert.throws(() => validateBundle(bundle + '"Feed, reels, groups, and verified coaches"'));
 
 // An output check on actual assets: all referenced local pictures/video/posters
 // must exist. A renderer is still required to assess their appearance/motion.
@@ -109,4 +147,4 @@ for (const route of ['/login', '/signup', '/onboarding']) {
   assert.ok(config.redirects.some(item => item.source === route && item.destination === `https://app.fofit.app${route}`),
     `Hosting canonical redirect missing: ${route}`);
 }
-console.log('PASS approved built hero, media hashes, no waitlist UI, release route, canonical handoff, Pricing/FAQ and public-community availability, and negative controls.');
+console.log('PASS approved built hero, media hashes, no waitlist UI, release route, canonical handoff, Pricing/FAQ and public-community availability, program/creator boundaries, beta disclosures, and negative controls.');

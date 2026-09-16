@@ -111,11 +111,13 @@ assert retired_ambient in s
 s=s.replace(retired_ambient,'')
 features=[
  ('Discover','Find your next session.','Browse workout plans, sport-specific training, recovery, and places to move near you.'),
+ ('Program Studio','Build a program worth repeating.','Create private drafts, submit free programs for review, and add approved free releases when available. Paid sales and payouts are not open.'),
  ('Market','Find gear for your next session.','Explore gear, nutrition, and recovery tools. Market uses affiliate links; purchases happen on merchant websites.'),
  ('Outdoor','Take your training outside.','Explore places to move, plan a route, record a session, and come back to your history.'),
  ('Quick Hits','Make the small sessions count.','Create recurring movement commitments and keep your quick sessions together.'),
+ ('Auto Tracking (Beta)','Review your counts. Keep control.','In the workout logger, auto tracking is in beta: review and correct counts before saving, or use manual logging.'),
  ('Body Lab','See your progress over time.','Keep private photo check-ins and compare your own photos side by side.'),
- ('Film Lab','Give your training a second look.','Upload a skill clip or session for a private film review and focused next steps.'),
+ ('Film Lab (Beta)','Give your training a second look.','Upload an eligible skill clip or session for private analysis when processing is available. Review the feedback; video quality can limit the result.'),
  ('Guided recovery','Make room to recover.','Follow yoga and mobility sequences, with timed steps and clear cues.'),
  ('Start on the web','Set up once. Pick up on your phone.','Choose your goals, schedule, and equipment online, then use the same FoFit account in the app.'),
 ]
@@ -136,6 +138,14 @@ for route,component in [('login','kj'),('signup','Ej')]:
  s=s.replace(old,'path:"/'+route+'",element:o.jsx(FoFitCanonicalAccountHandoff,{})')
 needle='o.jsx(ze,{path:"/login",element:o.jsx(FoFitCanonicalAccountHandoff,{})})'
 s=s.replace(needle,needle+',o.jsx(ze,{path:"/onboarding",element:o.jsx(FoFitCanonicalAccountHandoff,{})})')
+# Keep role labels and the local recipe filter count aligned with the current app.
+# Match the full field context: never change another number or every Members label.
+for old,new in {
+ 'role:"lifter",label:"Members"':'role:"lifter",label:"Fitness"',
+ 'value:"12",label:"Country filters"':'value:"13",label:"Country filters"',
+}.items():
+ assert old in s, 'Missing current product field: '+old
+ s=s.replace(old,new)
 # Apply reviewed copy to the shared data, so Pricing and FAQ agree with Home.
 # Match complete JavaScript string literals; never rewrite executable identifiers.
 copy_path=Path(__file__).with_name('approved-marketing-copy.json')
