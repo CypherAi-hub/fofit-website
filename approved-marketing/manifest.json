@@ -41,7 +41,7 @@
     {
       "path": "static/delete-account/index.html",
       "source": "public",
-      "sha256": "fc2ca8e7be13847c4a513bb000db32399e925a87451e90e7245e4c23cf37dd5c"
+      "sha256": "a94b686691b5b7771a4fe96a7eebcd5ac6d36619e94860d5569e3ecc848bbcef"
     },
     {
       "path": "static/favicon-32.png",
@@ -343,7 +343,7 @@
     {
       "path": "static/privacy/index.html",
       "source": "public",
-      "sha256": "5ead04489450d4c2829aadcd69c5c0da0a23d27f131f0b812c73637ff17385a6"
+      "sha256": "8625a4f9c71e27552bf5fc22cf6ef1037eb58caaa6764dc9775cbd05b5a972df"
     },
     {
       "path": "static/product-devices-poster.jpg",
@@ -358,12 +358,12 @@
     {
       "path": "static/support/index.html",
       "source": "public",
-      "sha256": "1826d2d9cb095b5de040e63b4ecc3d27592daa6d50cbb84bc96ecf9b9c6b2172"
+      "sha256": "85fc4b49b06ccf7de9b1ef1f506e3d10793cedda5263bd0cbc00907e4a3c1a12"
     },
     {
       "path": "static/terms/index.html",
       "source": "public",
-      "sha256": "4565ab56c1385362ce78c630214b27b125a9ca27b795b538e11b0116eff836b5"
+      "sha256": "a02e41d7a1e43ed90e83557c6014b15fd93cb53f63103ee212fce7b2add348b4"
     },
     {
       "path": "static/videos/exercises/2026-04-28 14:39:53.MP4",
