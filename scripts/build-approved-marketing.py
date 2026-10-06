@@ -29,6 +29,9 @@ with tempfile.TemporaryDirectory(prefix='fofit-approved-build-') as temporary:
         shutil.copy2(source, target)
     subprocess.run(['python3', str(repo / 'scripts/patch-recovered-marketing.py'),
                     '--base', str(base), '--output', str(output)], check=True, cwd=repo)
+    # Release policies are maintained separately from the immutable marketing baseline.
+    for route in ('privacy', 'terms', 'support', 'delete-account'):
+        shutil.copy2(repo / 'public' / route / 'index.html', output / 'static' / route / 'index.html')
     subprocess.run(['node', str(repo / 'scripts/build-localized-marketing.mjs'),
                     str(output)], check=True, cwd=repo)
     # Validate the complete temporary result before replacing the last good build.
